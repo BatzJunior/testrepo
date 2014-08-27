@@ -1,5 +1,6 @@
 ---
 title: something
+layout: frame
 ---
 
 ##Überschrift
