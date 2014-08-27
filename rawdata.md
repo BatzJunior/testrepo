@@ -29,6 +29,7 @@ On adding raw data it is possible to pass a key within the uri. If -1 or no key 
 :exclamation: If a key is passed which is already in use the existing raw data object will be replaced.
 
 ### Add a raw data object to a part with the uuid b8f5d3fe-5bd5-406b-8053-67f647f09dc7
+
 ####Example for direct webservice call
 
 Request:
@@ -164,16 +165,23 @@ client.DeleteRawDataForPart(new Guid("b8f5d3fe-5bd5-406b-8053-67f647f09dc7"),0);
 ```
 ### Delete all raw data objects for a part with the uuid b8f5d3fe-5bd5-406b-8053-67f647f09dc7
 #### Example for direct webservice call
+
 Request
+
 {% highlight http %}
 DELETE /rawDataServiceRest/rawData/part/b8f5d3fe-5bd5-406b-8053-67f647f09dc7
 {% endhighlight %}
+
 Response
-{% highlight http %}
+
+{% highlight %}
 Statuscode 200 OK
 {% endhighlight %}
+
 ####Example for webservice call via API.dll
+
 Request:
+
 {% highlight csharp %}
 var client = new RawDataServiceRestClient( serviceUri );
 client.DeleteAllRawDataForPart( new Guid("b8f5d3fe-5bd5-406b-8053-67f647f09dc7") );
