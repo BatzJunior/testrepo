@@ -174,7 +174,7 @@ DELETE /rawDataServiceRest/rawData/part/b8f5d3fe-5bd5-406b-8053-67f647f09dc7
 
 Response
 
-{% highlight %}
+{% highlight http %}
 Statuscode 200 OK
 {% endhighlight %}
 
