@@ -32,23 +32,24 @@ On adding raw data it is possible to pass a key within the uri. If -1 or no key 
 ####Example for direct webservice call
 
 Request:
-```
-PUT /rawDataServiceRest/rawData/part/b8f5d3fe-5bd5-406b-8053-67f647f09dc7
+{% highlight htpp %}
+PUT /rawDataServiceRest/rawData/part/b8f5d3fe-5bd5-406b-8053-67f647f09dc7 HTTP/1.1
 Content-Disposition: "MetalPart.meshModel"
 Content-Length: 2090682
 Content-MD5: "bdf6b06ab301a80ae55021085b820393"
 Content-Type: "application/x-zeiss-piweb-meshmodel"
-```
+{% endhighlight %}
 
 Response:
-```
-Status Code : 201 Created
-```
+{% highlight http %}
+201 Created HTTP/1.1
+{% endhighlight %}
 
 ####Example for webservice call via API.dll
 
 Request:
-```
+
+{% highlight csharp %}
 var client = new RawDataServiceRestClient( serviceUri );
 //Create RawDataInformation object which contains information about the data to be uploaded
 var rawDataInformation = new RawDataInformation(RawDataTargetEntity.CreateForPart(new Guid("b8f5d3fe-5bd5-406b-8053-67f647f09dc7"), -1);
@@ -57,18 +58,22 @@ rawDataInformation.MimeType = "application/x-zeiss-piweb-meshmodel";
 rawDataInformation.FileName = "MetalPart.meshModel";
 rawDataInformation.Size = meshModelInBytes.Length;
 client.CreateRawData(meshModelInBytes, rawDataInformation);
-```
+{% endhighlight %}
 
 ##Fetch raw data information
+
 The request can be restricted by adding url parameter. For more details see the [URL-Parameter section](General-Information#raw-data).
 
 ### Fetch raw data information for a part with the uuid b8f5d3fe-5bd5-406b-8053-67f647f09dc7
+
 #### Example for direct webservice call
 
 Request:
-```
-GET /rawDataServiceRest/rawData/part?uuids={b8f5d3fe-5bd5-406b-8053-67f647f09dc7}
-```
+
+{% highlight http %}
+GET /rawDataServiceRest/rawData/part?uuids={b8f5d3fe-5bd5-406b-8053-67f647f09dc7} HTTP/1.1
+{% endhighlight %}
+
 Response:
 {% highlight json linenos %}
 {
@@ -97,71 +102,87 @@ Response:
 
 ####Example for webservice call via API.dll
 
-```
+{% highlight csharp %}
 var client = new RawDataServiceRestClient( serviceUri );
 var rawDataInfo = await client.ListRawDataForParts( new Guid[] { b8f5d3fe-5bd5-406b-8053-67f647f09dc7 } );
-```
+{% endhighlight %}
 
 ##Fetch raw data 
-On fetching raw data there is server side caching activated. When a raw data object is requested the first time several HTTP header values are returned beneath the raw data object. This header values include the ```ETag``` header that consists of a distinct hash value which identifies the raw data object unambigusously. This hash value is a combination of the MD5 sum and the last modified date. If this ```ETag``` value is sent within the ```If-None-Match``` header on the next request the server returns a ```304 - Not modified``` HTTP header status code instead of the raw data object if the object has not been changed since the last request. If the API.dll is used the caching is already implemented.
+
+On fetching raw data there is server side caching activated. When a raw data object is requested the first time several HTTP header values are returned beneath the raw data object. This header values include the {% highlight http %} ETag {% endhighlight %} header that consists of a distinct hash value which identifies the raw data object unambigusously. This hash value is a combination of the MD5 sum and the last modified date. If this {% highlight http %}ETag{% endhighlight %} value is sent within the {% highlight http %} If-None-Match {%endhighlight %} header on the next request the server returns a {% highlight http %} 304 - Not modified {% endhighlight %} HTTP header status code instead of the raw data object if the object has not been changed since the last request. If the API.dll is used the caching is already implemented.
 
 ### Fetch raw data with key 0 for a part with the uuid b8f5d3fe-5bd5-406b-8053-67f647f09dc7
 #### Example for direct webservice call
 
 Request:
-```
+
+{% highlight http %}
 GET /rawDataServiceRest/rawData/part/b8f5d3fe-5bd5-406b-8053-67f647f09dc7/0
-```
+{% endhighlight %}
+
 Response: 
 
+The requested raw data file
 
-_The requested raw data file_
-```
-Status Code : 200 OK
+{% highlight http %}
+HTTP/1.1 200 OK
 Etag: "6ab0f6bd01b30aa8e55021085b820393635437006830400000"
 Last-Modified: Fri, 15 Aug 2014 11:58:03 GMT
 ...
-```
+{% endhighlight %}
 
 Request with If-None-Match header
-```
-GET /rawDataServiceRest/rawData/part/b8f5d3fe-5bd5-406b-8053-67f647f09dc7/0
+
+{% highlight http %}
+GET /rawDataServiceRest/rawData/part/b8f5d3fe-5bd5-406b-8053-67f647f09dc7/0 HTTP/1.1
 If-None-Match: "6ab0f6bd01b30aa8e55021085b820393635437006830400000"
-```
+{% endhighlight %}
+
 Response:
-```
-Status Code: 304 Not modified
-```
+
+{% highlight http %}
+HTTP/1.1 304 Not modified
+{% endhighlight %}
 
 #### Example for webservice call via API.dll
 
-```
+{% highlight csharp %}
 var client = new RawDataServiceRestClient( serviceUri );
 var rawData = await client.GetRawDataForPart( "b8f5d3fe-5bd5-406b-8053-67f647f09dc7", 0 );
-```
+{% endhighlight %}
 
 ##Update raw data
+
 Updating a raw data object works nearly identically to adding raw data objects. The only difference is the key which the raw data object is identified by and which is mandatory.
 
 ##Delete raw data
 If a key is given within the uri only the raw data object with the given key otherwise all raw data objects which belong to the entity will be deleted.
 
 ### Delete raw data object with key 0 for a part with the uuid b8f5d3fe-5bd5-406b-8053-67f647f09dc7
+
 #### Example for direct webservice call
+
 Request
-```
+
+{% highlight http %}
 DELETE /rawDataServiceRest/rawData/part/b8f5d3fe-5bd5-406b-8053-67f647f09dc7/0
-```
+{% endhighlight %}
+
 Response
-```
-Statuscode 200 OK
-```
+
+{% highlight http %}
+HTTP/1.1 200 OK
+{% endhighlight %}
+
 ####Example for webservice call via API.dll
+
 Request:
-```
+
+{% highlight csharp %}
 var client = new RawDataServiceRestClient( serviceUri );
 client.DeleteRawDataForPart(new Guid("b8f5d3fe-5bd5-406b-8053-67f647f09dc7"),0);
-```
+{% endhighlight %}
+
 ### Delete all raw data objects for a part with the uuid b8f5d3fe-5bd5-406b-8053-67f647f09dc7
 #### Example for direct webservice call
 
