@@ -43,7 +43,7 @@ Content-Type: "application/x-zeiss-piweb-meshmodel"
 
 Response:
 {% highlight http %}
-201 Created HTTP/1.1
+HTTP/1.1 201 Created
 {% endhighlight %}
 
 ####Example for webservice call via API.dll
@@ -113,12 +113,13 @@ var rawDataInfo = await client.ListRawDataForParts( new Guid[] { b8f5d3fe-5bd5-4
 On fetching raw data there is server side caching activated. When a raw data object is requested the first time several HTTP header values are returned beneath the raw data object. This header values include the {% highlight http %} ETag {% endhighlight %} header that consists of a distinct hash value which identifies the raw data object unambigusously. This hash value is a combination of the MD5 sum and the last modified date. If this {% highlight http %}ETag{% endhighlight %} value is sent within the {% highlight http %} If-None-Match {%endhighlight %} header on the next request the server returns a {% highlight http %} 304 - Not modified {% endhighlight %} HTTP header status code instead of the raw data object if the object has not been changed since the last request. If the API.dll is used the caching is already implemented.
 
 ### Fetch raw data with key 0 for a part with the uuid b8f5d3fe-5bd5-406b-8053-67f647f09dc7
+
 #### Example for direct webservice call
 
 Request:
 
 {% highlight http %}
-GET /rawDataServiceRest/rawData/part/b8f5d3fe-5bd5-406b-8053-67f647f09dc7/0
+GET /rawDataServiceRest/rawData/part/b8f5d3fe-5bd5-406b-8053-67f647f09dc7/0 HTTP/1.1
 {% endhighlight %}
 
 Response: 
