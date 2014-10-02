@@ -1,6 +1,5 @@
 ---
 title: Handle Raw Data
-layout: frame
 ---
 ##Endpoint information
 
