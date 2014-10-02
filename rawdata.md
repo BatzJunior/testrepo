@@ -174,7 +174,7 @@ DELETE /rawDataServiceRest/rawData/part/b8f5d3fe-5bd5-406b-8053-67f647f09dc7  HT
 Response
 
 {% highlight http %}
-Statuscode 200 OK
+HTTP/1.1 200 OK
 {% endhighlight %}
 
 ####Example for webservice call via API.dll
@@ -183,5 +183,5 @@ Request:
 
 {% highlight csharp %}
 var client = new RawDataServiceRestClient( serviceUri );
-client.DeleteAllRawDataForPart( new Guid("b8f5d3fe-5bd5-406b-8053-67f647f09dc7") );
+client.DeleteAllRawDataForPart( new Guid("b8f5d3fe-5bd5- 406b-8053-67f647f09dc7") );
 {% endhighlight %}
