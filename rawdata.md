@@ -167,7 +167,7 @@ If a key is given within the uri only the raw data object with the given key oth
 Request
 
 {% highlight http %}
-DELETE /rawDataServiceRest/rawData/part/b8f5d3fe-5bd5-406b-8053-67f647f09dc7/0
+DELETE /rawDataServiceRest/rawData/part/b8f5d3fe-5bd5-406b-8053-67f647f09dc7/0 HTTP/1.1
 {% endhighlight %}
 
 Response
@@ -186,6 +186,7 @@ client.DeleteRawDataForPart(new Guid("b8f5d3fe-5bd5-406b-8053-67f647f09dc7"),0);
 {% endhighlight %}
 
 ### Delete all raw data objects for a part with the uuid b8f5d3fe-5bd5-406b-8053-67f647f09dc7
+
 #### Example for direct webservice call
 
 Request
