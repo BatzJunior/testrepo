@@ -168,7 +168,7 @@ client.DeleteRawDataForPart(new Guid("b8f5d3fe-5bd5-406b-8053-67f647f09dc7"),0);
 Request
 
 {% highlight http %}
-DELETE /rawDataServiceRest/rawData/part/b8f5d3fe-5bd5-406b-8053-67f647f09dc7
+DELETE /rawDataServiceRest/rawData/part/b8f5d3fe-5bd5-406b-8053-67f647f09dc7  HTTP/1.1
 {% endhighlight %}
 
 Response
