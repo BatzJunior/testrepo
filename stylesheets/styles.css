@@ -261,6 +261,7 @@ header ul.secondLevel{
 header div.download{
 	width:90px;
 	margin-bottom:12px;
+	margin-right:2px;
 	padding: 6px 6px 6px 7px;
 	border-radius:4px;
 	border:1px solid #0D0D0D;
