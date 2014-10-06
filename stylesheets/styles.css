@@ -262,7 +262,7 @@ header ul {
 }
 
 header ol{
-	padding:none;
+	padding:0;
 }
 
 header ul.firstLevel{
