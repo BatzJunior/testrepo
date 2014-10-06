@@ -325,6 +325,7 @@ section {
   width:800px;
   float:right;
   padding-bottom:50px;
+  padding-top:15px;
 }
 
 
@@ -335,7 +336,7 @@ footer {
   float:left;
   position:fixed;
   bottom:10px;
-	padding-left: 50px;
+  padding-left: 50px;
 }
 
 @media print, screen and (max-width: 960px) {
