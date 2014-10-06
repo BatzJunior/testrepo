@@ -71,7 +71,7 @@ h4, h5, h6 {
 
 a {
   color:#222;
-  text-decoration:none;
+  text-decoration:dotted;
 }
 
 a:hover {
@@ -235,7 +235,7 @@ h1.header {
 
 
 h1.header, a.header, a.name, header a{
-	color: #fff;
+	text-decoration:none;
 }
 
 a.header {
