@@ -25,7 +25,7 @@ Content-Type         | Includes raw data object's MIME type           | "applica
 
 On adding raw data it is possible to pass a key within the uri. If -1 or no key is passed the next free key will be used on server side. (recommended)
 
-![Warning]({{site.url}}/images/warning.png) If a key is passed which is already in use the existing raw data object will be replaced.
+![Warning](/images/warning.png) If a key is passed which is already in use the existing raw data object will be replaced.
 
 ### Add a raw data object to a part with the uuid b8f5d3fe-5bd5-406b-8053-67f647f09dc7
 
