@@ -261,6 +261,20 @@ header ul {
   padding:0;
 }
 
+header.ol{
+	padding:none;
+}
+
+header ul.firstLevel{
+	list-style-type:square;
+	padding-left:33px;
+}
+
+header ul.secondLevel{
+	list-style-type:circle;
+	padding-left:16px;
+}
+
 header li.download {
 	list-style-type: none;
   width:132px;
