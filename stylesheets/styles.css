@@ -28,7 +28,6 @@ body {
   font-family: "Segoe UI",Verdana,Helvetica,sans-serif;
 	font-size: 14px;
 	color: #232323;
-	background-color: #FBFAF7;
 	margin: 0;
 	line-height: 1.8em;
 	-webkit-font-smoothing: antialiased;
@@ -191,7 +190,7 @@ th {
 
 td {
   padding: 10px;
-  background: #E7E7E7;
+  background: #F6F6F6;
  }
 
 
