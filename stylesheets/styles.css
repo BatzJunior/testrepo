@@ -215,7 +215,8 @@ header {
 }
 
 p.header {
-	font-size: 16px;
+	font-size: 12px;
+	line-height:1.5;
 }
 
 h1.header {
