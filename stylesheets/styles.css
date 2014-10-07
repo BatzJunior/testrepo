@@ -97,7 +97,7 @@ ul {
 }
 
 ol {
-  list-style: decimal inside;
+  list-style: decimal;
   padding-left: 20px;
 }
 
@@ -243,10 +243,6 @@ a.name {
 header ul {
   list-style:none;
   padding:0;
-}
-
-header ol{
-	padding:0;
 }
 
 header ul.firstLevel{
