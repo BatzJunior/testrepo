@@ -244,17 +244,8 @@ a.name {
 
 header ul {
   list-style:none;
-  padding:0;
-}
-
-header ul.firstLevel{
-	//list-style-type:square;
-	padding-left:16px;
-}
-
-header ul.secondLevel{
-	//list-style-type:circle;
-	padding-left:16px;
+  padding:16px;
+  font-weight:100;
 }
 
 header div.downloadContainer{
