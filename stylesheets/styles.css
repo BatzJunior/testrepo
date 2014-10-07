@@ -248,12 +248,12 @@ header ul {
 }
 
 header ul.firstLevel{
-	list-style-type:square;
-	padding-left:33px;
+	//list-style-type:square;
+	padding-left:16px;
 }
 
 header ul.secondLevel{
-	list-style-type:circle;
+	//list-style-type:circle;
 	padding-left:16px;
 }
 
