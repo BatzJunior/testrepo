@@ -223,14 +223,14 @@ p.header {
 
 h1.header {
 	font-family: Rockwell, sans-serif;
-	font-size: 30px;
+	font-size: 35px;
 	font-weight: 300;
 	line-height: 1.3em;
 	margin-top: 0;
 }
 
 
-h1.header, a.header, a.name, header a{
+h1.header, a.name, header a{
 	text-decoration:none;
 }
 
