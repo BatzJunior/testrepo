@@ -258,6 +258,10 @@ header ul.secondLevel{
 	padding-left:16px;
 }
 
+header div.downloadContainer{
+	display:inline-flex;
+}
+
 header div.download{
 	width:45px;
 	margin-right:2px;
