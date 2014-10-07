@@ -276,7 +276,7 @@ header div.download{
 }
 
 header div.linkToGithub{
-	width:97px;
+	width:auto;
 }
 
 a.buttons {
@@ -291,6 +291,7 @@ a.buttons {
 
 a.github {
 	background: url(../images/octocat-small.png) no-repeat 1px;
+	padding-left:22px;
 }
 
 a.buttons:hover {
