@@ -303,8 +303,10 @@ section {
 div.titleContent{
 	position: fixed;
 	padding-top: 10px;
+	padding-bottom:30px;
 	width: 800px;
 	background-color: white;
+	z-index:999;
 }
 
 div.content{
