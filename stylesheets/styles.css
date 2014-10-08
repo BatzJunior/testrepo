@@ -24,7 +24,7 @@ time, mark, audio, video {
 /* Base text styles */
 
 body {
-  padding:10px 50px 0 0;
+  padding:0px 50px 0 0;
   font-family: "Segoe UI",Verdana,Helvetica,sans-serif;
 	font-size: 14px;
 	color: #232323;
@@ -213,7 +213,7 @@ header {
 	float:left;
 	position:fixed;
 	border: 1px solid #E2E2E2;
-	
+	margin-top:10px;
 	padding: 18px 25px 22px 25px;
 	-webkit-font-smoothing: antialiased;
 }
@@ -301,8 +301,14 @@ section {
 }
 
 div.titleContent{
-	position:fixed;
-	top:0px;
+	position: fixed;
+	padding-top: 10px;
+	width: 800px;
+	background-color: white;
+}
+
+div.content{
+	margin-top:120px;
 }
 
 
