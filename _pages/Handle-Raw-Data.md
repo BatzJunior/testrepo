@@ -1,6 +1,7 @@
 ---
 title: Handle Raw Data
 tags: Raw Data
+permalink: /Handle-Raw-Data/
 ---
 ##Endpoint information
 
