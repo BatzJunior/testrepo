@@ -45,7 +45,7 @@
 	<li><a {% if location == 'values' %}class="active" {% endif %}href="/values/">Measured Values</a></li>
 	<li><a {% if location == 'rawdata' %}class="active" {% endif %}href="/rawdata/">Raw Data</a></li>
 </ol></nav>
-
+{{site.baseurl}}
 <nav><ul>
 {% for node in site.pages %}
 	{% if node.title != nil and node.url != '/' %}
