@@ -73,11 +73,15 @@ h4, h5, h6 {
 a {
   color:#437AB4;
   text-decoration:none;
-  font-weight:bolder;
+  font-weight: normal;
 }
 
 a:hover {
 	text-decoration: underline;
+}
+
+a.active{
+	font-weight:bolder;
 }
 
 a small {
