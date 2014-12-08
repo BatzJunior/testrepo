@@ -31,7 +31,7 @@
 			<li><a href = "Handle-Raw-Data#delete-raw-data">Delete Raw Data</a></li>
 		</ul>
 	</li>
-</ol>
+</ol>-->
 
 {% capture location %}{{ page.url | remove_first:'/' | split:'/' | first }}{% endcapture %}
 <nav><ol>
@@ -44,15 +44,12 @@
 	<li><a {% if location == 'measurements' %}class="active" {% endif %}href="/measurements/">Measurements</a></li>
 	<li><a {% if location == 'values' %}class="active" {% endif %}href="/values/">Measured Values</a></li>
 	<li><a {% if location == 'rawdata' %}class="active" {% endif %}href="/rawdata/">Raw Data</a></li>
-</ol></nav>-->
+</ol></nav>
 
 <nav><ul>
 {% for node in site.pages %}
-	{{node.url}}
-	{{page.url}}
 	{% if node.title != nil and node.url != '/' %}
 	{% capture nodediff %}{{ page.url | remove:node.url }}{% endcapture %}
-	{{nodediff}}
 	<li><a {% if nodediff == page.url %}class="active" {% endif %}href="{{ node.url }}">{{ node.title }}</a></li>
 	{% endif %}
 {% endfor %}
