@@ -1,5 +1,5 @@
 ---
-title: Handle Raw Data
+title: Raw Data
 tags: Raw Data
 permalink: /rawdata/
 ---
