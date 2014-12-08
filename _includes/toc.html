@@ -1,6 +1,6 @@
 {{page.url}}
 {{page.tags}}
-<ol>
+<!--<ol>
 	<li><a href = "General-Information">General Information</a>
 		<ul>
 			<li><a href = "General-Information#http-status-codes">HTTP Status Codes</a></li>
@@ -31,4 +31,17 @@
 			<li><a href = "Handle-Raw-Data#delete-raw-data">Delete Raw Data</a></li>
 		</ul>
 	</li>
-</ol>
+</ol>-->
+
+{% capture location %}{{ page.url | remove_first:'/' | split:'/' | first }}{% endcapture %}
+<nav><ol>
+	<li><a {% if location == 'general' %}class="active" {% endif %}href="/general/">General Information</a></li>
+	<li><a {% if location == 'serviceinformation' %}class="active" {% endif %}href="/serviceinformation/">ServiceInformation</a></li>
+	<li><a {% if location == 'configration' %}class="active" {% endif %}href="/configration/">Configuration</a></li>
+	<li><a {% if location == 'catalogues' %}class="active" {% endif %}href="/catalogues/">Catalogues and Entries</a></li>
+	<li><a {% if location == 'parts' %}class="active" {% endif %}href="/parts/">Parts</a></li>
+	<li><a {% if location == 'characteristics' %}class="active" {% endif %}href="/characteristics/">Characteristics</a></li>
+	<li><a {% if location == 'measurements' %}class="active" {% endif %}href="/measurements/">Measurements</a></li>
+	<li><a {% if location == 'values' %}class="active" {% endif %}href="/values/">Measured Values</a></li>
+	<li><a {% if location == 'rawdata' %}class="active" {% endif %}href="/rawdata/">Raw Data</a></li>
+</ol></nav>
