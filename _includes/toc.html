@@ -48,8 +48,11 @@
 
 <nav><ul>
 {% for node in site.pages %}
+	node.url
+	page.url
 	{% if node.title != nil and node.url != '/' %}
 	{% capture nodediff %}{{ page.url | remove:node.url }}{% endcapture %}
+	nodediff
 	<li><a {% if nodediff != page.url %}class="active" {% endif %}href="{{ nodediff }}">{{ node.title }}</a></li>
 	{% endif %}
 {% endfor %}
