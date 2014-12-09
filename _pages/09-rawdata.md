@@ -5,7 +5,13 @@ tags: Raw Data
 permalink: /rawdata/
 ---
 
-{% include 0901-Endpoint.md %}
+{% for node in site.pages %}
+	{% if node.title != nil and node.url != '/' %}
+	{% if node.isContent == true and node.category == page.category %}
+	{{node.content}}
+	{% endif %}
+	{% endif %}
+{% endfor %}
 
 ##Endpoint information
 
