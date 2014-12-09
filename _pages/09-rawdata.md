@@ -12,7 +12,7 @@ sections:
 - Delete raw data
 ---
 
-##{{page.sections[0] | textilize }}
+##{{page.sections[0]}}
 
 Raw data as well as information about the raw data can be fetched, added, updated and deleted via the following endpoints. Filter can be set as described in the [URL-Parameter section](General-Information#raw-data).
 
