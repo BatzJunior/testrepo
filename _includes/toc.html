@@ -53,7 +53,7 @@
 	{% if node.category == page.category %}
 	{% for sec in node.sections %}
 		<ul>
-			{% capture sect %}{{sec | split:'{% raw %}:{% endraw %}' | last }}{% endcapture %}
+			{% capture sect %}{{sec | split:'site.doppelpunkt' | last }}{% endcapture %}
 			
 			<li><a href="{{ sect }}">{{ sect }}</a></li>
 		</ul>
