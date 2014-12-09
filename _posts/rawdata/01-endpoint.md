@@ -1,4 +1,4 @@
 ---
-title: Endpoint
+title: Endpoint information
 category: rawdata
 ---
