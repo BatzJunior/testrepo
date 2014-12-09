@@ -45,10 +45,25 @@
 </ol></nav>-->
 
 <nav><ol>
-{% for node in site.posts %}
+{% for node in site.pages %}
 	{% if node.title != nil and node.url != '/' %}
 	{% capture nodediff %}{{ page.url | remove:node.url }}{% endcapture %}
 	<li><a {% if nodediff != page.url %}class="active" {% endif %}href="{{site.baseurl}}{{ node.url }}">{{ node.title }}</a></li>
 	{% endif %}
 {% endfor %}
 </ol></nav>
+
+{% for cat in site.category-list %}
+### {{ cat }}
+<ul>
+{% for page in site.pages %}
+{% if page.resource == true %}
+{% for pc in page.categories %}
+{% if pc == cat %}
+<li><a href="{{ page.url }}">{{ page.title }}</a></li>
+{% endif %}   <!-- cat-match-p -->
+{% endfor %}  <!-- page-category -->
+{% endif %}   <!-- resource-p -->
+{% endfor % } <!-- page -->
+</ul>
+{% endfor %}  <!-- cat -->
