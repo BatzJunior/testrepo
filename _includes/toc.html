@@ -44,21 +44,4 @@
 	<li><a {% if location == 'rawdata' %}class="active" {% endif %}href="/rawdata/">Raw Data</a></li>
 </ol></nav>-->
 
-<nav><ol>
-{% for node in site.pages %}
-	{% if node.title != nil and node.url != '/' %}
 
-	{% capture nodediff %}{{ page.url | remove:node.url }}{% endcapture %}
-	<li><a {% if nodediff != page.url %}class="active" {% endif %}href="{{site.baseurl}}{{ node.url }}">{{ node.title }}</a></li>
-	{% if node.category == page.category %}
-	{% for sec in node.sections %}
-		<ul>
-			{% capture sect %}{{sec | split:':' | last }}{% endcapture %}
-			{% capture linkuri %}{{site.baseurl}}{{ node.url }}#{{sect | replace:' ','-'}}{% endcapture %}
-			<li><a href="{{ linkuri }}">{{ sect }}</a></li>
-		</ul>
-	{% endfor %}
-	{% endif %}
-	{% endif %}
-{% endfor %}
-</ol></nav>
