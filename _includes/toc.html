@@ -54,7 +54,7 @@
 	{% for sec in node.sections %}
 		<ul>
 			{% capture linkuri %}{{site.baseurl}}{{ node.url | remove_last:'/' }}#{{sec | replace:' ','-'}}{% endcapture %}
-			<li><a href="{% linkuri %}">{{ sec }}</a></li>
+			<li><a href="{{ linkuri }}">{{ sec }}</a></li>
 		</ul>
 	{% endfor %}
 	{% endif %}
