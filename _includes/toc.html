@@ -53,8 +53,9 @@
 	{% if node.category == page.category %}
 	{% for sec in node.sections %}
 		<ul>
-			{% capture linkuri %}{{site.baseurl}}{{ node.url | remove_last:'/' }}{% endcapture %}
-			<li><a href="{{ linkuri }}">{{ sec }}</a></li>
+			{% capture sect %}{{sec | split:':' | last }}{% endcapture %}
+			{% capture linkuri %}{{site.baseurl}}{{ node.url }}#{{sect | replace:' ','-'}}{% endcapture %}
+			<li><a href="{{ linkuri }}">{{ sect }}</a></li>
 		</ul>
 	{% endfor %}
 	{% endif %}
