@@ -6,7 +6,7 @@ permalink: /rawdata/
 ---
 
 {% for node in site.pages %}
-	{% for section in page.sections %}
+	{% for section in node.sections %}
 	<div>{{ section | textilize }}</div>
 	{% endfor %}
 {% endfor %}
