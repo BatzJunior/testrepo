@@ -3,15 +3,11 @@ category: rawdata
 title: Raw Data
 tags: Raw Data
 permalink: /rawdata/
+sections:
+- Endpoint information
 ---
 
-{% for node in site.pages %}
-	{% for section in node.sections %}
-	<div>{{ section | textilize }}</div>
-	{% endfor %}
-{% endfor %}
-
-##Endpoint information
+##{{page.sections[0]}}
 
 Raw data as well as information about the raw data can be fetched, added, updated and deleted via the following endpoints. Filter can be set as described in the [URL-Parameter section](General-Information#raw-data).
 
