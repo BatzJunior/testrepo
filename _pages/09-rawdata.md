@@ -4,7 +4,7 @@ title: Raw Data
 tags: Raw Data
 permalink: /rawdata/
 sections:
-   - Endpoint information
+   endpoint: Endpoint information
    add: Add raw data
    fetchInfo: Fetch raw data information
    fetchData: Fetch raw data
