@@ -53,7 +53,7 @@
 	{% if node.category == page.category %}
 	{% for sec in node.sections %}
 		<ul>
-			<li><a href="{{ sec }}">{{ sec }}</a></li>
+			<li><a href="{{ sec  | textilize }}">{{ sec | textilize }}</a></li>
 		</ul>
 	{% endfor %}
 	{% endif %}
