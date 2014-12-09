@@ -4,15 +4,10 @@ title: Endpoint Information
 isContent: true
 permalink: /rawdata#endpoint
 sections:
-- This is the first section.
-- This is the second section.
-- |
-  This is a long section with multiple paragraphs.
-
-  This is the second paragraph of the long section.
+- Endpoint information
 ---
 
-##Endpoint information
+##{{page.sections[0]}}
 
 Raw data as well as information about the raw data can be fetched, added, updated and deleted via the following endpoints. Filter can be set as described in the [URL-Parameter section](General-Information#raw-data).
 
