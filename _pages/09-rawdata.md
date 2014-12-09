@@ -6,11 +6,9 @@ permalink: /rawdata/
 ---
 
 {% for node in site.pages %}
-	{% if node.title != nil and node.url != '/' %}
-	{% if node.isContent == true and node.category == page.category %}
-	{{node.pageContent  | textilize }}
-	{% endif %}
-	{% endif %}
+	{% for section in page.sections %}
+	<div>{{ section | textilize }}</div>
+	{% endfor %}
 {% endfor %}
 
 ##Endpoint information
