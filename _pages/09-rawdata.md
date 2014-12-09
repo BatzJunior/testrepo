@@ -2,7 +2,7 @@
 category: rawdata
 title: Raw Data
 tags: Raw Data
-permalink: /rawdata/
+permalink: /rawdata
 sections:
    endpoint: Endpoint information
    add: Add raw data
