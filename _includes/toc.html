@@ -47,6 +47,7 @@
 <nav><ol>
 {% for node in site.pages %}
 	{% if node.title != nil and node.url != '/' %}
+	c: {{node.content}}
 	{% if node.content != true %}
 	{% capture nodediff %}{{ page.url | remove:node.url }}{% endcapture %}
 	<li><a {% if nodediff != page.url %}class="active" {% endif %}href="{{site.baseurl}}{{ node.url }}">{{ node.title }}</a></li>
