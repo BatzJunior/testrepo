@@ -53,7 +53,8 @@
 	{% if node.category == page.category %}
 	{% for sec in node.sections %}
 		<ul>
-			<li><a href="{{site.baseurl}}{{node.url | replace:'/','#' | replace_first:'#','/'}}{{ sec[1] }}">{{ sec[0] }}</a></li>
+			{% capture anker %}{{ sec[0] | downcase | replace:'','-' }}{% endcapture %}
+			<li><a href="{{site.baseurl}}{{node.url | replace:'/','#' | replace_first:'#','/'}}{{ sec[1] }}">{{ sec[0] }} {{}}anker</a></li>
 		</ul>
 	{% endfor %}
 	{% endif %}
