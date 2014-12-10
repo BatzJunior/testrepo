@@ -4,8 +4,8 @@ title: Measurements
 permalink: /measurements/
 sections:
    endpoint: Endpoint information
-   add: Add measurements
-   fetch: Fetch measurements
-   update: Update measurements
-   delete: Delete measurements
+   add: Add Measurements
+   fetch: Fetch Measurements
+   update: Update Measurements
+   delete: Delete Measurements
 ---
