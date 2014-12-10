@@ -1,0 +1,10 @@
+category: parts
+title: Parts
+permalink: /parts/
+sections:
+   endpoint: Endpoint information
+   add: Add parts
+   fetch: Fetch parts
+   update: Update parts
+   delete: Delete parts
+---
