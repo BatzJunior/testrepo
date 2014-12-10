@@ -1,0 +1,11 @@
+---
+category: values
+title: Measured Values
+permalink: /values/
+sections:
+   endpoint: Endpoint information
+   add: Add Measured Values
+   fetch: Fetch Measured Values
+   update: Update Measured Values
+   delete: Delete Measured Values
+---
