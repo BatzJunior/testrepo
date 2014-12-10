@@ -1,0 +1,10 @@
+category: characteristics
+title: Characteristics
+permalink: /characteristics/
+sections:
+   endpoint: Endpoint information
+   add: Add characteristics
+   fetch: Fetch characteristics
+   update: Update raw data
+   delete: Delete raw data
+---
