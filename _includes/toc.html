@@ -54,7 +54,7 @@
 	{% for sec in node.sections %}
 		<ul>
 			<li><a href="{{site.baseurl}}{{node.permalinkAnchor}}{{ sec[1] }}">{{ sec[0] }}</a></li>
-			<li><a href="{{node.url | replace:'/','#' | replace_first:'#','/'}}{{ sec[1] }}">{{ sec[0] }}</a></li>
+			<li><a href="{{site.baseurl}}{{node.url | replace:'/','#' | replace_first:'#','/'}}{{ sec[1] }}">{{ sec[0] }}</a></li>
 		</ul>
 	{% endfor %}
 	{% endif %}
