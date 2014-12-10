@@ -3,6 +3,7 @@ category: rawdata
 title: Raw Data
 tags: Raw Data
 permalink: /rawdata/
+permalinkAnchor: /rawdata#
 sections:
    - [Endpoint information, endpoint-information]
    - [Add raw data, add-raw-data]
