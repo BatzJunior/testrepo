@@ -5,6 +5,6 @@ sections:
    endpoint: Endpoint information
    add: Add characteristics
    fetch: Fetch characteristics
-   update: Update raw data
-   delete: Delete raw data
+   update: Update characteristics
+   delete: Delete characteristics
 ---
