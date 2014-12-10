@@ -3,15 +3,15 @@ category: rawdata
 title: Raw Data
 permalink: /rawdata/
 sections:
-   - Endpoint information
-   - Add raw data
-   - Fetch raw data information
-   - Fetch raw data
-   - Update raw data
-   - Delete raw data
+   endpoint: Endpoint information
+   add: Add raw data
+   fetchInfo: Fetch raw data information
+   fetchData: Fetch raw data
+   update: Update raw data
+   delete: Delete raw data
 ---
 
-##{{page.sections[0]}}
+##{{page.sections[endpoint]}}
 
 Raw data as well as information about the raw data can be fetched, added, updated and deleted via the following endpoints. Filter can be set as described in the [URL-Parameter section](General-Information#raw-data).
 
@@ -21,7 +21,7 @@ rawData/*entity*/ *uuid*/*key* | Returns rawData file for the specified *entity*
 rawData/*entity*/ *uuid*/*key*/ thumbnail | Returns a preview image of the raw data object for the specified *entity* with the committed *uuid* and *key* | *Not supported* | *Not supported* | *Not supported*
 /rawData/*entity* | Returns a list of raw data information for the *entity* with the uuids commited within the url parameter section | *Not supported* | *Not supported* | *Not supported*
 
-##{{page.sections[1]}}
+##{{page.sections[add]}}
 
 Raw data can be added to all kinds of entities: part, characteristic, measurement and measured values.
 On adding raw data further information need to be passed beneath the data itself. The information the raw data object belongs to is passed within the uri, the data are passed within the HTTP body and the additional information are passed within several HTTP header variables:
@@ -71,7 +71,7 @@ rawDataInformation.Size = meshModelInBytes.Length;
 client.CreateRawData(meshModelInBytes, rawDataInformation);
 {% endhighlight %}
 
-##{{page.sections[2]}}
+##{{page.sections[fetchInfo]}}
 
 The request can be restricted by adding url parameter. For more details see the [URL-Parameter section](General-Information#raw-data).
 
@@ -118,7 +118,7 @@ var client = new RawDataServiceRestClient( serviceUri );
 var rawDataInfo = await client.ListRawDataForParts( new Guid[] { b8f5d3fe-5bd5-406b-8053-67f647f09dc7 } );
 {% endhighlight %}
 
-##{{page.sections[3]}}
+##{{page.sections[fetchData]}}
 
 On fetching raw data there is server side caching activated. When a raw data object is requested the first time several HTTP header values are returned beneath the raw data object. This header values include the {% highlight http %} ETag {% endhighlight %} header that consists of a distinct hash value which identifies the raw data object unambigusously. This hash value is a combination of the MD5 sum and the last modified date. If this {% highlight http %}ETag{% endhighlight %} value is sent within the {% highlight http %} If-None-Match {%endhighlight %} header on the next request the server returns a {% highlight http %} 304 - Not modified {% endhighlight %} HTTP header status code instead of the raw data object if the object has not been changed since the last request. If the API.dll is used the caching is already implemented.
 
@@ -163,11 +163,11 @@ var client = new RawDataServiceRestClient( serviceUri );
 var rawData = await client.GetRawDataForPart( "b8f5d3fe-5bd5-406b-8053-67f647f09dc7", 0 );
 {% endhighlight %}
 
-##{{page.sections[4]}}
+##{{page.sections[update]}}
 
 Updating a raw data object works nearly identically to adding raw data objects. The only difference is the key which the raw data object is identified by and which is mandatory.
 
-##{{page.sections[5]}}
+##{{page.sections[delete]}}
 
 If a key is given within the uri only the raw data object with the given key otherwise all raw data objects which belong to the entity will be deleted.
 
