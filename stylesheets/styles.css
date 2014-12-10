@@ -306,15 +306,15 @@ section {
 
 div.titleContent{
 	position: fixed;
-	/*border-bottom:1px dotted #ccc;*/
+	border-bottom:1px dotted #ccc;
 	width: 800px;
 	background-color: white;
 	z-index:999;
-	height:85px;
+	height:100px;
 }
 
 div.content{
-	margin-top:90px;
+	margin-top:135px;
 }
 
 
