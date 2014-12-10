@@ -1,49 +1,3 @@
-<!--<ol>
-	<li><a href = "General-Information">General Information</a>
-		<ul>
-			<li><a href = "General-Information#http-status-codes">HTTP Status Codes</a></li>
-			<li><a href = "General-Information#url-parameter">URL-Parameter</a>
-				<ul>
-					<li><a href = "General-Information#catalogues">Catalogues</a></li>
-					<li><a href = "General-Information#inspection-plan">Inspection Plan</a></li>
-					<li><a href = "General-Information#measurements-and-values">Measurements and Measured Values</a></li>
-					<li><a href = "General-Information#raw-data">Raw Data</a></li>
-				</ul>
-			</li>
-		</ul>
-	</li>
-	<li><a href = "Fetch-General-Service-Information">Service Information</a></li>
-	<li><a href = "Fetch-the-Configuration">Configuration</a></li>
-	<li><a href = "Handle-Catalogues-and-Catalogue-Entries">Catalogues and Entries</a></li>
-	<li><a href = "Handle-parts">Parts</a></li>
-	<li><a href = "Handle-Characteristics">Characteristics</a></li>
-	<li><a href = "Handle-Measurements">Measurements</a></li>
-	<li><a href = "Handle-Measured-Values">Measured Values</a></li>
-	<li><a href = "/Handle-Raw-Data.html">Raw Data</a>
-		<ul>
-			<li><a href = "Handle-Raw-Data#endpoint-information">Endpoint Information</a></li>
-			<li><a href = "Handle-Raw-Data#add-raw-data">Add Raw Data</a></li>
-			<li><a href = "Handle-Raw-Data#fetch-raw-data-information">Fetch Raw Data Information</a></li>
-			<li><a href = "Handle-Raw-Data#fetch-raw-data">Fetch Raw Data</a></li>
-			<li><a href = "Handle-Raw-Data#update-raw-data">Update Raw Data</a></li>
-			<li><a href = "Handle-Raw-Data#delete-raw-data">Delete Raw Data</a></li>
-		</ul>
-	</li>
-</ol>
-
-{% capture location %}{{ page.url | remove_first:'/' | split:'/' | first }}{% endcapture %}
-<nav><ol>
-	<li><a {% if location == 'general' %}class="active" {% endif %}href="/general/">General Information</a></li>
-	<li><a {% if location == 'serviceinformation' %}class="active" {% endif %}href="/serviceinformation/">ServiceInformation</a></li>
-	<li><a {% if location == 'configration' %}class="active" {% endif %}href="/configration/">Configuration</a></li>
-	<li><a {% if location == 'catalogues' %}class="active" {% endif %}href="/catalogues/">Catalogues and Entries</a></li>
-	<li><a {% if location == 'parts' %}class="active" {% endif %}href="/parts/">Parts</a></li>
-	<li><a {% if location == 'characteristics' %}class="active" {% endif %}href="/characteristics/">Characteristics</a></li>
-	<li><a {% if location == 'measurements' %}class="active" {% endif %}href="/measurements/">Measurements</a></li>
-	<li><a {% if location == 'values' %}class="active" {% endif %}href="/values/">Measured Values</a></li>
-	<li><a {% if location == 'rawdata' %}class="active" {% endif %}href="/rawdata/">Raw Data</a></li>
-</ol></nav>-->
-
 <nav><ol>
 {% for node in site.pages %}
 	{% if node.title != nil and node.url != '/' %}
@@ -53,8 +7,9 @@
 	{% if node.category == page.category %}
 	{% for sec in node.sections %}
 		<ul>
-			{% capture anker %}{{ sec[0] | downcase | replace:' ','-' }}{% endcapture %}
-			<li><a href="{{site.baseurl}}{{node.url | replace:'/','#' | replace_first:'#','/'}}{{ sec[1] }}">{{ sec[0] }} {{anker}}</a></li>
+			{% capture anker %}{{ sec | downcase | replace:' ','-' }}{% endcapture %}
+			<!-- As no replace_last exists we need to replace the last '/' of the node's url by '#' a cumbersome way -->
+			<li><a href="{{site.baseurl}}{{node.url | replace:'/','#' | replace_first:'#','/'}}{{ anker }}">{{ sec }}</a></li>
 		</ul>
 	{% endfor %}
 	{% endif %}
