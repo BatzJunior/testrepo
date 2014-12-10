@@ -1,0 +1,10 @@
+category: measurements
+title: Measurements
+permalink: /measurements/
+sections:
+   endpoint: Endpoint information
+   add: Add measurements
+   fetch: Fetch measurements
+   update: Update measurements
+   delete: Delete measurements
+---
