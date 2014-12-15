@@ -9,7 +9,7 @@ sections:
   parameter: URL Parameter
   envelope: Response Envelope
 ---
-{{site.warningImage}}
+
 ##{{page.sections['addresses']}}
 
 The general address of the REST based service is:
