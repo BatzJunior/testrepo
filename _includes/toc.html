@@ -6,8 +6,7 @@
 	<li><a {% if nodediff != page.url %}class="active" {% endif %}href="{{site.baseurl}}{{ node.url }}">{{ node.title }}</a></li>
 	{% if node.category == page.category %}
 	{% for sec in node.sections %}
-		[//As no replace_last exists we need to replace the last '/' of the node's url by '#' a cumbersome way]: #
-		<ul>
+				<ul>
 			{% capture anker %}{{ sec[1] | downcase | replace:' ','-' }}{% endcapture %}
 			<li><a href="{{site.baseurl}}{{node.url | replace:'/','#' | replace_first:'#','/'}}{{ anker }}">{{ sec[1] }}</a></li>
 		</ul>
