@@ -8,3 +8,4 @@ defaults:
 include: ['_pages']
 relative_permalinks: false
 baseurl: /testrepo
+warningImage: ![Warning]({{site.baseurl}}/images/warning.png)
