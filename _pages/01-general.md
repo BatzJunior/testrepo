@@ -32,10 +32,8 @@ The input and output format is defined by the URL parameter format. If there is 
 
 - JSON: Request and response is formatted using JavaScript Object Notation
 - XML: Request and response is formatted using XML
-- <s>CSV: Request and response is formatted using CSV</s> (upcoming feature)
-- ~~XLS: Response is encoded as an Excel file (for querying data only)~~ (upcoming feature)
 
-###HTTP Status codes
+##{{page.sections['status']}}
 
 Method        | Statuscode Ok        | Statuscode Failure                                       | Comment
 ------------- | :------------------- | -------------------------------------------------------- | -------
@@ -44,20 +42,25 @@ PUT           | **201** (Created)    | **400** (Bad request) – Request fails, 
 POST          | **200** (Ok)         | **400** (Bad request) –  Request fails, e.g. due badly formatting <br> **404** (Not found) – Endpoint or item(s) does not exist | Status code 400 is responded if update of at least one item fails <br> Status code 404 responded if at least one item does not exist
 DELETE        | **204** (No content) | **400** (Bad request) – Request fails <br><br> **404** (Not found) – Endpoint or item(s) does not exist | Status code 400 is responded if deletion of at least one item fails <br> Status code 404 responded if  not any of the requested items exist
 
-###URL-Parameter
+##{{page.sections['parameter']}}
+
 Information about the formatting and restriction of the request and response can be determined by attaching the parameters _**format**_, _**indent**_ and _**filter**_ to the respective endpoint of the webservice URL in the following format:
-```
+
+{% highlight http %}
 ?parameter=name:value[|name:value] 
-```
+{% endhighight %}
+
 example: 
-```
+
+{% highlight http %}
 ?filter=deep:true|orderBy:4 asc
-```
+{% endhighlight %}
+
 The  _**format**_ and _**indent**_ parameter can have the following name-value pairs. They are accepted by all endpoints and all implemented HTTP methods GET, PUT, POST and DELETE.
 
 Parameter name | Possible Values | Description
 ---------------|-----------------|--------------------------------------------------------------
-format         | json,xml,csv,xls| Determines the input and output format.
+format         | json,xml        | Determines the input and output format.
 indent         | true,false      | Determines if the response message should be indented or not.  
 
 The _**filter**_ parameter can have the following name-value pairs. Lists of Ids or UUIDs need to be surrounded by “{“ and “}”, the values within the list are separated by “,”.
