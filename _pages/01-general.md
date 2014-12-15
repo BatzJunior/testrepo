@@ -9,7 +9,7 @@ sections:
   parameter: URL Parameter
   envelope: Response Envelope
 ---
-
+{{site.warningImage}}
 ##{{page.sections['addresses']}}
 
 The general address of the REST based service is:
@@ -33,7 +33,7 @@ The input and output format is defined by the URL parameter format. If there is 
 - JSON: Request and response is formatted using JavaScript Object Notation
 - XML: Request and response is formatted using XML
 
-##{{page.sections['status']}}
+##{{page.sections['codes']}}
 
 Method        | Statuscode Ok        | Statuscode Failure                                       | Comment
 ------------- | :------------------- | -------------------------------------------------------- | -------
