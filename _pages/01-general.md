@@ -32,7 +32,7 @@ The input and output format is defined by the URL parameter format. If there is 
 
 - JSON: Request and response is formatted using JavaScript Object Notation
 - XML: Request and response is formatted using XML
-- ~~CSV: Request and response is formatted using CSV~~ (upcoming feature)
+- <s>CSV: Request and response is formatted using CSV</s> (upcoming feature)
 - ~~XLS: Response is encoded as an Excel file (for querying data only)~~ (upcoming feature)
 
 ###HTTP Status codes
