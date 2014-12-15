@@ -13,6 +13,7 @@ sections:
 
 ##{{page.sections['endpoint']}}
 
+{{site.baseurl}} {{site.warningImage}}
 Raw data as well as information about the raw data can be fetched, added, updated and deleted via the following endpoints. Filter can be set as described in the [URL-Parameter section](General-Information#raw-data).
 
 URL Endpoint | GET | PUT | POST | DELETE
