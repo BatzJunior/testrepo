@@ -159,6 +159,8 @@ p img {
   border: none;
 }
 
+img[alt=warning] { width: 16px; height: 16px; }
+
 /* Code blocks */
 
 code, pre {
