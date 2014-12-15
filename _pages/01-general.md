@@ -48,7 +48,7 @@ Information about the formatting and restriction of the request and response can
 
 {% highlight http %}
 ?parameter=name:value[|name:value] 
-{% endhighight %}
+{% endhighlight %}
 
 example: 
 
