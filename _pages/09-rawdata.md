@@ -120,7 +120,7 @@ var rawDataInfo = await client.ListRawDataForParts( new Guid[] { b8f5d3fe-5bd5-4
 
 ##{{page.sections['fetchData']}}
 
-On fetching raw data there is server side caching activated. When a raw data object is requested the first time several HTTP header values are returned beneath the raw data object. This header values include the {% highlight http %} ETag {% endhighlight %} header that consists of a distinct hash value which identifies the raw data object unambigusously. This hash value is a combination of the MD5 sum and the last modified date. If this <i>ETag</i> value is sent within the <i> If-None-Match </i> header on the next request the server returns a <i> 304 - Not modified </i> HTTP header status code instead of the raw data object if the object has not been changed since the last request. If the API.dll is used the caching is already implemented.
+On fetching raw data there is server side caching activated. When a raw data object is requested the first time several HTTP header values are returned beneath the raw data object. This header values include the <i> ETag </i> header that consists of a distinct hash value which identifies the raw data object unambigusously. This hash value is a combination of the MD5 sum and the last modified date. If this <i>ETag</i> value is sent within the <i> If-None-Match </i> header on the next request the server returns a <i> 304 - Not modified </i> HTTP header status code instead of the raw data object if the object has not been changed since the last request. If the API.dll is used the caching is already implemented.
 
 ### Fetch raw data with key 0 for a part with the uuid b8f5d3fe-5bd5-406b-8053-67f647f09dc7
 
