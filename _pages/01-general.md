@@ -96,12 +96,12 @@ characteristicsUuidList | Uuids of the characteristics | Restricts the query to 
 
 Parameter name      | Possible Values | Description <br> ```Example```| Accepted by endpoint | Accepted by HTTP methods
 --------------------|-----------------|-------------|----------------------|--------------------------
-uuids               | Uuids of the entities | Restricts the query to the entities identified by the given uuids. <br> :exclamation: Entites of type 'Value' are identified by a compound key, which consists of the uuid of the Measurement, '&#124;' and the Characteristics uuid <br> <code>uuids:{652ae7a0-d1e1-4ee2-b3a5-d4526f6ba822&#124; 78bd15c6-dc70-4ab4-bd3c-8ab2b5780b52}</code>| rawData | GET
+uuids               | Uuids of the entities | Restricts the query to the entities identified by the given uuids. <br> {{site.images['warning']}} Entites of type 'Value' are identified by a compound key, which consists of the uuid of the Measurement, '&#124;' and the Characteristics uuid <br> <code>uuids:{652ae7a0-d1e1-4ee2-b3a5-d4526f6ba822&#124; 78bd15c6-dc70-4ab4-bd3c-8ab2b5780b52}</code>| rawData | GET
 
 ###Response envelope
 Every response excluding streamed data responses consits of an response envelope which includes meta data and the data responded from the webservice. A typical response envelope looks as follows:
 
-```JSON
+{% highlight json %}
 {
    "status":
    {
@@ -112,5 +112,6 @@ Every response excluding streamed data responses consits of an response envelope
    "data":
    {...}
 }
-```
+{% endhighlight %}
+
 The possible status codes can be found in the upper [section](#url-parameter).
