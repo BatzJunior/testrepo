@@ -9,3 +9,5 @@ include: ['_pages']
 relative_permalinks: false
 baseurl: /testrepo
 warningImage: "![Warning](/testrepo/images/warning.png)"
+images:
+  warning: "![Warning](/testrepo/images/warning.png)"
