@@ -159,7 +159,7 @@ p img {
   border: none;
 }
 
-img[alt=warning] { width: 16px; height: 16px; }
+img[alt=Warning] { width: 16px; height: 16px; }
 
 /* Code blocks */
 
