@@ -44,7 +44,7 @@ On adding raw data it is possible to pass a key within the uri. If -1 or no key 
 Request:
 
 {% highlight http %}
-PUT /rawDataServiceRest/rawData/part/b8f5d3fe-5bd5-406b-8053-67f647f09dc7 HTTP/1.1
+PUT /rawDataServiceRest/rawData/part/b8f5d3fe-5bd5-406b-8053-67f647f09dc7
 Content-Disposition: "MetalPart.meshModel"
 Content-Length: 2090682
 Content-MD5: "bdf6b06ab301a80ae55021085b820393"
