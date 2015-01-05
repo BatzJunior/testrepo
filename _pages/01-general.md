@@ -71,18 +71,18 @@ The _**filter**_ parameter can have the following name-value pairs. Lists of Ids
 
 ###Catalogues
 
-Parameter name      | Possible values | Description <br><br> ```Example``` | Accepted by HTTP methods
+Parameter name      | Possible values | Description | Accepted by HTTP methods
 --------------------|-----------------|-------------|-------------------------------------------------
-withCatalogueEntries| true,false      | Determines if the catalogue entries should be returned or not. <br><br> ```withCatalogueEntries:true``` | GET
+withCatalogueEntries| true,false      | Determines if the catalogue entries should be returned or not. <br><br>Example: <br>```withCatalogueEntries:true``` | GET
 
 ###Inspection Plan
 
-Parameter name      | Possible values | Description <br> ```Example```| Accepted by endpoint | Accepted by HTTP methods
+Parameter name      | Possible values | Description | Accepted by endpoint | Accepted by HTTP methods
 --------------------|-----------------|-------------|----------------------|--------------------------
-depth               | i, i∈N           | Restricts the query to the specified depth of the inspection plan tree. <br> ```depth:5``` | parts, characteristics | GET
-withHistory         | true,false      | Determines if the version history should be fetched or not. <br> ```withHistory:true``` | parts, characteristics | GET
-partAttributes      | IDs of the attributes | Restricts the query to the attributes that should be returned for parts. <br> ```partAttributes:{1001,1008}``` | parts | GET
-characteristicAttributes | IDs of the attributes | Restricts the query to the attributes that should be returned for characteristics. <br> ```characteristicAttributes:{2001,2101}``` | characteristics | GET
+depth               | i, i∈N           | Restricts the query to the specified depth of the inspection plan tree. <br><br>Example:<br>```depth:5``` | parts, characteristics | GET
+withHistory         | true,false      | Determines if the version history should be fetched or not. <br><br>Example:<br>```withHistory:true``` | parts, characteristics | GET
+partAttributes      | IDs of the attributes | Restricts the query to the attributes that should be returned for parts. <br><br>Example:<br>```partAttributes:{1001,1008}``` | parts | GET
+characteristicAttributes | IDs of the attributes | Restricts the query to the attributes that should be returned for characteristics. <br><br>Example:<br>```characteristicAttributes:{2001,2101}``` | characteristics | GET
 
 ###Measurements and Measured Values
 
