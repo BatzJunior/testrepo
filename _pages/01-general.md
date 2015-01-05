@@ -14,7 +14,7 @@ sections:
 
 The general addresses of the REST based services are:
 
-###Data Service
+####Data Service
 
 {% highlight http %}
 http(s)://serverUri:port/instanceName/DataServiceRest
@@ -22,7 +22,7 @@ http(s)://serverUri:port/instanceName/DataServiceRest
 
 and
 
-###Raw Data Service
+####Raw Data Service
 
 {% highlight http %}
 http(s)://serverUri:port/instanceName/RawDataServiceRest
