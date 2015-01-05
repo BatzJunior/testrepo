@@ -22,13 +22,13 @@ time, mark, audio, video {
 /* Base text styles */
 
 body {
-  padding:0px 50px 0 0;
   font-family: "Segoe UI",Verdana,Helvetica,sans-serif;
-	font-size: 14px;
-	color: #232323;
-	margin: 0;
-	line-height: 1.8em;
-	-webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  background-coor:#444;
+  color: #232323;
+  margin: 0;
+  line-height: 1.8em;
+  -webkit-font-smoothing: antialiased;
 
 }
 
@@ -203,13 +203,15 @@ td {
 /* Header */
 
 header {
-	background-color: #F6F6F6;
+	background-color: #ECECEC;
+	height:auto;
 	max-width:210px;
 	float:left;
 	position:fixed;
 	border: 1px solid #E2E2E2;
-	margin-top:10px;
-	padding: 18px 25px 0px 25px;
+	padding: 28px 25px 0px 25px;
+	top:0;
+	bottom:0;
 	-webkit-font-smoothing: antialiased;
 }
 
@@ -290,22 +292,27 @@ a.buttons:hover {
 /* Section - for main page content */
 
 section {
-  width:800px;
+  width:838px;
   float:right;
   padding-bottom:50px;
+  border-right: 1px solid black;
 }
 
 div.titleContent{
 	position: fixed;
 	border-bottom:1px dotted #ccc;
-	width: 800px;
-	background-color: white;
+	width: 768px;
+	background-color: #FDFDFD;
 	z-index:999;
 	height:100px;
+	margin-left: 40px;
 }
 
 div.content{
 	margin-top:135px;
+	background-color: #FDFDFD;
+	padding-left: 40px;
+	padding-right:30px;
 }
 
 
