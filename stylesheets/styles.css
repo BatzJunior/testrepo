@@ -212,7 +212,8 @@ header {
 	padding: 28px 25px 0px 25px;
 	top:0;
 	bottom:0;
-	margin-top:80px;
+	margin-top:110px;
+	box-shadow: 0 2px 5px 0 #000;
 	-webkit-font-smoothing: antialiased;
 }
 
@@ -235,6 +236,23 @@ h1.header{
 	height: 40px;
 	margin-left: -6px;
 	position: fixed;
+}
+
+h4.header{
+	background-color: #245E9A;
+	height: 25px;
+	position: fixed;
+	color: white;
+	width: 1093px;
+	padding-right: 20px;
+	padding-top: 4px;
+	margin-top: 80px;
+	margin-left: -6px;
+	font-weight: normal;
+	text-align: right;
+	border-bottom: 1px solid #FDFDFD;
+	box-shadow: 0 15px 30px -20px rgba(0,0,0,0.5);
+	line-height: 1.3em;
 }
 
 h1.header, a.name, header a{
@@ -307,10 +325,11 @@ section {
 }
 
 div.content{
-	padding-top:80px;
+	padding-top:105px;
 	background-color: #FDFDFD;
 	padding-left: 40px;
 	padding-right:30px;
+	box-shadow: 0 2px 5px 0 #000;
 }
 
 
