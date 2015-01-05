@@ -69,13 +69,13 @@ indent         | true,false      | Determines if the response message should be 
 
 The _**filter**_ parameter can have the following name-value pairs. Lists of Ids or UUIDs need to be surrounded by “{“ and “}”, the values within the list are separated by “,”.
 
-####Catalogues
+###Catalogues
 
 Parameter name      | Possible values | Description <br><br> ```Example``` | Accepted by HTTP methods
 --------------------|-----------------|-------------|-------------------------------------------------
 withCatalogueEntries| true,false      | Determines if the catalogue entries should be returned or not. <br><br> ```withCatalogueEntries:true``` | GET
 
-####Inspection Plan
+###Inspection Plan
 
 Parameter name      | Possible values | Description <br> ```Example```| Accepted by endpoint | Accepted by HTTP methods
 --------------------|-----------------|-------------|----------------------|--------------------------
@@ -84,7 +84,7 @@ withHistory         | true,false      | Determines if the version history should
 partAttributes      | IDs of the attributes | Restricts the query to the attributes that should be returned for parts. <br> ```partAttributes:{1001,1008}``` | parts | GET
 characteristicAttributes | IDs of the attributes | Restricts the query to the attributes that should be returned for characteristics. <br> ```characteristicAttributes:{2001,2101}``` | characteristics | GET
 
-####Measurements and Measured Values
+###Measurements and Measured Values
 
 Parameter name      | Possible values | Description <br> ```Example```| Accepted by endpoint | Accepted by HTTP methods
 --------------------|-----------------|-------------|----------------------|--------------------------
@@ -96,13 +96,13 @@ requestedMeasurementAttributes | IDs of the attributes | Restricts the query to 
 requestedValueAttributes | IDs of the attributes |List of attributes that should be returned for values. <br> ```requestedValueAttributes:{1,8}```| values | GET
 characteristicsUuidList | Uuids of the characteristics | Restricts the query to the characteristics for which values should be returned or deleted. <br> ```characteristicsUuidList:{525d15c6-dc70-4ab4-bd3c-8ab2b5780e6b, 8faae7a0-d1e1-4ee2-b3a5-d4526f6ba822}``` | values | GET, DELETE
 
-####Raw Data
+###Raw Data
 
 Parameter name      | Possible values | Description <br> ```Example```| Accepted by endpoint | Accepted by HTTP methods
 --------------------|-----------------|-------------|----------------------|--------------------------
 uuids               | Uuids of the entities | Restricts the query to the entities identified by the given uuids. <br> {{site.images['warning']}} Entites of type 'Value' are identified by a compound key, which consists of the uuid of the Measurement, '&#124;' and the Characteristics uuid <br> <code>uuids:{652ae7a0-d1e1-4ee2-b3a5-d4526f6ba822&#124; 78bd15c6-dc70-4ab4-bd3c-8ab2b5780b52}</code>| rawData | GET
 
-###Response envelope
+##Response envelope
 Every response excluding streamed data responses consits of an response envelope which includes meta data and the data responded from the webservice. A typical response envelope looks as follows:
 
 {% highlight json %}
