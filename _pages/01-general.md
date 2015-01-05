@@ -118,4 +118,4 @@ Every response excluding streamed data responses consits of an response envelope
 }
 {% endhighlight %}
 
-The possible status codes and their meanings can be found in the upper [section]({{page.sections['codes'] | downcase | replace:' ','-' }}). {{page.url}}
+The possible status codes and their meanings can be found in the upper [section](#{{page.sections['codes'] | downcase | replace:' ','-' }}).
