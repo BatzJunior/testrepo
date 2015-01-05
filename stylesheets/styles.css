@@ -209,7 +209,7 @@ header {
 	position:fixed;
 	border: 1px solid #E2E2E2;
 	margin-top:10px;
-	padding: 18px 25px 22px 25px;
+	padding: 18px 25px 0px 25px;
 	-webkit-font-smoothing: antialiased;
 }
 
