@@ -12,13 +12,17 @@ sections:
 
 ##{{page.sections['addresses']}}
 
-The general address of the REST based service is:
+The general addresses of the REST based services are:
+
+####Data Service
 
 {% highlight http %}
 http://serverUri:port/instanceName/DataServiceRest
 {% endhighlight %}
 
-or
+and
+
+####Raw Data Service
 
 {% highlight http %}
 http://serverUri:port/instanceName/RawDataServiceRest
@@ -58,7 +62,7 @@ example:
 
 The  _**format**_ and _**indent**_ parameter can have the following name-value pairs. They are accepted by all endpoints and all implemented HTTP methods GET, PUT, POST and DELETE.
 
-Parameter name | Possible Values | Description
+Parameter name | Possible values | Description
 ---------------|-----------------|--------------------------------------------------------------
 format         | json,xml        | Determines the input and output format.
 indent         | true,false      | Determines if the response message should be indented or not.  
@@ -67,22 +71,22 @@ The _**filter**_ parameter can have the following name-value pairs. Lists of Ids
 
 ####Catalogues
 
-Parameter name      | Possible Values | Description <br> ```Example``` | Accepted by HTTP methods
+Parameter name      | Possible values | Description <br><br> ```Example``` | Accepted by HTTP methods
 --------------------|-----------------|-------------|-------------------------------------------------
-withCatalogueEntries| true,false      | Determines if the catalogue entries should be returned or not. <br> ```withCatalogueEntries:true``` | GET
+withCatalogueEntries| true,false      | Determines if the catalogue entries should be returned or not. <br><br> ```withCatalogueEntries:true``` | GET
 
 ####Inspection Plan
 
-Parameter name      | Possible Values | Description <br> ```Example```| Accepted by endpoint | Accepted by HTTP methods
+Parameter name      | Possible values | Description <br> ```Example```| Accepted by endpoint | Accepted by HTTP methods
 --------------------|-----------------|-------------|----------------------|--------------------------
 depth               | i, i∈N           | Restricts the query to the specified depth of the inspection plan tree. <br> ```depth:5``` | parts, characteristics | GET
 withHistory         | true,false      | Determines if the version history should be fetched or not. <br> ```withHistory:true``` | parts, characteristics | GET
 partAttributes      | IDs of the attributes | Restricts the query to the attributes that should be returned for parts. <br> ```partAttributes:{1001,1008}``` | parts | GET
 characteristicAttributes | IDs of the attributes | Restricts the query to the attributes that should be returned for characteristics. <br> ```characteristicAttributes:{2001,2101}``` | characteristics | GET
 
-####Measurements and Values
+####Measurements and Measured Values
 
-Parameter name      | Possible Values | Description <br> ```Example```| Accepted by endpoint | Accepted by HTTP methods
+Parameter name      | Possible values | Description <br> ```Example```| Accepted by endpoint | Accepted by HTTP methods
 --------------------|-----------------|-------------|----------------------|--------------------------
 deep                | true, false     | Determines if the query should affect all layers. <br> ```deep:true``` | measurements, values | GET
 orderBy             | ID(s) of the attribute(s) and order direction | Determines which attribute key(s) and which direction the key(s) should be ordered by <br> ```orderBy:4 asc, 10 desc``` | measurements, values | GET
@@ -94,7 +98,7 @@ characteristicsUuidList | Uuids of the characteristics | Restricts the query to 
 
 ####Raw Data
 
-Parameter name      | Possible Values | Description <br> ```Example```| Accepted by endpoint | Accepted by HTTP methods
+Parameter name      | Possible values | Description <br> ```Example```| Accepted by endpoint | Accepted by HTTP methods
 --------------------|-----------------|-------------|----------------------|--------------------------
 uuids               | Uuids of the entities | Restricts the query to the entities identified by the given uuids. <br> {{site.images['warning']}} Entites of type 'Value' are identified by a compound key, which consists of the uuid of the Measurement, '&#124;' and the Characteristics uuid <br> <code>uuids:{652ae7a0-d1e1-4ee2-b3a5-d4526f6ba822&#124; 78bd15c6-dc70-4ab4-bd3c-8ab2b5780b52}</code>| rawData | GET
 
