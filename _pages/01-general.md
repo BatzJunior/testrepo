@@ -10,8 +10,11 @@ sections:
   envelope: Response Envelope
 ---
 <div class="fixedheader" >
+
 ##{{page.sections['addresses']}}
+
 </div>
+
 The general addresses of the REST based services are:
 
 ####Data Service
@@ -31,7 +34,9 @@ http(s)://serverUri:port/instanceName/RawDataServiceRest
 The instanceName as well as https is optional and depends on the server settings.
 
 <div class="fixedheader" >
+
 ##{{page.sections['formats']}}
+
 </div>
 
 The input and output format is defined by the URL parameter format. If there is no URL parameter the format is detected automatically via HTTP-Header field content-type. If this field is not present the default format JSON is used. The JSON format is the most performant and memory efficient format at the moment. The following additional formats are supported as well:
