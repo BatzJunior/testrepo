@@ -8,9 +8,7 @@
 	{% for sec in node.sections %}
 				<ul>
 			{% capture anker %}{{ sec[1] | downcase | replace:' ','-' }}{% endcapture %}
-			{% comment %} As no replace_last exists we need to replace the last '/' of the node's url by '#' a cumbersome way {% endcomment %}
-			<li><a href="{{site.baseurl}}{{node.url | replace:'/','#' | replace_first:'#','/'}}{{ anker }}">{{ sec[1] }}</a></li>
-			<li><a href="{{site.baseurl}}{{node.url}}#{{ anker }}">!!{{ sec[1] }}</a></li>
+			<li><a href="{{site.baseurl}}{{node.url}}#{{ anker }}">{{ sec[1] }}</a></li>
 		</ul>
 	{% endfor %}
 	{% endif %}
