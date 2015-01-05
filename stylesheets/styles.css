@@ -306,18 +306,8 @@ section {
   border-right: 1px solid black;
 }
 
-div.titleContent{
-	/*position: fixed;*/
-	border-bottom:1px dotted #ccc;
-	width: 768px;
-	background-color: #FDFDFD;
-	z-index:999;
-	height:100px;
-	margin-left: 40px;
-}
-
 div.content{
-	margin-top:135px;
+	padding-top:80px;
 	background-color: #FDFDFD;
 	padding-left: 40px;
 	padding-right:30px;
