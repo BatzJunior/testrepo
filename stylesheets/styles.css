@@ -218,7 +218,7 @@ header h1{
 	margin-left: -6px;
 	position: fixed;
 	text-decoration: none;
-	text-shadow: rgba(0, 0, 0, 0.4) 0 -1px 0;
+	text-shadow: rgba(0, 0, 0, 0.4) 2px 2px 0;
 }
 
 header h4{
