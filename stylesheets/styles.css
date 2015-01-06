@@ -277,7 +277,7 @@ nav ul.about-links{
 
 nav ul.about-links li{
 	display: inline-block;
-	width: 80px;
+	padding-left: 23px;
 }
 
 nav ul.about-links li a{
