@@ -290,6 +290,7 @@ nav ul.about-links li{
 nav ul.about-links li a{
 	display: table-caption;
 	text-align: center;
+	line-height:1em;
 }
 
 nav ul.about-links li a svg{
