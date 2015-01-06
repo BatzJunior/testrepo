@@ -274,11 +274,13 @@ nav ul {
 
 nav ul.about-links{
 	padding:0;
+	padding-bottom: 7px;
+	border-bottom: 1px solid #FDFDFD;
 }
 
 nav ul.about-links li{
 	display: inline-block;
-	padding-left: 23px;
+	padding-left: 10px;
 }
 
 nav ul.about-links li a{
@@ -287,8 +289,8 @@ nav ul.about-links li a{
 }
 
 nav ul.about-links li a svg{
-	width: 36px;
-	height: 36px;
+	width: 55px;
+	height: 55px;
 	fill: #245E9A;
 }
 
