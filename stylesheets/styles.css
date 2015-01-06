@@ -248,7 +248,7 @@ header a {
 nav {
 	background-color: #ECECEC;
 	height:auto;
-	max-width:210px;
+	width:210px;
 	float:left;
 	position:fixed;
 	border: 1px solid #E2E2E2;
