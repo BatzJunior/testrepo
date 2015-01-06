@@ -103,6 +103,7 @@ ol {
   padding-left: 20px;
   color: #245E9A;
   font-weight:bold;
+  margin-left:16px;
 }
 
 blockquote {
@@ -274,7 +275,8 @@ nav ul {
 
 nav ul.about-links{
 	padding:0;
-	padding-bottom: 7px;
+	padding-bottom: 8px;
+	margin-bottom:27px;
 	border-bottom: 1px solid #FDFDFD;
 }
 
