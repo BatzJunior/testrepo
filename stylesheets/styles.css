@@ -348,11 +348,11 @@ nav a.buttons:hover {
 section {
   width:893px;
   float:right;
-  padding-bottom:50px;
   border-right: 1px solid black;
 }
 
 div.content{
+	height:100%;
 	padding-top:105px;
 	background-color: #FDFDFD;
 	padding-left: 40px;
@@ -360,24 +360,6 @@ div.content{
 	box-shadow: 0 2px 5px 0 #000;
 }
 
-
-/* Footer */
-
-footer {
-  width:170px;
-  float:left;
-  position:fixed;
-  bottom:10px;
-  padding-left: 50px;
-}
-
-*[id]:before { 
-  display:block; 
-  content:" "; 
-  margin-top:-135px; 
-  height:135px; 
-  visibility:hidden; 
-}
 
 @media print, screen and (max-width: 960px) {
 
