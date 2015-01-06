@@ -271,6 +271,26 @@ nav ul {
   margin:0;
 }
 
+nav ul.about-links{
+	padding:0;
+}
+
+nav ul.about-links li{
+	display: inline-block;
+	width: 80px;
+}
+
+nav ul.about-links li a{
+	display: table-caption;
+	text-align: center;
+}
+
+nav ul.about-links li a svg{
+	width: 36px;
+	height: 36px;
+	fill: #245E9A;
+}
+
 nav div.downloadContainer{
 	display:inline-flex;
 }
