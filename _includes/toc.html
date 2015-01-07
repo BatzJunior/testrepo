@@ -11,15 +11,13 @@
 				{% capture subpages %} {{ site.pages | where: "isSubPage" , "true" }} {% endcapture %}
 				
 				{% for ppp in site.pages %}
-				    {% if ppp.isSubPage == 'true' %}
+				    {% if ppp.isSubPage == true %}
 				    	<li>{{ppp.url}}</li>
 				    {% endif %}
 				{% endfor %}
 				
-				
-				{% capture sbp %} {{ subpages | first }} {% endcapture %}
 				<ul>
-					{% if sbp != nil %}
+					{% if subpages != empty %}
 						{% for subpage in subpages %}
 							<li><a href="{{site.baseurl}}{{node.url}}{{ subpage.url }}">{{ sec[1] }}</a></li>
 							
