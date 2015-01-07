@@ -16,9 +16,10 @@
 				{% endcapture %}
 				
 				<ul>
+				<li>{{sec[0]}}</li>
 					{% if subpages != empty %}
 						{% for subpage in subpages %}
-							<li><a href="{{site.baseurl}}{{node.url}}{{ subpage.url }}">{{ sec[1] }}1</a></li>
+							<li><a href="{{site.baseurl}}{{node.url}}{{ subpage.url }}">{{ sec[1] }}</a></li>
 							
 							{% for section in subpage.sections %}
 								<ul>
