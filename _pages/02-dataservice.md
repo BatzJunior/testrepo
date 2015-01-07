@@ -10,8 +10,9 @@ sections:
   characteristics: Characteristics
   measurements: Measurements
   values: Measured Values
-  
 ---
+
+## {{page.sections['serviceInformation']}}
 
 Fetching service information is guaranteed to be very fast and is therefore well suited for checking the connection. This method can always be invoked without specifying credentials. There are no filter parameters to restrict the query.
 
