@@ -10,7 +10,7 @@
 				
 				<ul>
 					{% for pg in site.pages %}
-						{% if pg.isSubPage == true and pg.category == node.category and pg.subCategory" == sec[0] %}
+						{% if pg.isSubPage == true and pg.category == node.category and pg.subCategory == sec[0] %}
 						
 							<li><a href="{{site.baseurl}}{{node.url}}{{ pg.url }}">{{ sec[1] }}</a></li>
 							
@@ -22,7 +22,7 @@
 							{% endfor %}
 						{% else %}
 							{% capture anker %}{{ sec[1] | downcase | replace:' ','-' }}{% endcapture %}
-							<li><a href="{{site.baseurl}}{{node.url}}#{{ anker }}">{{ sec[1] }}2</a></li>
+							<li><a href="{{site.baseurl}}{{node.url}}#{{ anker }}">{{ sec[1] }}</a></li>
 						{% endif %}
 					{% endfor %}
 				</ul>
