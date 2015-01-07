@@ -3,9 +3,9 @@
 	{% if node.title != nil and node.url != '/' %}
 		{% capture nodediff %}{{ page.url | remove:node.url }}{% endcapture %}
 		{% if node.isSubPage == nil %}
-			<li><a {% if nodediff != page.url %}class="active" {% endif %}href="{{site.baseurl}}{{ node.url }}">{{ node.title node.category page.category }}</a></li>
+			<li><a {% if nodediff != page.url %}class="active" {% endif %}href="{{site.baseurl}}{{ node.url }}">{{ node.title }}</a></li>
 		{% endif %}
-		<li><a {% if nodediff != page.url %}class="active" {% endif %}href="{{site.baseurl}}{{ node.url }}">{{ node.category page.category }}</a></li>
+		<li><a {% if nodediff != page.url %}class="active" {% endif %}href="{{site.baseurl}}{{ node.url }}">{{ node.category }} {{ page.category }}</a></li>
 		{% if node.category == page.category and node.isSubPage == 'true' %}
 			<ul>
 				{% capture anker %}{{ sec[1] | downcase | replace:' ','-' }}{% endcapture %}
