@@ -234,8 +234,6 @@ header h4{
 	font-weight: normal;
 	text-align: right;
 	border-bottom: 1px solid #FDFDFD;
-	box-shadow: 0 15px 30px -20px rgba(0,0,0,0.5);
-	line-height: 1.3em;
 	box-shadow: 0px 2px 5px 0px rgba(1,1,1,0.5);
 	z-index: 1;
 }
@@ -307,7 +305,7 @@ nav p a{
 /* Section - for main page content */
 
 section {
-  width:893px;
+  width:887px;
   float:right;
   border-right: 1px solid black;
 }
