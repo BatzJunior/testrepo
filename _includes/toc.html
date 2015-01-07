@@ -9,14 +9,10 @@
 			{% for sec in node.sections %}
 				
 				{% capture subpages %} 
-					{{ site.pages 
-						| where: "isSubPage" , true 
-						| where: "category", node.category
-						| where: "subcategory", sec[0] }} 
+					{{ site.pages | where: "isSubPage" , true | where: "category", node.category | where: "subcategory", sec[0] }} 
 				{% endcapture %}
 				
 				<ul>
-				<li>{{sec[0]}}</li>
 					{% if subpages != empty %}
 						{% for subpage in subpages %}
 							<li><a href="{{site.baseurl}}{{node.url}}{{ subpage.url }}">{{ sec[1] }}</a></li>
