@@ -13,7 +13,7 @@ sections:
 ---
 
 ## {{page.sections['serviceInformation']}}
-
-{% capture si_include %} {% include_relative 021-serviceinformation.md %} {% endcapture %}
-{{ si_include | markdownify }}
-
+{% for sec in page.sections %}
+  {{sec}}
+{% endfor %}
+{% include_relative 021-serviceinformation.md %}
