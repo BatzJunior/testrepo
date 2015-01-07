@@ -1,7 +1,7 @@
 ---
-category: rawdata
-title: Raw Data
-permalink: /rawdata/
+category: rawdataservice
+title: Raw Data Service
+permalink: /rawdataservice/
 sections:
    endpoint: Endpoint information
    add: Add raw data
