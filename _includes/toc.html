@@ -8,8 +8,8 @@
 		{% if node.category == page.category %}
 			{% for sec in node.sections %}
 				<ul>
-					{% assign subpages = (site.pages | where: "isSubPage" , "true" ) %}
-					{% assign sbp = (subpages | first) %}
+					{% capture subpages %} {{ site.pages | where: "isSubPage" , "true" }} {% endcapture %}
+					{% capture sbp %} {{ subpages | first }} {% endcapture %}
 					{% if sbp != nil %}
 						{% for subpage in subpages %}
 							<li><a href="{{site.baseurl}}{{node.url}}{{ subpage.url }}">{{ sec[1] }}</a></li>
