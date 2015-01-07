@@ -10,8 +10,8 @@
 				
 				{% capture subpages %} {{ site.pages | where: "isSubPage" , "true" }} {% endcapture %}
 				
-				{% for page in site.pages %}
-				    {% if page.isSubPage == 'true' %}  
+				{% for ppp in site.pages %}
+				    {% if ppp.isSubPage == 'true' %}  
 				     <li>!!! {{page.url}}</li>
 				    {% endif %}
 				{% endfor %}
