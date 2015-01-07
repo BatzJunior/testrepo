@@ -6,15 +6,21 @@
 			<li><a {% if nodediff != page.url %}class="active" {% endif %}href="{{site.baseurl}}{{ node.url }}">{{ node.title }}</a></li>
 		{% endif %}
 		<li><a {% if nodediff != page.url %}class="active" {% endif %}href="{{site.baseurl}}{{ node.url }}">{{ node.category }} {{ page.category }}</a></li>
-		{% if node.category == page.category and node.isSubPage == 'true' %}
-			<ul>
-				{% capture anker %}{{ sec[1] | downcase | replace:' ','-' }}{% endcapture %}
-				<li><a href="{{site.baseurl}}{{node.url}}#{{ anker }}">{{ sec[1] }}</a></li>
-			</ul>
+		{% if node.category == page.category %}
 			{% for sec in node.sections %}
 				<ul>
 					{% capture anker %}{{ sec[1] | downcase | replace:' ','-' }}{% endcapture %}
 					<li><a href="{{site.baseurl}}{{node.url}}#{{ anker }}">{{ sec[1] }}</a></li>
+					
+					{% assign subpages = (site.pages | where: "isSubPage" , "true") %}
+					{% for subpage in subpages %}
+						{% for sec in subpage.sections %}
+							<ul>
+								{% capture anker %}{{ sec[1] | downcase | replace:' ','-' }}{% endcapture %}
+								<li><a href="{{site.baseurl}}{{node.url}}#{{ anker }}">{{ sec[1] }}</a></li>
+							</ul>
+						{% endfor %}
+					{% endfor %}
 				</ul>
 			{% endfor %}
 		{% endif %}
