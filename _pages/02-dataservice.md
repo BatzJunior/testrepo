@@ -1,7 +1,16 @@
 ---
-title: ServiceInformation
-tags: Service Information
-permalink: /serviceinformation/
+title: Data Service
+tags: Data Service, Service Information
+permalink: /dataservice/
+sections:
+  serviceInformation: Service Information
+  configuration: Configuration
+  catalogues: Catalogues
+  parts: Parts
+  characteristics: Characteristics
+  measurements: Measurements
+  values: Measured Values
+  
 ---
 
 Fetching service information is guaranteed to be very fast and is therefore well suited for checking the connection. This method can always be invoked without specifying credentials. There are no filter parameters to restrict the query.
