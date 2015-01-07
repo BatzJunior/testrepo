@@ -8,13 +8,7 @@
 		{% if node.category == page.category %}
 			{% for sec in node.sections %}
 				
-				{% capture subpages %} {{ site.pages | where: "isSubPage" , "true" }} {% endcapture %}
-				
-				{% for ppp in site.pages %}
-				    {% if ppp.isSubPage == true %}
-				    	<li>{{ppp.url}}</li>
-				    {% endif %}
-				{% endfor %}
+				{% capture subpages %} {{ site.pages | where: "isSubPage" , true }} {% endcapture %}
 				
 				<ul>
 					{% if subpages != empty %}
