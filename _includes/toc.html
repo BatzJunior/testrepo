@@ -9,7 +9,7 @@
 			{% for sec in node.sections %}
 				
 				{% capture subpages %} 
-					{{ site.pages | where: "isSubPage" , true | where: "category", node.category | where: "subcategory", sec[0] }} 
+					{{ site.pages | where: "isSubPage" , true | where: "category", node.category | where: "subCategory", sec[0] }} 
 				{% endcapture %}
 				
 				<ul>
