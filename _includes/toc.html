@@ -11,7 +11,9 @@
 				{% capture subpages %} {{ site.pages | where: "isSubPage" , "true" }} {% endcapture %}
 				
 				{% for ppp in site.pages %}
-				    <li>{{ppp.url}} .. {{ppp.isSubPage}}</li>
+				    <% if ppp.isSubPage == 'true' %>
+				    	<li>{{ppp.url}}</li>
+				    <% endif %>
 				{% endfor %}
 				
 				
