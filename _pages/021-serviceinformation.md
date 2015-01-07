@@ -1,5 +1,5 @@
 ---
-categories: dataservice serviceinformation
+category: serviceinformation
 title: Service Information
 isSubPage: true
 permalink: /serviceinformation/
