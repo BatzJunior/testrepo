@@ -13,6 +13,7 @@
 				{% endcapture %}
 				
 				<ul>
+				<li>{{node.category}} .. {{sec[0]}}</li>
 					{% if subpages != empty %}
 						{% for subpage in subpages %}
 							<li><a href="{{site.baseurl}}{{node.url}}{{ subpage.url }}">{{ sec[1] }}</a></li>
