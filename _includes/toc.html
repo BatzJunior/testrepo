@@ -8,7 +8,12 @@
 		{% if node.category == page.category %}
 			{% for sec in node.sections %}
 				
-				{% capture subpages %} {{ site.pages | where: "isSubPage" , true }} {% endcapture %}
+				{% capture subpages %} 
+					{{ site.pages 
+						| where: "isSubPage" , true 
+						| where: "category", node.category
+						| where: "subcategory", sec[0] }} 
+				{% endcapture %}
 				
 				<ul>
 					{% if subpages != empty %}
