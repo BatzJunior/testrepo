@@ -7,9 +7,11 @@
 		{% endif %}
 		{% if node.category == page.category %}
 			{% for sec in node.sections %}
+				
+				{% capture subpages %} {{ site.pages | where: "isSubPage" , "true" }} {% endcapture %}
+				<li>!!! {{subpages}}</li>
+				{% capture sbp %} {{ subpages | first }} {% endcapture %}
 				<ul>
-					{% capture subpages %} {{ site.pages | where: "isSubPage" , "true" }} {% endcapture %}
-					{% capture sbp %} {{ subpages | first }} {% endcapture %}
 					{% if sbp != nil %}
 						{% for subpage in subpages %}
 							<li><a href="{{site.baseurl}}{{node.url}}{{ subpage.url }}">{{ sec[1] }}</a></li>
