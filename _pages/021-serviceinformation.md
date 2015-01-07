@@ -2,7 +2,7 @@
 category: dataservice
 title: Service Information
 isSubPage: true
-permalink: serviceinformation/
+permalink: /serviceinformation/
 sections:
   endpoint: Endpoint Information
 ---
