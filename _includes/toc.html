@@ -9,7 +9,7 @@
 			{% for sec in node.sections %}
 				
 				{% capture subpages %} {{ site.pages | where: "isSubPage" , "true" }} {% endcapture %}
-				<li>!!! {{subpages}}</li>
+				<li>!!! {{site.pages}}</li>
 				{% capture sbp %} {{ subpages | first }} {% endcapture %}
 				<ul>
 					{% if sbp != nil %}
