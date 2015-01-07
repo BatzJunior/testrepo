@@ -1,6 +1,8 @@
 ---
-category: serviceInformation
-title: Service Information
+category: dataService
+subCategory: serviceInformation
+title: Data Service
+subTitle: Service Information
 isSubPage: true
 permalink: /serviceinformation/
 sections:
