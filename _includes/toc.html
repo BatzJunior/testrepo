@@ -9,22 +9,27 @@
 			{% for sec in node.sections %}
 				
 				<ul>
+					{% assign subPage = nil %}
 					{% for pg in site.pages %}
 						{% if pg.isSubPage == true and pg.category == node.category and pg.subCategory == sec[0] %}
-						
-							<li><a href="{{site.baseurl}}{{node.url}}{{ pg.url }}">{{ sec[1] }}</a></li>
-							
-							{% for section in pg.sections %}
-								<ul>
-									{% capture anker %}{{ section[1] | downcase | replace:' ','-' }}{% endcapture %}
-									<li><a href="{{site.baseurl}}{{node.url}}#{{ anker }}">{{ section[1] }}</a></li>
-								</ul>
-							{% endfor %}
-						{% else %}
-							{% capture anker %}{{ sec[1] | downcase | replace:' ','-' }}{% endcapture %}
-							<li><a href="{{site.baseurl}}{{node.url}}#{{ anker }}">{{ sec[1] }}</a></li>
+							{% assign subPage = pg %}
 						{% endif %}
 					{% endfor %}
+					
+					{% if subPage != nil %>
+						<li><a href="{{site.baseurl}}{{node.url}}{{ pg.url }}">{{ sec[1] }}</a></li>
+						
+						{% for section in pg.sections %}
+							<ul>
+								{% capture anker %}{{ section[1] | downcase | replace:' ','-' }}{% endcapture %}
+								<li><a href="{{site.baseurl}}{{node.url}}#{{ anker }}">{{ section[1] }}</a></li>
+							</ul>
+						{% endfor %}
+					{% else %}
+						{% capture anker %}{{ sec[1] | downcase | replace:' ','-' }}{% endcapture %}
+						<li><a href="{{site.baseurl}}{{node.url}}#{{ anker }}">{{ sec[1] }}</a></li>
+					{% endif %}
+					
 				</ul>
 			{% endfor %}
 		{% endif %}
