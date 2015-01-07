@@ -1,6 +1,6 @@
 ---
+category: dataservice
 title: Data Service
-tags: Data Service, Service Information
 permalink: /dataservice/
 sections:
   serviceInformation: Service Information
