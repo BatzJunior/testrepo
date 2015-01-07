@@ -8,15 +8,14 @@
 		{% if node.category == page.category %}
 			{% for sec in node.sections %}
 				<ul>
-					{% capture anker %}{{ sec[1] | downcase | replace:' ','-' }}{% endcapture %}
-					<li><a href="{{site.baseurl}}{{node.url}}#{{ anker }}">{{ sec[1] }}</a></li>
-					
 					{% assign subpages = (site.pages | where: "isSubPage" , "true" | where : "category" , "page.category" ) %}
 					{% for subpage in subpages %}
-						{% for sec in subpage.sections %}
+						<li><a href="{{site.baseurl}}{{node.url}}{{ subpage.url }}">{{ sec[1] }}</a></li>
+						
+						{% for section in subpage.sections %}
 							<ul>
 								{% capture anker %}{{ sec[1] | downcase | replace:' ','-' }}{% endcapture %}
-								<li><a href="{{site.baseurl}}{{node.url}}#{{ anker }}">{{ sec[1] }}</a></li>
+								<li><a href="{{site.baseurl}}{{node.url}}#{{ anker }}">{{ section[1] }}</a></li>
 							</ul>
 						{% endfor %}
 					{% endfor %}
