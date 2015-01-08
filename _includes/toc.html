@@ -16,18 +16,16 @@
 						{% endif %}
 					{% endfor %}
 					
+					{% capture anker %}{{ sec[1] | downcase | replace:' ','-' }}{% endcapture %}
+					<li><a href="{{site.baseurl}}{{node.url}}{% if subPage %} / {% else %} # {% endif %} {{ anker }}">{{ sec[1] }}2</a></li>
+					
 					{% if subPage %}
-						<li><a href="{{site.baseurl}}{{node.url}}{{ pg.url }}">{{ sec[1] }}1</a></li>
-						
 						{% for section in subPage.sections %}
 							<ul>
 								{% capture anker %}{{ section[1] | downcase | replace:' ','-' }}{% endcapture %}
 								<li><a href="{{site.baseurl}}{{node.url}}#{{ anker }}">{{ section[1] }}</a></li>
 							</ul>
 						{% endfor %}
-					{% else %}
-						{% capture anker %}{{ sec[1] | downcase | replace:' ','-' }}{% endcapture %}
-						<li><a href="{{site.baseurl}}{{node.url}}#{{ anker }}">{{ sec[1] }}2</a></li>
 					{% endif %}
 					
 				</ul>
