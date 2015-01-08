@@ -1,7 +1,7 @@
 ---
 category: dataservice
 title: Data Service
-permalink: /dataservice/
+permalink: /dataservice
 sections:
   serviceInformation: Service Information
   configuration: Configuration
