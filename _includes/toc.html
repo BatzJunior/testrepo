@@ -16,7 +16,7 @@
 					{% endfor %}
 					
 					{% if subPage %}
-						{% capture url %}{{site.baseurl}}{{node.url}}{{ subPage.url | remove_first:'/' }}{% endcapture %}
+						{% capture url %}{{site.baseurl}}{{ subPage.url}}{% endcapture %}
 						<li><a href="{{url}}">{{ sec[1] }}</a></li>
 	
 						{% for subsec in subPage.sections %}
