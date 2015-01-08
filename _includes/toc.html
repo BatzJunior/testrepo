@@ -15,7 +15,10 @@
 							{% assign subPage = pg %}
 						{% endif %}
 					{% endfor %}
-					<li>subPage: {{subPage.url}}</li>
+					
+					{% capture hasSubPage %}{{ (subPage.url | size) > 0 }}{% endcapture %}
+					<li>subPage: {{subPage.url}}..{{hasSubPage}}</li>
+					
 					{% if subPage != nil %}
 						<li><a href="{{site.baseurl}}{{node.url}}{{ pg.url }}">{{ sec[1] }}</a></li>
 						
