@@ -17,7 +17,7 @@
 					{% endfor %}
 					
 					{% capture anker %}{{ sec[1] | downcase | replace:' ','-' }}{% endcapture %}
-					{% capture url %}{{site.baseurl}}{{node.url}}{% unless subPage %}#{% endif %}{{ anker }}{% endcapture %}
+					{% capture url %}{{site.baseurl}}{{node.url}}{% unless subPage %}#{% endunless %}{{ anker }}{% endcapture %}
 					<li><a href="{{url}}">{{ sec[1] }}</a></li>
 					
 					{% if subPage %}
