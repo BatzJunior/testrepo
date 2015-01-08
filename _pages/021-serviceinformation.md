@@ -1,5 +1,5 @@
 ---
-category: dataService
+category: dataservice
 subCategory: serviceInformation
 title: Data Service
 subTitle: Service Information
