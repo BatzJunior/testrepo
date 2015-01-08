@@ -196,7 +196,7 @@ td {
 /* Wrapper */
 .wrapper {
   width:1150px;
-  margin: auto;
+  margin: 0 auto;
 }
 
 
@@ -305,14 +305,18 @@ nav p a{
 /* Section - for main page content */
 
 section {
-  width:817px;
-  height:100%;
-  float:right;
-  background-color: #FDFDFD;
-  padding-left: 40px;
-  padding-right:30px;
-  box-shadow: 0 2px 5px 0 #000;
-  border-right: 1px solid black;
+  	width:817px;
+	height:100%;
+  	float:right;
+  	position: fixed;
+	margin-left: 262px;
+	top: 110px;
+	overflow: auto;
+  	background-color: #FDFDFD;
+  	padding-left: 40px;
+  	padding-right:30px;
+  	box-shadow: 0 2px 5px 0 #000;
+  	border-right: 1px solid black;
 }
 
 @media print, screen and (max-width: 960px) {
