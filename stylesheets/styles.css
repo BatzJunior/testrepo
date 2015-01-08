@@ -223,6 +223,7 @@ header h1{
 	position: fixed;
 	text-decoration: none;
 	text-shadow: rgba(0, 0, 0, 0.4) 2px 2px 4px;
+	z-index:2;
 }
 
 header h4{
@@ -239,7 +240,7 @@ header h4{
 	text-align: right;
 	border-bottom: 1px solid #FDFDFD;
 	box-shadow: 0px 2px 5px 0px rgba(1,1,1,0.5);
-	z-index: 1;
+	z-index: 3;
 }
 
 header a {
@@ -261,6 +262,7 @@ nav {
 	bottom:0;
 	margin-top:110px;
 	box-shadow: 0px 0px 2px 0 #444;
+	z-index:1;
 	-webkit-font-smoothing: antialiased;
 }
 
