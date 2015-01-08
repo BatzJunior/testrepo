@@ -4,7 +4,7 @@ subCategory: serviceInformation
 title: Data Service
 subTitle: Service Information
 isSubPage: true
-permalink: /dataservice/serviceinformation/
+permalink: /serviceinformation/
 sections:
   endpoint: Endpoint Information
 ---
