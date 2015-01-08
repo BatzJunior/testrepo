@@ -20,8 +20,8 @@
 					{% capture hh %}{{subPage != null}}{% endcapture %}
 					<li>subPage: {{subPage.url}}..{{hh}}</li>
 					
-					{% if subPage != null %}
-						<li><a href="{{site.baseurl}}{{node.url}}{{ pg.url }}">{{ sec[1] }}</a></li>
+					{% if subPage %}
+						<li><a href="{{site.baseurl}}{{node.url}}{{ pg.url }}">{{ sec[1] }}1</a></li>
 						
 						{% for section in pg.sections %}
 							<ul>
@@ -31,7 +31,7 @@
 						{% endfor %}
 					{% else %}
 						{% capture anker %}{{ sec[1] | downcase | replace:' ','-' }}{% endcapture %}
-						<li><a href="{{site.baseurl}}{{node.url}}#{{ anker }}">{{ sec[1] }}</a></li>
+						<li><a href="{{site.baseurl}}{{node.url}}#{{ anker }}">{{ sec[1] }}2</a></li>
 					{% endif %}
 					
 				</ul>
