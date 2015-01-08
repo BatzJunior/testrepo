@@ -292,7 +292,8 @@ nav ul.about-links li{
 }
 
 nav ul.about-links li a{
-	display: table-caption;
+	width: 57px;
+	display: block;
 	text-align: center;
 	line-height:1em;
 }
