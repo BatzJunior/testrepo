@@ -16,13 +16,13 @@
 					{% endfor %}
 					
 					{% if subPage %}
-						{% capture anker %}{{ sec[1] | downcase | replace:' ','-' }}{% endcapture %}
-	-					{% capture url %}{{site.baseurl}}{{node.url}}{{ subPage.url | remove_first:'/' }}{% endcapture %}
+						{% capture url %}{{site.baseurl}}{{node.url}}{{ subPage.url | remove_first:'/' }}{% endcapture %}
 						<li><a href="{{url}}">{{ sec[1] }}</a></li>
 	
 						{% for subsec in subPage.sections %}
 							<ul>
-								<li><a href="{{url}}#{{ subsec[0] }}">{{ subsec[1] }}</a></li>
+								{% capture anker %}{{ subsec[1] | downcase | replace:' ','-' }}{% endcapture %}
+								<li><a href="{{url}}#{{ anker }}">{{ subsec[1] }}</a></li>
 							</ul>
 						{% endfor %}
 					{% else %}
