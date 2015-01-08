@@ -15,7 +15,7 @@
 							{% assign subPage = pg %}
 						{% endif %}
 					{% endfor %}
-					
+					<li>subPage: {{subPage}}</li>
 					{% if subPage != nil %}
 						<li><a href="{{site.baseurl}}{{node.url}}{{ pg.url }}">{{ sec[1] }}</a></li>
 						
