@@ -17,7 +17,7 @@
 					
 					{% if subPage %}
 						{% capture url %}{{site.baseurl}}{{ subPage.url}}{% endcapture %}
-						<li><a href="{{url}}">{{ sec[1] }}</a></li>
+						<li><a href="{{url}}">{{ sec[1] }}</a> .. {{page.url}}</li>
 	
 						{% for subsec in subPage.sections %}
 							<ul>
