@@ -1,4 +1,4 @@
-<ul>
+<ol>
 {% for node in site.pages %}
 	{% if node.title != nil and node.url != '/' and node.isSubPage != true %}
 		{% capture nodediff %}{{ page.url | remove:node.url }}{% endcapture %}
@@ -36,4 +36,4 @@
 		{% endif %}
 	{% endif %}
 {% endfor %}
-</ul>
+</ol>
