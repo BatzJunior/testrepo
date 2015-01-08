@@ -16,13 +16,10 @@
 						{% endif %}
 					{% endfor %}
 					
-					{% capture hasSubPage %}{{ (subPage | size) > 0 }}{% endcapture %}
-					<li>subPage: {{subPage.url}}</li>
-					
 					{% if subPage %}
 						<li><a href="{{site.baseurl}}{{node.url}}{{ pg.url }}">{{ sec[1] }}1</a></li>
 						
-						{% for section in pg.sections %}
+						{% for section in subPage.sections %}
 							<ul>
 								{% capture anker %}{{ section[1] | downcase | replace:' ','-' }}{% endcapture %}
 								<li><a href="{{site.baseurl}}{{node.url}}#{{ anker }}">{{ section[1] }}</a></li>
