@@ -312,11 +312,10 @@ nav p a{
 
 section {
   	width:817px;
-	height:100%;
-  	float:right;
-  	position: fixed;
+	position: fixed;
 	margin-left: 262px;
 	top: 110px;
+	bottom: 0px;
 	overflow: auto;
   	background-color: #FDFDFD;
   	padding-left: 40px;
