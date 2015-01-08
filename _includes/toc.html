@@ -15,15 +15,13 @@
 						{% endif %}
 					{% endfor %}
 					
-					{% capture anker %}{{ sec[1] | downcase | replace:' ','-' }}{% endcapture %}
-					{% capture url %}{{site.baseurl}}{{node.url}}{% unless subPage %}#{% endunless %}{{ anker }}{% endcapture %}
+					{% capture url %}{{site.baseurl}}{{node.url}}{% unless subPage %}#{% endunless %}{{ sec[0] }}{% endcapture %}
 					<li><a href="{{url}}">{{ sec[1] }}</a></li>
 					
 					{% if subPage %}
 						{% for section in subPage.sections %}
 							<ul>
-								{% capture anker %}{{ section[1] | downcase | replace:' ','-' }}{% endcapture %}
-								<li><a href="{{url}}#{{ anker }}">{{ section[1] }}</a></li>
+								<li><a href="{{url}}#{{ section[0] }}">{{ section[1] }}</a></li>
 							</ul>
 						{% endfor %}
 					{% endif %}
