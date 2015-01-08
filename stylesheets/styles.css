@@ -77,8 +77,12 @@ a:hover {
 	text-decoration: underline;
 }
 
-a.active{
+a.bolder{
 	font-weight:bolder;
+}
+
+a.bold{
+	font-weight:bold;
 }
 
 a small {
