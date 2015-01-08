@@ -17,7 +17,7 @@
 					{% endfor %}
 					
 					{% capture anker %}{{ sec[1] | downcase | replace:' ','-' }}{% endcapture %}
-					<li><a href="{{site.baseurl}}{{node.url}}{% if subPage %}/{% else %}#{% endif %} {{ anker }}">{{ sec[1] }}</a></li>
+					<li><a href="{{site.baseurl}}{{node.url}}{% if !subPage %}#{% endif %} {{ anker }}">{{ sec[1] }}</a></li>
 					
 					{% if subPage %}
 						{% for section in subPage.sections %}
