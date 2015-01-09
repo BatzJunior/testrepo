@@ -103,11 +103,10 @@ ul {
 }
 
 ol {
-  list-style: decimal;
-  padding-left: 20px;
+  list-style: none;
   color: #245E9A;
   font-weight:bold;
-  margin-left:16px;
+  margin-left:10px;
 }
 
 blockquote {
