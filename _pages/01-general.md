@@ -8,6 +8,7 @@ sections:
   codes: HTTP Status Codes
   parameter: URL Parameter
   envelope: Response Envelope
+redirect_from: "/"
 ---
 
 ##{{page.sections['addresses']}}
