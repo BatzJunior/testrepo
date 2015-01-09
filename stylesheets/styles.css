@@ -181,6 +181,7 @@ table {
 table {
   margin-bottom: 32px;
   text-align: left;
+  border-spacing:1px;
  }
 
 th {
