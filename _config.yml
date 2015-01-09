@@ -10,3 +10,5 @@ relative_permalinks: false
 baseurl: "/testrepo"
 images:
   warning: "![Warning](/testrepo/images/warning.png)"
+gems:
+  - jekyll-redirect-from
