@@ -20,7 +20,7 @@ URL Endpoint | GET | PUT | POST | DELETE
 
 ## {{ page.sections['get'] }}
 
-Fetching service information is guaranteed to be very fast and is therefore well suited for checking the connection. This method can always be invoked without having to specify credentials. 
+Fetching service information is guaranteed to be very fast and is therefore well suited for checking the connection. This method can always be invoked without having credentials specified. 
 
 ### Get Service Information for a given connection
 
