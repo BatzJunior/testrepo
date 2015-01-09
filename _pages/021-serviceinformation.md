@@ -7,7 +7,7 @@ isSubPage: true
 permalink: /dataservice/serviceinformation/
 sections:
   endpoint: Endpoint Information
-  fetch: Fetch Service Information
+  get: Get Service Information
 ---
 
 ## {{ page.sections['endpoint'] }}
@@ -18,11 +18,11 @@ URL Endpoint | GET | PUT | POST | DELETE
 -------------|-----|-----|------|-------
 /serviceInformation | Returns general information about the PiWeb-Server | not supported | not supported | not supported
 
-## {{ page.sections['fetch'] }}
+## {{ page.sections['get'] }}
 
 Fetching service information is guaranteed to be very fast and is therefore well suited for checking the connection. This method can always be invoked without having to specify credentials. 
 
-### Fetch Service Information for a given connection
+### Get Service Information for a given connection
 
 ####Example for direct webservice call
 
