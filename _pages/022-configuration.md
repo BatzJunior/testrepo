@@ -7,15 +7,15 @@ isSubPage: true
 permalink: /dataservice/configuration/
 sections:
   endpoint: Endpoint Information
-  add: Add Attribute Definitions
+  add: Add Attributes
   get: Get Configuration
-  update: Update Attribute Definitions
-  delete: Delete Attribute Definitions
+  update: Update Attributes
+  delete: Delete Attributes
 ---
 
 ## {{ page.sections['endpoint'] }}
 
-The PiWeb configuration consists of a list of attributes for all types of entities. In PiWeb there are different kinds of entites: parts, characteristics, measurements, vlues and catalogues. 
+The PiWeb configuration consists of a list of attributes for all types of entities. In PiWeb there are different kinds of entites: parts, characteristics, measurements, values and catalogues. 
 The configuration can be created, fetched, updated and deleted via the following endpoint. There are no filter parameters to restrict the query.
 
 URL Endpoint | GET | PUT | POST | DELETE
@@ -26,7 +26,13 @@ configuration/*entityType*/{*List of attribute definition ids*} | *Not supported
 
 ## {{ page.sections['add'] }}
 
+To add one or more attributes to the configuration the entity type the attributes belong to as well as the attribute definition(s) need to be transfered. The entity type ist transfered in the uri the attributes within the body of the request.
 
+### Example of adding an part attribute to the configuration
+
+{% highlight http %}
+POST /dataServiceRest/configuration/parts HTTP/1.1
+{% endhighlight %}
 
 ## {{ page.sections['get'] }}
 
