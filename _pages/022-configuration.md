@@ -12,11 +12,13 @@ sections:
 
 ## {{ page.sections['endpoint'] }}
 
-The PiWeb configuration consists of a list of all entities' attributes and can be fetched via the following endpoint. There are no filter parameter to restrict the query.
+The PiWeb configuration consists of a list of all entities' attributes. This list can be created, fetched, updated and deleted via the following endpoint. There are no filter parameters to restrict the query.
 
 URL Endpoint | GET | PUT | POST | DELETE
 -------------|-----|-----|------|-------
-/configuration| Returns the attribute configuration (list of attributes for each entity). | not supported | not supported | not supported
+/configuration| Returns the attribute configuration (list of attributes for each entity). | not supported | not supported | Deletes all attribute definitions.
+/configuration/*entityType*| *Not supported* | Creates the attribute defintions transfered within the body of the request for the given *entityType* | Updates the attribute defintions transfered within the body of the request for the given *entityType* | *Not supported*
+configuration/*entityType*/{*List of attribute definition ids*} | *Not supported* | *Not supported* | *Not supported* | Deletes the attribute definitions identified by the *List of attribute definition ids* for the given *entityType*
 
 ## {{ page.sections['get'] }}
 
