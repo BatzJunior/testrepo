@@ -28,8 +28,11 @@ configuration/*entityType*/{*List of attribute definition ids*} | *Not supported
 
 To add one or more attributes to the configuration the entity type the attributes belong to as well as the attribute definition(s) need to be transfered. The entity type ist transfered in the uri the attributes within the body of the request.
 
-### Example of adding a part attribute to the configuration
+### Example of adding a part attribute with the key 1001 to the configuration
 
+#### {{site.headers['exampleWebservice']}}
+
+Request:
 {% highlight http %}
 POST /dataServiceRest/configuration/parts HTTP/1.1
 {% endhighlight %}
@@ -42,6 +45,13 @@ POST /dataServiceRest/configuration/parts HTTP/1.1
   "type":"AlphaNumeric"
 }
 {% endhighlight %}
+
+Response:
+{% highlight http %}
+HTTP/1.1 201 Created
+{% endhighlight %}
+
+
 
 ## {{ page.sections['get'] }}
 
@@ -66,20 +76,10 @@ Response:
           [
            [
                "key":1001,
-               "queryEfficient":true,
-               "description":"Teilenummer",
-               "modifiable":false,
+               "description":"partNumber",
                "length":30,
                "type":"AlphaNumeric",
                "definitionType":"AttributeDefinition"
-           ],
-           [
-               "key": 1105,
-               "queryEfficient": true,
-               "description": "Test",
-               "modifiable": false,
-               "catalogue": "dad71a03-5cdc-4c50-96bc-ccd80e34a84d",
-               "definitionType": "CatalogueAttributeDefinition"
            ],
            ...
           ],
@@ -87,9 +87,7 @@ Response:
           [
            [
                "key":2001,
-               "queryEfficient":true,
-               "description":"Merkmalsnummer",
-               "modifiable":false,
+               "description":"characteristicNumber",
                "length":20,
                "type":"AlphaNumeric",
                "definitionType":"AttributeDefinition"
@@ -98,6 +96,10 @@ Response:
           ],
           "measurementAttributes":
           [
+                "key": 8,
+                "description": "inspector",
+                "catalogue": "8c376bee-ffe3-4ee4-abb9-a55b492e69ad",
+                "definitionType": "CatalogueAttributeDefinition"
           ...
           ],
           "valueAttributes":
