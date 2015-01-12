@@ -11,7 +11,7 @@ baseurl: "/testrepo"
 images:
   warning: "![Warning](/testrepo/images/warning.png)"
 headers:
-  exampleWebservice: "![Webservice call](/testrepo/images/server-internet.png) Direct webservice call"
+  exampleWebservice: "Direct webservice call"
   request: "![Request](/testrepo/images/server-import.png) Request"
   response: "![Response](/testrepo/images/server-export.png) Response"
 gems:
