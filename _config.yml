@@ -11,6 +11,7 @@ baseurl: "/testrepo"
 images:
   warning: "![Warning](/testrepo/images/warning.png)"
 headers:
-  exampleWebservice: "![Request](/testrepo/images/server-import.png) Direct webservice call"
+  exampleWebservice: "![Webservice call](/testrepo/images/server-internet.png) Direct webservice call"
+  request: "![Request](/testrepo/images/server-import.png) Request"
 gems:
   - jekyll-redirect-from
