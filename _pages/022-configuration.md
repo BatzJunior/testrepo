@@ -32,7 +32,7 @@ To add one or more attributes to the configuration the entity type the attribute
 
 #### {{site.headers['exampleWebservice']}}
 
-Request:
+{{site.headers['request']}}
 {% highlight http %}
 POST /dataServiceRest/configuration/parts HTTP/1.1
 {% endhighlight %}
@@ -46,7 +46,7 @@ POST /dataServiceRest/configuration/parts HTTP/1.1
 }
 {% endhighlight %}
 
-Response:
+{{site.headers['response']}}
 {% highlight http %}
 HTTP/1.1 201 Created
 {% endhighlight %}
