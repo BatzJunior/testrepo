@@ -10,6 +10,7 @@ relative_permalinks: false
 baseurl: "/testrepo"
 images:
   warning: "![Warning](/testrepo/images/warning.png)"
+  example: "![Example](/testrepo/images/document-info.png)"
 headers:
   exampleWebservice: "Direct webservice call"
   request: "![Request](/testrepo/images/server-import.png) Request"
