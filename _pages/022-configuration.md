@@ -57,13 +57,14 @@ HTTP/1.1 201 Created
 </fieldset>
 
 <fieldset>
-<legend> {{site.headers['exampleApi']}} </legend>
+<legend> {{site.headers['exampleAPI']}} </legend>
 
 {{ site.headers['request'] | markdownify }}
 
 {% highlight csharp %}
 var client = new DataServiceRestClient( serviceUri );
-var attributeDefinition = new AttributeDefinition( 1001, "partNumber", AttributeType.AlphaNumeric, 30 )
+var attributeDefinition = 
+    new AttributeDefinition( 1001, "partNumber", AttributeType.AlphaNumeric, 30 );
 client.CreateAttributeDefinition( Entity.Value, attributeDefinition );
 {% endhighlight %}
 
