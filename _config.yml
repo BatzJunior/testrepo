@@ -13,6 +13,7 @@ images:
   example: "![Example](/testrepo/images/document-info.png)"
 headers:
   exampleWebservice: "Direct webservice call"
+  exampleAPI: "Webservice call via API.dll"
   request: "![Request](/testrepo/images/server-import.png) Request"
   response: "![Response](/testrepo/images/server-export.png) Response"
 gems:
