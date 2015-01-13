@@ -42,7 +42,7 @@ POST /dataServiceRest/configuration/parts HTTP/1.1
 {% highlight json %}
 {
   "key":1001,
-  "description":"Teilenummer",
+  "description":"partNumber",
   "length":30,
   "type":"AlphaNumeric"
 }
@@ -52,6 +52,19 @@ POST /dataServiceRest/configuration/parts HTTP/1.1
 
 {% highlight http %}
 HTTP/1.1 201 Created
+{% endhighlight %}
+
+</fieldset>
+
+<fieldset>
+<legend> {{site.headers['exampleApi']}} </legend>
+
+{{ site.headers['request'] | markdownify }}
+
+{% highlight csharp %}
+var client = new DataServiceRestClient( serviceUri );
+var attributeDefinition = new AttributeDefinition( 1001, "partNumber", AttributeType.AlphaNumeric, 30 )
+client.CreateAttributeDefinition( Entity.Value, attributeDefinition );
 {% endhighlight %}
 
 </fieldset>
