@@ -60,6 +60,7 @@ h2 {
 
 h3 {
 	font-size: 18px;
+	margin-bottom:0;
 }
 
 h4, h5, h6 {
@@ -146,6 +147,7 @@ fieldset{
 	border: 1px solid #ccc;
 	border-radius: 4px;
 	padding: 0px 10px;
+	margin-top:15px;
 }
 
 fieldset p{
@@ -172,8 +174,8 @@ img {
 
 code, pre {
 	font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
-  color:#000;
-  font-size:14px;
+  	color:#000;
+  	font-size:14px;
 }
 
 th code{
