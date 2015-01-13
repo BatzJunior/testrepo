@@ -28,7 +28,7 @@ configuration/*entityType*/{*List of attribute definition ids*} | *Not supported
 
 To add one or more attributes to the configuration the entity type the attributes belong to as well as the attribute definition(s) need to be transfered. The entity type ist transfered in the uri the attributes within the body of the request.
 
-### Example of adding a part attribute with the key 1001 to the configuration
+### {{site.images['example']}} Example of adding a part attribute with the key 1001 to the configuration
 
 <fieldset>
 <legend> {{site.headers['exampleWebservice']}} </legend>
