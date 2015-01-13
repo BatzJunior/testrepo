@@ -33,7 +33,7 @@ To add one or more attributes to the configuration the entity type the attribute
 <fieldset>
 <legend> {{site.headers['exampleWebservice']}} </legend>
 
-{{site.headers['request']}}
+{{ site.headers['request'] | markdownify }}
 
 {% highlight http %}
 POST /dataServiceRest/configuration/parts HTTP/1.1
@@ -48,7 +48,7 @@ POST /dataServiceRest/configuration/parts HTTP/1.1
 }
 {% endhighlight %}
 
-{{site.headers['response']}}
+{{ site.headers['response']  | markdownify }}
 
 {% highlight http %}
 HTTP/1.1 201 Created
