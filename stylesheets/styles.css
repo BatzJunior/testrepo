@@ -334,13 +334,14 @@ nav p a{
 /* Section - for main page content */
 
 section {
-  	width:817px;
+  	width:807px;
 	position: fixed;
 	margin-left: 262px;
 	top: 110px;
 	bottom: 0px;
 	overflow: auto;
   	background-color: #FDFDFD;
+  	padding: 0 40px 20px;
   	padding-left: 40px;
   	padding-right:30px;
   	box-shadow: 0 2px 5px 0 #000;
