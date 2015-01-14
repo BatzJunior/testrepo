@@ -17,6 +17,6 @@ headers:
   request: "![Request](/testrepo/images/server-import.png) Request"
   response: "![Response](/testrepo/images/server-export.png) Response"
 sections:
-  beginExampleWebService: "<fieldset><legend> {{site.headers['exampleWebservice']}} </legend>{{ site.headers['request'] | markdownify }}"
+  beginExampleWebService: "<fieldset><legend> {{site.headers['exampleWebservice']}} </legend>"
 gems:
   - jekyll-redirect-from
