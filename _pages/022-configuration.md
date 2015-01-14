@@ -7,6 +7,7 @@ isSubPage: true
 permalink: /dataservice/configuration/
 sections:
   endpoint: Endpoint Information
+  general: General Information
   add: Add Attributes
   get: Get Configuration
   update: Update Attributes
@@ -23,8 +24,17 @@ URL Endpoint | GET | PUT | POST | DELETE
 /configuration/*entityType*| *Not supported* | Creates the attribute defintions transfered within the body of the request for the given *entityType* | Updates the attribute defintions transfered within the body of the request for the given *entityType* | *Not supported*
 configuration/*entityType*/{*List of attribute definition ids*} | *Not supported* | *Not supported* | *Not supported* | Deletes the attribute definitions identified by the *List of attribute definition ids* for the given *entityType*
 
+{% comment %}----------------------------------------------------------------------------------------------- {% endcomment %}
+
+## {{ page.sections['general'] }}
+
 The PiWeb configuration consists of a list of attributes for all types of entities. 
-There are different kinds of entites: *parts, *characteristics, *measurements, *values and *catalogues. 
+There are different kinds of entites: 
+*parts, 
+*characteristics, 
+*measurements, 
+*values and 
+*catalogues. 
 The attributes are either of defintion type *AttributeDefinition or *CatalogueAttributeDefinition. An attribute with definition type AttribueDefinition 
 
 {% comment %}----------------------------------------------------------------------------------------------- {% endcomment %}
