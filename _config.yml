@@ -16,5 +16,7 @@ headers:
   exampleAPI: "Webservice call via API.dll"
   request: "![Request](/testrepo/images/server-import.png) Request"
   response: "![Response](/testrepo/images/server-export.png) Response"
+sections:
+  beginExampleWebService: "<fieldset><legend> {{site.headers['exampleWebservice']}} </legend>{{ site.headers['request'] | markdownify }}"
 gems:
   - jekyll-redirect-from
