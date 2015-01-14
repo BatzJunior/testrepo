@@ -30,8 +30,7 @@ To add one or more attributes to the configuration the entity type the attribute
 
 ### {{site.images['example']}} Example of adding a part attribute with the key 1001 to the configuration
 
-<fieldset>
-<legend> {{site.headers['exampleWebservice']}} </legend>
+{{ site.sections['beginExampleWebService'] }}
 
 {{ site.headers['request'] | markdownify }}
 
@@ -54,10 +53,8 @@ POST /dataServiceRest/configuration/parts HTTP/1.1
 HTTP/1.1 201 Created
 {% endhighlight %}
 
-</fieldset>
-
-<fieldset>
-<legend> {{site.headers['exampleAPI']}} </legend>
+{{ site.sections['endExample'] }}
+{{ site.sections['beginExampleWebService'] }}
 
 {{ site.headers['request'] | markdownify }}
 
