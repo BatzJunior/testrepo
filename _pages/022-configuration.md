@@ -39,12 +39,15 @@ POST /dataServiceRest/configuration/parts HTTP/1.1
 {% endhighlight %}
 
 {% highlight json %}
-{
-  "key":1001,
-  "description":"partNumber",
-  "length":30,
-  "type":"AlphaNumeric"
-}
+[
+  {
+    "key":1001,
+    "description":"partNumber",
+    "length":30,
+    "type":"AlphaNumeric"
+    "definitionType":"AttributeDefinition"
+  }
+]
 {% endhighlight %}
 
 {{ site.headers['response']  | markdownify }}
