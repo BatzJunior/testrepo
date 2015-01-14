@@ -45,7 +45,7 @@ Method        | Statuscode Ok        | Statuscode Failure                       
 GET           | **200** (OK)         | **400** (Bad request) - Request fails <br> **404** (Not found) - Endpoint(s) or item does not exist | --- <br> If not any of the requested items exist status code 404, otherwise status code 200 is responded.
 PUT           | **201** (Created)    | **400** (Bad request) – Request fails, e.g. due badly formatting <br> **404** (Not found) – Endpoint does not exist <br> **409** (Conflict) – Resource already exists | Status code 400 is responded if creation of at least one item fails. <br> --- <br><br> Status code 409 is responded if at least one item already exists.
 POST          | **200** (Ok)         | **400** (Bad request) –  Request fails, e.g. due badly formatting <br> **404** (Not found) – Endpoint or item(s) does not exist | Status code 400 is responded if update of at least one item fails <br> Status code 404 responded if at least one item does not exist
-DELETE        | **204** (No content) | **400** (Bad request) – Request fails <br><br> **404** (Not found) – Endpoint or item(s) does not exist | Status code 400 is responded if deletion of at least one item fails <br> Status code 404 responded if  not any of the requested items exist
+DELETE        | **200** (Ok) | **400** (Bad request) – Request fails <br><br> **404** (Not found) – Endpoint or item(s) does not exist | Status code 400 is responded if deletion of at least one item fails <br> Status code 404 responded if  not any of the requested items exist
 
 ##{{page.sections['parameter']}}
 
