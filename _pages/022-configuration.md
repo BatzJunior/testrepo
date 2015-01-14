@@ -71,7 +71,9 @@ client.CreateAttributeDefinition( Entity.Value, attributeDefinition );
 
 ## {{ page.sections['get'] }}
 
-### {{site.images['example']}} Fetching the whole configuration returns the attribute definitions for all kind of entities.
+Fetching the whole configuration returns the attribute definitions for all kind of entities.
+
+### {{site.images['example']}} Fetching the configuration including all attriutes
 
 {{ site.sections['beginExampleAPI'] }}
 {{ site.headers['request'] | markdownify }}
