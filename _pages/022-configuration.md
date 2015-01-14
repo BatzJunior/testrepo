@@ -32,7 +32,7 @@ To add one or more attributes to the configuration the entity type the attribute
 
 {{ site.sections['beginExampleWebService'] }}
 
-{{ site.headers['request'] }}
+{{ site.headers['request']  | markdownify }}
 
 {% highlight http %}
 POST /dataServiceRest/configuration/parts HTTP/1.1
@@ -54,7 +54,7 @@ HTTP/1.1 201 Created
 {% endhighlight %}
 
 {{ site.sections['endExample'] }}
-{{ site.sections['beginExampleWebService'] }}
+{{ site.sections['beginExampleAPI'] }}
 
 {{ site.headers['request'] | markdownify }}
 
