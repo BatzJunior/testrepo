@@ -12,13 +12,11 @@ images:
   warning: "![Warning](/testrepo/images/warning.png)"
   example: "![Example](/testrepo/images/document-info.png)"
 headers:
-  exampleWebservice: "Direct webservice call"
-  exampleAPI: "Webservice call via API.dll"
   request: "![Request](/testrepo/images/server-import.png) Request"
   response: "![Response](/testrepo/images/server-export.png) Response"
 sections:
-  beginExampleWebService: "<fieldset><legend> {{site.headers['exampleWebservice'] | markdownify }} </legend>"
-  beginExampleAPI: "<fieldset><legend> {{site.headers['exampleAPI'] | markdownify }} </legend>"
+  beginExampleWebService: "<fieldset><legend> Direct webservice call </legend>"
+  beginExampleAPI: "<fieldset><legend> Webservice call via API.dll </legend>"
   endExample: "</fieldset>"
 gems:
   - jekyll-redirect-from
