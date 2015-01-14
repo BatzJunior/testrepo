@@ -30,11 +30,13 @@ configuration/*entityType*/{*List of attribute definition ids*} | *Not supported
 
 The PiWeb configuration consists of a list of attributes for all types of entities. 
 There are different kinds of entites: 
+
 * parts, 
 * characteristics, 
 * measurements, 
 * values and 
-* catalogues. 
+* catalogues.
+
 The attributes are either of defintion type *AttributeDefinition or *CatalogueAttributeDefinition. An attribute with definition type AttribueDefinition 
 
 {% comment %}----------------------------------------------------------------------------------------------- {% endcomment %}
