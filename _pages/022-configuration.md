@@ -67,19 +67,20 @@ client.CreateAttributeDefinition( Entity.Value, attributeDefinition );
 
 </fieldset>
 
+{% comment %}----------------------------------------------------------------------------------------------- {% endcomment %}
+
 ## {{ page.sections['get'] }}
 
-Fetching the whole configuration returns the attribute definitions for all kind of entities.
+### {{site.images['example']}} Fetching the whole configuration returns the attribute definitions for all kind of entities.
 
-####Example for direct webservice call
-
-Request:
+{{ site.sections['beginExampleAPI'] }}
+{{ site.headers['request'] | markdownify }}
 
 {% highlight http %}
 GET /dataServiceRest/configuration HTTP/1.1
 {% endhighlight %}
 
-Response:
+{{ site.headers['response'] | markdownify }}
 {% highlight json linenos %}
 {
    ...
@@ -129,9 +130,16 @@ Response:
 }
 {% endhighlight %}
 
-####Example for webservice call via API.dll
+{{ site.sections['endExample'] }}
+
+{{ site.sections['beginExampleAPI'] }}
+{{ site.headers['request'] | markdownify }}
 
 {% highlight csharp %}
 var client = new DataServiceRestClient( serviceUri );
 Configuration information = client.GetConfiguration();
 {% endhighlight %}
+
+{{ site.sections['endExample'] }}
+
+{% comment %}----------------------------------------------------------------------------------------------- {% endcomment %}
