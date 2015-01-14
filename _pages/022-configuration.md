@@ -22,7 +22,7 @@ URL Endpoint | GET | PUT | POST | DELETE
 -------------|-----|-----|------|-------
 /configuration| Returns the attribute configuration (list of attributes for each entity). | *Not supported* | *Not supported* | Deletes all attribute definitions.
 /configuration/*entityType*| *Not supported* | Creates the attribute defintions transfered within the body of the request for the given *entityType* | Updates the attribute defintions transfered within the body of the request for the given *entityType* | *Not supported*
-configuration/*entityType*/{*List of attribute definition ids*} | *Not supported* | *Not supported* | *Not supported* | Deletes the attribute definitions identified by the *List of attribute definition ids* for the given *entityType*
+configuration/*entityType*/{*List of attribute definition ids*} | *Not supported* | *Not supported* | *Not supported* | Deletes the attribute definitions identified by the *List of attribute definition ids* for the given *entityType*. If the *List of attribute definition ids* is empty all attributes for the given *entityType* are deleted. 
 
 {% comment %}----------------------------------------------------------------------------------------------- {% endcomment %}
 
@@ -168,7 +168,7 @@ Configuration information = client.GetConfiguration();
 
 {% comment %}----------------------------------------------------------------------------------------------- {% endcomment %}
 
-## {{ page.sections['get'] }}
+## {{ page.sections['update'] }}
 
 Updating one or more attributes works identically to [adding attributes]({{ page.sections['get'] }}).
 
