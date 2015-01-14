@@ -31,13 +31,15 @@ configuration/*entityType*/{*List of attribute definition ids*} | *Not supported
 The PiWeb configuration consists of a list of attributes for all types of entities. 
 There are different kinds of entites: 
 
-* parts, 
-* characteristics, 
-* measurements, 
-* values and 
-* catalogues.
+* *parts*, 
+* *characteristics*, 
+* *measurements*, 
+* *values* and 
+* *catalogues*.
 
-The attributes are either of defintion type *AttributeDefinition or *CatalogueAttributeDefinition. An attribute with definition type AttribueDefinition 
+The attributes are either *AttributeDefinition* or *CatalogueAttributeDefinition* attributes. 
+AttribueDefinition attributes contain a property *type* which defines the data type: *AlphaNumeric*, *Integer*, *Float* or *DateTime*. If the attributes type is *AlphaNumeric* the property *length* defines the maximum length of the attribute's value.
+In contrast to the AttributeDefinition the CatalogueAttribueDefinition attributes reference a catalogue.
 
 {% comment %}----------------------------------------------------------------------------------------------- {% endcomment %}
 
@@ -95,7 +97,7 @@ Fetching the whole configuration returns the attribute definitions for all kind 
 
 ### {{site.images['example']}} Fetching the configuration including all attriutes
 
-{{ site.sections['beginExampleAPI'] }}
+{{ site.sections['beginExampleWebService'] }}
 {{ site.headers['request'] | markdownify }}
 
 {% highlight http %}
@@ -165,3 +167,34 @@ Configuration information = client.GetConfiguration();
 {{ site.sections['endExample'] }}
 
 {% comment %}----------------------------------------------------------------------------------------------- {% endcomment %}
+
+## {{ page.sections['get'] }}
+
+Updating one or more attributes works identically to [adding attributes]({{ page.sections['get'] }}).
+
+{% comment %}----------------------------------------------------------------------------------------------- {% endcomment %}
+
+## {{ page.sections['delete'] }}
+
+As mentioned in the [upper section]({{page.sections['endpoint]}})there are three different options of deleting attributes: deleting all attributes at once, deleting all attributes or deleting certain attributes of a certain entity. The following examples illustrate these options.
+
+### {{site.images['example']}} Delete all attributes of the current configuration
+
+{{ site.sections['beginExampleWebService'] }}
+{{ site.headers['request'] | markdownify }}
+
+{% highlight http %}
+DELETE /dataServiceRest/configuration HTTP/1.1
+{% endhighlight %}
+
+{{ site.sections['endExample'] }}
+
+{{ site.sections['beginExampleAPI'] }}
+{{ site.headers['request'] | markdownify }}
+
+{% highlight csharp %}
+var client = new DataServiceRestClient( serviceUri );
+client.DeleteAttributeDefinitions();
+{% endhighlight %}
+
+{{ site.sections['endExample'] }}
