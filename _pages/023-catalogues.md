@@ -38,7 +38,7 @@ URL Endpoint | GET | PUT | POST | DELETE
 
 ## {{ page.sections['add'] }}
 
-To create a catalogue it is necessary to transfer the catalogue object within the request's body. Beneath a unique identifier and the catalog name the valid attributes and the catalogue entries need  to be transfered. The attribute keys which are used for the valid attributes must come from the catalogue attribute range (specified in the [configuration]({{site.baseurl }}/configuration/)
+To create a catalogue it is necessary to transfer the catalogue object within the request's body. Beneath a unique identifier and the catalog name the valid attributes and the catalogue entries need  to be transfered. The attribute keys which are used for the valid attributes must come from the catalogue attribute range (specified in the [configuration]({{site.baseurl }}/{{page.category}}/configuration/)
 
 ### {{ site.headers['example'] }} Adding a catalogue with the uuid 8c376bee-ffe3-4ee4-abb9-a55b492e69ad
 
