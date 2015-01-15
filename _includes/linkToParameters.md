@@ -1,1 +1,1 @@
-[URL-Parameter section](/General-Information#{{ page.subCategory }})
+[URL-Parameter section]({{site.baseurl}}/General-Information#{{ page.subCategory }})
