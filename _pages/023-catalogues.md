@@ -29,7 +29,7 @@ catalogueEntries | Contains a list of catalogue entries. A catalogue entry consi
 
 ## {{ page.sections['endpoint'] }}
 
-Catalogues and catalogue entries can be fetched, created, updated and deleted via the following endpoints. Filter can be set as described in the [URL-Parameter section](https://github.com/BatzJunior/testrepo/wiki/General-Information#catalogues).
+Catalogues and catalogue entries can be fetched, created, updated and deleted via the following endpoints. Filter can be set as described in the {% include linkToParameters.md %}.
 
 URL Endpoint | GET | PUT | POST | DELETE
 -------------|-----|-----|------|-------
