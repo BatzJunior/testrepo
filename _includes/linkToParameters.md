@@ -1,1 +1,1 @@
-[URL-Parameter section](https://github.com/BatzJunior/testrepo/wiki/General-Information#{{ page.category }})
+[URL-Parameter section](/General-Information#{{ page.subCategory }})
