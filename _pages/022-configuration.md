@@ -6,25 +6,13 @@ subTitle: Configuration
 isSubPage: true
 permalink: /dataservice/configuration/
 sections:
-  endpoint: Endpoint Information
   general: General Information
+  endpoint: Endpoint Information
   add: Add Attributes
   get: Get Configuration
   update: Update Attributes
   delete: Delete Attributes
 ---
-
-## {{ page.sections['endpoint'] }}
-
-The configuration can be created, fetched, updated and deleted via the following endpoints. There are no filter parameters to restrict the query.
-
-URL Endpoint | GET | PUT | POST | DELETE
--------------|-----|-----|------|-------
-/configuration| Returns the attribute configuration (list of attributes for each entity). | *Not supported* | *Not supported* | Deletes all attribute definitions.
-/configuration/*entityType*| *Not supported* | Updates the attribute defintions transfered within the body of the request for the given *entityType* |  Creates the attribute defintions transfered within the body of the request for the given *entityType* | *Not supported*
-configuration/*entityType*/{*Comma seperated list of attribute definition ids*} | *Not supported* | *Not supported* | *Not supported* | Deletes the attribute definitions identified by the *List of attribute definition ids* for the given *entityType*. If the *List of attribute definition ids* is empty all attributes for the given *entityType* are deleted. 
-
-{% comment %}----------------------------------------------------------------------------------------------- {% endcomment %}
 
 ## {{ page.sections['general'] }}
 
@@ -40,6 +28,18 @@ There are different kinds of entites:
 The attributes are either *AttributeDefinition* or *CatalogueAttributeDefinition* attributes. 
 AttribueDefinition attributes contain a property *type* which defines the data type: *AlphaNumeric*, *Integer*, *Float* or *DateTime*. If the attributes type is *AlphaNumeric* the property *length* defines the maximum length of the attribute's value.
 In contrast to the AttributeDefinition the CatalogueAttribueDefinition attributes reference a catalogue.
+
+{% comment %}----------------------------------------------------------------------------------------------- {% endcomment %}
+
+## {{ page.sections['endpoint'] }}
+
+The configuration can be created, fetched, updated and deleted via the following endpoints. There are no filter parameters to restrict the query.
+
+URL Endpoint | GET | PUT | POST | DELETE
+-------------|-----|-----|------|-------
+/configuration| Returns the attribute configuration (list of attributes for each entity). | *Not supported* | *Not supported* | Deletes all attribute definitions.
+/configuration/*entityType*| *Not supported* | Updates the attribute defintions transfered within the body of the request for the given *entityType* |  Creates the attribute defintions transfered within the body of the request for the given *entityType* | *Not supported*
+configuration/*entityType*/{*Comma seperated list of attribute definition ids*} | *Not supported* | *Not supported* | *Not supported* | Deletes the attribute definitions identified by the *List of attribute definition ids* for the given *entityType*. If the *List of attribute definition ids* is empty all attributes for the given *entityType* are deleted. 
 
 {% comment %}----------------------------------------------------------------------------------------------- {% endcomment %}
 
