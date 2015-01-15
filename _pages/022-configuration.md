@@ -176,7 +176,13 @@ Updating one or more attributes works identically to [adding attributes]({{ page
 
 ## {{ page.sections['delete'] }}
 
-As mentioned in the [upper section]({{page.sections['endpoint]}})there are three different options of deleting attributes: deleting all attributes at once, deleting all attributes or deleting certain attributes of a certain entity. The following examples illustrate these options.
+There are three different options of deleting attributes: 
+
+* deleting all attributes of the configuration, 
+* deleting all attributes of a certain entity or 
+* deleting certain attributes of a certain entity
+ 
+The following examples illustrate these options.
 
 ### {{site.images['example']}} Delete all attributes of the current configuration
 
