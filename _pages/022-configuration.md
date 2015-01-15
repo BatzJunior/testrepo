@@ -95,7 +95,7 @@ client.CreateAttributeDefinition( Entity.Part, attributeDefinition );
 
 Fetching the whole configuration returns the attribute definitions for all kind of entities.
 
-### {{ site.headers['example']  | markdownify }}  Fetching the configuration including all attriutes
+### {{ site.headers['example'] }}  Fetching the configuration including all attriutes
 
 {{ site.sections['beginExampleWebService'] }}
 {{ site.headers['request'] | markdownify }}
@@ -172,7 +172,7 @@ Configuration information = client.GetConfiguration();
 
 To update one or more attributes to the configuration the entity type the attributes belong to as well as the attribute definition(s) need to be transfered. The entity type ist transfered in the uri the attributes within the body of the request.
 
-### {{ site.headers['example']  | markdownify }}  Updating the part attribute with key 1001 - change length from 30 to 50
+### {{ site.headers['example'] }}  Updating the part attribute with key 1001 - change length from 30 to 50
 
 {{ site.sections['beginExampleWebService'] }}
 
@@ -229,7 +229,7 @@ There are three different options of deleting attributes:
  
 The following examples illustrate these options.
 
-### {{ site.headers['example']  | markdownify }}  Delete all attributes of the current configuration
+### {{ site.headers['example'] }}  Delete all attributes of the current configuration
 
 {{ site.sections['beginExampleWebService'] }}
 {{ site.headers['request'] | markdownify }}
@@ -250,7 +250,7 @@ client.DeleteAllAttributeDefinitions();
 
 {{ site.sections['endExample'] }}
 
-### {{ site.headers['example']  | markdownify }}  Delete all part attributes
+### {{ site.headers['example'] }}  Delete all part attributes
 
 {{ site.sections['beginExampleWebService'] }}
 {{ site.headers['request'] | markdownify }}
@@ -271,7 +271,7 @@ client.DeleteAttributeDefinitions( Entity.Part );
 
 {{ site.sections['endExample'] }}
 
-### {{ site.headers['example']  | markdownify }}  Delete the part attribute with the key 1001
+### {{ site.headers['example'] }}  Delete the part attribute with the key 1001
 
 {{ site.sections['beginExampleWebService'] }}
 {{ site.headers['request'] | markdownify }}
