@@ -18,5 +18,7 @@ sections:
   beginExampleWebService: "<fieldset><legend> Direct webservice call </legend>"
   beginExampleAPI: "<fieldset><legend> Webservice call via API.dll </legend>"
   endExample: "</fieldset>"
+links:
+  [URL-Parameter section]({{site.baseurl}}/general/#{{ page.subCategory }})
 gems:
   - jekyll-redirect-from
