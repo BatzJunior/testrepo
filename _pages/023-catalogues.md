@@ -19,7 +19,7 @@ sections:
 A catalogue consists of the following properties:
 
 Name | Description
--------------------
+-----|-------------
 uuid | Identifies the catalogue uniquely
 name | Name of the catalogue
 validAttribues | A list of attribute keys that are valid for the respective catalogue
