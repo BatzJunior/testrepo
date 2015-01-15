@@ -18,7 +18,5 @@ sections:
   beginExampleWebService: "<fieldset><legend> Direct webservice call </legend>"
   beginExampleAPI: "<fieldset><legend> Webservice call via API.dll </legend>"
   endExample: "</fieldset>"
-links:
-  linkToParameters: "[URL-Parameter section]({{site.baseurl | markdownify }}/general/#{{ page.subCategory | markdownify }})"
 gems:
   - jekyll-redirect-from
