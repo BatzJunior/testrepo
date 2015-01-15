@@ -22,7 +22,7 @@ URL Endpoint | GET | PUT | POST | DELETE
 -------------|-----|-----|------|-------
 /configuration| Returns the attribute configuration (list of attributes for each entity). | *Not supported* | *Not supported* | Deletes all attribute definitions.
 /configuration/*entityType*| *Not supported* | Creates the attribute defintions transfered within the body of the request for the given *entityType* | Updates the attribute defintions transfered within the body of the request for the given *entityType* | *Not supported*
-configuration/*entityType*/{*List of attribute definition ids*} | *Not supported* | *Not supported* | *Not supported* | Deletes the attribute definitions identified by the *List of attribute definition ids* for the given *entityType*. If the *List of attribute definition ids* is empty all attributes for the given *entityType* are deleted. 
+configuration/*entityType*/{*Comma seperated list of attribute definition ids*} | *Not supported* | *Not supported* | *Not supported* | Deletes the attribute definitions identified by the *List of attribute definition ids* for the given *entityType*. If the *List of attribute definition ids* is empty all attributes for the given *entityType* are deleted. 
 
 {% comment %}----------------------------------------------------------------------------------------------- {% endcomment %}
 
@@ -194,7 +194,49 @@ DELETE /dataServiceRest/configuration HTTP/1.1
 
 {% highlight csharp %}
 var client = new DataServiceRestClient( serviceUri );
-client.DeleteAttributeDefinitions();
+client.DeleteAllAttributeDefinitions();
+{% endhighlight %}
+
+{{ site.sections['endExample'] }}
+
+### {{site.images['example']}} Delete all part attributes
+
+{{ site.sections['beginExampleWebService'] }}
+{{ site.headers['request'] | markdownify }}
+
+{% highlight http %}
+DELETE /dataServiceRest/configuration/part HTTP/1.1
+{% endhighlight %}
+
+{{ site.sections['endExample'] }}
+
+{{ site.sections['beginExampleAPI'] }}
+{{ site.headers['request'] | markdownify }}
+
+{% highlight csharp %}
+var client = new DataServiceRestClient( serviceUri );
+client.DeleteAttributeDefinitions( Entity.Part );
+{% endhighlight %}
+
+{{ site.sections['endExample'] }}
+
+### {{site.images['example']}} Delete the part attribute with the key 1001
+
+{{ site.sections['beginExampleWebService'] }}
+{{ site.headers['request'] | markdownify }}
+
+{% highlight http %}
+DELETE /dataServiceRest/configuration/part/{1001} HTTP/1.1
+{% endhighlight %}
+
+{{ site.sections['endExample'] }}
+
+{{ site.sections['beginExampleAPI'] }}
+{{ site.headers['request'] | markdownify }}
+
+{% highlight csharp %}
+var client = new DataServiceRestClient( serviceUri );
+client.DeleteAttributeDefinitions( Entity.Part, new ushort[]{ (ushort)1001 } );
 {% endhighlight %}
 
 {{ site.sections['endExample'] }}
