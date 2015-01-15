@@ -178,9 +178,9 @@ Updating one or more attributes works identically to [adding attributes]({{ page
 
 There are three different options of deleting attributes: 
 
-* deleting all attributes of the configuration, 
-* deleting all attributes of a certain entity or 
-* deleting certain attributes of a certain entity
+* Delete all attributes of the configuration, 
+* Delete all attributes of a certain entity or 
+* Delete one or more certain attributes of a certain entity
  
 The following examples illustrate these options.
 
