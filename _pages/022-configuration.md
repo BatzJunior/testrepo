@@ -47,7 +47,7 @@ In contrast to the AttributeDefinition the CatalogueAttribueDefinition attribute
 
 To add one or more attributes to the configuration the entity type the attributes belong to as well as the attribute definition(s) need to be transfered. The entity type ist transfered in the uri the attributes within the body of the request.
 
-### {{ site.headers['example']  | markdownify }} Adding a part attribute with the key 1001 to the configuration
+### {{ site.headers['example'] }} Adding a part attribute with the key 1001 to the configuration
 
 {{ site.sections['beginExampleWebService'] }}
 
