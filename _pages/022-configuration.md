@@ -47,7 +47,7 @@ In contrast to the AttributeDefinition the CatalogueAttribueDefinition attribute
 
 To add one or more attributes to the configuration the entity type the attributes belong to as well as the attribute definition(s) need to be transfered. The entity type ist transfered in the uri the attributes within the body of the request.
 
-### {{site.images['example']}} Example of adding a part attribute with the key 1001 to the configuration
+### {{site.images['example']}} Example: Adding a part attribute with the key 1001 to the configuration
 
 {{ site.sections['beginExampleWebService'] }}
 
@@ -84,10 +84,10 @@ HTTP/1.1 201 Created
 var client = new DataServiceRestClient( serviceUri );
 var attributeDefinition = 
       new AttributeDefinition( 1001, "partNumber", AttributeType.AlphaNumeric, 30 );
-client.CreateAttributeDefinition( Entity.Value, attributeDefinition );
+client.CreateAttributeDefinition( Entity.Part, attributeDefinition );
 {% endhighlight %}
 
-</fieldset>
+{{ site.sections['endExample'] }}
 
 {% comment %}----------------------------------------------------------------------------------------------- {% endcomment %}
 
@@ -95,7 +95,7 @@ client.CreateAttributeDefinition( Entity.Value, attributeDefinition );
 
 Fetching the whole configuration returns the attribute definitions for all kind of entities.
 
-### {{site.images['example']}} Fetching the configuration including all attriutes
+### {{site.images['example']}} Example: Fetching the configuration including all attriutes
 
 {{ site.sections['beginExampleWebService'] }}
 {{ site.headers['request'] | markdownify }}
@@ -170,7 +170,52 @@ Configuration information = client.GetConfiguration();
 
 ## {{ page.sections['update'] }}
 
-Updating one or more attributes works identically to [adding attributes]({{ page.sections['get'] }}).
+To update one or more attributes to the configuration the entity type the attributes belong to as well as the attribute definition(s) need to be transfered. The entity type ist transfered in the uri the attributes within the body of the request.
+
+### {{site.images['example']}} Example: Updating the part attribute with key 1001 - change length from 30 to 50
+
+{{ site.sections['beginExampleWebService'] }}
+
+{{ site.headers['request']  | markdownify }}
+
+{% highlight http %}
+PUT /dataServiceRest/configuration/parts HTTP/1.1
+{% endhighlight %}
+
+{% highlight json %}
+[
+  {
+    "key":1001,
+    "description":"partNumber",
+    "length":50,
+    "type":"AlphaNumeric",
+    "definitionType":"AttributeDefinition"
+  }
+]
+{% endhighlight %}
+
+{{ site.headers['response']  | markdownify }}
+
+{% highlight http %}
+HTTP/1.1 200 Ok
+{% endhighlight %}
+
+{{ site.sections['endExample'] }}
+{{ site.sections['beginExampleAPI'] }}
+
+{{ site.headers['request'] | markdownify }}
+
+{% highlight csharp %}
+var client = new DataServiceRestClient( serviceUri );
+
+//Get the attribute
+...
+
+attributeDefinition.Length = 50;
+client.UpdateAttributeDefinition( Entity.Part, attributeDefinition );
+{% endhighlight %}
+
+{{ site.sections['endExample'] }}
 
 {% comment %}----------------------------------------------------------------------------------------------- {% endcomment %}
 
