@@ -23,7 +23,7 @@ Name | Description
 uuid | Identifies the catalogue uniquely
 name | Name of the catalogue
 validAttribues | A list of attribute keys that are valid for the respective catalogue
-catalogueEntries | Contains a list of catalogue entries. A catalogue entry consits of a unique key which specifies the order within the catalogue and a list of attributes which consits of key value pairs. 
+catalogueEntries | Contains a list of catalogue entries. A catalogue entry consits of a unique index based key which specifies the order within the catalogue and a list of attributes which consits of key value pairs. 
 
 {% comment %}----------------------------------------------------------------------------------------------- {% endcomment %}
 
@@ -33,32 +33,69 @@ Catalogues and catalogue entries can be fetched, created, updated and deleted vi
 
 URL Endpoint | GET | PUT | POST | DELETE
 -------------|-----|-----|------|-------
-/catalogues | Returns all catalogues | Creates the committed catalogue(s) which is/are transferred in the body of the request | Updates the committed catalogues and their entries | Deletes all catalogues and the catalogue entries
+/catalogues | Returns all catalogues | Updates the committed catalogues and their entries | Creates the committed catalogue(s) which is/are transferred in the body of the request | Deletes all catalogues and the catalogue entries
 /catalogues/{catUuid1, catUuid2,...} | Returns the catalogues that uuids are within the catUuid list | *not supported* | *not supported* | Deletes the catalogue(s) which has/have the given catUuid(s)
 
 ## {{ page.sections['add'] }}
 
-To add one or more attributes to the configuration the entity type the attributes belong to as well as the attribute definition(s) need to be transfered. The entity type ist transfered in the uri the attributes within the body of the request.
+To create a catalogue it is necessary to transfer the catalogue object within the request's body. Beneath a unique identifier and the catalog name the valid attributes and the catalogue entries need  to be transfered. The attribute keys which are used for the valid attributes must come from the catalogue attribute range (specified in the [configuration]({{site.baseurl }}/configuration/)
 
-### {{ site.headers['example'] }} Adding a part attribute with the key 1001 to the configuration
+### {{ site.headers['example'] }} Adding a catalogue with the uuid 8c376bee-ffe3-4ee4-abb9-a55b492e69ad
 
 {{ site.sections['beginExampleWebService'] }}
 
 {{ site.headers['request']  | markdownify }}
 
 {% highlight http %}
-POST /dataServiceRest/configuration/parts HTTP/1.1
+POST /dataServiceRest/catalogues HTTP/1.1
 {% endhighlight %}
 
 {% highlight json %}
 [
   {
-    "key":1001,
-    "description":"partNumber",
-    "length":30,
-    "type":"AlphaNumeric",
-    "definitionType":"AttributeDefinition"
-  }
+           "uuid": "8c376bee-ffe3-4ee4-abb9-a55b492e69ad",
+           "name": "InspectorCatalogue",
+           "validAttributes":
+           [
+               4092,
+               4093
+           ],
+           "catalogueEntries":
+           [
+               {
+                   "key": 0,
+                   "attributes":
+                   {
+                       "4092": "n.def.",
+                       "4093": "n.def."
+                   }
+               },
+               {
+                   "key": 1,
+                   "attributes":
+                   {
+                       "4092": "21",
+                       "4093": "Smith"
+                   }
+               },
+               {
+                   "key": 2,
+                   "attributes":
+                   {
+                       "4092": "20",
+                       "4093": "Miller"
+                   }
+               },
+               {
+                   "key": 3,
+                   "attributes":
+                   {
+                       "4092": "23",
+                       "4093": "Williams"
+                   }
+               }
+            ]
+        }
 ]
 {% endhighlight %}
 
@@ -74,10 +111,7 @@ HTTP/1.1 201 Created
 {{ site.headers['request'] | markdownify }}
 
 {% highlight csharp %}
-var client = new DataServiceRestClient( serviceUri );
-var attributeDefinition = 
-      new AttributeDefinition( 1001, "partNumber", AttributeType.AlphaNumeric, 30 );
-client.CreateAttributeDefinition( Entity.Part, attributeDefinition );
+
 {% endhighlight %}
 
 {{ site.sections['endExample'] }}
@@ -86,63 +120,67 @@ client.CreateAttributeDefinition( Entity.Part, attributeDefinition );
 
 ## {{ page.sections['get'] }}
 
-Fetching the whole configuration returns the attribute definitions for all kind of entities.
+Fetching the catalogues return sthe catalogue an depending on the filter specified or not the catalogue entries. If no filter is specified the entries are returned by default.
 
-### {{ site.headers['example'] }}  Fetching the configuration including all attriutes
+### {{ site.headers['example'] }}  Fetching the catalogue with the uuid 8c376bee-ffe3-4ee4-abb9-a55b492e69ad and its entries
 
 {{ site.sections['beginExampleWebService'] }}
 {{ site.headers['request'] | markdownify }}
 
 {% highlight http %}
-GET /dataServiceRest/configuration HTTP/1.1
+GET /dataServiceRest/catalogues/{8c376bee-ffe3-4ee4-abb9-a55b492e69ad}?filter=withCatalogueEntries:true HTTP/1.1
 {% endhighlight %}
 
 {{ site.headers['response'] | markdownify }}
-{% highlight json linenos %}
+{% highlight json %}
 {
    ...
    "data":
    [
        {
-          "partAttributes":
-          [
+           "uuid": "8c376bee-ffe3-4ee4-abb9-a55b492e69ad",
+           "name": "InspectorCatalogue",
+           "validAttributes":
            [
-               "key":1001,
-               "description":"partNumber",
-               "length":30,
-               "type":"AlphaNumeric",
-               "definitionType":"AttributeDefinition"
+               4092,
+               4093
            ],
-           ...
-          ],
-          "characteristicAttributes":
-          [
+           "catalogueEntries":
            [
-               "key":2001,
-               "description":"characteristicNumber",
-               "length":20,
-               "type":"AlphaNumeric",
-               "definitionType":"AttributeDefinition"
-           ],
-           ...
-          ],
-          "measurementAttributes":
-          [
-                "key": 8,
-                "description": "inspector",
-                "catalogue": "8c376bee-ffe3-4ee4-abb9-a55b492e69ad",
-                "definitionType": "CatalogueAttributeDefinition"
-          ...
-          ],
-          "valueAttributes":
-          [
-          ...
-          ],
-          "catalogueAttributes":
-          [
-          ...
-          ]
-       }
+               {
+                   "key": 0,
+                   "attributes":
+                   {
+                       "4092": "n.def.",
+                       "4093": "n.def."
+                   }
+               },
+               {
+                   "key": 1,
+                   "attributes":
+                   {
+                       "4092": "21",
+                       "4093": "Smith"
+                   }
+               },
+               {
+                   "key": 2,
+                   "attributes":
+                   {
+                       "4092": "20",
+                       "4093": "Miller"
+                   }
+               },
+               {
+                   "key": 3,
+                   "attributes":
+                   {
+                       "4092": "23",
+                       "4093": "Williams"
+                   }
+               }
+            ]
+        }
    ]
 }
 {% endhighlight %}
@@ -154,7 +192,8 @@ GET /dataServiceRest/configuration HTTP/1.1
 
 {% highlight csharp %}
 var client = new DataServiceRestClient( serviceUri );
-Configuration information = client.GetConfiguration();
+var catalogues = client.GetCatalogues(new Guid[]{new Guid("8c376bee-ffe3-4ee4-abb9-a55b492e69ad")},
+        new CatalogueFilterAttributes());
 {% endhighlight %}
 
 {{ site.sections['endExample'] }}
