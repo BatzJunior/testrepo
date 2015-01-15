@@ -29,7 +29,7 @@ catalogueEntries | Contains a list of catalogue entries. A catalogue entry consi
 
 ## {{ page.sections['endpoint'] }}
 
-Catalogues and catalogue entries can be fetched, created, updated and deleted via the following endpoints. Filter can be set as described in the {{ site.links['linkToParameters'] | markdownify }}.
+Catalogues and catalogue entries can be fetched, created, updated and deleted via the following endpoints. Filter can be set as described in the {{ site.links['linkToParameters'] }}.
 
 URL Endpoint | GET | PUT | POST | DELETE
 -------------|-----|-----|------|-------
