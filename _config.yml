@@ -10,6 +10,7 @@ relative_permalinks: false
 baseurl: "/testrepo"
 images:
   warning: "![Warning](/testrepo/images/warning.png)"
+  info: "![Warning](/testrepo/images/info.png)"
 headers:
   example: "![Example](/testrepo/images/document-info.png) Example:"
   request: "![Request](/testrepo/images/server-import.png) Request"
