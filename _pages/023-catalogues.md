@@ -204,27 +204,69 @@ var catalogues = client.GetCatalogues(new Guid[]{new Guid(
 
 ## {{ page.sections['update'] }}
 
-To update one or more attributes to the configuration the entity type the attributes belong to as well as the attribute definition(s) need to be transfered. The entity type ist transfered in the uri the attributes within the body of the request.
+On updating a catalogue there are the options to rename the catalogue or to add, update or delete catalogue entries.
 
-### {{ site.headers['example'] }}  Updating the part attribute with key 1001 - change length from 30 to 50
+{{site.images['info']}} To change the valid attributes of a catalogue it needs to be deleted an re-created again.
+
+### {{ site.headers['example'] }}  Updating the catalogue with the uuid 8c376bee-ffe3-4ee4-abb9-a55b492e69ad - rename it from 'InspectorCatalogue' to 'Inspectors' and add the inspector 'Clarks'
 
 {{ site.sections['beginExampleWebService'] }}
 
 {{ site.headers['request']  | markdownify }}
 
 {% highlight http %}
-PUT /dataServiceRest/configuration/parts HTTP/1.1
+PUT /dataServiceRest/catalogues HTTP/1.1
 {% endhighlight %}
 
 {% highlight json %}
 [
   {
-    "key":1001,
-    "description":"partNumber",
-    "length":50,
-    "type":"AlphaNumeric",
-    "definitionType":"AttributeDefinition"
-  }
+           "uuid": "8c376bee-ffe3-4ee4-abb9-a55b492e69ad",
+           "name": "Inspectors",
+           "catalogueEntries":
+           [
+               {
+                   "key": 0,
+                   "attributes":
+                   {
+                       "4092": "n.def.",
+                       "4093": "n.def."
+                   }
+               },
+               {
+                   "key": 1,
+                   "attributes":
+                   {
+                       "4092": "21",
+                       "4093": "Smith"
+                   }
+               },
+               {
+                   "key": 2,
+                   "attributes":
+                   {
+                       "4092": "20",
+                       "4093": "Miller"
+                   }
+               },
+               {
+                   "key": 3,
+                   "attributes":
+                   {
+                       "4092": "23",
+                       "4093": "Williams"
+                   }
+               },
+               {
+                   "key": 4,
+                   "attributes":
+                   {
+                       "4092": "22",
+                       "4093": "Clarks"
+                   }
+               }
+            ]
+        }
 ]
 {% endhighlight %}
 
@@ -242,11 +284,17 @@ HTTP/1.1 200 Ok
 {% highlight csharp %}
 var client = new DataServiceRestClient( serviceUri );
 
-//Get the attribute
+//Get the catalogue
 ...
 
-attributeDefinition.Length = 50;
-client.UpdateAttributeDefinition( Entity.Part, attributeDefinition );
+catalogue.Name = "Inspectors";
+var entries = new List< CatalogueEntry >();
+entries = catalogue.CatalogueEntries;
+entries.Add( new CatalogueEntry()
+        { Key = 5, 
+          Attributes = new[]{ new Attribute( 4092, "22" ), new Attribute( 4093, "Clarks" ) };
+cataloge.CatalogueEntries = entries.ToArray();
+client.UpdateCatalogues( catalogue );
 {% endhighlight %}
 
 {{ site.sections['endExample'] }}
