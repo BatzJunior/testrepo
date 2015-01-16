@@ -291,8 +291,8 @@ catalogue.Name = "Inspectors";
 var entries = new List< CatalogueEntry >();
 entries = catalogue.CatalogueEntries;
 entries.Add( new CatalogueEntry()
-        { Key = 5, 
-          Attributes = new[]{ new Attribute( 4092, "22" ), new Attribute( 4093, "Clarks" ) };
+      { Key = 5, 
+        Attributes = new[]{ new Attribute( 4092, "22" ), new Attribute( 4093, "Clarks" ) };
 cataloge.CatalogueEntries = entries.ToArray();
 client.UpdateCatalogues( catalogue );
 {% endhighlight %}
