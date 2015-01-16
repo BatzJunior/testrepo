@@ -38,7 +38,9 @@ URL Endpoint | GET | PUT | POST | DELETE
 
 ## {{ page.sections['add'] }}
 
-To create a catalogue it is necessary to transfer the catalogue object within the request's body. Beneath a unique identifier and the catalog name the valid attributes and the catalogue entries need  to be transfered. The attribute keys which are used for the valid attributes must come from the catalogue attribute range (specified in the [configuration]({{site.baseurl }}/{{page.category}}/configuration/)
+To create a catalogue it is necessary to transfer the catalogue object within the request's body. Beneath a unique identifier and the catalog name the valid attributes need  to be transfered, catalogue entries are optional. The attribute keys which are used for the valid attributes must come from the catalogue attribute range (specified in the [configuration]({{site.baseurl }}/{{page.category}}/configuration/)
+
+{{ site.images['info'] }} If no catalogue entries are transfered an empty catalogue entry with the key 0 and attribute values 'not defined' ( in case of alphanumeric attributes ) is created.
 
 ### {{ site.headers['example'] }} Adding a catalogue with the uuid 8c376bee-ffe3-4ee4-abb9-a55b492e69ad
 
@@ -120,7 +122,7 @@ HTTP/1.1 201 Created
 
 ## {{ page.sections['get'] }}
 
-Fetching the catalogues return sthe catalogue an depending on the filter specified or not the catalogue entries. If no filter is specified the entries are returned by default.
+Fetching the catalogues returns the catalogue an depending on the filter specified or not the catalogue entries. If no filter is specified the entries are returned by default.
 
 ### {{ site.headers['example'] }}  Fetching the catalogue with the uuid 8c376bee-ffe3-4ee4-abb9-a55b492e69ad and its entries
 
@@ -192,8 +194,8 @@ GET /dataServiceRest/catalogues/{8c376bee-ffe3-4ee4-abb9-a55b492e69ad}?filter=wi
 
 {% highlight csharp %}
 var client = new DataServiceRestClient( serviceUri );
-var catalogues = client.GetCatalogues(new Guid[]{new Guid("8c376bee-ffe3-4ee4-abb9-a55b492e69ad")},
-        new CatalogueFilterAttributes());
+var catalogues = client.GetCatalogues(new Guid[]{new Guid(
+        "8c376bee-ffe3-4ee4-abb9-a55b492e69ad")}, new CatalogueFilterAttributes());
 {% endhighlight %}
 
 {{ site.sections['endExample'] }}
