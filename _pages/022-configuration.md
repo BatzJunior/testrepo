@@ -238,6 +238,12 @@ The following examples illustrate these options.
 DELETE /dataServiceRest/configuration HTTP/1.1
 {% endhighlight %}
 
+{{ site.headers['response']  | markdownify }}
+
+{% highlight http %}
+HTTP/1.1 200 Ok
+{% endhighlight %}
+
 {{ site.sections['endExample'] }}
 
 {{ site.sections['beginExampleAPI'] }}
@@ -259,6 +265,12 @@ client.DeleteAllAttributeDefinitions();
 DELETE /dataServiceRest/configuration/part HTTP/1.1
 {% endhighlight %}
 
+{{ site.headers['response']  | markdownify }}
+
+{% highlight http %}
+HTTP/1.1 200 Ok
+{% endhighlight %}
+
 {{ site.sections['endExample'] }}
 
 {{ site.sections['beginExampleAPI'] }}
@@ -278,6 +290,12 @@ client.DeleteAttributeDefinitions( Entity.Part );
 
 {% highlight http %}
 DELETE /dataServiceRest/configuration/part/{1001} HTTP/1.1
+{% endhighlight %}
+
+{{ site.headers['response']  | markdownify }}
+
+{% highlight http %}
+HTTP/1.1 200 Ok
 {% endhighlight %}
 
 {{ site.sections['endExample'] }}
