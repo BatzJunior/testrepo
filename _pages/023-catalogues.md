@@ -124,7 +124,46 @@ HTTP/1.1 201 Created
 
 ## {{ page.sections['addEntries'] }}
 
+Beneath adding catalogue entries to a catalogue while creating a catalogue there is also the possibility to add entries to an already existing catalogue.
 
+### {{ site.headers['example'] }}  Adding a catalogue entry - add the inspector ‘Clarks’
+
+{{ site.sections['beginExampleWebService'] }}
+{{ site.headers['request'] | markdownify }}
+
+{% highlight http %}
+POST /dataServiceRest/catalogues/{8c376bee-ffe3-4ee4-abb9-a55b492e69ad}/entries
+{% endhighlight %}
+
+{% highlight json %}
+ [
+   {
+       "key": 4,
+       "attributes":
+       {
+           "4092": "22",
+           "4093": "Clarks"
+       }
+   }
+ ]
+{% endhighlight %}
+
+{{ site.headers['response'] | markdownify }}
+
+{% highlight http %}
+HTTP/1.1 201 Created
+{% endhighlight %}
+
+{{ site.sections['endExample'] }}
+{{ site.sections['beginExampleAPI'] }}
+
+{{ site.headers['request'] | markdownify }}
+
+{% highlight csharp %}
+
+{% endhighlight %}
+
+{{ site.sections['endExample'] }}
 
 {% comment %}----------------------------------------------------------------------------------------------- {% endcomment %}
 
