@@ -434,7 +434,7 @@ client.DeleteCatalogues( new Guid[]{new Guid( "8c376bee-ffe3-4ee4-abb9-a55b492e6
 
 {% comment %}----------------------------------------------------------------------------------------------- {% endcomment %}
 
-## {{ page.sections['addEntries'] }}
+## {{ page.sections['deleteEntries'] }}
 
 There are two different options of deleting catalogue entries: 
 
