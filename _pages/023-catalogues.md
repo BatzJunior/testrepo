@@ -491,7 +491,8 @@ HTTP/1.1 200 Ok
 
 {% highlight csharp %}
 var client = new DataServiceRestClient( serviceUri );
-client.DeleteCatalogueEntries( new Guid( "8c376bee-ffe3-4ee4-abb9-a55b492e69ad", new []{ (ushort)1, (ushort(3) } );
+client.DeleteCatalogueEntries( 
+  new Guid( "8c376bee-ffe3-4ee4-abb9-a55b492e69ad", new []{ (ushort)1, (ushort(3) } );
 {% endhighlight %}
 
 {{ site.sections['endExample'] }}
