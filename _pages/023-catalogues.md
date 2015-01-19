@@ -270,7 +270,10 @@ var catalogues = client.GetCatalogues(new Guid[]{new Guid(
 
 ## {{ page.sections['update'] }}
 
-On updating a catalogue there are the options to rename the catalogue or to add, update or delete catalogue entries.
+Updating a catalogue might regard the following aspects: 
+
+* Rename the catalogue 
+* Add, update or delete catalogue entries
 
 {{site.images['info']}} To change the valid attributes of a catalogue it needs to be deleted an re-created again.
 
@@ -432,4 +435,64 @@ client.DeleteCatalogues( new Guid[]{new Guid( "8c376bee-ffe3-4ee4-abb9-a55b492e6
 {% comment %}----------------------------------------------------------------------------------------------- {% endcomment %}
 
 ## {{ page.sections['addEntries'] }}
+
+There are two different options of deleting catalogue entries: 
+
+* Delete all entries of a certain catalogue identified by its uuid
+* Delete one or more certain entries identified by its keys of a certain catalogue identified by its uuid
+ 
+The following examples illustrate these options.
+
+### {{ site.headers['example'] }}  Delete all entries of the catalogue with the uuid "8c376bee-ffe3-4ee4-abb9-a55b492e69ad"
+
+{{ site.sections['beginExampleWebService'] }}
+{{ site.headers['request'] | markdownify }}
+
+{% highlight http %}
+DELETE /dataServiceRest/catalogues/{8c376bee-ffe3-4ee4-abb9-a55b492e69ad}/entries HTTP/1.1
+{% endhighlight %}
+
+{{ site.headers['response'] | markdownify }}
+{% highlight http %}
+HTTP/1.1 200 Ok
+{% endhighlight %}
+
+{{ site.sections['endExample'] }}
+
+{{ site.sections['beginExampleAPI'] }}
+{{ site.headers['request'] | markdownify }}
+
+{% highlight csharp %}
+var client = new DataServiceRestClient( serviceUri );
+client.DeleteCatalogueEntries( new Guid( "8c376bee-ffe3-4ee4-abb9-a55b492e69ad" ) );
+{% endhighlight %}
+
+{{ site.sections['endExample'] }}
+
+### {{ site.headers['example'] }}  Delete the entries with key 1 and 3 of the catalogue with the uuid "8c376bee-ffe3-4ee4-abb9-a55b492e69ad"
+
+{{ site.sections['beginExampleWebService'] }}
+{{ site.headers['request'] | markdownify }}
+
+{% highlight http %}
+DELETE /dataServiceRest/catalogues/{8c376bee-ffe3-4ee4-abb9-a55b492e69ad}/entries/{1,3} HTTP/1.1
+{% endhighlight %}
+
+{{ site.headers['response'] | markdownify }}
+
+{% highlight http %}
+HTTP/1.1 200 Ok
+{% endhighlight %}
+
+{{ site.sections['endExample'] }}
+
+{{ site.sections['beginExampleAPI'] }}
+{{ site.headers['request'] | markdownify }}
+
+{% highlight csharp %}
+var client = new DataServiceRestClient( serviceUri );
+client.DeleteCatalogueEntries( new Guid( "8c376bee-ffe3-4ee4-abb9-a55b492e69ad", new []{ (ushort)1, (ushort(3) } );
+{% endhighlight %}
+
+{{ site.sections['endExample'] }}
 
