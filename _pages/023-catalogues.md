@@ -121,13 +121,13 @@ var catalogue = new Catalogue(){
   ValidAttributes = new ushort[]{ 4092, 4093 },
   CatalogueEntries = new[]{
     new CatalogueEntry(){ Key = 0, 
-      Attributes = new[]{ new Attribute( 4092, "n.def." ), new Attribute( 4093, "n.def." ) },
+    Attributes = new[]{ new Attribute( 4092, "n.def." ), new Attribute( 4093, "n.def." ) },
     new CatalogueEntry(){ Key = 1, 
-      Attributes = new[]{ new Attribute( 4092, "21" ), new Attribute( 4093, "Smith" ) },
+    Attributes = new[]{ new Attribute( 4092, "21" ), new Attribute( 4093, "Smith" ) },
     new CatalogueEntry(){ Key = 2, 
-      Attributes = new[]{ new Attribute( 4092, "20" ), new Attribute( 4093, "Miller" ) },
+    Attributes = new[]{ new Attribute( 4092, "20" ), new Attribute( 4093, "Miller" ) },
     new CatalogueEntry(){ Key = 3, 
-      Attributes = new[]{ new Attribute( 4092, "23" ), new Attribute( 4093, "Williams" ) }
+    Attributes = new[]{ new Attribute( 4092, "23" ), new Attribute( 4093, "Williams" ) }
   }
 };
 var client = new DataServiceRestClient( serviceUri );
