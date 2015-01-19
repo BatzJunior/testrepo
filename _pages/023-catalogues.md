@@ -160,7 +160,10 @@ HTTP/1.1 201 Created
 {{ site.headers['request'] | markdownify }}
 
 {% highlight csharp %}
-
+var entry = new CatalogueEntry(){ Key = 4, 
+        Attributes = new[]{ new Attribute( 4092, "22" ), new Attribute( 4093, "Clarks" ) };
+var client = new DataServiceRestClient( serviceUri );
+client.CreateCatalogueEntry( new Guid("8c376bee-ffe3-4ee4-abb9-a55b492e69ad"), entry);
 {% endhighlight %}
 
 {{ site.sections['endExample'] }}
