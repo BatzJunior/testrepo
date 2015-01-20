@@ -35,7 +35,7 @@ charChangeDate (only for parts) | The timestamp for the most recent characterist
 
 Parts and characteristics can be fetched, created, updated and deleted via the following endpoints. Filter can be set as described in the [URL-Parameter section]({{site.baseurl }}/general/#{{ page.subCategory }}).
 
-###Parts<br>
+###Parts
 
 URL Endpoint | GET | POST | PUT | DELETE
 -------------|-----|-----|------|-------
