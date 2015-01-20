@@ -1,35 +1,39 @@
 ---
 category: dataservice
-subCategory: parts
+subCategory: inspection-plan
 title: Data Service
-subTitle: Parts
+subTitle: Inspection Plan
 isSubPage: true
-permalink: /dataservice/parts/
+permalink: /dataservice/inspection-plan/
 sections:
   general: General Information
   endpoint: Endpoint Information
-  add: Add Parts
-  get: Get Parts
-  update: Update Parts
-  delete: Delete Parts
+  add: Add Entities
+  get: Get Entities
+  update: Update Entities
+  delete: Delete Entities
 ---
 
 ## {{ page.sections['general'] }}
 
-A catalogue consists of the following properties:
+Both parts and characteristics are PiWeb inspeaction plan entities. Each entity consits of the following properties:
 
 Name | Description
 -----|-------------
-uuid | Identifies the catalogue uniquely
-name | Name of the catalogue
-validAttribues | A list of attribute keys that are valid for the respective catalogue
-catalogueEntries | Contains a list of catalogue entries. A catalogue entry consits of a unique index based key which specifies the order within the catalogue and a list of attributes which consits of key value pairs. 
+uuid | Identifies this inspection plan entity uniquely.
+path | The path of this entity.
+attribues | A set of attributes which specifies this entity.
+comment | Contains all attributes a value exists for
+version | Contains the revision number of the entity. The revision number starts with zero and is incremented by one each time when changes are applied to an entity. The version is only returned if versioning is enabled in server settings.
+current | Indicates wheter the entity is the current version.
+timeStamp | Contains the date and time of the last update applied to this entity.
+charChangeDate (only for parts) | The timestamp for the most recent characteristic change on any characteristic that belongs to this part
 
 {% comment %}----------------------------------------------------------------------------------------------- {% endcomment %}
 
 ## {{ page.sections['endpoint'] }}
 
-Catalogues and catalogue entries can be fetched, created, updated and deleted via the following endpoints. Filter can be set as described in the [URL-Parameter section]({{site.baseurl }}/general/#{{ page.subCategory }}).
+Parts and characteristics can be fetched, created, updated and deleted via the following endpoints. Filter can be set as described in the [URL-Parameter section]({{site.baseurl }}/general/#{{ page.subCategory }}).
 
 URL Endpoint | GET | POST | PUT | DELETE
 -------------|-----|-----|------|-------
