@@ -6,8 +6,7 @@ sections:
   serviceInformation: Service Information
   configuration: Configuration
   catalogues: Catalogues
-  parts: Parts
-  characteristics: Characteristics
+  inspection-plan: Inspection Plan
   measurements: Measurements
   values: Measured Values
 ---
