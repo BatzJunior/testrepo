@@ -37,7 +37,6 @@ Parts and characteristics can be fetched, created, updated and deleted via the f
 
 ###Parts
 <br>
-
 URL Endpoint | GET | POST | PUT | DELETE
 -------------|-----|-----|------|-------
 /parts | Returns all parts | Creates the committed part(s) which is/are transfered in the body of the request | Updates the committed parts | Deletes all parts
