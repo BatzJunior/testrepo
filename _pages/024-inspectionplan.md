@@ -35,12 +35,15 @@ charChangeDate (only for parts) | The timestamp for the most recent characterist
 
 Parts and characteristics can be fetched, created, updated and deleted via the following endpoints. Filter can be set as described in the [URL-Parameter section]({{site.baseurl }}/general/#{{ page.subCategory }}).
 
+###Parts
+
 URL Endpoint | GET | POST | PUT | DELETE
 -------------|-----|-----|------|-------
-/catalogues | Returns all catalogues | Creates the committed catalogue(s) which is/are transfered in the body of the request | Updates the committed catalogues and their entries | Deletes all catalogues and the catalogue entries
-/catalogues/{catUuid1, catUuid2,...} | Returns the catalogues that uuids are within the catUuid list | *Not supported* | *Not supported* | Deletes the catalogue(s) which has/have the given catUuid(s)
-catalogues/{catalogueUuid}/entries | *Not supported*| Creates the entries transfered in the body of the request for the catalogue specidied by the *catalogueUuid* | *Not supported* | Deletes all entries for the catalogue specified by the *catalogueUuid*
-catalogues/{catalogueUuid}/entries/{key1, key2...} | *Not supported* | *Not supported* | *Not supported* | Deletes the entries specified by its particular key for the catalogue specified by the *catalogueUuid* 
+/parts | Returns all parts | Creates the committed part(s) which is/are transfered in the body of the request | Updates the committed parts | Deletes all parts
+/parts/:partsPath | Returns the part specified by *:partsPath* as well as the parts beneath this part | *Not supported* | *Not supported* | Deletes the part specified by *:partsPath* as well as the parts and characteristics beneath this part
+parts/{:uuidList} | Returns all parts that uuid are within the *:uuidList* | *Not supported* | *Not supported* | *Not supported*
+
+### Characteristics
 
 ## {{ page.sections['add'] }}
 
