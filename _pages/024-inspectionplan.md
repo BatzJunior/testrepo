@@ -22,9 +22,9 @@ Name | Description
 -----|-------------
 uuid | Identifies this inspection plan entity uniquely.
 path | The path of this entity.
-attribues | A set of attributes which specifies this entity.
-comment | Contains all attributes a value exists for
-version | Contains the revision number of the entity. The revision number starts with zero and is incremented by one each time when changes are applied to an entity. The version is only returned if versioning is enabled in server settings.
+attributes | A set of attributes which specifies this entity.
+comment | A comment which describes the last inspection plan change.
+version | Contains the revision number of the entity. The revision number starts with zero and is incremented by one each time when changes are applied to the inspection plan. The version is only returned if versioning is enabled in server settings.
 current | Indicates wheter the entity is the current version.
 timeStamp | Contains the date and time of the last update applied to this entity.
 charChangeDate (only for parts) | The timestamp for the most recent characteristic change on any characteristic that belongs to this part
@@ -41,72 +41,43 @@ URL Endpoint | GET | POST | PUT | DELETE
 -------------|-----|-----|------|-------
 /parts | Returns all parts | Creates the committed part(s) which is/are transfered in the body of the request | Updates the committed parts | Deletes all parts
 /parts/:partsPath | Returns the part specified by *:partsPath* as well as the parts beneath this part | *Not supported* | *Not supported* | Deletes the part specified by *:partsPath* as well as the parts and characteristics beneath this part
-parts/{:uuidList} | Returns all parts that uuid are within the *:uuidList* | *Not supported* | *Not supported* | *Not supported*
+parts/{:uuidList} | Returns all parts that uuid are within the *:uuidList* | *Not supported* | *Not supported* |  Deletes all parts that uuid are within the *:uuidList* as well as the parts and characteristics beneath the particular part
 
 ### Characteristics
 
+URL Endpoint | GET | POST | PUT | DELETE
+-------------|-----|-----|------|-------
+/characteristics | *Not supported* | Creates the committed characteristic(s) which is/are transfered in the body of the request | Updates the committed characteristics | *Not supported*
+/characteristics/:partsPath | Returns the characteristics beneath the part specified by *:partPath* | *Not supported* | *Not supported* | Deletes the characteristics beneath the part specified by *:partsPath*
+characteristics/{:uuidList} | Returns all characteristics that uuid are within the *:uuidList* | *Not supported* | *Not supported* |  Deletes all characteristics that uuid are within the *:uuidList*
+
 ## {{ page.sections['add'] }}
 
-To create a catalogue it is necessary to transfer the catalogue object within the request's body. Beneath a unique identifier and the catalog name the valid attributes need  to be transfered, catalogue entries are optional. The attribute keys which are used for the valid attributes must come from the catalogue attribute range (specified in the [configuration]({{site.baseurl }}/{{page.category}}/configuration/)
+To create a inspection plan entity it is necessary to transfer the entity object within the request's body. A unique identifier and the path are mandatory, attributes and a comment are optional. The attribute keys which are used for the attributes must come from the parts/characteristics attribute range (specified in the [configuration]({{site.baseurl }}/{{page.category}}/parts/)
 
-{{ site.images['info'] }} If no catalogue entries are transfered an empty catalogue entry with the key 0 and attribute values 'not defined' ( in case of alphanumeric attributes ) is created by default.
+{{ site.images['info'] }} The comment is only added if versioning is enabled in server settings.
 
-### {{ site.headers['example'] }} Adding a catalogue with the uuid 8c376bee-ffe3-4ee4-abb9-a55b492e69ad
+### {{ site.headers['example'] }} Adding a part with the uuid 05040c4c-f0af-46b8-810e-30c0c00a379e
 
 {{ site.sections['beginExampleWebService'] }}
 
 {{ site.headers['request']  | markdownify }}
 
 {% highlight http %}
-POST /dataServiceRest/catalogues HTTP/1.1
+POST /dataServiceRest/parts HTTP/1.1
 {% endhighlight %}
 
 {% highlight json %}
 [
   {
-           "uuid": "8c376bee-ffe3-4ee4-abb9-a55b492e69ad",
-           "name": "InspectorCatalogue",
-           "validAttributes":
-           [
-               4092,
-               4093
-           ],
-           "catalogueEntries":
-           [
-               {
-                   "key": 0,
-                   "attributes":
-                   {
-                       "4092": "n.def.",
-                       "4093": "n.def."
-                   }
-               },
-               {
-                   "key": 1,
-                   "attributes":
-                   {
-                       "4092": "21",
-                       "4093": "Smith"
-                   }
-               },
-               {
-                   "key": 2,
-                   "attributes":
-                   {
-                       "4092": "20",
-                       "4093": "Miller"
-                   }
-               },
-               {
-                   "key": 3,
-                   "attributes":
-                   {
-                       "4092": "23",
-                       "4093": "Williams"
-                   }
-               }
-            ]
-        }
+    "uuid": "05040c4c-f0af-46b8-810e-30c0c00a379e",
+    "path": "P:/metal part",
+    "attributes": 
+    {
+      "1001": "4466",
+      "1003": "mp"
+    }       
+  }
 ]
 {% endhighlight %}
 
