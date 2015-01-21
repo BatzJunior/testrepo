@@ -16,7 +16,7 @@ headers:
   request: "![Request](/testrepo/images/server-import.png) Request"
   response: "![Response](/testrepo/images/server-export.png) Response"
 sections:
-  beginExampleWebService: "<fieldset><legend> Direct webservice call </legend><div><button text=\"JSON\" />"
+  beginExampleWebService: "<fieldset><legend> Direct webservice call </legend><div><button text=\"JSON\" /></div>"
   beginExampleAPI: "<fieldset><legend> Webservice call via API.dll </legend>"
   endExample: "</fieldset>"
 gems:
