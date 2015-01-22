@@ -200,16 +200,16 @@ div.btn-group{
 fieldset > ul{
 	float: right;
 	list-style: none;
+	margin:0;
 }
 
 fieldset > ul > li{
 	float: left;
+	padding: 4px 12px 4px 12px;
 	margin-left: 4px;
 	background-color: #437AB4;
-	padding: 5px 20px;
 	border: 1px solid #245E9A;
 	border-radius: 4px;
-	cursor: pointer;
 }
 
 fieldset > ul > li.active{
@@ -218,6 +218,10 @@ fieldset > ul > li.active{
 
 fieldset > ul > li > a{
 	color: #FDFDFD;
+}
+
+fieldset > ul > li > a:hover{
+	text-decoration:none;
 }
 
 .tab-content>.tab-pane{
