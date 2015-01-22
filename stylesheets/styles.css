@@ -218,10 +218,14 @@ div.btn-group .active{
 	background-color: #305781;
 }
 
-div.btn-group .btn input{
-	position: absolute;
-	clip: rect(0,0,0,0);
-	pointer-events: none;	
+.tab-content>.tab-pane{
+	display:none;
+	visibility:hidden;
+}
+
+.tab-content>.active{
+	display:block;
+	visibility:visible;
 }
 
 /* Tables */
