@@ -62,6 +62,18 @@ To create a inspection plan entity it is necessary to transfer the entity object
 {{ site.sections['beginExampleWebService'] }}
 {{ site.sections['formatBtns'] }}
 
+<div class="btn-group" data-toggle="buttons">
+    <label class="btn btn-default">
+        <input type="radio" name="inputWalls" id="inputWalls" value="Excellent" checked>
+    Excellent </label>
+    <label class="btn btn-default">
+        <input type="radio" name="inputWalls" id="inputWalls" value="Good">
+    Good </label>
+    <label class="btn btn-default">
+        <input type="radio" name="inputWalls" id="inputWalls" value="Poor">
+    Poor </label>
+</div>
+
 {{ site.headers['request']  | markdownify }}
 
 {% highlight http %}
