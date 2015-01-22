@@ -81,8 +81,9 @@ To create a inspection plan entity it is necessary to transfer the entity object
 </div>
 
 <script>
-$().button('toggle')
-
+$('#myStateButton').on('click', function () {
+    $(this).button('complete') // button text will be "finished!"
+}
 </script>
 
 {{ site.headers['request']  | markdownify }}
