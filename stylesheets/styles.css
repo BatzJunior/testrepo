@@ -218,7 +218,7 @@ div.btn-group .active{
 	text-shadow: rgba(255, 255, 255, 0.8) 2px 2px 4px;
 }
 
-div.btn-group .labelBtn input{
+div.btn-group .btn input{
 	position: absolute;
 	clip: rect(0,0,0,0);
 	pointer-events: none;	
