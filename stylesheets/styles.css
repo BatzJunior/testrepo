@@ -197,6 +197,11 @@ div.btn-group{
 	float:right;
 }
 
+fieldset > ul{
+	float: right;
+	list-style: none;
+}
+
 fieldset > ul > li{
 	float: left;
 	margin-left: 4px;
