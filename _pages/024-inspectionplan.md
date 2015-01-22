@@ -60,43 +60,8 @@ To create a inspection plan entity it is necessary to transfer the entity object
 ### {{ site.headers['example'] }} Adding a part with the uuid 05040c4c-f0af-46b8-810e-30c0c00a379e
 
 {{ site.sections['beginExampleWebService'] }}
+
 {{ site.sections['formatBtns'] }}
-
-<div class="dropdown">
-
-		<button class="btn btn-danger" type="button" id="myButton">Show Menue</button>
-
-		<ul class="dropdown-menu">
-
-			<li><a href="#">Schuhe</a></li>
-
-			<li><a href="#">Pferd</a></li>
-
-			<li><a href="#">Fahrrad</a></li>
-
-			<li><a href="#">Moped</a></li>
-
-		</ul>
-
-</div>
-
-<div class="btn-group" data-toggle="buttons">
-  <label class="btn btn-primary active">
-    <input type="radio" name="options" id="option1" autocomplete="off" checked> Radio 1 (preselected)
-  </label>
-  <label class="btn btn-primary">
-    <input type="radio" name="options" id="option2" autocomplete="off"> Radio 2
-  </label>
-  <label class="btn btn-primary">
-    <input type="radio" name="options" id="option3" autocomplete="off"> Radio 3
-  </label>
-</div>
-
-<script>
-$('#myStateButton').on('click', function () {
-    $(this).button('complete') // button text will be "finished!"
-}
-</script>
 
 {{ site.headers['request']  | markdownify }}
 
