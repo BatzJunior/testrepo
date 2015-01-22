@@ -81,8 +81,7 @@ To create a inspection plan entity it is necessary to transfer the entity object
 </div>
 
 <script>
-
-$('#myButton').dropdown();
+$().button('toggle')
 
 </script>
 
