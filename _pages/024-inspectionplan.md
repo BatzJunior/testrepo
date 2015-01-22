@@ -66,11 +66,6 @@ To create a inspection plan entity it is necessary to transfer the entity object
   <li role="presentation"><a href="#addXml" aria-controls="addXml" role="tab" data-toggle="tab">XML</a></li>
 </ul>
 
-<div class="tab-content">
-  <div role="tabpanel" class="tab-pane active" id="addJson">Json</div>
-  <div role="tabpanel" class="tab-pane" id="addXml">Xml</div>
-</div>
-
 <script>
   $(function () {
     $('#myTab a:last').tab('show')
@@ -85,6 +80,9 @@ To create a inspection plan entity it is necessary to transfer the entity object
 POST /dataServiceRest/parts HTTP/1.1
 {% endhighlight %}
 
+<div class="tab-content">
+  <div role="tabpanel" class="tab-pane active" id="addJson">
+
 {% highlight json %}
 [
   {
@@ -98,6 +96,10 @@ POST /dataServiceRest/parts HTTP/1.1
   }
 ]
 {% endhighlight %}
+
+</div>
+  <div role="tabpanel" class="tab-pane" id="addXml">Xml</div>
+</div>
 
 {{ site.headers['response']  | markdownify }}
 
