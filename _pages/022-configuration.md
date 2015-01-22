@@ -51,8 +51,6 @@ To add one or more attributes to the configuration the entity type the attribute
 
 {{ site.sections['beginExampleWebService'] }}
 
-{{ site.sections['G1'] }}
-
 {{ site.headers['request']  | markdownify }}
 
 {% highlight http %}
