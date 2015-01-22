@@ -197,25 +197,22 @@ div.btn-group{
 	float:right;
 }
 
-div.btn-group .btn{
+fieldset > ul > li{
+	float: left;
 	margin-left: 4px;
-	padding: 6px 12px 6px 12px;
-	vertical-align: middle;
+	background-color: #437AB4;
+	padding: 5px 20px;
 	border: 1px solid #245E9A;
 	border-radius: 4px;
-	color: #fff;
-	background-color: #437AB4;
-	-ms-touch-action: manipulation;
-	touch-action: manipulation;
 	cursor: pointer;
-	-webkit-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
 }
 
-div.btn-group .active{
+fieldset > ul > li.active{
 	background-color: #305781;
+}
+
+fieldset > ul > li > a{
+	color: #FDFDFD;
 }
 
 .tab-content>.tab-pane{
@@ -224,8 +221,8 @@ div.btn-group .active{
 }
 
 .tab-content>.active{
-	display:block;
-	visibility:visible;
+	display: block;
+	visibility: visible;
 }
 
 /* Tables */
