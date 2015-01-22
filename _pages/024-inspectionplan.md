@@ -72,8 +72,6 @@ To create a inspection plan entity it is necessary to transfer the entity object
   })
 </script>
 
-{{ site.sections['formatBtns'] }}
-
 {{ site.headers['request']  | markdownify }}
 
 {% highlight http %}
