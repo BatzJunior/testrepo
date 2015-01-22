@@ -62,17 +62,13 @@ To create a inspection plan entity it is necessary to transfer the entity object
 {{ site.sections['beginExampleWebService'] }}
 
 <ul class="nav nav-tabs" role="tablist" id="myTab">
-  <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
-  <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
-  <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
-  <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+  <li role="presentation" class="active"><a href="#addJson" aria-controls="addJson" role="tab" data-toggle="tab">JSON</a></li>
+  <li role="presentation"><a href="#addXml" aria-controls="addXml" role="tab" data-toggle="tab">XML</a></li>
 </ul>
 
 <div class="tab-content">
-  <div role="tabpanel" class="tab-pane active" id="home">...</div>
-  <div role="tabpanel" class="tab-pane" id="profile">...</div>
-  <div role="tabpanel" class="tab-pane" id="messages">...</div>
-  <div role="tabpanel" class="tab-pane" id="settings">...</div>
+  <div role="tabpanel" class="tab-pane active" id="addJson">...</div>
+  <div role="tabpanel" class="tab-pane" id="addXml">...</div>
 </div>
 
 <script>
@@ -82,18 +78,6 @@ To create a inspection plan entity it is necessary to transfer the entity object
 </script>
 
 {{ site.sections['formatBtns'] }}
-
-<a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-  Link with href
-</a>
-<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-  Button with data-target
-</button>
-<div class="collapse" id="collapseExample">
-  <div class="well">
-    TESCHTEXT
-  </div>
-</div>
 
 {{ site.headers['request']  | markdownify }}
 
