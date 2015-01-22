@@ -63,6 +63,18 @@ To create a inspection plan entity it is necessary to transfer the entity object
 
 {{ site.sections['formatBtns'] }}
 
+<a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+  Link with href
+</a>
+<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+  Button with data-target
+</button>
+<div class="collapse" id="collapseExample">
+  <div class="well">
+    TESCHTEXT
+  </div>
+</div>
+
 {{ site.headers['request']  | markdownify }}
 
 {% highlight http %}
