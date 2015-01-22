@@ -195,6 +195,7 @@ pre {
 
 div.btn-group{
 	float:right;
+	margin-left: 4px;
 }
 
 div.btn-group .labelBtn{
