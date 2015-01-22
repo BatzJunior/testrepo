@@ -193,6 +193,31 @@ pre {
 	margin-bottom: 10px;
 }
 
+div.btn-group{
+	float:right;
+}
+
+div.btn-group .labelBtn{
+	padding: 6px 12px;
+	vertical-align: middle;
+	border: 1px solid #245E9A;
+	border-radius: 4px;
+	color: #fff;
+	background-color: #437AB4;
+	-ms-touch-action: manipulation;
+	touch-action: manipulation;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+div.btn-group .labelBtn input{
+	position: absolute;
+	clip: rect(0,0,0,0);
+	pointer-events: none;	
+}
 
 /* Tables */
 
