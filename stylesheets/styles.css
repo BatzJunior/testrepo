@@ -214,7 +214,7 @@ div.btn-group .labelBtn{
 	user-select: none;
 }
 
-div.btn-group .labelBtn{
+div.btn-group .active{
 	text-shadow: rgba(255, 255, 255, 0.8) 2px 2px 4px;
 }
 
