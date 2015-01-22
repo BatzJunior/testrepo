@@ -67,8 +67,8 @@ To create a inspection plan entity it is necessary to transfer the entity object
 </ul>
 
 <div class="tab-content">
-  <div role="tabpanel" class="tab-pane active" id="addJson">...</div>
-  <div role="tabpanel" class="tab-pane" id="addXml">...</div>
+  <div role="tabpanel" class="tab-pane active" id="addJson">Json</div>
+  <div role="tabpanel" class="tab-pane" id="addXml">Xml</div>
 </div>
 
 <script>
