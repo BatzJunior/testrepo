@@ -61,7 +61,7 @@ To create a inspection plan entity it is necessary to transfer the entity object
 
 {{ site.sections['beginExampleWebService'] }}
 
-<ul role="tablist" id="myTab">
+<ul role="tablist" id="addTab">
   <li role="presentation" class="active"><a href="#addJson" aria-controls="addJson" role="tab" data-toggle="tab">JSON</a></li>
   <li role="presentation"><a href="#addXml" aria-controls="addXml" role="tab" data-toggle="tab">XML</a></li>
 </ul>
