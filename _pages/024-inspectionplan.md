@@ -51,7 +51,11 @@ URL Endpoint | GET | POST | PUT | DELETE
 /characteristics/:partsPath | Returns the characteristics beneath the part specified by *:partPath* | *Not supported* | *Not supported* | Deletes the characteristics beneath the part specified by *:partsPath*
 characteristics/{:uuidList} | Returns all characteristics that uuid are within the *:uuidList* | *Not supported* | *Not supported* |  Deletes all characteristics that uuid are within the *:uuidList*
 
+{% comment %}----------------------------------------------------------------------------------------------- {% endcomment %}
+
 ## {{ page.sections['add'] }}
+
+{% assign key = 'add' %}
 
 To create a inspection plan entity it is necessary to transfer the entity object within the request's body. A unique identifier and the path are mandatory, attributes and a comment are optional. The attribute keys which are used for the attributes must come from the parts/characteristics attribute range (specified in the [configuration]({{site.baseurl }}/{{page.category}}/parts/)
 
@@ -61,7 +65,7 @@ To create a inspection plan entity it is necessary to transfer the entity object
 
 {{ site.sections['beginExampleWebService'] }}
 
-{% include codeswitcher.html key="add" %}
+{% include codeswitcher.html key="{{key}}" %}
 
 {{ site.headers['request']  | markdownify }}
 
