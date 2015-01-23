@@ -229,7 +229,7 @@ fieldset > .codeTab{
 	visibility:hidden;
 }
 
-fieldset > .codeTab + .active{
+fieldset > .active{
 	display: block;
 	visibility: visible;
 }
