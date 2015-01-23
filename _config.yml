@@ -4,7 +4,6 @@ defaults:
       path: "" # an empty string here means all files in the project
     values:
       layout: "frame"
-    codeFormat: "json"
 
 include: ['_pages']
 relative_permalinks: false
@@ -21,5 +20,7 @@ sections:
   beginExampleAPI: "<fieldset><legend> Webservice call via API.dll </legend>"
   endExample: "</fieldset>"
   endCode: "</div>"
+settings:
+  defaultCodeFormat: "json"
 gems:
   - jekyll-redirect-from
