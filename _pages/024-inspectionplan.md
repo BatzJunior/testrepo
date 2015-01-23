@@ -61,7 +61,7 @@ To create a inspection plan entity it is necessary to transfer the entity object
 
 {{ site.sections['beginExampleWebService'] }}
 
-<ul id="addTab">
+<ul>
   <li class="active"><a href="#addJson" data-toggle="tab">JSON</a></li>
   <li><a href="#addXml" data-toggle="tab">XML</a></li>
 </ul>
@@ -72,8 +72,7 @@ To create a inspection plan entity it is necessary to transfer the entity object
 POST /dataServiceRest/parts HTTP/1.1
 {% endhighlight %}
 
-<div class="tab-content">
-  <div id="addJson">
+<div class="codeTab" id="addJson">
 
 {% highlight json %}
 [
@@ -90,9 +89,7 @@ POST /dataServiceRest/parts HTTP/1.1
 {% endhighlight %}
 
 </div>
-<div id="addXml">Xml</div>
-</div>
-
+<div class="codeTab" id="addXml">Xml</div>
 
 {{ site.headers['response']  | markdownify }}
 
