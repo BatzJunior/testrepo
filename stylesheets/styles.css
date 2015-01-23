@@ -224,12 +224,12 @@ fieldset > ul > li > a:hover{
 	text-decoration:none;
 }
 
-.tab-content>.tab-pane{
+fieldset > .codeTab{
 	display:none;
 	visibility:hidden;
 }
 
-.tab-content>.active{
+fieldset > .codeTab + .active{
 	display: block;
 	visibility: visible;
 }
