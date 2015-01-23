@@ -1,4 +1,4 @@
 <ul>
-  <li class="active"><a href="#{{ include.key }}Json" data-toggle="tab">JSON</a></li>
-  <li><a href="#{{ include.key }}Xml" data-toggle="tab">XML</a></li>
+  <li {% if 'json' == site.defaults['codeFormat'] %}class="active"{% endif %}><a href="#{{ include.key }}json" data-toggle="tab">JSON</a></li>
+  <li {% if 'xml' == site.defaults['codeFormat'] %}class="active"{% endif %}><a href="#{{ include.key }}xml" data-toggle="tab">XML</a></li>
 </ul>
