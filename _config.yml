@@ -4,13 +4,14 @@ defaults:
       path: "" # an empty string here means all files in the project
     values:
       layout: "frame"
+    codeFormat: "json"
 
 include: ['_pages']
 relative_permalinks: false
 baseurl: "/testrepo"
 images:
   warning: "![Warning](/testrepo/images/warning.png)"
-  info: "![Warning](/testrepo/images/info.png)"
+  info: "![Info](/testrepo/images/info.png)"
 headers:
   example: "![Example](/testrepo/images/document-info.png) Example:"
   request: "![Request](/testrepo/images/server-import.png) Request"
