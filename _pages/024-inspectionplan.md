@@ -61,7 +61,7 @@ To create a inspection plan entity it is necessary to transfer the entity object
 
 {{ site.sections['beginExampleWebService'] }}
 
-{% include codeswitcher.md key="add" %}
+{% include codeswitcher.html key="add" %}
 
 {{ site.headers['request']  | markdownify }}
 
