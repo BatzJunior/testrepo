@@ -66,12 +66,6 @@ To create a inspection plan entity it is necessary to transfer the entity object
   <li role="presentation"><a href="#addXml" aria-controls="addXml" role="tab" data-toggle="tab">XML</a></li>
 </ul>
 
-<script>
-  $(function () {
-    $('#myTab a:last').tab('show')
-  })
-</script>
-
 {{ site.headers['request']  | markdownify }}
 
 {% highlight http %}
