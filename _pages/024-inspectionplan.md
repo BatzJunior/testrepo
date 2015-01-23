@@ -71,7 +71,7 @@ To create a inspection plan entity it is necessary to transfer the entity object
 POST /dataServiceRest/parts HTTP/1.1
 {% endhighlight %}
 
-<div class="codeTab active" id="addJson">
+{% include jsoncodeStart.html key="add" %}
 
 {% highlight json %}
 [
