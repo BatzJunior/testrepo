@@ -71,7 +71,7 @@ To create a inspection plan entity it is necessary to transfer the entity object
 POST /dataServiceRest/parts HTTP/1.1
 {% endhighlight %}
 
-{% include jsoncodeStart.html key="add" %}
+{% include codeStart.html key="add" format="json" %}
 
 {% highlight json %}
 [
@@ -87,8 +87,10 @@ POST /dataServiceRest/parts HTTP/1.1
 ]
 {% endhighlight %}
 
-</div>
-<div class="codeTab" id="addXml">Xml</div>
+{{ site.sections['endCode'] }}
+{% include codeStart.html key="add" format="xml" %}
+
+{{ site.sections['endCode'] }}
 
 {{ site.headers['response']  | markdownify }}
 
