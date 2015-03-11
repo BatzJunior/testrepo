@@ -44,7 +44,11 @@ Service information can be fetched via the following endpoint. There are no filt
 
 <ul class="list-group">
   <li class="list-group-item">
-    <span class="badge">GET</span>
+    <span class="label label-primary">GET</span>
+    /serviceInformation
+  </li>
+  <li class="list-group-item">
+    <span class="label label-primary">GET</span>
     /serviceInformation
   </li>
 </ul>
