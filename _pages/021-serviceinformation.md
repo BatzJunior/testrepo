@@ -45,11 +45,55 @@ Service information can be fetched via the following endpoint. There are no filt
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
   <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="headingOne" data-toggle="collapse" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-      <span class="label label-primary">GET</span>
+      <span class="label label-primary">GET</span> /serviceInformation
+      <span style="float: right;">
+        Returns general information about the PiWeb server
+      </span>
     </div>
     <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
       <div class="panel-body">
-        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+       {% assign exampleCaption="Get Service Information for a given connection" %}
+        {% assign comment="" %}
+        
+        {% capture jsonrequest %}
+        {% highlight http %}
+        GET /dataServiceRest/serviceInformation HTTP/1.1
+        {% endhighlight %}
+        {% endcapture %}
+        
+        {% capture jsonresponse %}
+        {% highlight json %}
+        {
+           ...
+           "data":
+           [
+               {
+                  "serverName": "PiWeb Server DEDRSW9KKNVY1",
+                  "version": "5.6.2.0",
+                  "securityEnabled": false,
+                  "edition": "PiWebDB",
+                  "versionWsdlMajor": "2",
+                  "versionWsdlMinor": "9",
+                  "partCount": 4,
+                  "characteristicCount": 125,
+                  "measurementCount": 20,
+                  "valueCount": 900,
+                  "featureList":
+                  [
+                     "MeasurementAggregation",
+                    "DistinctMeasurementSearch"
+                  ],
+                  "inspectionPlanTimestamp": "2014-11-24T16:08:58.812964+01:00",
+                  "measurementTimestamp": "2014-11-03T10:27:28.3461853+01:00",
+                  "configurationTimestamp": "2014-11-03T10:27:27.5245116+01:00"
+               },
+               ...
+           ]
+        }
+        {% endhighlight %}
+        {% endcapture %}
+        
+        {% include exampleFieldset.html %}
       </div>
     </div>
   </div>
@@ -82,64 +126,6 @@ Service information can be fetched via the following endpoint. There are no filt
     </div>
   </div>
 </div>
-
-<ul class="list-group">
-  <li class="list-group-item" data-toggle="collapse" data-target="#collapseExample">
-    <span class="label label-primary">GET</span>
-    /serviceInformation
-  </li>
-  <li class="list-group-item collapse" id="collapseExample">
-    {% assign exampleCaption="Get Service Information for a given connection" %}
-    {% assign comment="" %}
-    
-    {% capture jsonrequest %}
-    {% highlight http %}
-    GET /dataServiceRest/serviceInformation HTTP/1.1
-    {% endhighlight %}
-    {% endcapture %}
-    
-    {% capture jsonresponse %}
-    {% highlight json %}
-    {
-       ...
-       "data":
-       [
-           {
-              "serverName": "PiWeb Server DEDRSW9KKNVY1",
-              "version": "5.6.2.0",
-              "securityEnabled": false,
-              "edition": "PiWebDB",
-              "versionWsdlMajor": "2",
-              "versionWsdlMinor": "9",
-              "partCount": 4,
-              "characteristicCount": 125,
-              "measurementCount": 20,
-              "valueCount": 900,
-              "featureList":
-              [
-                 "MeasurementAggregation",
-                "DistinctMeasurementSearch"
-              ],
-              "inspectionPlanTimestamp": "2014-11-24T16:08:58.812964+01:00",
-              "measurementTimestamp": "2014-11-03T10:27:28.3461853+01:00",
-              "configurationTimestamp": "2014-11-03T10:27:27.5245116+01:00"
-           },
-           ...
-       ]
-    }
-    {% endhighlight %}
-    {% endcapture %}
-    
-    {% include exampleFieldset.html %}
-  </li>
-</ul>
-
-<ul class="list-group">
-  <li class="list-group-item">
-    <span class="label label-primary">GET</span>
-    /serviceInformation
-  </li>
-</ul>
 
 URL Endpoint | GET | PUT | POST | DELETE
 -------------|-----|-----|------|-------
