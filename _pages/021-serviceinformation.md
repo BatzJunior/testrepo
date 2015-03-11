@@ -91,6 +91,9 @@ Service information can be fetched via the following endpoint. There are no filt
     
     {% include exampleFieldset.html %}
   </li>
+</ul>
+
+<ul class="list-group">
   <li class="list-group-item">
     <span class="label label-primary">GET</span>
     /serviceInformation
