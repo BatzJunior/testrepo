@@ -44,7 +44,7 @@ Service information can be fetched via the following endpoint. There are no filt
 
 <div class="panel-group" role="tablist" aria-multiselectable="true">
  {% assign linkId="serviceInformationGet" %}
- {% assign mehtod="GET" %}
+ {% assign method="GET" %}
  {% assign endpoint="/serviceInformation" %}
  {% assign summary="Returns general information about the PiWeb server" %}
  {% assign description="" %}
