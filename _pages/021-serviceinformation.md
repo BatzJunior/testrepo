@@ -44,12 +44,8 @@ Service information can be fetched via the following endpoint. There are no filt
 
 <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
   <div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="headingOne">
-      <h4 class="panel-title" data-toggle="collapse" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-        <!--<a class="collapsed" data-toggle="collapse" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">-->
-          <span class="label label-primary">GET</span>
-        <!--</a>-->
-      </h4>
+    <div class="panel-heading" role="tab" id="headingOne" data-toggle="collapse" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+      <span class="label label-primary">GET</span>
     </div>
     <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
       <div class="panel-body">
