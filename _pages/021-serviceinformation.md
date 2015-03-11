@@ -42,7 +42,7 @@ configurationTimestamp | ```DateTime``` | Timestamp of the last configuration ti
 
 Service information can be fetched via the following endpoint. There are no filter parameters to restrict the query.
 
-<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+<div class="panel-group" role="tablist" aria-multiselectable="true">
   <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="headingOne" data-toggle="collapse" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
       <span class="label label-primary">GET</span> /serviceInformation
