@@ -95,6 +95,7 @@ Service information can be fetched via the following endpoint. There are no filt
 
 ### Get Service Information
 
+{% assign linkId="serviceInformationGet" %}
 {% assign caption="GetServiceInformation" %}
 {% assign icon=site.images['function-get'] %}
 {% assign description="Fetches the service information. " %}
@@ -113,4 +114,4 @@ var client = new DataServiceRestClient( "http://piwebserver:8080" );
 var serviceInformation = await client.GetServiceInformation();
 {% endhighlight %}
 {% endcapture %}
-{% include sdkFunctionFieldset.html %}
+{% include methodTab.html %}
