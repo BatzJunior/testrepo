@@ -43,88 +43,51 @@ configurationTimestamp | ```DateTime``` | Timestamp of the last configuration ti
 Service information can be fetched via the following endpoint. There are no filter parameters to restrict the query.
 
 <div class="panel-group" role="tablist" aria-multiselectable="true">
-  <div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="headingOne" data-toggle="collapse" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-      <span class="label label-primary">GET</span> /serviceInformation
-      <span style="float: right;">
-        Returns general information about the PiWeb server
-      </span>
-    </div>
-    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-      <div class="panel-body">
-       {% assign exampleCaption="Get Service Information for a given connection" %}
-        {% assign comment="" %}
-        
-        {% capture jsonrequest %}
-        {% highlight http %}
-        GET /dataServiceRest/serviceInformation HTTP/1.1
-        {% endhighlight %}
-        {% endcapture %}
-        
-        {% capture jsonresponse %}
-        {% highlight json %}
-        {
-           ...
-           "data":
-           [
-               {
-                  "serverName": "PiWeb Server DEDRSW9KKNVY1",
-                  "version": "5.6.2.0",
-                  "securityEnabled": false,
-                  "edition": "PiWebDB",
-                  "versionWsdlMajor": "2",
-                  "versionWsdlMinor": "9",
-                  "partCount": 4,
-                  "characteristicCount": 125,
-                  "measurementCount": 20,
-                  "valueCount": 900,
-                  "featureList":
-                  [
-                     "MeasurementAggregation",
-                    "DistinctMeasurementSearch"
-                  ],
-                  "inspectionPlanTimestamp": "2014-11-24T16:08:58.812964+01:00",
-                  "measurementTimestamp": "2014-11-03T10:27:28.3461853+01:00",
-                  "configurationTimestamp": "2014-11-03T10:27:27.5245116+01:00"
-               },
-               ...
-           ]
-        }
-        {% endhighlight %}
-        {% endcapture %}
-        
-        {% include exampleFieldset.html %}
-      </div>
-    </div>
-  </div>
-  <div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="headingTwo">
-      <h4 class="panel-title">
-        <a class="collapsed" data-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-          Collapsible Group Item #2
-        </a>
-      </h4>
-    </div>
-    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-      <div class="panel-body">
-        
-      </div>
-    </div>
-  </div>
-  <div class="panel panel-default">
-    <div class="panel-heading" role="tab" id="headingThree">
-      <h4 class="panel-title">
-        <a class="collapsed" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-          Collapsible Group Item #3
-        </a>
-      </h4>
-    </div>
-    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-      <div class="panel-body">
-        
-      </div>
-    </div>
-  </div>
+ {% assign linkId="serviceInformationGet" %}
+ {% assign mehtod="GET" %}
+ {% assign endpoint="/serviceInformation" %}
+ {% assign summary="Returns general information about the PiWeb server" %}
+ {% assign description="" %}
+ {% assign exampleCaption="Get Service Information for a given connection" %}
+  {% assign comment="" %}
+  
+  {% capture jsonrequest %}
+  {% highlight http %}
+  GET /dataServiceRest/serviceInformation HTTP/1.1
+  {% endhighlight %}
+  {% endcapture %}
+  
+  {% capture jsonresponse %}
+  {% highlight json %}
+  {
+     ...
+     "data":
+     [
+         {
+            "serverName": "PiWeb Server DEDRSW9KKNVY1",
+            "version": "5.6.2.0",
+            "securityEnabled": false,
+            "edition": "PiWebDB",
+            "versionWsdlMajor": "2",
+            "versionWsdlMinor": "9",
+            "partCount": 4,
+            "characteristicCount": 125,
+            "measurementCount": 20,
+            "valueCount": 900,
+            "featureList":
+            [
+               "MeasurementAggregation",
+              "DistinctMeasurementSearch"
+            ],
+            "inspectionPlanTimestamp": "2014-11-24T16:08:58.812964+01:00",
+            "measurementTimestamp": "2014-11-03T10:27:28.3461853+01:00",
+            "configurationTimestamp": "2014-11-03T10:27:27.5245116+01:00"
+         },
+         ...
+     ]
+  }
+  {% endhighlight %}
+  {% endcapture %}
 </div>
 
 URL Endpoint | GET | PUT | POST | DELETE
