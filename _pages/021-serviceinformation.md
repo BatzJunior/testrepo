@@ -6,34 +6,59 @@ subTitle: Service Information
 isSubPage: true
 permalink: /dataservice/serviceinformation/
 sections:
-  endpoint: Endpoint Information
-  get: Get Service Information
+  general: General Information
+  endpoint: REST API Endpoints
+  sdk: .NET SDK Methods
+redirect_from: "/dataservice/"
 ---
+
+## {{ page.sections['general'] }}
+
+Fetching service information is guaranteed to be very fast and is therefore well suited for checking the connection. This method can always be invoked without having credentials specified.
+The first time service information are fetched from the server, database statistics values need to be created. As the service information call should return immediately, statistics creation is triggered in a separate task. Therefore, the statistical values ```partCount```, ```characteristicsCount```, ```measurementsCount``` and ```valuesCount``` stay empty in the first response, but should generally contain values on the second call.
+
+The ServiceInformation object, which is returned, contains of the following properties:
+
+### ServiceInformation
+
+Property | Type | Description
+---------|------|-------------
+serverName | ```string``` | The name of the PiWeb server as it is specified in the server settings dialog
+version | ```string``` | The version number of the PiWeb server
+securityEnabled | ```bool``` | Indicates whether security is server side enabled or not.
+edition | ```string``` | The database edition. Should generally be PiwebDB.
+versionWsdlMajor | ```string``` | The major version number of the interface.
+versionWsdlMinor | ```string``` | The minor version number of the interface.
+partCount | ```int``` | Number of parts stored in the server
+characteristicCount |```int``` | Number of characteristics stored in the server
+measurementCount | ```int``` | Number of measurements stored in the server
+valueCount | ```int``` | Number of measured values stored in the server
+featureList | ```string[]``` | Includes the server side supported features.
+inspectionPlanTimestamp | ```DateTime``` | Timestamp of the last inspection plan modification
+measurementTimestamp | ```DateTime``` | Timestamp of the last measurement modification
+configurationTimestamp | ```DateTime``` | Timestamp of the last configuration timestamp
 
 ## {{ page.sections['endpoint'] }}
 
-Service information can be fetched via the following endpoint. There are no filter parameter to restrict the query.
+Service information can be fetched via the following endpoint. There are no filter parameters to restrict the query.
 
 URL Endpoint | GET | PUT | POST | DELETE
 -------------|-----|-----|------|-------
 /serviceInformation | Returns general information about the PiWeb-Server | not supported | not supported | not supported
 
-## {{ page.sections['get'] }}
+### Get Service Information <span class="badge">14</span>
 
-Fetching service information is guaranteed to be very fast and is therefore well suited for checking the connection. This method can always be invoked without having credentials specified. 
+{% assign exampleCaption="Get Service Information for a given connection" %}
+{% assign comment="" %}
 
-### Get Service Information for a given connection
-
-####Example for direct webservice call
-
-Request:
-
+{% capture jsonrequest %}
 {% highlight http %}
 GET /dataServiceRest/serviceInformation HTTP/1.1
 {% endhighlight %}
+{% endcapture %}
 
-Response:
-{% highlight json linenos %}
+{% capture jsonresponse %}
+{% highlight json %}
 {
    ...
    "data":
@@ -49,8 +74,6 @@ Response:
           "characteristicCount": 125,
           "measurementCount": 20,
           "valueCount": 900,
-          "queryTimeout": 0,
-          "queryRowLimit": 0,
           "featureList":
           [
              "MeasurementAggregation",
@@ -64,10 +87,31 @@ Response:
    ]
 }
 {% endhighlight %}
+{% endcapture %}
 
-####Example for webservice call via API.dll
+{% include exampleFieldset.html %}
 
+
+## {{page.sections['sdk'] }}
+
+### Get Service Information
+
+{% assign caption="GetServiceInformation" %}
+{% assign icon=site.images['function-get'] %}
+{% assign description="Fetches the service information. " %}
+{% capture parameterTable %}
+
+Name           | Type                                  | Description
+---------------|---------------------------------------|--------------------------------------------------
+token          | ```CancellationToken```               | Parameter is optional allows to cancel the asyncronous call.
+{% endcapture %}
+
+{% assign returnParameter="Task<ServiceInformation>" %}
+{% assign exampleCaption="Get the service information" %}
+{% capture example %}
 {% highlight csharp %}
-var client = new DataServiceRestClient( serviceUri );
-ServiceInformation information = client.GetServiceInformation();
+var client = new DataServiceRestClient( "http://piwebserver:8080" );
+var serviceInformation = await client.GetServiceInformation();
 {% endhighlight %}
+{% endcapture %}
+{% include sdkFunctionFieldset.html %}

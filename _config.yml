@@ -7,16 +7,31 @@ defaults:
 
 include: ['_pages']
 relative_permalinks: false
-baseurl: "/testrepo"
+baseurl: "/PiWeb-Api"
+links:
+  configuration: "[Configuration](/PiWeb-Api/dataservice/configuration/)"
 images:
-  warning: "![Warning](/testrepo/images/warning.png)"
-  info: "![Info](/testrepo/images/info.png)"
+  warning: "![Warning](/PiWeb-Api/images/warning.png)"
+  info: "![Info](/PiWeb-Api/images/info.png)"
+  parameter: "![Info](/PiWeb-Api/images/parameter.png)"
+  parameter16: "![Info](/PiWeb-Api/images/parameter_16.png)"
+  returnParameter: "![Info](/PiWeb-Api/images/returnParameter.png)"
+  returnParameter16: "![Info](/PiWeb-Api/images/returnParameter_16.png)"
+  summary: "![Info](/PiWeb-Api/images/summary.png)"
+  summary16: "![Info](/PiWeb-Api/images/summary_16.png)"
+  list-info: "![List Info](/PiWeb-Api/images/list-info.png)"
+  document-info: "![Document Info](/PiWeb-Api/images/document-info.png)"
+  example16: "![Example](/PiWeb-Api/images/example_16.png)"
+  function-get: "![Get](/PiWeb-Api/images/function-get.png)"
+  function-create: "![Create](/PiWeb-Api/images/function-create.png)"
+  function-update: "![Update](/PiWeb-Api/images/function-update.png)"
+  function-delete: "![Delete](/PiWeb-Api/images/function-delete.png)"
 headers:
-  example: "![Example](/testrepo/images/document-info.png) Example:"
-  request: "![Request](/testrepo/images/server-import.png) Request"
-  response: "![Response](/testrepo/images/server-export.png) Response"
+  example: "![Example](/PiWeb-Api/images/document-info.png) Example:"
+  request: "![Request](/PiWeb-Api/images/server-import.png) Request"
+  response: "![Response](/PiWeb-Api/images/server-export.png) Response"
 sections:
-  beginExampleWebService: "<fieldset><legend> Direct webservice call </legend>"
+  beginExampleWebService: "<fieldset><legend><span><img src=\"/PiWeb-Api/images/document-info.png\"/></span> Example:</legend>"
   beginExampleAPI: "<fieldset><legend> Webservice call via API.dll </legend>"
   endExample: "</fieldset>"
   endCode: "</div>"

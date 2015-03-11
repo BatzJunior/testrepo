@@ -7,6 +7,5 @@ sections:
   configuration: Configuration
   catalogues: Catalogues
   inspection-plan: Inspection Plan
-  measurements: Measurements
-  values: Measured Values
+  measurements: Measurements and Measured Values
 ---

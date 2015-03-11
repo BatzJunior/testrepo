@@ -7,17 +7,14 @@ isSubPage: true
 permalink: /dataservice/configuration/
 sections:
   general: General Information
-  endpoint: Endpoint Information
-  add: Add Attributes
-  get: Get Configuration
-  update: Update Attributes
-  delete: Delete Attributes
+  endpoint: REST API Endpoints
+  sdk: .NET SDK Methods
 ---
 
 ## {{ page.sections['general'] }}
 
 The PiWeb configuration consists of a list of attributes for all types of entities. 
-There are different kinds of entites: 
+The different types of entites are: 
 
 * *parts*, 
 * *characteristics*, 
@@ -25,87 +22,56 @@ There are different kinds of entites:
 * *values* and 
 * *catalogues*.
 
-The attributes are either *AttributeDefinition* or *CatalogueAttributeDefinition* attributes. 
-AttribueDefinition attributes contain a property *type* which defines the data type: *AlphaNumeric*, *Integer*, *Float* or *DateTime*. If the attributes type is *AlphaNumeric* the property *length* defines the maximum length of the attribute's value.
-In contrast to the AttributeDefinition the CatalogueAttribueDefinition attributes reference a catalogue.
+The attributes are either ```AttributeDefinition``` or ```CatalogueAttributeDefinition``` objects. Both are derived from the abstract base type ```AbstractAttributeDefinition```. 
+
+###AbstractAttributeDefinition
+
+Property      | Type         | Description
+--------------|--------------|--------------------------------------------------------------
+key           | ```ushort``` | The attribute's key, by which the attribute can be uniquely identified
+description   | ```string``` | The attribute's name or a short description 
+
+###AttributeDefinition : AbstractAttributeDefinition
+
+Property      | Type                | Description
+--------------|---------------------|--------------------------------------------------------------
+type          | ```AttributeType``` | The attribute's type. May be *AlphaNumeric*, *Integer*, *Float* or *DateTime*
+length        | ```ushort```        | Defines the attribute's maximum length. Only set if the type is *AlphaNumeric*
+definitionType| ```string```        | Has always the value 'AttributeDefinition' and is used to differentiate between  ```AttributeDefinition``` and ```CatalogueAttributeDefinition``` (only relevant and available for REST API)
+
+###CatalogueAttributeDefinition : AbstractAttributeDefinition
+
+Property      | Type         | Description
+--------------|--------------|------------------------------------------------------------
+catalogue     | ```Guid```   |The uuid of the catalogue the attribute's value has to be taken from
+definitionType| ```string``` | Has always the value 'CatalogueAttributeDefinition' and is used to differentiate between  ```AttributeDefinition``` and ```CatalogueAttributeDefinition``` (only relevant and available for REST API)
 
 {% comment %}----------------------------------------------------------------------------------------------- {% endcomment %}
 
 ## {{ page.sections['endpoint'] }}
 
-The configuration can be created, fetched, updated and deleted via the following endpoints. There are no filter parameters to restrict the query.
+The configuration can be fetched, created, updated and deleted via the following endpoints. There are no filter parameters to restrict the queries.
 
 URL Endpoint | GET | PUT | POST | DELETE
 -------------|-----|-----|------|-------
 /configuration| Returns the attribute configuration (list of attributes for each entity). | *Not supported* | *Not supported* | Deletes all attribute definitions.
-/configuration/*entityType*| *Not supported* | Updates the attribute defintions transfered within the body of the request for the given *entityType* |  Creates the attribute defintions transfered within the body of the request for the given *entityType* | *Not supported*
-configuration/*entityType*/{*Comma seperated list of attribute definition ids*} | *Not supported* | *Not supported* | *Not supported* | Deletes the attribute definitions identified by the *List of attribute definition ids* for the given *entityType*. If the *List of attribute definition ids* is empty all attributes for the given *entityType* are deleted. 
+/configuration/*entityType*| *Not supported* | Updates the attribute definitions transfered within the body of the request for the given *entityType* |  Creates the attribute definitions transfered within the body of the request for the given *entityType* | *Not supported*
+configuration/*entityType*/{*Comma seperated list of attribute definition ids*} | *Not supported* | *Not supported* | *Not supported* | Deletes the attribute definitions identified by the *List of attribute definition ids* for the given *entityType*. If the *List of attribute definition ids* is empty, all attributes for the given *entityType* are deleted.
 
-{% comment %}----------------------------------------------------------------------------------------------- {% endcomment %}
-
-## {{ page.sections['add'] }}
-
-To add one or more attributes to the configuration the entity type the attributes belong to as well as the attribute definition(s) need to be transfered. The entity type ist transfered in the uri the attributes within the body of the request.
-
-### {{ site.headers['example'] }} Adding a part attribute with the key 1001 to the configuration
-
-{{ site.sections['beginExampleWebService'] }}
-
-{{ site.headers['request']  | markdownify }}
-
-{% highlight http %}
-POST /dataServiceRest/configuration/parts HTTP/1.1
-{% endhighlight %}
-
-{% highlight json %}
-[
-  {
-    "key":1001,
-    "description":"partNumber",
-    "length":30,
-    "type":"AlphaNumeric",
-    "definitionType":"AttributeDefinition"
-  }
-]
-{% endhighlight %}
-
-{{ site.headers['response']  | markdownify }}
-
-{% highlight http %}
-HTTP/1.1 201 Created
-{% endhighlight %}
-
-{{ site.sections['endExample'] }}
-{{ site.sections['beginExampleAPI'] }}
-
-{{ site.headers['request'] | markdownify }}
-
-{% highlight csharp %}
-var client = new DataServiceRestClient( serviceUri );
-var attributeDefinition = 
-      new AttributeDefinition( 1001, "partNumber", AttributeType.AlphaNumeric, 30 );
-client.CreateAttributeDefinition( Entity.Part, attributeDefinition );
-{% endhighlight %}
-
-{{ site.sections['endExample'] }}
-
-{% comment %}----------------------------------------------------------------------------------------------- {% endcomment %}
-
-## {{ page.sections['get'] }}
+### Get Configuration
 
 Fetching the whole configuration returns the attribute definitions for all kind of entities.
 
-### {{ site.headers['example'] }}  Fetching the configuration including all attriutes
+{% assign exampleCaption="Fetching the configuration including all attriutes" %}
 
-{{ site.sections['beginExampleWebService'] }}
-{{ site.headers['request'] | markdownify }}
-
+{% capture jsonrequest %}
 {% highlight http %}
 GET /dataServiceRest/configuration HTTP/1.1
 {% endhighlight %}
+{% endcapture %}
 
-{{ site.headers['response'] | markdownify }}
-{% highlight json linenos %}
+{% capture jsonresponse %}
+{% highlight json %}
 {
    ...
    "data":
@@ -153,31 +119,60 @@ GET /dataServiceRest/configuration HTTP/1.1
    ]
 }
 {% endhighlight %}
+{% endcapture %}
 
-{{ site.sections['endExample'] }}
+{% include exampleFieldset.html %}
 
-{{ site.sections['beginExampleAPI'] }}
-{{ site.headers['request'] | markdownify }}
+### Add Attributes
 
-{% highlight csharp %}
-var client = new DataServiceRestClient( serviceUri );
-Configuration information = client.GetConfiguration();
+To add one or more attributes to the configuration, the entity type to which the attributes belongs to, as well as the attribute definition(s), need to be transfered. The entity type ist transfered in the uri, the attributes within the body of the request.
+
+{% assign exampleCaption="Adding a part attribute with the key 1001 to the configuration" %}
+
+{% capture jsonrequest %}
+{% highlight http %}
+POST /dataServiceRest/configuration/parts HTTP/1.1
 {% endhighlight %}
 
-{{ site.sections['endExample'] }}
+{% highlight json %}
+[
+  {
+    "key":1001,
+    "description":"partNumber",
+    "length":30,
+    "type":"AlphaNumeric",
+    "definitionType":"AttributeDefinition"
+  }
+]
+{% endhighlight %}
+{% endcapture %}
 
-{% comment %}----------------------------------------------------------------------------------------------- {% endcomment %}
+{% capture jsonresponse %}
+{% highlight http %}
+HTTP/1.1 201 Created
+{% endhighlight %}
 
-## {{ page.sections['update'] }}
+{% highlight json %}
+{
+   "status":
+   {
+       "statusCode": 201,
+       "statusDescription": "Created"
+   },
+   "category": "Success"
+}
+{% endhighlight %}
+{% endcapture %}
 
-To update one or more attributes to the configuration the entity type the attributes belong to as well as the attribute definition(s) need to be transfered. The entity type ist transfered in the uri the attributes within the body of the request.
+{% include exampleFieldset.html %}
 
-### {{ site.headers['example'] }}  Updating the part attribute with key 1001 - change length from 30 to 50
+### Update Attributes
 
-{{ site.sections['beginExampleWebService'] }}
+To update one or more attributes to the configuration, the entity type to which the attributes belong, as well as the attribute definition(s), need to be transfered. The entity type ist transfered in the uri, the attributes within the body of the request.
 
-{{ site.headers['request']  | markdownify }}
+{% assign exampleCaption="Updating the part attribute with key 1001 - change length from 30 to 50" %}
 
+{% capture jsonrequest %}
 {% highlight http %}
 PUT /dataServiceRest/configuration/parts HTTP/1.1
 {% endhighlight %}
@@ -193,35 +188,30 @@ PUT /dataServiceRest/configuration/parts HTTP/1.1
   }
 ]
 {% endhighlight %}
+{% endcapture %}
 
-{{ site.headers['response']  | markdownify }}
-
+{% capture jsonresponse %}
 {% highlight http %}
 HTTP/1.1 200 Ok
 {% endhighlight %}
 
-{{ site.sections['endExample'] }}
-{{ site.sections['beginExampleAPI'] }}
-
-{{ site.headers['request'] | markdownify }}
-
-{% highlight csharp %}
-var client = new DataServiceRestClient( serviceUri );
-
-//Get the attribute
-...
-
-attributeDefinition.Length = 50;
-client.UpdateAttributeDefinition( Entity.Part, attributeDefinition );
+{% highlight json %}
+{
+   "status":
+   {
+       "statusCode": 200,
+       "statusDescription": "Ok"
+   },
+   "category": "Success"
+}
 {% endhighlight %}
+{% endcapture %}
 
-{{ site.sections['endExample'] }}
+{% include exampleFieldset.html %}
 
-{% comment %}----------------------------------------------------------------------------------------------- {% endcomment %}
+### Delete Attributes
 
-## {{ page.sections['delete'] }}
-
-There are three different options of deleting attributes: 
+There are three different options for deleting attributes: 
 
 * Delete all attributes of the configuration, 
 * Delete all attributes of a certain entity or 
@@ -229,83 +219,222 @@ There are three different options of deleting attributes:
  
 The following examples illustrate these options.
 
-### {{ site.headers['example'] }}  Delete all attributes of the current configuration
+{% assign exampleCaption="Delete all attributes of the current configuration" %}
 
-{{ site.sections['beginExampleWebService'] }}
-{{ site.headers['request'] | markdownify }}
-
+{% capture jsonrequest %}
 {% highlight http %}
 DELETE /dataServiceRest/configuration HTTP/1.1
 {% endhighlight %}
+{% endcapture %}
 
-{{ site.headers['response']  | markdownify }}
-
+{% capture jsonresponse %}
 {% highlight http %}
 HTTP/1.1 200 Ok
 {% endhighlight %}
 
-{{ site.sections['endExample'] }}
-
-{{ site.sections['beginExampleAPI'] }}
-{{ site.headers['request'] | markdownify }}
-
-{% highlight csharp %}
-var client = new DataServiceRestClient( serviceUri );
-client.DeleteAllAttributeDefinitions();
+{% highlight json %}
+{
+   "status":
+   {
+       "statusCode": 200,
+       "statusDescription": "Ok"
+   },
+   "category": "Success"
+}
 {% endhighlight %}
+{% endcapture %}
 
-{{ site.sections['endExample'] }}
+{% include exampleFieldset.html %}
 
-### {{ site.headers['example'] }}  Delete all part attributes
+{% assign exampleCaption="Delete all part attributes" %}
 
-{{ site.sections['beginExampleWebService'] }}
-{{ site.headers['request'] | markdownify }}
-
+{% capture jsonrequest %}
 {% highlight http %}
 DELETE /dataServiceRest/configuration/part HTTP/1.1
 {% endhighlight %}
+{% endcapture %}
 
-{{ site.headers['response']  | markdownify }}
-
+{% capture jsonresponse %}
 {% highlight http %}
 HTTP/1.1 200 Ok
 {% endhighlight %}
 
-{{ site.sections['endExample'] }}
-
-{{ site.sections['beginExampleAPI'] }}
-{{ site.headers['request'] | markdownify }}
-
-{% highlight csharp %}
-var client = new DataServiceRestClient( serviceUri );
-client.DeleteAttributeDefinitions( Entity.Part );
+{% highlight json %}
+{
+   "status":
+   {
+       "statusCode": 200,
+       "statusDescription": "Ok"
+   },
+   "category": "Success"
+}
 {% endhighlight %}
+{% endcapture %}
 
-{{ site.sections['endExample'] }}
+{% include exampleFieldset.html %}
 
-### {{ site.headers['example'] }}  Delete the part attribute with the key 1001
+{% assign exampleCaption="Delete the part attribute with the key 1001" %}
 
-{{ site.sections['beginExampleWebService'] }}
-{{ site.headers['request'] | markdownify }}
-
+{% capture jsonrequest %}
 {% highlight http %}
 DELETE /dataServiceRest/configuration/part/{1001} HTTP/1.1
 {% endhighlight %}
+{% endcapture %}
 
-{{ site.headers['response']  | markdownify }}
-
+{% capture jsonresponse %}
 {% highlight http %}
 HTTP/1.1 200 Ok
 {% endhighlight %}
 
-{{ site.sections['endExample'] }}
-
-{{ site.sections['beginExampleAPI'] }}
-{{ site.headers['request'] | markdownify }}
-
-{% highlight csharp %}
-var client = new DataServiceRestClient( serviceUri );
-client.DeleteAttributeDefinitions( Entity.Part, new ushort[]{ (ushort)1001 } );
+{% highlight json %}
+{
+   "status":
+   {
+       "statusCode": 200,
+       "statusDescription": "Ok"
+   },
+   "category": "Success"
+}
 {% endhighlight %}
+{% endcapture %}
 
-{{ site.sections['endExample'] }}
+{% include exampleFieldset.html %}
+
+{% comment %}----------------------------------------------------------------------------------------------- {% endcomment %}
+
+## {{ page.sections['sdk'] }}
+
+### Get Configuration
+
+{% assign caption="GetConfiguration" %}
+{% assign icon=site.images['function-get'] %}
+{% assign description="Fetches the complete configuration for all kinds of entities." %}
+{% capture parameterTable %}
+Name           | Type                    | Description
+---------------|-------------------------|--------------------------------------------------
+token          | ```CancellationToken``` | Parameter is optional and allows to cancel the asyncronous call.
+{% endcapture %}
+
+{% assign exampleCaption="Get the configuration" %}
+{% capture example %}
+{% highlight csharp %}
+var client = new DataServiceRestClient( new Uri( "http://piwebserver:8080" ) );
+Configuration config = await client.GetConfiguration();
+{% endhighlight %}
+{% endcapture %}
+
+{% include sdkFunctionFieldset.html %}
+
+### Create Configuration Attributes
+
+{% assign caption="CreateAttributeDefinition" %}
+{% assign icon=site.images['function-create'] %}
+{% assign description="Adds a single attribute for a given entity to the configuration." %}
+{% capture parameterTable %}
+Name           | Type                    | Description
+---------------|-------------------------|--------------------------------------------------
+entity         | ```Entity```            | Specifies the entity to which the attribute should belong to. Possible values are ```Part```, ```Characteristic```, ```Measurement```, ```Value``` or ```Catalogue```.
+definition     | ```AbstractAttributeDefinition``` | Depending on the entity the ```AbstractAttributeDefinition``` definition contains an ```AttributeDefinition``` or a ```CatalogueAttributeDefinition``` object, which includes the attribute's values.
+token          | ```CancellationToken``` | Parameter is optional and allows to cancel the asyncronous call.
+{% endcapture %}
+
+{% assign exampleCaption="Adding a part attribute with the key 1001 to the configuration" %}
+{% capture example %}
+{% highlight csharp %}
+var client = new DataServiceRestClient( new Uri( "http://piwebserver:8080" ) );
+var attributeDefinition = 
+      new AttributeDefinition( 1001, "partNumber", AttributeType.AlphaNumeric, 30 );
+await client.CreateAttributeDefinition( Entity.Part, attributeDefinition );
+{% endhighlight %}
+{% endcapture %}
+
+{% include sdkFunctionFieldset.html %}
+
+{% assign caption="CreateAttributeDefinitions" %}
+{% assign icon=site.images['function-create'] %}
+{% assign description="Adds multiple attributes for a given entity to the configuration." %}
+{% capture parameterTable %}
+ Name          | Type                    | Description
+---------------|-------------------------|--------------------------------------------------
+entity         | ```Entity```            | Specifies the entity to which the attributes should belong to. Possible values are ```Part```, ```Characteristic```, ```Measurement```, ```Value``` or ```Catalogue```.
+definitions     | ```AbstractAttributeDefinition[]``` | Depending on the entity the ```AbstractAttributeDefinition``` definition contains ```AttributeDefinition``` or a ```CatalogueAttributeDefinition``` object, which includes the attribute's values.
+token          | ```CancellationToken```       | Parameter is optional and allows to cancel the asyncronous call.
+{% endcapture %}
+
+{% assign exampleCaption = "" %}
+
+{% include sdkFunctionFieldset.html %}
+
+### Update Configuration Attributes
+
+{% assign caption="UpdateAttributeDefinitions" %}
+{% assign icon=site.images['function-update'] %}
+{% assign description="Updates one or more attributes for a given entity." %}
+{% capture parameterTable %}
+ Name          | Type                    | Description
+---------------|-------------------------|--------------------------------------------------
+entity         | ```Entity```            | Specifies the entity to which the attributes belong to. Possible values are ```Part```, ```Characteristic```, ```Measurement```, ```Value``` or ```Catalogue```.
+definitions     | ```AbstractAttributeDefinition[]``` | Depending on the entity the ```AbstractAttributeDefinition``` definition contains ```AttributeDefinition``` or a ```CatalogueAttributeDefinition``` object, which includes the attribute's values.
+token          | ```CancellationToken``` | Parameter is optional and allows to cancel the asyncronous call.
+{% endcapture %}
+
+{% assign exampleCaption="Updating the part attribute with key 1001 - change length from 30 to 50" %}
+{% capture example %}
+{% highlight csharp %}
+var client = new DataServiceRestClient( new Uri( "http://piwebserver:8080" ) );
+
+//Get the attribute
+var config = await GetConfiguration();
+var partAttribute = config.PartAttributes.Where( p => p.Key == 1001);
+
+//Change the length
+partAttribute.Length = 50;
+client.UpdateAttributeDefinition( Entity.Part, attributeDefinition );
+{% endhighlight %}
+{% endcapture %}
+
+{% include sdkFunctionFieldset.html %}
+
+
+### Delete Configuration Attributes
+
+{% assign caption="DeleteAttributeDefinitions" %}
+{% assign icon=site.images['function-delete'] %}
+{% assign description="Deletes all or certain attributes of a given entity from the configuration." %}
+{% capture parameterTable %}
+ Name          | Type                    | Description
+---------------|-------------------------|--------------------------------------------------
+entity         | ```Entity```            | Specifies the entity to which the attributes should belong to. Possible values are ```Part```, ```Characteristic```, ```Measurement```, ```Value``` or ```Catalogue```.
+keys           | ```ushort[]```          | May contain the keys of the attributes which should be deleted. If it stays empty, all attributes of the given *entity* are deleted.
+token          | ```CancellationToken``` | Parameter is optional and allows to cancel the asyncronous call.
+{% endcapture %}
+
+{% assign exampleCaption="Delete the part attribute with the key 1001 from the configuration" %}
+{% capture example %}
+{% highlight csharp %}
+var client = new DataServiceRestClient( new Uri( "http://piwebserver:8080" ) );
+await client.DeleteAttributeDefinitions( Entity.Part, new ushort[]{ (ushort)1001 } );
+{% endhighlight %}
+{% endcapture %}
+
+{% include sdkFunctionFieldset.html %}
+
+
+{% assign caption="DeleteAllAttributeDefinitions" %}
+{% assign icon=site.images['function-delete'] %}
+{% assign description="Deletes all attributes of every single entity from the configuration." %}
+{% capture parameterTable %}
+Name           | Type                    | Description
+---------------|-------------------------|--------------------------------------------------
+token          | ```CancellationToken``` | Parameter is optional and allows to cancel the asyncronous call.
+{% endcapture %}
+
+{% assign exampleCaption="Delete all attributes from the configuration" %}
+{% capture example %}
+{% highlight csharp %}
+var client = new DataServiceRestClient( "http://piwebserver:8080" );
+client.DeleteAllAttributeDefinitions();
+{% endhighlight %}
+{% endcapture %}
+
+{% include sdkFunctionFieldset.html %}

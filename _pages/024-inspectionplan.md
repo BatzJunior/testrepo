@@ -7,71 +7,125 @@ isSubPage: true
 permalink: /dataservice/inspection-plan/
 sections:
   general: General Information
-  endpoint: Endpoint Information
-  add: Add Entities
-  get: Get Entities
-  update: Update Entities
-  delete: Delete Entities
+  endpoint: REST API Endpoints
+  sdk: .NET SDK Methods
 ---
 
 ## {{ page.sections['general'] }}
 
-Both parts and characteristics are PiWeb inspeaction plan entities. Each entity consits of the following properties:
+Both parts and characteristics are PiWeb inspection plan entities. They are either ```InspectionPlanPart``` or ```InspectionPlanCharacteristic```objects. Both are derived from ```InspectionPlanBase```.
 
-Name | Description
------|-------------
-uuid | Identifies this inspection plan entity uniquely.
-path | The path of this entity.
-attributes | A set of attributes which specifies this entity.
-comment | A comment which describes the last inspection plan change.
-version | Contains the revision number of the entity. The revision number starts with zero and is incremented by one each time when changes are applied to the inspection plan. The version is only returned if versioning is enabled in server settings.
-current | Indicates wheter the entity is the current version.
-timeStamp | Contains the date and time of the last update applied to this entity.
-charChangeDate (only for parts) | The timestamp for the most recent characteristic change on any characteristic that belongs to this part
+### InspectionPlanBase
+
+Name | Type | Description
+-----|------|--------------
+uuid | ```Guid``` | Identifies this inspection plan entity uniquely.
+path | ```PathInformation``` | The path of this entity.
+attributes | ```Attribute``` | A set of attributes which specifies this entity.
+comment | ```string``` | A comment which describes the last inspection plan change.
+version | ```int``` | Contains the revision number of the entity. The revision number starts with zero and is incremented by one each time when changes are applied to the inspection plan. The version is only returned in case versioning is enabled in the server settings.
+current | ```bool``` | Indicates whether the entity is the current version.
+timeStamp | ```dateTime``` | Contains the date and time of the last update applied to this entity.
+
+### InspectionPlanPart : InspectionPlanBase
+
+charChangeDate |  ```dateTime``` | The timestamp for the most recent characteristic change on any characteristic that belongs to this part
+
+### InspectionPlanCharacteristic : InspectionPlanBase
 
 {% comment %}----------------------------------------------------------------------------------------------- {% endcomment %}
 
 ## {{ page.sections['endpoint'] }}
 
-Parts and characteristics can be fetched, created, updated and deleted via the following endpoints. Filter can be set as described in the [URL-Parameter section]({{site.baseurl }}/general/#{{ page.subCategory }}).
+Parts and characteristics can be fetched, created, updated and deleted via the following endpoints. Filters which restrict GET or DELETE requests can be set as described in the [URL-Parameter section]({{site.baseurl }}/general/restapi/#{{ page.subCategory }}).
 
 ###Parts
 
 URL Endpoint | GET | POST | PUT | DELETE
 -------------|-----|-----|------|-------
 /parts | Returns all parts | Creates the committed part(s) which is/are transfered in the body of the request | Updates the committed parts | Deletes all parts
-/parts/:partsPath | Returns the part specified by *:partsPath* as well as the parts beneath this part | *Not supported* | *Not supported* | Deletes the part specified by *:partsPath* as well as the parts and characteristics beneath this part
-parts/{:uuidList} | Returns all parts that uuid are within the *:uuidList* | *Not supported* | *Not supported* |  Deletes all parts that uuid are within the *:uuidList* as well as the parts and characteristics beneath the particular part
+/parts/:partPath | Returns the part specified by *:partPath* as well as the parts beneath this part | *--* | *--* | Deletes the part specified by *:partPath* as well as the parts and characteristics beneath this part
+parts/(:uuidList) | Returns all parts of which the uuid is within the *:uuidList* | *--* | *--* |  Deletes all parts of which the uuid is within the *:uuidList* as well as the parts and characteristics beneath the particular part
 
 ### Characteristics
 
 URL Endpoint | GET | POST | PUT | DELETE
 -------------|-----|-----|------|-------
-/characteristics | *Not supported* | Creates the committed characteristic(s) which is/are transfered in the body of the request | Updates the committed characteristics | *Not supported*
-/characteristics/:partsPath | Returns the characteristics beneath the part specified by *:partPath* | *Not supported* | *Not supported* | Deletes the characteristics beneath the part specified by *:partsPath*
-characteristics/{:uuidList} | Returns all characteristics that uuid are within the *:uuidList* | *Not supported* | *Not supported* |  Deletes all characteristics that uuid are within the *:uuidList*
+parts/characteristics | Returns all characteristics | Creates the committed characteristic(s) which is/are transfered in the body of the request | Updates the committed characteristics | *--*
+parts/:partsPath/characteristics | Returns all characteristics beneath the part specified by *:partPath* | *--* | *--* | *--*
+parts/characteristics/:characteristicPath | Returns the characteristic specified by *:characteristicPath*. | *--* | *--* | Deletes the characteristic specified by *:characteristicPath* as well as all children beneath this characteristic
+parts/characteristics/(:uuidList) | Returns all characteristics of which the uuid is within the *:uuidList* | *--* | *--* |  Deletes all characteristics of which the uuid is within the *:uuidList*
 
 {% comment %}----------------------------------------------------------------------------------------------- {% endcomment %}
 
-## {{ page.sections['add'] }}
+## Get Entities
 
-To create a inspection plan entity it is necessary to transfer the entity object within the request's body. A unique identifier and the path are mandatory, attributes and a comment are optional. The attribute keys which are used for the attributes must come from the parts/characteristics attribute range (specified in the [configuration]({{site.baseurl }}/{{page.category}}/parts/)
+Fetching inspection plan entites returns the respective parts or characteristics depending on the specified entity constraint and/or filter. 
+The most important filter parameter is the *depth* parameter which controls down to which level of the inspection plan the entities should be fetched. Setting *depth:0* means that only the entity itself should be fetched, *depth:1* means the entity and its direct children should be fetched and so on.
 
-{{ site.images['info'] }} The comment is only added if versioning is enabled in server settings.
+Parts can be fetched in several ways:
 
-### {{ site.headers['example'] }} Adding a part with the uuid 05040c4c-f0af-46b8-810e-30c0c00a379e
+* fetch a certain part by its path (the filter parameter *depth* must be 0)
+* fetch a certain part and its children by its path (the filter parameter *depth* must be ≥ 1)
+* fetch one or more certain parts by their UUIDs
+* fetch all parts (can be restricted with filter parameters)
 
-{{ site.sections['beginExampleWebService'] }}
+There are also several possibilities to fetch characteristics:
 
-{% include codeswitcher.html key="add" %}
+* fetch a certain characteristic by its path (the filter parameter *depth* must be 0)
+* fetch one or more certain characteristics by their UUIDs
+* fetch characteristics beneath a certain part path
+* fetch all characteristics (can be restricted with filter parameters)
 
-{{ site.headers['request']  | markdownify }}
+{% assign exampleCaption="Fetch the direct characteristics beneath the 'metal part'. Restrict to attribute keys 2110 and 2111" %}
+{% assign comment="As the filter parameter *depth* has the default value 1, it can be omitted in this example." %}
 
+{% capture jsonrequest %}
+{% highlight http %}
+GET /dataServiceRest/parts/metal%20part/characteristics?filter=characteristicAttributes:{2110,2111} HTTP/1.1
+{% endhighlight %}
+{% endcapture %}
+
+{% capture jsonresponse %}
+{% highlight json %}
+{
+   ...
+   "data":
+   [
+       {
+           "path": "PC:/metal part/diameter_circle3/",
+           "attributes":
+           {
+               "2110": "-0.2",
+               "2111": "0.3",
+           },
+           "uuid": "1429c5e2-599c-4d3e-b724-4e00ecb0caa7",
+           "version": 0,
+           "timestamp": "2012-11-19T10:48:32.887Z",
+           "current": true
+       },
+       ...
+   ]
+}
+{% endhighlight %}
+{% endcapture %}
+
+{% include exampleFieldset.html %}
+{% assign comment="" %}
+
+
+## Add Entities
+
+To create an inspection plan entity it is necessary to transfer the entity object within the request's body. A unique identifier and the path are mandatory, attributes and a comment are optional. The attribute keys which are used for the attributes must come from the parts/characteristics attribute range (specified in the {{ site.links['configuration'] }})
+
+{{ site.images['info'] }} The comment is only added if versioning is enabled in the server settings.
+
+{% assign exampleCaption="Adding the 'metal part' part with the uuid 05040c4c-f0af-46b8-810e-30c0c00a379e" %}
+
+{% capture jsonrequest %}
 {% highlight http %}
 POST /dataServiceRest/parts HTTP/1.1
 {% endhighlight %}
-
-{% include codeStart.html key="add" format="json" %}
 
 {% highlight json %}
 [
@@ -86,403 +140,480 @@ POST /dataServiceRest/parts HTTP/1.1
   }
 ]
 {% endhighlight %}
+{% endcapture %}
 
-{{ site.sections['endCode'] }}
-{% include codeStart.html key="add" format="xml" %}
-
-{{ site.sections['endCode'] }}
-
-{{ site.headers['response']  | markdownify }}
-
+{% capture jsonresponse %}
 {% highlight http %}
 HTTP/1.1 201 Created
 {% endhighlight %}
 
-{{ site.sections['endExample'] }}
-{{ site.sections['beginExampleAPI'] }}
-
-{{ site.headers['request'] | markdownify }}
-
-{% highlight csharp %}
-var catalogue = new Catalogue(){ 
-  Uuid = new Guid( "8c376bee-ffe3-4ee4-abb9-a55b492e69ad" ),
-  Name = "InspectorCatalogue",
-  ValidAttributes = new ushort[]{ 4092, 4093 },
-  CatalogueEntries = new[]{
-    new CatalogueEntry(){ Key = 0, 
-    Attributes = new[]{ new Attribute( 4092, "n.def." ), new Attribute( 4093, "n.def." ) },
-    new CatalogueEntry(){ Key = 1, 
-    Attributes = new[]{ new Attribute( 4092, "21" ), new Attribute( 4093, "Smith" ) },
-    new CatalogueEntry(){ Key = 2, 
-    Attributes = new[]{ new Attribute( 4092, "20" ), new Attribute( 4093, "Miller" ) },
-    new CatalogueEntry(){ Key = 3, 
-    Attributes = new[]{ new Attribute( 4092, "23" ), new Attribute( 4093, "Williams" ) }
-  }
-};
-var client = new DataServiceRestClient( serviceUri );
-client.CreateCatalogues( new[]{ catalogue } );
-{% endhighlight %}
-
-{{ site.sections['endExample'] }}
-
-{% comment %}----------------------------------------------------------------------------------------------- {% endcomment %}
-
-## {{ page.sections['addEntries'] }}
-
-Beneath adding catalogue entries to a catalogue while creating a catalogue there is also the possibility to add entries to an already existing catalogue.
-
-### {{ site.headers['example'] }}  Adding a catalogue entry - add the inspector ‘Clarks’
-
-{{ site.sections['beginExampleWebService'] }}
-{{ site.headers['request'] | markdownify }}
-
-{% highlight http %}
-POST /dataServiceRest/catalogues/{8c376bee-ffe3-4ee4-abb9-a55b492e69ad}/entries
-{% endhighlight %}
-
-{% highlight json %}
- [
-   {
-       "key": 4,
-       "attributes":
-       {
-           "4092": "22",
-           "4093": "Clarks"
-       }
-   }
- ]
-{% endhighlight %}
-
-{{ site.headers['response'] | markdownify }}
-
-{% highlight http %}
-HTTP/1.1 201 Created
-{% endhighlight %}
-
-{{ site.sections['endExample'] }}
-{{ site.sections['beginExampleAPI'] }}
-
-{{ site.headers['request'] | markdownify }}
-
-{% highlight csharp %}
-var entry = new CatalogueEntry(){ Key = 4, 
-        Attributes = new[]{ new Attribute( 4092, "22" ), new Attribute( 4093, "Clarks" ) };
-var client = new DataServiceRestClient( serviceUri );
-client.CreateCatalogueEntry( new Guid("8c376bee-ffe3-4ee4-abb9-a55b492e69ad"), entry);
-{% endhighlight %}
-
-{{ site.sections['endExample'] }}
-
-{% comment %}----------------------------------------------------------------------------------------------- {% endcomment %}
-
-## {{ page.sections['get'] }}
-
-Fetching the catalogues returns the catalogue an depending on the filter specified or not the catalogue entries. If no filter is specified the entries are returned by default.
-
-### {{ site.headers['example'] }}  Fetching the catalogue with the uuid 8c376bee-ffe3-4ee4-abb9-a55b492e69ad and its entries
-
-{{ site.sections['beginExampleWebService'] }}
-{{ site.headers['request'] | markdownify }}
-
-{% highlight http %}
-GET /dataServiceRest/catalogues/{8c376bee-ffe3-4ee4-abb9-a55b492e69ad}?filter=withCatalogueEntries:true HTTP/1.1
-{% endhighlight %}
-
-{{ site.headers['response'] | markdownify }}
 {% highlight json %}
 {
-   ...
-   "data":
-   [
-       {
-           "uuid": "8c376bee-ffe3-4ee4-abb9-a55b492e69ad",
-           "name": "InspectorCatalogue",
-           "validAttributes":
-           [
-               4092,
-               4093
-           ],
-           "catalogueEntries":
-           [
-               {
-                   "key": 0,
-                   "attributes":
-                   {
-                       "4092": "n.def.",
-                       "4093": "n.def."
-                   }
-               },
-               {
-                   "key": 1,
-                   "attributes":
-                   {
-                       "4092": "21",
-                       "4093": "Smith"
-                   }
-               },
-               {
-                   "key": 2,
-                   "attributes":
-                   {
-                       "4092": "20",
-                       "4093": "Miller"
-                   }
-               },
-               {
-                   "key": 3,
-                   "attributes":
-                   {
-                       "4092": "23",
-                       "4093": "Williams"
-                   }
-               }
-            ]
-        }
-   ]
+   "status":
+   {
+       "statusCode": 201,
+       "statusDescription": "Created"
+   },
+   "category": "Success"
 }
 {% endhighlight %}
+{% endcapture %}
 
-{{ site.sections['endExample'] }}
+{% include exampleFieldset.html %}
 
-{{ site.sections['beginExampleAPI'] }}
-{{ site.headers['request'] | markdownify }}
+## Update entities
 
-{% highlight csharp %}
-var client = new DataServiceRestClient( serviceUri );
-var catalogues = client.GetCatalogues(new Guid[]{new Guid(
-        "8c376bee-ffe3-4ee4-abb9-a55b492e69ad")}, new CatalogueFilterAttributes());
-{% endhighlight %}
+Updating inspection plan entities might regard the following aspects: 
 
-{{ site.sections['endExample'] }}
+* Rename/move inspection plan entities
+* Change inspection plan entity's attributes
 
-{% comment %}----------------------------------------------------------------------------------------------- {% endcomment %}
+{{site.images['info']}} If versioning is activated on server side, every update of one or more inspection plan entities creates a new version entry.
 
-## {{ page.sections['update'] }}
-
-Updating a catalogue might regard the following aspects: 
-
-* Rename the catalogue 
-* Add, update or delete catalogue entries
-
-{{site.images['info']}} To change the valid attributes of a catalogue it needs to be deleted an re-created again.
-
-### {{ site.headers['example'] }}  Updating the catalogue with the uuid 8c376bee-ffe3-4ee4-abb9-a55b492e69ad - rename it from 'InspectorCatalogue' to 'Inspectors' and add the inspector 'Clarks'
-
-{{ site.sections['beginExampleWebService'] }}
-
-{{ site.headers['request']  | markdownify }}
-
+{% assign exampleCaption="Rename the characteristic "metal part/diameter_circle3" to "metal part/diameterCircle3" %}
+{% capture jsonrequest %}
 {% highlight http %}
-PUT /dataServiceRest/catalogues HTTP/1.1
+PUT /dataServiceRest/parts/characteristics HTTP/1.1
 {% endhighlight %}
 
 {% highlight json %}
 [
   {
-           "uuid": "8c376bee-ffe3-4ee4-abb9-a55b492e69ad",
-           "name": "Inspectors",
-           "catalogueEntries":
-           [
-               {
-                   "key": 0,
-                   "attributes":
-                   {
-                       "4092": "n.def.",
-                       "4093": "n.def."
-                   }
-               },
-               {
-                   "key": 1,
-                   "attributes":
-                   {
-                       "4092": "21",
-                       "4093": "Smith"
-                   }
-               },
-               {
-                   "key": 2,
-                   "attributes":
-                   {
-                       "4092": "20",
-                       "4093": "Miller"
-                   }
-               },
-               {
-                   "key": 3,
-                   "attributes":
-                   {
-                       "4092": "23",
-                       "4093": "Williams"
-                   }
-               },
-               {
-                   "key": 4,
-                   "attributes":
-                   {
-                       "4092": "22",
-                       "4093": "Clarks"
-                   }
-               }
-            ]
-        }
+     "path": "PC:/metal part/diameterCircle3/",
+     "attributes": { "2110": "-0.2", "2111": "0.3", },
+     "uuid": "1429c5e2-599c-4d3e-b724-4e00ecb0caa7",
+     "version": 0,
+     "timestamp": "2012-11-19T10:48:32.887Z",
+     "current": true
+  }
 ]
 {% endhighlight %}
+{% endcapture %}
 
-{{ site.headers['response']  | markdownify }}
-
+{% capture jsonresponse %}
 {% highlight http %}
 HTTP/1.1 200 Ok
 {% endhighlight %}
 
-{{ site.sections['endExample'] }}
-{{ site.sections['beginExampleAPI'] }}
+{% highlight json %}
+{
+   "status":
+   {
+       "statusCode": 200,
+       "statusDescription": "Ok"
+   },
+   "category": "Success"
+}
+{% endhighlight %}
+{% endcapture %}
 
-{{ site.headers['request'] | markdownify }}
+{% include exampleFieldset.html %}
 
-{% highlight csharp %}
-var client = new DataServiceRestClient( serviceUri );
+## Delete Entities
 
-//Get the catalogue
-...
+There are two possibilities to delete inspection plan entities, either by their path or by their uuid. In both cases the entity itself as well as all children are deleted.
 
-catalogue.Name = "Inspectors";
-var entries = new List< CatalogueEntry >();
-entries = catalogue.CatalogueEntries;
-entries.Add( new CatalogueEntry()
-      { Key = 4, 
-        Attributes = new[]{ new Attribute( 4092, "22" ), new Attribute( 4093, "Clarks" ) };
-cataloge.CatalogueEntries = entries.ToArray();
-client.UpdateCatalogues( catalogue );
+{% assign exampleCaption="Delete the part 'metal part'  and all entities beneath it" %}
+{% capture jsonrequest %}
+{% highlight http %}
+DELETE /dataServiceRest/parts/metal%20part HTTP/1.1
+{% endhighlight %}
+{% endcapture %}
+
+{% capture jsonresponse %}
+{% highlight http %}
+HTTP/1.1 200 Ok
 {% endhighlight %}
 
-{{ site.sections['endExample'] }}
+{% highlight json %}
+{
+   "status":
+   {
+       "statusCode": 200,
+       "statusDescription": "Ok"
+   },
+   "category": "Success"
+}
+{% endhighlight %}
+{% endcapture %}
+
+{% include exampleFieldset.html %}
 
 {% comment %}----------------------------------------------------------------------------------------------- {% endcomment %}
 
-## {{ page.sections['delete'] }}
+## {{ page.sections['sdk'] }}
 
-There are two different options of deleting catalogues: 
+### Get Entities
 
-* Delete all catalogues or
-* Delete one or more certain catalogues identified by its uuid
- 
-The following examples illustrate these options.
+#### Parts
 
-### {{ site.headers['example'] }}  Delete all catalogues
+{% assign caption="GetPartByPath" %}
+{% assign icon=site.images['function-get'] %}
+{% assign description="Fetches the part identified by the ```partPath```. " %}
+{% capture parameterTable %}
+Name           | Type                                  | Description
+---------------|---------------------------------------|--------------------------------------------------
+partPath       | ```PathInformation```                 | The path of the part which should be returned.
+filter         | ```InspectionPlanFilterAttributes ``` | Parameter is optional and is used to restrict the query.
+token          | ```CancellationToken```               | Parameter is optional and allows to cancel the asyncronous call.
+{% endcapture %}
 
-{{ site.sections['beginExampleWebService'] }}
-{{ site.headers['request'] | markdownify }}
+{% assign returnParameter="Task<InspectionPlanPart>" %}
 
-{% highlight http %}
-DELETE /dataServiceRest/catalogues HTTP/1.1
-{% endhighlight %}
+{% assign exampleCaption="Get the 'metal part' and restrict the result to the attributes 'part number' and 'comment'" %}
 
-{{ site.headers['response'] | markdownify }}
-{% highlight http %}
-HTTP/1.1 200 Ok
-{% endhighlight %}
-
-{{ site.sections['endExample'] }}
-
-{{ site.sections['beginExampleAPI'] }}
-{{ site.headers['request'] | markdownify }}
-
+{% capture example %}
 {% highlight csharp %}
-var client = new DataServiceRestClient( serviceUri );
-client.DeleteCatalogues();
+var client = new DataServiceRestClient( "http://piwebserver:8080" );
+var partPath = PathHelper.String2PartPathInformation("/metal part");
+var filter = new InspectionPlanFilterAttributes()
+  { RequestedPartAttributes = new AttributeSelector(
+    new[]{ WellKnownKeys.Parts.Number, WellKnownKeys.Parts.Comment } )
+  };
+var part = client.GetCharacteristicByPath( partPath, filter );
 {% endhighlight %}
+{% endcapture %}
 
-{{ site.sections['endExample'] }}
+{% include sdkFunctionFieldset.html %}
 
-### {{ site.headers['example'] }}  Delete the catalogues with the uuid "8c376bee-ffe3-4ee4-abb9-a55b492e69ad"
+{% assign caption="GetPartsByUuids" %}
+{% assign icon=site.images['function-get'] %}
+{% assign description="Fetches parts by its uuids. " %}
+{% capture parameterTable %}
+Name           | Type                                  | Description
+---------------|---------------------------------------|--------------------------------------------------
+uuids          | ```Guid[]```                          | The uuids of the parts which should be returned.
+filter         | ```InspectionPlanFilterAttributes ``` | Parameter is optional and is used to restrict the query.
+token          | ```CancellationToken```               | Parameter is optional and allows to cancel the asyncronous call.
+{% endcapture %}
 
-{{ site.sections['beginExampleWebService'] }}
-{{ site.headers['request'] | markdownify }}
+{% assign exampleCaption="Get the 'metal part' by its uuid 05040c4c-f0af-46b8-810e-30c0c00a379e" %}
 
-{% highlight http %}
-DELETE /dataServiceRest/catalogues/{8c376bee-ffe3-4ee4-abb9-a55b492e69ad} HTTP/1.1
-{% endhighlight %}
-
-{{ site.headers['response'] | markdownify }}
-
-{% highlight http %}
-HTTP/1.1 200 Ok
-{% endhighlight %}
-
-{{ site.sections['endExample'] }}
-
-{{ site.sections['beginExampleAPI'] }}
-{{ site.headers['request'] | markdownify }}
-
+{% capture example %}
 {% highlight csharp %}
-var client = new DataServiceRestClient( serviceUri );
-client.DeleteCatalogues( new Guid[]{new Guid( "8c376bee-ffe3-4ee4-abb9-a55b492e69ad" ) );
+var client = new DataServiceRestClient( "http://piwebserver:8080" );
+var part = client.GetCharacteristicsByUuids( new[]{ new Guid("05040c4c-f0af-46b8-810e-30c0c00a379e") } );
 {% endhighlight %}
+{% endcapture %}
 
-{{ site.sections['endExample'] }}
+{% include sdkFunctionFieldset.html %}
 
-{% comment %}----------------------------------------------------------------------------------------------- {% endcomment %}
+{% assign caption="GetChildPartsForPart" %}
+{% assign icon=site.images['function-get'] %}
+{% assign description="Fetches the children of the given ```parentPart``` as well as the part itself. " %}
+{% capture parameterTable %}
+Name           | Type                                  | Description
+---------------|---------------------------------------|--------------------------------------------------
+parentPart     | ```PathInformation```                 | The parent part the child part should be returned for.
+filter         | ```InspectionPlanFilterAttributes ``` | Parameter is optional and is used to restrict the query.
+token          | ```CancellationToken```               | Parameter is optional and allows to cancel the asyncronous call.
+{% endcapture %}
 
-## {{ page.sections['deleteEntries'] }}
+{% assign exampleCaption="Get the 'metal part' and its child parts" %}
 
-There are two different options of deleting catalogue entries: 
-
-* Delete all entries of a certain catalogue identified by its uuid
-* Delete one or more certain entries identified by its keys of a certain catalogue identified by its uuid
- 
-The following examples illustrate these options.
-
-### {{ site.headers['example'] }}  Delete all entries of the catalogue with the uuid "8c376bee-ffe3-4ee4-abb9-a55b492e69ad"
-
-{{ site.sections['beginExampleWebService'] }}
-{{ site.headers['request'] | markdownify }}
-
-{% highlight http %}
-DELETE /dataServiceRest/catalogues/{8c376bee-ffe3-4ee4-abb9-a55b492e69ad}/entries HTTP/1.1
-{% endhighlight %}
-
-{{ site.headers['response'] | markdownify }}
-{% highlight http %}
-HTTP/1.1 200 Ok
-{% endhighlight %}
-
-{{ site.sections['endExample'] }}
-
-{{ site.sections['beginExampleAPI'] }}
-{{ site.headers['request'] | markdownify }}
-
+{% capture example %}
 {% highlight csharp %}
-var client = new DataServiceRestClient( serviceUri );
-client.DeleteCatalogueEntries( new Guid( "8c376bee-ffe3-4ee4-abb9-a55b492e69ad" ) );
+var client = new DataServiceRestClient( "http://piwebserver:8080" );
+var parentPartPath = PathHelper.String2PartPathInformation("/metal part");
+var part = client.GetPartsForPart( parentPartPath );
 {% endhighlight %}
+{% endcapture %}
 
-{{ site.sections['endExample'] }}
+{% include sdkFunctionFieldset.html %}
 
-### {{ site.headers['example'] }}  Delete the entries with key 1 and 3 of the catalogue with the uuid "8c376bee-ffe3-4ee4-abb9-a55b492e69ad"
+#### Characteristics
 
-{{ site.sections['beginExampleWebService'] }}
-{{ site.headers['request'] | markdownify }}
+{% assign caption="GetCharacteristicByPath" %}
+{% assign icon=site.images['function-get'] %}
+{% assign description="Fetches the characteristic identified by the ```partPath```. " %}
+{% capture parameterTable %}
+Name           | Type                                  | Description
+---------------|---------------------------------------|--------------------------------------------------
+partPath       | ```PathInformation```                 | The path of the characteristic which should be returned.
+filter         | ```InspectionPlanFilterAttributes ``` | Parameter is optional and is used to restrict the query.
+token          | ```CancellationToken```               | Parameter is optional and allows to cancel the asyncronous call.
+{% endcapture %}
 
-{% highlight http %}
-DELETE /dataServiceRest/catalogues/{8c376bee-ffe3-4ee4-abb9-a55b492e69ad}/entries/{1,3} HTTP/1.1
-{% endhighlight %}
+{% assign exampleCaption="Get the characteristic 'metal part/diameterCircle3'" %}
 
-{{ site.headers['response'] | markdownify }}
-
-{% highlight http %}
-HTTP/1.1 200 Ok
-{% endhighlight %}
-
-{{ site.sections['endExample'] }}
-
-{{ site.sections['beginExampleAPI'] }}
-{{ site.headers['request'] | markdownify }}
-
+{% capture example %}
 {% highlight csharp %}
-var client = new DataServiceRestClient( serviceUri );
-client.DeleteCatalogueEntries( 
-  new Guid( "8c376bee-ffe3-4ee4-abb9-a55b492e69ad", new []{ (ushort)1, (ushort(3) } );
+var client = new DataServiceRestClient( "http://piwebserver:8080" );
+var charPath = PathHelper.String2PathInformation( "/metal part/diameterCircle3", "PC" );
+var characteristic = client.GetCharacteristicByPath( charPath );
 {% endhighlight %}
+{% endcapture %}
 
-{{ site.sections['endExample'] }}
+{% include sdkFunctionFieldset.html %}
 
+{% assign caption="GetCharacteristicsByUuids" %}
+{% assign icon=site.images['function-get'] %}
+{% assign description="Fetches characteristics by its uuids. " %}
+{% capture parameterTable %}
+Name           | Type                                  | Description
+---------------|---------------------------------------|--------------------------------------------------
+uuids          | ```Guid[]```                          | The uuids of the characteristics which should be returned.
+filter         | ```InspectionPlanFilterAttributes ``` | Parameter is optional and is used to restrict the query.
+token          | ```CancellationToken```               | Parameter is optional and allows to cancel the asyncronous call.
+{% endcapture %}
+
+{% assign exampleCaption="Get the 'metal part/diameterCircle3' by its uuid 1429c5e2-599c-4d3e-b724-4e00ecb0caa7" %}
+
+{% capture example %}
+{% highlight csharp %}
+var client = new DataServiceRestClient( "http://piwebserver:8080" );
+var characteristic = client.GetCharacteristicsByUuids( new[]{ new Guid("1429c5e2-599c-4d3e-b724-4e00ecb0caa7") } );
+{% endhighlight %}
+{% endcapture %}
+
+{% include sdkFunctionFieldset.html %}
+
+{% assign caption="GetCharacteristicsForPart" %}
+{% assign icon=site.images['function-get'] %}
+{% assign description="Fetches the characteristics below the given ```parentPart```. If the ```depth``` property of the ```filter``` parameter is not set, only the direct children are returned by default. " %}
+{% capture parameterTable %}
+Name           | Type                                  | Description
+---------------|---------------------------------------|--------------------------------------------------
+parentPart     | ```PathInformation```                 | The parent part the charateristics should be returned for.
+filter         | ```InspectionPlanFilterAttributes ``` | Parameter is optional and is used to restrict the query.
+token          | ```CancellationToken```               | Parameter is optional and allows to cancel the asyncronous call.
+{% endcapture %}
+
+{% assign exampleCaption="Get the characteristics below 'metal part'. Restrict the result to lower and upper tolerance attributes." %}
+
+{% capture example %}
+{% highlight csharp %}
+var client = new DataServiceRestClient( "http://piwebserver:8080" );
+var parentPartPath = PathHelper.String2PartPathInformation("/metal part");
+var filter = new InspectionPlanFilterAttributes()
+  { RequestedCharacteristicAttributes = new AttributeSelector(
+    new[]{ WellKnownKeys.Characteristic.LowerSpecificationLimit, 
+    WellKnownKeys.Characteristic.UpperSpecificationLimit} )
+  };
+var characteristics = client.GetCharacteristicsForPart( parentPartPath, filter );
+{% endhighlight %}
+{% endcapture %}
+
+{% include sdkFunctionFieldset.html %}
+
+### Add Entities
+
+#### Parts
+
+{% assign caption="CreateParts" %}
+{% assign icon=site.images['function-create'] %}
+{% assign description="Creates the parts which are included in ```parts``` " %}
+{% capture parameterTable %}
+Name           | Type                                  | Description
+---------------|---------------------------------------|--------------------------------------------------
+parts          | ```InspectionPlanPart[]```            | The parts that should be created.
+token          | ```CancellationToken```               | Parameter is optional and allows to cancel the asyncronous call.
+{% endcapture %}
+
+{% assign exampleCaption="Add the part 'metal part'." %}
+{% capture example %}
+{% highlight csharp %}
+var part = new InspectionPlanPart{ 
+  Uuid = new Guid( "05550c4c-f0af-46b8-810e-30c0c00a379e" ),
+  Path = PathHelper.String2PartPathInformation( "metal part"),
+  Attributes = new[]{ 
+    new Attribute( WellKnownKeys.Parts.Number, "4466" ), 
+    new Attribute( WellKnownKeys.Parts.Abbreviation, "mp" ) }
+};
+var client = new DataServiceRestClient( "http://piwebserver:8080" );
+client.CreateParts( new[]{ part } );
+{% endhighlight %}
+{% endcapture %}
+
+{% include sdkFunctionFieldset.html %}
+
+#### Characteristics
+
+{% assign caption="CreateCharacteristics" %}
+{% assign icon=site.images['function-create'] %}
+{% assign description="Creates the characteristics which are included in ```characteristics``` " %}
+{% capture parameterTable %}
+Name           | Type                                  | Description
+---------------|---------------------------------------|--------------------------------------------------
+characteristics| ```InspectionPlanCharacteristic[]```  | The characteristics that should be created.
+token          | ```CancellationToken```               | Parameter is optional and allows to cancel the asyncronous call.
+{% endcapture %}
+
+{% assign exampleCaption="Add the characteristic '/metal part/diameterCircle3'." %}
+
+{% capture example %}
+{% highlight csharp %}
+var characteristic = new InspectionPlanPart{ 
+  Uuid = new Guid( "1429c5e2-599c-4d3e-b724-4e00ecb0caa7" ),
+  Path =  PathHelper.String2PathInformation( "/metal part/diameterCircle3", "PC" ),
+  Attributes = new[]{ 
+    new Attribute( WellKnownKeys.Characteristic.LowerSpecificationLimit, "-0.2" ), 
+    new Attribute( WellKnownKeys.Characteristic.UpperSpecificationLimit, "0.3" ) }
+};
+var client = new DataServiceRestClient( "http://piwebserver:8080" );
+client.CreateCharacteristics( new[]{ characteristic } );
+{% endhighlight %}
+{% endcapture %}
+
+### Update Entities
+
+#### Parts
+
+{% assign caption="UpdateParts" %}
+{% assign icon=site.images['function-update'] %}
+{% assign description="Update the parts which are included in ```parts```. Updating might regard the following: rename/move inspection plan entities or change inspection plan entity’s attributes. If versioning is enabled on server side, every update of one or more inspection plan entities creates a new version entry." %}
+{% capture parameterTable %}
+Name           | Type                                  | Description
+---------------|---------------------------------------|--------------------------------------------------
+parts          | ```InspectionPlanPart[]```            | The parts that should be updated.
+token          | ```CancellationToken```               | Parameter is optional and allows to cancel the asyncronous call.
+{% endcapture %}
+
+{% assign exampleCaption="Update the 'metal part' part's attribute 'part number'." %}
+{% capture example %}
+{% highlight csharp %}
+var client = new DataServiceRestClient( "http://piwebserver:8080" );
+
+//Get the part
+var charPath = PathHelper.String2PathInformation( "/metal part/diameterCircle3", "PC" );
+var part = client.GetPartByPath( charPath );
+
+part.Attributes[ 0 ] = new global::DataService.Attribute( WellKnownKeys.Part.Number, "446" );
+client.UpdateParts( new[]{ part } );
+{% endhighlight %}
+{% endcapture %}
+
+{% include sdkFunctionFieldset.html %}
+
+#### Characteristics
+
+{% assign caption="UpdateCharacteristics" %}
+{% assign icon=site.images['function-update'] %}
+{% assign description="Update the characteristics which are included in ```characteristics``` Updating might regard the following: rename/move inspection plan entities or change inspection plan entity’s attributes. If versioning is enabled on server side, every update of one or more inspection plan entities creates a new version entry. " %}
+{% capture parameterTable %}
+Name           | Type                                  | Description
+---------------|---------------------------------------|--------------------------------------------------
+characteristics| ```InspectionPlanCharacteristic[]```  | The characteristics that should be updated.
+token          | ```CancellationToken```               | Parameter is optional and allows to cancel the asyncronous call.
+{% endcapture %}
+
+{% assign exampleCaption="Rename/move the characteristic '/metal part/diameterCircle3' to '/metal part/diameterCircle_3'." %}
+
+{% capture example %}
+{% highlight csharp %}
+var client = new DataServiceRestClient( "http://piwebserver:8080" );
+
+//Get the characteristic
+var charPath = PathHelper.String2PathInformation( "/metal part/diameterCircle3", "PC" );
+var characteristic = client.GetCharacteristicByPath( charPath );
+
+var newPath = PathHelper.String2PathInformation( "/metal part/diameterCircle_3", "PC" );
+characteristic.Path = newPath;
+client.UpdateCharacteristics( new InspectionPlanCharacteristic[]{characteristic} );
+{% endhighlight %}
+{% endcapture %}
+
+{% include sdkFunctionFieldset.html %}
+
+### Delete Entities
+
+#### Parts
+
+{% assign caption="DeleteAllParts" %}
+{% assign icon=site.images['function-delete'] %}
+{% assign description="Deletes all parts within the database and therefore the whole inspection plan." %}
+{% capture parameterTable %}
+Name           | Type                                  | Description
+---------------|---------------------------------------|--------------------------------------------------
+token          | ```CancellationToken```               | Parameter is optional and allows to cancel the asyncronous call.
+{% endcapture %}
+
+{% assign exampleCaption="Delete the whole inspection plan." %}
+{% capture example %}
+{% highlight csharp %}
+var client = new DataServiceRestClient( "http://piwebserver:8080" );
+client.DeleteAllParts();
+{% endhighlight %}
+{% endcapture %}
+
+{% include sdkFunctionFieldset.html %}
+
+{% assign caption="DeleteParts" %}
+{% assign icon=site.images['function-delete'] %}
+{% assign description="Deletes all parts (and characteristics) below the part ```startPart``` including the part itself." %}
+{% capture parameterTable %}
+Name           | Type                                  | Description
+---------------|---------------------------------------|--------------------------------------------------
+startPart      | ```PathInformation```                 | The path of the part which should be deleted. 
+token          | ```CancellationToken```               | Parameter is optional and allows to cancel the asyncronous call.
+{% endcapture %}
+
+{% assign exampleCaption="Delete everything below 'metal part' including the part itself." %}
+{% capture example %}
+{% highlight csharp %}
+var client = new DataServiceRestClient( "http://piwebserver:8080" );
+client.DeleteParts( PathHelper.String2PartPathInformation( "metal part" ) );
+{% endhighlight %}
+{% endcapture %}
+
+{% include sdkFunctionFieldset.html %}
+
+{% assign caption="DeleteParts" %}
+{% assign icon=site.images['function-delete'] %}
+{% assign description="Deletes all parts (and characteristics) of which the uuid is within ```guids```, including the parts themselves." %}
+{% capture parameterTable %}
+Name           | Type                                  | Description
+---------------|---------------------------------------|--------------------------------------------------
+guids          | ```PathInformation```                 | The guids of the parts which shall be deleted. 
+token          | ```CancellationToken```               | Parameter is optional and allows to cancel the asyncronous call.
+{% endcapture %}
+
+{% assign exampleCaption="Delete the part with the uuid 05550c4c-f0af-46b8-810e-30c0c00a379e." %}
+{% capture example %}
+{% highlight csharp %}
+var client = new DataServiceRestClient( "http://piwebserver:8080" );
+client.DeleteParts( new []{ new Guid ( "05550c4c-f0af-46b8-810e-30c0c00a379e" ) } );
+{% endhighlight %}
+{% endcapture %}
+
+#### Characteristics
+
+{% assign caption="DeleteCharacteristics" %}
+{% assign icon=site.images['function-delete'] %}
+{% assign description="Deletes all characteristics below the characteristic ```startPart```, including the characteristic itself." %}
+{% capture parameterTable %}
+Name           | Type                                  | Description
+---------------|---------------------------------------|--------------------------------------------------
+startPart      | ```PathInformation```                 | The path of the characteristic which should be deleted. 
+token          | ```CancellationToken```               | Parameter is optional and allows to cancel the asyncronous call.
+{% endcapture %}
+
+{% assign exampleCaption="Delete everything below 'diameterCircle_3' including the characteristic itself." %}
+{% capture example %}
+{% highlight csharp %}
+var client = new DataServiceRestClient( "http://piwebserver:8080" );
+client.DeleteCharacteristics( PathHelper.String2PathInformation( "/metal part/diameterCircle_3", "PC" ) );
+{% endhighlight %}
+{% endcapture %}
+
+{% include sdkFunctionFieldset.html %}
+
+{% assign caption="DeleteCharacteristics" %}
+{% assign icon=site.images['function-delete'] %}
+{% assign description="Deletes all characteristics of which the uuid is within ```guids```, including the characteristics themselves." %}
+{% capture parameterTable %}
+Name           | Type                                  | Description
+---------------|---------------------------------------|--------------------------------------------------
+guids          | ```PathInformation```                 | The guids of the characteristics which shall be deleted. 
+token          | ```CancellationToken```               | Parameter is optional and allows to cancel the asyncronous call.
+{% endcapture %}
+
+{% assign exampleCaption="Delete the characteristic with the uuid 1429c5e2-599c-4d3e-b724-4e00ecb0caa7." %}
+{% capture example %}
+{% highlight csharp %}
+var client = new DataServiceRestClient( "http://piwebserver:8080" );
+client.DeleteCharacteristics( new []{ new Guid ( "1429c5e2-599c-4d3e-b724-4e00ecb0caa7" ) } );
+{% endhighlight %}
+{% endcapture %}
+
+{% include sdkFunctionFieldset.html %}
