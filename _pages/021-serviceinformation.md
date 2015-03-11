@@ -42,6 +42,13 @@ configurationTimestamp | ```DateTime``` | Timestamp of the last configuration ti
 
 Service information can be fetched via the following endpoint. There are no filter parameters to restrict the query.
 
+<ul class="list-group">
+  <li class="list-group-item">
+    <span class="badge">GET</span>
+    /serviceInformation
+  </li>
+</ul>
+
 URL Endpoint | GET | PUT | POST | DELETE
 -------------|-----|-----|------|-------
 /serviceInformation | Returns general information about the PiWeb-Server | not supported | not supported | not supported
