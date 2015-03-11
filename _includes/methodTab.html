@@ -5,7 +5,7 @@
         href={{ '"#collapse' | append: linkId | append: '"' }} 
         aria-expanded="false" 
         aria-controls={{ '"#collapse' | append: linkId | append: '"' }}>
-    {{ icon | markdownify }} {{ caption }}
+    <span>{{ icon | markdownify }} {{ caption }} </span>
     <span style="float: right;">
       {{ description }}
     </span>
