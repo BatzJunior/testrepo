@@ -43,9 +43,53 @@ configurationTimestamp | ```DateTime``` | Timestamp of the last configuration ti
 Service information can be fetched via the following endpoint. There are no filter parameters to restrict the query.
 
 <ul class="list-group">
-  <li class="list-group-item">
+  <li class="list-group-item" data-toggle="collapse" data-target="#collapseExample">
     <span class="label label-primary">GET</span>
     /serviceInformation
+  </li>
+  <li class="list-group-item collapse" id="collapseExample">
+    {% assign exampleCaption="Get Service Information for a given connection" %}
+    {% assign comment="" %}
+    
+    {% capture jsonrequest %}
+    {% highlight http %}
+    GET /dataServiceRest/serviceInformation HTTP/1.1
+    {% endhighlight %}
+    {% endcapture %}
+    
+    {% capture jsonresponse %}
+    {% highlight json %}
+    {
+       ...
+       "data":
+       [
+           {
+              "serverName": "PiWeb Server DEDRSW9KKNVY1",
+              "version": "5.6.2.0",
+              "securityEnabled": false,
+              "edition": "PiWebDB",
+              "versionWsdlMajor": "2",
+              "versionWsdlMinor": "9",
+              "partCount": 4,
+              "characteristicCount": 125,
+              "measurementCount": 20,
+              "valueCount": 900,
+              "featureList":
+              [
+                 "MeasurementAggregation",
+                "DistinctMeasurementSearch"
+              ],
+              "inspectionPlanTimestamp": "2014-11-24T16:08:58.812964+01:00",
+              "measurementTimestamp": "2014-11-03T10:27:28.3461853+01:00",
+              "configurationTimestamp": "2014-11-03T10:27:27.5245116+01:00"
+           },
+           ...
+       ]
+    }
+    {% endhighlight %}
+    {% endcapture %}
+    
+    {% include exampleFieldset.html %}
   </li>
   <li class="list-group-item">
     <span class="label label-primary">GET</span>
