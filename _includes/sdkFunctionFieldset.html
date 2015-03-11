@@ -1,4 +1,3 @@
-{{ site.images['summary16'] | append: ' **Summary:** '| append: description | markdownify }}
 {{ site.images['parameter16'] | append: ' **Parameter List:**'| markdownify }}
 {{parameterTable | markdownify}}
 {% if returnParameter != empty %}
