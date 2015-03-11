@@ -88,7 +88,7 @@ Service information can be fetched via the following endpoint. There are no filt
   }
   {% endhighlight %}
   {% endcapture %}
-  {% include endpointTabs.html %}
+  {% include endpointTab.html %}
 </div>
 
 ## {{page.sections['sdk'] }}
