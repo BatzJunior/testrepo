@@ -88,6 +88,7 @@ Service information can be fetched via the following endpoint. There are no filt
   }
   {% endhighlight %}
   {% endcapture %}
+  {% include endpointTabs.html %}
 </div>
 
 URL Endpoint | GET | PUT | POST | DELETE
