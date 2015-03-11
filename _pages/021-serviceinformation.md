@@ -43,7 +43,7 @@ configurationTimestamp | ```DateTime``` | Timestamp of the last configuration ti
 Service information can be fetched via the following endpoint. There are no filter parameters to restrict the query.
 
 <div class="panel-group" role="tablist" aria-multiselectable="true">
- {% assign linkId="serviceInformationGet" %}
+ {% assign linkId="serviceInformationEndpointGet" %}
  {% assign method="GET" %}
  {% assign endpoint="/serviceInformation" %}
  {% assign summary="Returns general information about the PiWeb server" %}
@@ -95,7 +95,7 @@ Service information can be fetched via the following endpoint. There are no filt
 
 ### Get Service Information
 
-{% assign linkId="serviceInformationGet" %}
+{% assign linkId="serviceInformationMethodGet" %}
 {% assign caption="GetServiceInformation" %}
 {% assign icon=site.images['function-get'] %}
 {% assign description="Fetches the service information. " %}
