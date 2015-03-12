@@ -2,12 +2,11 @@
 {% for node in site.pages %}
 	{% if node.title != nil and node.url != '/' and node.isSubPage != true %}
 		{% capture nodediff %}{{ page.url | remove:node.url }}{% endcapture %}
-		<li><a {% if nodediff != page.url %}class="bolder" {% endif %}href="{{site.baseurl}}{{ node.url }}">{{ node.title }}</a></li>
 		
 		{% if node.category == page.category %}
 			{% for sec in node.sections %}
 				
-				<ul {% if nodediff != page.url %} style="visibility:hidden" {% endif %}>
+				<ul>
 					{% assign subPage = nil %}
 					{% for pg in site.pages %}
 						{% if pg.isSubPage == true and pg.category == node.category and pg.subCategory == sec[0] %}
