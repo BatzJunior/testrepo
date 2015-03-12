@@ -36,6 +36,10 @@ body {
   border-color: #FDFDFD;
 }
 
+.navbar-default .navbar-nav{
+  margin-top:20px;
+}
+
 .navbar-brand {
   height: 70px;
   font-size: 40px;
