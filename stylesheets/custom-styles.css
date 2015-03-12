@@ -31,3 +31,7 @@ body {
 .navbar-default .navbar-nav>li>a{
   color: #FDFDFD;
 }
+
+.navbar-default .navbar-toggle {
+border-color: #FDFDFD;
+}
