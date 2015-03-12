@@ -1,14 +1,21 @@
 //---------------------------Body-------------------------------------
 //--------------------------------------------------------------------
 
-body{
-  background-color: #444;
+body {
+  font-family: "Segoe UI",Verdana,Helvetica,sans-serif;
+  font-size: 14px;
+  background-color:#444;
+  color: #232323;
+  margin: 0;
+  line-height: 1.8em;
+  -webkit-font-smoothing: antialiased;
+
 }
 
 //---------------------------Header-----------------------------------
 //--------------------------------------------------------------------
 
-.container-header{
+.container-header {
   background-color: #437AB4;
   box-shadow: 0 15px 30px -20px rgba(0,0,0,0.5);
   color: #FDFDFD;
@@ -18,7 +25,7 @@ body{
   z-index: 2;
 }
 
-.navbar-default{
+.navbar-default {
   background-color: inherit;
   border: none;
 }
