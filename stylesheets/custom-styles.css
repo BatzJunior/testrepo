@@ -33,5 +33,11 @@ body {
 }
 
 .navbar-default .navbar-toggle {
-border-color: #FDFDFD;
+  border-color: #FDFDFD;
+}
+
+.navbar-brand {
+  height: 70px;
+  font-size: 40px;
+  line-height: 40px;
 }
