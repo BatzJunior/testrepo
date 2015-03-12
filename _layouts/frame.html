@@ -30,18 +30,12 @@
     </div>
     <nav class="collapse navbar-collapse" role="navigation">
       <ul class="nav navbar-nav">
-        <li>
-          <a href="#sec">Get Started</a>
-        </li>
-        <li>
-          <a href="#sec">Edit</a>
-        </li>
-        <li>
-          <a href="#sec">Visualize</a>
-        </li>
-        <li>
-          <a href="#sec">Prototype</a>
-        </li>
+      {% for node in site.pages %}
+	{% if node.title != nil and node.url != '/' and node.isSubPage != true %}
+		{% capture nodediff %}{{ page.url | remove:node.url }}{% endcapture %}
+		<li><a {% if nodediff != page.url %}class="bolder" {% endif %}href="{{site.baseurl}}{{ node.url }}">{{ node.title }}</a></li>
+	{% endif %}
+      {% endfor %}
       </ul>
     </nav>
   </div>
