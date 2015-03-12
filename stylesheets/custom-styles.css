@@ -45,3 +45,12 @@ body {
   font-size: 40px;
   line-height: 40px;
 }
+
+.navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
+background-color: #FDFDFD;
+}
+
+.navbar-toggle{
+  margin-top:20px;
+}
+}
