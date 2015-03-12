@@ -22,5 +22,8 @@ body {
 .navbar-default {
   background-color: inherit;
   border: none;
+}
+
+.navbar-default .navbar-brand{
   color: #FDFDFD;
 }
