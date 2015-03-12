@@ -65,6 +65,10 @@ background-color: #FDFDFD;
   box-shadow: 0px 0px 2px 0px #444;
 }
 
+.page-main{
+  background-color: #FDFDFD;
+}
+
 
 .affix-top,.affix{
  position: static;
