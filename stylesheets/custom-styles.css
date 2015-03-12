@@ -69,6 +69,10 @@ background-color: #FDFDFD;
   background-color: #FDFDFD;
 }
 
+a.bolder{
+	font-weight:bolder;
+}
+
 /*
 .affix-top,.affix{
  position: static;
