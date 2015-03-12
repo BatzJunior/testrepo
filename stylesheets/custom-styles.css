@@ -58,6 +58,10 @@ body {
 background-color: #FDFDFD;
 }
 
+.row{
+	margin-left:0;
+	margin-right:0;
+}
 
 .page-nav{
   background-color: #ECECEC;
