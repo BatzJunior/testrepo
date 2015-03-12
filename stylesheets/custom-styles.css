@@ -27,3 +27,7 @@ body {
 .navbar-default .navbar-brand{
   color: #FDFDFD;
 }
+
+.navbar-default .navbar-nav>li>a{
+  color: #FDFDFD;
+}
