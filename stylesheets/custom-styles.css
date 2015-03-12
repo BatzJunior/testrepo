@@ -46,11 +46,12 @@ body {
   line-height: 40px;
 }
 
+.navbar-toggle{
+  margin-top:20px;
+  background-color: #FDFDFD;
+}
+
 .navbar-default .navbar-toggle:focus, .navbar-default .navbar-toggle:hover {
 background-color: #FDFDFD;
 }
 
-.navbar-toggle{
-  margin-top:20px;
-}
-}
