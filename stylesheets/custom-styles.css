@@ -14,7 +14,7 @@ body {
   background-color: #437AB4;
   box-shadow: 0 15px 30px -20px rgba(0,0,0,0.5);
   color: #FDFDFD;
-  font-weight: 400;
+  font-weight: 200;
   padding-left: 25px;
   text-shadow: rgba(0, 0, 0, 0.4) 2px 2px 4px;
   z-index: 2;
@@ -84,9 +84,6 @@ ul.subNavList{
 
 table {
   width:100%;
-}
-
-table {
   margin-bottom: 32px;
   text-align: left;
   border-spacing:1px;
@@ -96,7 +93,8 @@ th {
   padding: 10px;
   background: #437AB4;
   color: #FFF;
-  font-size:1.1em;
+  font-size: 1.1em;
+  font-weight: 400;
  }
 
 td {
