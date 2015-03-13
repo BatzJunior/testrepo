@@ -80,6 +80,30 @@ ul.subNavList{
 	padding-left:20px;
 }
 
+/* Tables */
+
+table {
+  width:100%;
+}
+
+table {
+  margin-bottom: 32px;
+  text-align: left;
+  border-spacing:1px;
+ }
+
+th {
+  padding: 10px;
+  background: #437AB4;
+  color: #FFF;
+  font-size:1.1em;
+ }
+
+td {
+  padding: 10px;
+  background: #F6F6F6;
+ }
+
 /*
 .affix-top,.affix{
  position: static;
