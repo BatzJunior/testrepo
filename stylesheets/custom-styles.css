@@ -62,7 +62,10 @@ code{
   color: #FDFDFD;
   font-weight: 400;
   padding-left: 25px;
-  text-shadow: rgba(0, 0, 0, 0.4) 2px 2px 4px;
+}
+
+.navbar-header{
+	 text-shadow: rgba(0, 0, 0, 0.4) 2px 2px 4px;
 }
 
 .container-header-footer{
@@ -87,6 +90,8 @@ code{
 .navbar-default .navbar-nav>li>a:hover{
   color: #FDFDFD;
   font-size: larger;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .navbar-default .navbar-toggle {
