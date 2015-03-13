@@ -26,6 +26,23 @@ p{
 	margin: 0 0 20px;
 }
 
+fieldset{
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	padding: 0px 10px;
+	margin: 0 0 15px 0;
+}
+
+fieldset p{
+	margin: 10px 0 5px 0;
+}
+
+legend{
+	padding: 0px 5px;
+	font-weight:500;
+	width: inherit;
+}
+
 .container-header {
   background-color: #437AB4;
   box-shadow: 0 15px 30px -20px rgba(0,0,0,0.5);
