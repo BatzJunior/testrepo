@@ -20,7 +20,7 @@
 						
 						{% if subPage.url == page.url %}
 							{% for subsec in subPage.sections %}
-								<ul>
+								<ul class="subNavList">
 									{% capture anker %}{{ subsec[1] | slugify }}{% endcapture %}
 									<li><a href="{{url}}#{{ anker }}">{{ subsec[1] }}</a></li>
 								</ul>
