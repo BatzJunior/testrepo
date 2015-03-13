@@ -56,18 +56,18 @@ code{
 
 .container-header {
   background-color: #437AB4;
-  box-shadow: 0 12px 24px -12px rgba(0,0,0,0.5);
   color: #FDFDFD;
   font-weight: 400;
   padding-left: 25px;
   text-shadow: rgba(0, 0, 0, 0.4) 2px 2px 4px;
-  z-index: 2;
 }
 
 .container-header-footer{
 	background-color: #245E9A;
 	text-align: right;
 	font-size: small;
+	border-bottom: 1px solid #FDFDFD;
+	box-shadow: 0 12px 24px -12px rgba(0,0,0,0.5);
 }
 
 .navbar-default {
