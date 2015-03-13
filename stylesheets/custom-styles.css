@@ -66,7 +66,7 @@ code{
 
 @media (max-width: 767px) {
 	.container-header {
-		padding-left:0;	
+		padding-left:5px;	
 	}
 }
 
