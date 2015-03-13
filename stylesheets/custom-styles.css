@@ -75,6 +75,11 @@ a.bolder{
 	font-weight:bolder;
 }
 
+ul.subNavList{
+	list-style:none;
+	padding-left:20px;
+}
+
 /*
 .affix-top,.affix{
  position: static;
