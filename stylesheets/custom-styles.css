@@ -49,6 +49,11 @@ span.label{
 	margin-right: 5px;
 }
 
+code{
+	color: inherit;
+	background-color: #DDD;
+}
+
 .container-header {
   background-color: #437AB4;
   box-shadow: 0 15px 30px -20px rgba(0,0,0,0.5);
