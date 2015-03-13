@@ -14,7 +14,7 @@ body {
   background-color: #437AB4;
   box-shadow: 0 15px 30px -20px rgba(0,0,0,0.5);
   color: #FDFDFD;
-  font-weight: 200;
+  font-weight: 400;
   padding-left: 25px;
   text-shadow: rgba(0, 0, 0, 0.4) 2px 2px 4px;
   z-index: 2;
@@ -72,7 +72,7 @@ background-color: #FDFDFD;
 }
 
 a.bolder{
-	font-weight:bolder;
+	font-weight:bold;
 }
 
 ul.subNavList{
