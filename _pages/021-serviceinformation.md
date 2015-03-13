@@ -38,7 +38,7 @@ inspectionPlanTimestamp | ```DateTime``` | Timestamp of the last inspection plan
 measurementTimestamp | ```DateTime``` | Timestamp of the last measurement modification
 configurationTimestamp | ```DateTime``` | Timestamp of the last configuration timestamp
 {% endcapture %}
-{{ table | markdownify }}
+{{ table | markdownify | replace '<table>' '<table class=""table .table-hover"">'}}
 
 ## {{ page.sections['endpoint'] }}
 
