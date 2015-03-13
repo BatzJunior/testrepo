@@ -90,8 +90,13 @@ code{
 .navbar-default .navbar-nav>li>a:hover{
   color: #FDFDFD;
   font-size: larger;
-  padding-top: 10px;
+  padding-top: 7px;
   padding-bottom: 10px;
+}
+
+.navbar-default .navbar-nav>li>a.active{
+	background-color: #245E9A;
+	border-radius: 4px;
 }
 
 .navbar-default .navbar-toggle {
