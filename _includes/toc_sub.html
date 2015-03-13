@@ -6,7 +6,7 @@
 		{% if node.category == page.category %}
 			{% for sec in node.sections %}
 				
-				<ul>
+				<ul class="subNavList">
 					{% assign subPage = nil %}
 					{% for pg in site.pages %}
 						{% if pg.isSubPage == true and pg.category == node.category and pg.subCategory == sec[0] %}
