@@ -61,7 +61,13 @@ code{
   background-color: #437AB4;
   color: #FDFDFD;
   font-weight: 400;
-  /*padding-left: 25px;*/
+  padding-left: 25px;
+}
+
+@media (max-width: 767px) {
+	.container-header {
+		padding-left:0;	
+	}
 }
 
 .navbar-header{
