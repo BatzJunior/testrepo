@@ -20,7 +20,7 @@ The first time service information are fetched from the server, database statist
 The ServiceInformation object, which is returned, contains of the following properties:
 
 ### ServiceInformation
-
+{% capture table %}
 Property | Type | Description
 ---------|------|-------------
 serverName | ```string``` | The name of the PiWeb server as it is specified in the server settings dialog
@@ -37,6 +37,8 @@ featureList | ```string[]``` | Includes the server side supported features.
 inspectionPlanTimestamp | ```DateTime``` | Timestamp of the last inspection plan modification
 measurementTimestamp | ```DateTime``` | Timestamp of the last measurement modification
 configurationTimestamp | ```DateTime``` | Timestamp of the last configuration timestamp
+{% endcapture %}
+{{ table | markdownify | replace '<table>' '<table class="table .table-responsive">' }}
 
 ## {{ page.sections['endpoint'] }}
 
