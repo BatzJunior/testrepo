@@ -150,10 +150,16 @@ ul.subNavList{
 	padding-left:20px;
 }
 
+.table{
+	border-spacing: 1px;
+	border-collapse: inherit;
+}
+
 .table>thead>tr>th{
 	background: #437AB4;
 	color: #FFF;
 	font-weight: inherit;
+	border:0;
 }
 
 .table>tbody>tr>td{
