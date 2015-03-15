@@ -150,6 +150,18 @@ ul.subNavList{
 	padding-left:20px;
 }
 
+.table>thead>tr>th{
+	background: #437AB4;
+	color: #FFF;
+	font-weight: inherit;
+}
+
+.table>tbody>tr>td{
+	border:0;
+	background-color:#f5f5f5;
+}
+}
+
 /* Tables */
 /*
 table {
