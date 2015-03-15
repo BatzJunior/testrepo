@@ -1,18 +1,18 @@
 ---
 category: restApi
-title: REST API
+title: REST API - General Information
 permalink: /restapi/
 sections:
   general: General Information
+  dataservice: Data Service
+  rawdataservice: Raw Data Service
 ---
 
-## {{ page.sections['general'] }}
-
-### Addresses
+## Addresses
 
 The base addresses for the REST based services are:
 
-####Data Service
+### Data Service
 
 {% highlight http %}
 http(s)://serverUri:port/instanceName/DataServiceRest
@@ -20,7 +20,7 @@ http(s)://serverUri:port/instanceName/DataServiceRest
 
 and
 
-####Raw Data Service
+### Raw Data Service
 
 {% highlight http %}
 http(s)://serverUri:port/instanceName/RawDataServiceRest
@@ -28,11 +28,11 @@ http(s)://serverUri:port/instanceName/RawDataServiceRest
 
 The instanceName and https are optional and depend on the server settings.
 
-### Formats
+## Formats
 
 The input and output format is JSON as it is the most performance and memory efficient format at the moment.
 
-### Statuscodes
+## Statuscodes
 
 {% capture table %}
 Method        | Statuscode Ok        | Statuscode Failure                                       | Comment
@@ -44,7 +44,7 @@ DELETE        | **200** (Ok) | **400** (Bad request) – Request failed <br><br>
 {% endcapture %}
 {{ table | markdownify | replace: '<table>', '<table class="table table-hover">' }}
 
-### URL-Parameter
+## URL-Parameter
 
 Requests can be restricted by attaching the parameter `filter` to the endpoint of the webservice URL in the following format:
 
