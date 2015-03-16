@@ -15,33 +15,6 @@ sections:
 
 ## {{page.sections['serviceInformation']}}
 
-### General Information
-
-Service information requests always have the smallest response time and are therefore well suited for checking the connection. Fetching the service information doesn't require authentication.
-The first service information request triggers the calculation of the database statistics. Since the service information call returns immediately the values ```partCount```, ```characteristicsCount```, ```measurementsCount``` and ```valuesCount``` are empty in the first response. These values will be set once the statistics have been calculated; usually on the second call.
-
-The returned ServiceInformation object contains of the following properties:
-
-{% capture table %}
-Property | Description
----------|-------------
-serverName | The name of the PiWeb server as specified in the server settings dialog
-version | The version number of the PiWeb server
-securityEnabled | Indicates whether authentication is required by the server.
-edition | The database edition. Should generally be PiwebDB.
-versionWsdlMajor | The major version number of the interface.
-versionWsdlMinor | The minor version number of the interface.
-partCount | The number of parts stored on the server
-characteristicCount | The number of characteristics stored on the server
-measurementCount | The number of measurements stored on the server
-valueCount | The number of measured values stored on the server
-featureList | A list of features supported by the server.
-inspectionPlanTimestamp | Timestamp of the last inspection plan modification
-measurementTimestamp | Timestamp of the last measurement modification
-configurationTimestamp | Timestamp of the last configuration timestamp
-{% endcapture %}
-{{ table | markdownify | replace: '<table>', '<table class="table table-hover">' }}
-
 ### Endpoints
 
 The service information can be fetched via the following endpoint. This endpoint doesn't provide filter parameters.
@@ -92,3 +65,30 @@ GET /dataServiceRest/serviceInformation HTTP/1.1
 {% endhighlight %}
 {% endcapture %}
 {% include endpointTab.html %}
+
+### General Information
+
+Service information requests always have the smallest response time and are therefore well suited for checking the connection. Fetching the service information doesn't require authentication.
+The first service information request triggers the calculation of the database statistics. Since the service information call returns immediately the values ```partCount```, ```characteristicsCount```, ```measurementsCount``` and ```valuesCount``` are empty in the first response. These values will be set once the statistics have been calculated; usually on the second call.
+
+The returned ServiceInformation object contains of the following properties:
+
+{% capture table %}
+Property | Description
+---------|-------------
+serverName | The name of the PiWeb server as specified in the server settings dialog
+version | The version number of the PiWeb server
+securityEnabled | Indicates whether authentication is required by the server.
+edition | The database edition. Should generally be PiwebDB.
+versionWsdlMajor | The major version number of the interface.
+versionWsdlMinor | The minor version number of the interface.
+partCount | The number of parts stored on the server
+characteristicCount | The number of characteristics stored on the server
+measurementCount | The number of measurements stored on the server
+valueCount | The number of measured values stored on the server
+featureList | A list of features supported by the server.
+inspectionPlanTimestamp | Timestamp of the last inspection plan modification
+measurementTimestamp | Timestamp of the last measurement modification
+configurationTimestamp | Timestamp of the last configuration timestamp
+{% endcapture %}
+{{ table | markdownify | replace: '<table>', '<table class="table table-hover">' }}
