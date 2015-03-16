@@ -16,7 +16,7 @@
 					
 					{% if subPage %}
 						{% capture url %}{{site.baseurl}}{{ subPage.url}}{% endcapture %}
-						<li><a {% if subPage.url == page.url %}class="active" {% endif %}href="{{url}}">{{ sec[1] }}</a></li>
+						<li><a {% if subPage.url == page.url %}class="bold" {% endif %}href="{{url}}">{{ sec[1] }}</a></li>
 						
 						{% if subPage.url == page.url %}
 							{% for subsec in subPage.sections %}
