@@ -16,7 +16,7 @@
 					
 					{% if subPage %}
 						{% capture url %}{{site.baseurl}}{{ subPage.url}}{% endcapture %}
-						<li><a {% if subPage.url == page.url %}class="bold" {% endif %}href="{{url}}">{{ sec[1] }}</a></li>
+						<li><a {% if subPage.area == page.area and subPage.category == page.category %}class="bold" {% endif %}href="{{url}}">{{ sec[1] }}</a></li>
 						
 						{% if subPage.category == page.category %}
 							{% if subPage.sections.size > 0 %}
@@ -31,7 +31,7 @@
 									{% if pg.isSubPage == true and pg.area == node.area and pg.category == subPage.category %}
 										<ul class="subNavList">
 										{% capture url %}{{site.baseurl}}{{ pg.url}}{% endcapture %}
-										<li><a {% if pg.url == page.url %}class="bold" {% endif %}href="{{url}}">{{ pg.title }}</a></li>
+										<li><a {% if pg.url == page.url %}class="bold" {% endif %}href="{{url}}">{{ pg.pageTitle }}</a></li>
 										</ul>
 									{% endif %}
 								{% endfor %}
