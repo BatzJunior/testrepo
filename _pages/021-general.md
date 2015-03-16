@@ -39,13 +39,13 @@ Constructor method | Description
 {% endcapture %}
 {{ table | markdownify | replace: '<table>', '<table class="table table-hover">' }}
 
-### {{ site.headers['example'] }} A data service client for a server using https on host "piwebserver" on port 8080.
+#### {{ site.headers['example'] }} A data service client for a server using https on host "piwebserver" on port 8080.
 
 {% highlight csharp %}
 var dataserviceRestClient = new DataServiceRestClient( "https", "piwebserver", 8080 );
 {% endhighlight %}
 
-### {{ site.headers['example'] }} A raw data service client pointed to "http:piwebserver:8082"
+#### {{ site.headers['example'] }} A raw data service client pointed to "http:piwebserver:8082"
 
 {% highlight csharp %}
 var rawdataserviceRestClient = new RawDataServiceRestClient( "http:piwebserver:8082" );
