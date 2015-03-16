@@ -7,8 +7,9 @@
 				<ul class="subNavList">
 					{% assign subPage = nil %}
 					{% for pg in site.pages %}
-						{% if pg.isSubPage == true and pg.area == node.area and pg.category == sec[0] and pg.subCategory.size == 0 %}
+						{% if pg.isSubPage == true and pg.area == node.area and pg.category == sec[0] %}
 							{% assign subPage = pg %}
+							<li>{{'uu ' | append: pg.subCategory}}</li>
 						{% endif %}
 					{% endfor %}
 					
