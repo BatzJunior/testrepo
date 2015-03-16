@@ -9,7 +9,7 @@
 				<ul class="subNavList">
 					{% assign subPage = nil %}
 					{% for pg in site.pages %}
-						<li>{% 'Area1:' | append : node.area | append: 'Area0:' | append: pg.area %}</li>
+						<li>{{ 'Area1:' | append : node.area | append: 'Area0:' | append: pg.area }}</li>
 						{% if pg.isSubPage == true and pg.area == node.area and pg.category == sec[0] %}
 							{% assign subPage = pg %}
 						{% endif %}
