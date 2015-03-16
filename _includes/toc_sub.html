@@ -9,7 +9,7 @@
 				<ul class="subNavList">
 					{% assign subPage = nil %}
 					{% for pg in site.pages %}
-						{% if pg.isSubPage == true and pg.category == node.category and pg.subCategory == sec[0] %}
+						{% if pg.isSubPage == true and pg.area == node.area and pg.category == sec[0] %}
 							{% assign subPage = pg %}
 						{% endif %}
 					{% endfor %}
@@ -19,17 +19,22 @@
 						<li><a {% if subPage.url == page.url %}class="bold" {% endif %}href="{{url}}">{{ sec[1] }}</a></li>
 						
 						{% if subPage.url == page.url %}
-							{% for subsec in subPage.sections %}
-								<ul class="subNavList">
-									{% capture anker %}{{ subsec[1] | slugify }}{% endcapture %}
-									<li><a href="{{url}}#{{ anker }}">{{ subsec[1] }}</a></li>
-								</ul>
-							{% endfor %}
+							{% if subPage.sections.size > 0 %}
+								{% for subsec in subPage.sections %}
+									<ul class="subNavList">
+										{% capture anker %}{{ subsec[1] | slugify }}{% endcapture %}
+										<li><a href="{{url}}#{{ anker }}">{{ subsec[1] }}</a></li>
+									</ul>
+								{% endfor %}
+							{% else %}
+								{% for pg in site.pages %}
+									{% if pg.isSubPage == true and pg.area == node.area and pg.category == subPage.category %}
+										{% capture url %}{{site.baseurl}}{{ pg.url}}{% endcapture %}
+										<li><a {% if pg.url == page.url %}class="bold" {% endif %}href="{{url}}">{{ pg.title }}</a></li>
+									{% endif %}
+								{% endfor %}
+							{% endif %}
 						{% endif %}
-					{% else %}
-						{% capture anker %}{{ sec[1] | slugify }}{% endcapture %}
-						{% capture url %}{{site.baseurl}}{{node.url}}#{{ anker }}{% endcapture %}
-						<li><a href="{{url}}">{{ sec[1] | append: 'HIIER' }}</a></li>
 					{% endif %}
 					
 				</ul>
