@@ -112,6 +112,11 @@ code{
 	background-color: #245E9A;
 	border-radius: 4px;
 }
+@media (max-width: 767px) {
+	.navbar-default .navbar-nav>li>a.active{
+		border-radius: 0;
+	}
+}
 
 .navbar-default .navbar-toggle {
   border-color: #FDFDFD;
