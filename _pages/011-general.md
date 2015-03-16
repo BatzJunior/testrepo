@@ -5,9 +5,15 @@ title: REST API
 subTitle: General Information
 isSubPage: true
 permalink: /restapi/general/
+sections:
+   addresses: Addresses
+   formats: Formats
+   codes: Status Codes
+   parameter: Url Parameter
+   envelope: Response Envelope
 ---
 
-## Addresses
+## {{page.sections['addresses']}}
 
 The base addresses for the REST based services are:
 
@@ -27,11 +33,11 @@ http(s)://serverUri:port/instanceName/RawDataServiceRest
 
 The instanceName and https are optional and depend on the server settings.
 
-## Formats
+## {{page.sections['formats']}}
 
 The input and output format is JSON as it is the most performance and memory efficient format at the moment.
 
-## Statuscodes
+## {{page.sections['codes']}}
 
 {% capture table %}
 Method        | Statuscode Ok        | Statuscode Failure                                       | Comment
@@ -43,7 +49,7 @@ DELETE        | **200** (Ok) | **400** (Bad request) – Request failed <br><br>
 {% endcapture %}
 {{ table | markdownify | replace: '<table>', '<table class="table table-hover">' }}
 
-## URL-Parameter
+## {{page.sections['parameter']}}
 
 Requests can be restricted by attaching the parameter `filter` to the endpoint of the webservice URL in the following format:
 
@@ -86,7 +92,7 @@ Parameter name      | Possible values | Description <br> ```Example```| Accepted
 --------------------|-----------------|-------------|----------------------|--------------------------
 uuids               | Uuids of the entities | Restricts the query to the entities identified by the given uuids. <br> {{site.images['warning']}} Entites of type 'Value' are identified by a compound key, which consists of the uuid of the measurement, '&#124;' and the characteristics uuid <br> <code>uuids:{652ae7a0-d1e1-4ee2-b3a5-d4526f6ba822&#124; 78bd15c6-dc70-4ab4-bd3c-8ab2b5780b52}</code>| rawData | GET
 
-### Response envelope
+## {{page.sections['envelope']}}
 Every response, excluding streamed data responses, consists of a response envelope which includes meta data and the data returned by the webservice. A typical response envelope looks as follows:
 
 {% highlight json %}
