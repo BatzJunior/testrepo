@@ -9,7 +9,6 @@
 				<ul class="subNavList">
 					{% assign subPage = nil %}
 					{% for pg in site.pages %}
-						<li>{{ 'Area1:' | append : node.area | append: 'Area0:' | append: pg.area }}</li>
 						{% if pg.isSubPage == true and pg.area == node.area and pg.category == sec[0] %}
 							{% assign subPage = pg %}
 						{% endif %}
@@ -19,7 +18,7 @@
 						{% capture url %}{{site.baseurl}}{{ subPage.url}}{% endcapture %}
 						<li><a {% if subPage.url == page.url %}class="bold" {% endif %}href="{{url}}">{{ sec[1] }}</a></li>
 						
-						{% if subPage.url == page.url %}
+						{% if subPage.category == page.category %}
 							{% if subPage.sections.size > 0 %}
 								{% for subsec in subPage.sections %}
 									<ul class="subNavList">
