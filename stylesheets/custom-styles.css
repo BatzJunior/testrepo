@@ -62,11 +62,13 @@ span.label{
 }
 
 .panel-description{
-	float:right;
+	float:none;
 }
 
-@media (max-width: 480px) {
-	float:none;
+@media (min-width: 767px) {
+	.panel-description{
+		float:right;
+	}
 }
 
 .panel-heading{
