@@ -1,5 +1,5 @@
 ---
-category: restapi
+category: restApi
 subCategory: dataService
 title: REST API
 subTitle: Data Service
