@@ -1,5 +1,5 @@
 ---
-division: restApi
+area: restApi
 category: dataService
 subCategory: serviceInformation
 title: REST API
