@@ -29,7 +29,7 @@
 					{% else %}
 						{% capture anker %}{{ sec[1] | slugify }}{% endcapture %}
 						{% capture url %}{{site.baseurl}}{{node.url}}#{{ anker }}{% endcapture %}
-						<li><a href="{{url}}">{{ sec[1] }}</a></li>
+						<li><a href="{{url}}">{{ sec[1] | append: 'HIIER' }}</a></li>
 					{% endif %}
 					
 				</ul>
