@@ -4,6 +4,7 @@ category: dataService
 subCategory: serviceInformation
 title: REST API
 subTitle: Data Service
+pageTitle: Service Information
 isSubPage: true
 permalink: /restapi/dataservice/serviceinformation
 ---
