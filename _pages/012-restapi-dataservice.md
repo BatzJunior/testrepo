@@ -1,6 +1,6 @@
 ---
-category: restApi
-subCategory: dataService
+area: restApi
+category: dataService
 title: REST API
 subTitle: Data Service
 isSubPage: true
