@@ -1,5 +1,5 @@
 ---
-category: restApi
+area: restApi
 title: REST API
 permalink: /restapi/general/
 sections:
