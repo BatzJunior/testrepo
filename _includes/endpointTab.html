@@ -7,9 +7,9 @@
         aria-expanded="false" 
         aria-controls={{ '"#collapse' | append: linkId | append: '"' }}>
     <span class="label label-primary">{{ method }}</span> {{ endpoint }}
-    <span style="float: right;">
+    <div class="panel-description">
       {{ summary }}
-    </span>
+    </div>
   </div>
   
   <div  id={{ '"collapse' | append: linkId | append: '"' }}
