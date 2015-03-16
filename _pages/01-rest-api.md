@@ -1,9 +1,14 @@
 ---
-category: restApi
-title: REST API
-permalink: /restapi/general
+category: general
+subCategory: restApi
+title: General Information
+subTitle: REST API
+isSubPage: true
+permalink: /general/restapi/
 sections:
-  general: General Information
-  dataservice: Data Service
-  rawdataservice: Raw Data Service
+  addresses: Webservice Addresses
+  formats: Formats
+  codes: HTTP Status Codes
+  parameter: URL Parameter
+  envelope: Response Envelope
 ---
