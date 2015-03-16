@@ -9,7 +9,7 @@ isSubPage: true
 permalink: /restapi/dataservice/serviceinformation/
 ---
 
-## Service Information
+## {{ page.pageTitle }}
 
 ### Endpoints
 
