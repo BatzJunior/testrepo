@@ -1,6 +1,6 @@
 ---
-title:REST API
 category: restApi
+title: REST API
 permalink: /restapi/general
 sections:
   general: General Information
