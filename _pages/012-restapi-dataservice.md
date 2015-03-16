@@ -7,16 +7,20 @@ isSubPage: true
 permalink: /restapi/dataservice/
 sections:
    serviceInformation: Service Information
+   configuration: Configuration
+   catalogues: Catalogues
+   inspectionPlan: Inspection Plan
+   measurementsAndValues: Measurements And Values
 ---
 
 ## {{page.sections['serviceInformation']}}
+
+### General Information
 
 Service information requests always have the smallest response time and are therefore well suited for checking the connection. Fetching the service information doesn't require authentication.
 The first service information request triggers the calculation of the database statistics. Since the service information call returns immediately the values ```partCount```, ```characteristicsCount```, ```measurementsCount``` and ```valuesCount``` are empty in the first response. These values will be set once the statistics have been calculated; usually on the second call.
 
 The returned ServiceInformation object contains of the following properties:
-
-### ServiceInformation
 
 {% capture table %}
 Property | Description
@@ -38,7 +42,7 @@ configurationTimestamp | Timestamp of the last configuration timestamp
 {% endcapture %}
 {{ table | markdownify | replace: '<table>', '<table class="table table-hover">' }}
 
-## {{ page.sections['endpoint'] }}
+### Endpoints
 
 The service information can be fetched via the following endpoint. This endpoint doesn't provide filter parameters.
 
