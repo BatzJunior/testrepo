@@ -3,7 +3,7 @@
 	{% if node.title != nil and node.url != '/' and node.isSubPage != true %}
 		{% capture nodediff %}{{ page.url | remove:node.url }}{% endcapture %}
 		
-		{% if node.category == page.category %}
+		{% if node.area == page.area %}
 			{% for sec in node.sections %}
 				
 				<ul class="subNavList">
