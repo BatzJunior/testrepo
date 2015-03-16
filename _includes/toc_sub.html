@@ -19,24 +19,12 @@
 						<li><a {% if subPage.url == page.url %}class="active" {% endif %}href="{{url}}">{{ sec[1] }}</a></li>
 						
 						{% if subPage.url == page.url %}
-							{% assign subPage = nil %}
-							{% for pg in site.pages %}
-								{% if pg.isSubPage == true and pg.category == node.category and pg.subCategory == sec[0] %}
-									{% assign subPage = pg %}
-								{% endif %}
-							{% endfor %}
-							
-							{% if subPage %}
-								{% capture url %}{{site.baseurl}}{{ subPage.url}}{% endcapture %}
-								<li><a {% if subPage.url == page.url %}class="bold" {% endif %}href="{{url}}">{{ sec[1] }}</a></li>
-							{% else %}
 							{% for subsec in subPage.sections %}
 								<ul class="subNavList">
 									{% capture anker %}{{ subsec[1] | slugify }}{% endcapture %}
 									<li><a href="{{url}}#{{ anker }}">{{ subsec[1] }}</a></li>
 								</ul>
 							{% endfor %}
-							{% endif %}
 						{% endif %}
 					{% else %}
 						{% capture anker %}{{ sec[1] | slugify }}{% endcapture %}
