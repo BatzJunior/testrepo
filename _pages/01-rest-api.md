@@ -1,7 +1,7 @@
 ---
 category: restApi
 title: REST API
-permalink: /restApi/general/
+permalink: /restapi/general/
 sections:
   general: General Information
   dataService: Data Service
