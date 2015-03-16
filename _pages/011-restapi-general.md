@@ -1,6 +1,6 @@
 ---
-category: restApi
-subCategory: general
+area: restApi
+category: general
 title: REST API
 subTitle: General Information
 isSubPage: true
