@@ -9,7 +9,6 @@ sections:
   general: General Information
   endpoint: REST API Endpoints
   sdk: .NET SDK Methods
-redirect_from: "/dataservice/"
 ---
 
 ## {{ page.sections['general'] }}
