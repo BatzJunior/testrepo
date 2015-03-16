@@ -4,7 +4,7 @@ category: dataService
 title: REST API
 subTitle: Data Service
 isSubPage: true
-permalink: /restapi/dataservice/
+permalink: /restapi/dataservice/serviceInformation
 sections:
    serviceInformation: Service Information
    configuration: Configuration
