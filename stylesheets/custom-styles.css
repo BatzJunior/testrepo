@@ -61,6 +61,14 @@ span.label{
 	margin-right: 5px;
 }
 
+.panel-description{
+	float:right;
+}
+
+@media (max-width: 480px) {
+	float:none;
+}
+
 .panel-heading{
 	cursor: pointer;
 }
