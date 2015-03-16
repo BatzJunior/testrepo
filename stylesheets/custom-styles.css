@@ -1,5 +1,5 @@
 /*Moves anker links to correct position after click*/
-*[id]:before { 
+h2[id]:before { 
   display: block; 
   content: " "; 
   margin-top: -120px; 
