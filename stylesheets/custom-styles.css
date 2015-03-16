@@ -1,3 +1,4 @@
+/*Moves anker links to correct position after click*/
 *[id]:before { 
   display: block; 
   content: " "; 
