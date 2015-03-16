@@ -19,19 +19,25 @@ The two main entry classes of the SDK are the *DataServiceRestClient* and the *R
 
 ###Data Service
 
+{% capture table %}
 Constructor method | Description
 -------------------|-------------
 ```public DataServiceRestClient( string serverUri )``` | Instantiates the client with the server uri passed as string.
 ```public DataServiceRestClient( Uri serverUri )``` | Instantiates the client with the server uri passed as Uri object.
 ```public DataServiceRestClient( string scheme, string host, int port, string instance = null )``` | Instantiates the client with the given uri segments.
+{% endcapture %}
+{{ table | markdownify | replace: '<table>', '<table class="table table-hover">' }}
 
 ###Rawdata Service
 
+{% capture table %}
 Constructor method | Description
 -------------------|-------------
 ```public RawDataServiceRestClient( string serverUri )``` | Instantiates the client with the server uri passed as string.
 ```public RawDataServiceRestClient( Uri serverUri )``` | Instantiates the client with the server uri passed as Uri object.
 ```public RawDataServiceRestClient( string scheme, string host, int port, string instance = null )``` | Instantiates the client with the given uri segments.
+{% endcapture %}
+{{ table | markdownify | replace: '<table>', '<table class="table table-hover">' }}
 
 ### {{ site.headers['example'] }} A data service client for a server using https on host "piwebserver" on port 8080.
 
