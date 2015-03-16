@@ -29,8 +29,10 @@
 							{% else %}
 								{% for pg in site.pages %}
 									{% if pg.isSubPage == true and pg.area == node.area and pg.category == subPage.category %}
+										<ul class="subNavList">
 										{% capture url %}{{site.baseurl}}{{ pg.url}}{% endcapture %}
 										<li><a {% if pg.url == page.url %}class="bold" {% endif %}href="{{url}}">{{ pg.title }}</a></li>
+										</ul>
 									{% endif %}
 								{% endfor %}
 							{% endif %}
