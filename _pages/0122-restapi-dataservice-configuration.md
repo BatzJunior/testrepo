@@ -1,5 +1,6 @@
 ---
 area: restApi
+level: 2
 category: dataService
 subCategory: configuration
 title: REST API
