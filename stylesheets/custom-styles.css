@@ -57,6 +57,11 @@ legend{
 span.label{
 	margin-right: 5px;
 }
+
+.panel{
+	margin-bottom:10px;
+}
+
 .panel-default>span>img{
 	margin-right: 5px;
 }
