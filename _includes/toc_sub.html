@@ -6,7 +6,7 @@
 				{% for pg in site.pages %}
 					{% if pg.level == 1 and pg.area == page.area and pg.category == sec[0] %}
 						{% capture url %}{{site.baseurl}}{{ pg.url}}{% endcapture %}
-						<li><a {% if pg.category == page.category %}class="bold" {% endif %}href="{{url}}">{{ sec[1] }}</a></li>
+						<li><a {% if pg.category == page.category %}class="bold" {% endif %}href="{{url}}">1{{ sec[1] }}</a></li>
 					{% endif %}
 					{% if pg.category == page.category %}
 						{% assign subPage = nil %}
@@ -19,11 +19,11 @@
 							{% endfor %}
 							{% if subPage %}
 								{% capture url %}{{site.baseurl}}{{ subPage.url}}{% endcapture %}
-								<li><a {% if spg.url == page.url %}class="bold" {% endif %}href="{{url}}">{{ spg.pageTitle }}</a></li>	
+								<li><a {% if spg.url == page.url %}class="bold" {% endif %}href="{{url}}">2{{ spg.pageTitle }}</a></li>	
 							{% else %}
 								{% capture url %}{{site.baseurl}}{{ pg.url}}{% endcapture %}
 								{% capture anker %}{{ subSec[1] | slugify }}{% endcapture %}
-								<li><a href="{{url}}#{{ anker }}">{{ subSec[1] }}</a></li>
+								<li><a href="{{url}}#{{ anker }}">3{{ subSec[1] }}</a></li>
 							{% endif %}
 						{% endfor %}
 						</ul>
