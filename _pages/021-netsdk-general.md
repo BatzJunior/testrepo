@@ -1,9 +1,9 @@
 ---
 category: sdk
+level: 1
 subCategory: general
 title: .NET SDK
 subTitle: General Information
-isSubPage: true
 permalink: /sdk/general/
 sections:
   create: Creating the client
