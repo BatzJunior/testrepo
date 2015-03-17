@@ -18,6 +18,7 @@
 									{% endif %}
 								{% endfor %}
 								{% if subPage %}
+									{% capture url %}{{site.baseurl}}{{ subPage.url}}{% endcapture %}
 									<li><a {% if subPage.url == page.url %}class="bold" {% endif %}href="{{url}}">{{ subPage.pageTitle }}</a></li>	
 								{% else %}
 									{% capture url %}{{site.baseurl}}{{ pg.url}}{% endcapture %}
