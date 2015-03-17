@@ -29,7 +29,6 @@ configuration/*entityType*/{*Comma seperated list of attribute definition ids*} 
 {% assign summary="Returns the attribute definitions for all entity types" %}
 {% assign description="" %}
 {% assign exampleCaption="Fetching the configuration including all attriutes" %}
-{% assign comment="" %}
 
 {% capture jsonrequest %}
 {% highlight http %}
@@ -92,8 +91,11 @@ GET /dataServiceRest/configuration HTTP/1.1
 
 ### Add Attributes
 
-Each add request must contain the attribute definitions and the entity type which these definitions belong to. The entity type ist part of the uri and the attributes are transmitted in the body of the request.
-
+{% assign linkId="configurationEndpointAdd" %}
+{% assign method="GET" %}
+{% assign endpoint="/configuration/:entityType" %}
+{% assign summary="Creates the attribute(s) for :entityType" %}
+{% assign description="Creates the attribute definition(s) transfered within the body of the request for the given `:entityType` which must be part of the uri" %}
 {% assign exampleCaption="Adding a part attribute with the key 1001 to the configuration" %}
 
 {% capture jsonrequest %}
@@ -131,12 +133,15 @@ HTTP/1.1 201 Created
 {% endhighlight %}
 {% endcapture %}
 
-{% include exampleFieldset.html %}
+{% include endpointTab.html %}
 
 ### Update Attributes
 
-Each update request must contain the attribute definitions and the entity type which these definitions belong to. The entity type ist part of the uri and the attributes are transmitted in the body of the request.
-
+{% assign linkId="configurationEndpointUpdate" %}
+{% assign method="GET" %}
+{% assign endpoint="/configuration/:entityType" %}
+{% assign summary="Updates the attribute(s) for :entityType" %}
+{% assign description="Updates the attribute definition(s) transfered within the body of the request for the given `:entityType` which must be part of the uri" %}
 {% assign exampleCaption="Updating the part attribute with key 1001 - change length from 30 to 50" %}
 
 {% capture jsonrequest %}
@@ -174,7 +179,7 @@ HTTP/1.1 200 Ok
 {% endhighlight %}
 {% endcapture %}
 
-{% include exampleFieldset.html %}
+{% include endpointTab.html %}
 
 ### Delete Attributes
 
