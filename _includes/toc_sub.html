@@ -7,26 +7,27 @@
 					{% if pg.level == 1 and pg.area == page.area and pg.category == sec[0] %}
 						{% capture url %}{{site.baseurl}}{{ pg.url}}{% endcapture %}
 						<li><a {% if pg.category == page.category %}class="bold" {% endif %}href="{{url}}">1{{ sec[1] }}</a></li>
-					{% endif %}
-					{% if pg.category == page.category %}
-						{% assign subPage = nil %}
-						<ul class="subNavList">
-						{% for subSec in pg.sections %}
-							{% for spg in site.pages %}
-								{% if spg.level == 2 and spg.area == page.area and spg.category == sec[0] and spg.subCategory == subSec[0] %}
-									{% assign subPage = pg %}
+					
+						{% if pg.category == page.category %}
+							{% assign subPage = nil %}
+							<ul class="subNavList">
+							{% for subSec in pg.sections %}
+								{% for spg in site.pages %}
+									{% if spg.level == 2 and spg.area == page.area and spg.category == sec[0] and spg.subCategory == subSec[0] %}
+										{% assign subPage = pg %}
+									{% endif %}
+								{% endfor %}
+								{% if subPage %}
+									{% capture url %}{{site.baseurl}}{{ subPage.url}}{% endcapture %}
+									<li><a {% if spg.url == page.url %}class="bold" {% endif %}href="{{url}}">2{{ spg.pageTitle }}</a></li>	
+								{% else %}
+									{% capture url %}{{site.baseurl}}{{ pg.url}}{% endcapture %}
+									{% capture anker %}{{ subSec[1] | slugify }}{% endcapture %}
+									<li><a href="{{url}}#{{ anker }}">3{{ subSec[1] }}</a></li>
 								{% endif %}
 							{% endfor %}
-							{% if subPage %}
-								{% capture url %}{{site.baseurl}}{{ subPage.url}}{% endcapture %}
-								<li><a {% if spg.url == page.url %}class="bold" {% endif %}href="{{url}}">2{{ spg.pageTitle }}</a></li>	
-							{% else %}
-								{% capture url %}{{site.baseurl}}{{ pg.url}}{% endcapture %}
-								{% capture anker %}{{ subSec[1] | slugify }}{% endcapture %}
-								<li><a href="{{url}}#{{ anker }}">3{{ subSec[1] }}</a></li>
-							{% endif %}
-						{% endfor %}
-						</ul>
+							</ul>
+						{% endif %}
 					{% endif %}
 				{% endfor %}
 			</ul>
