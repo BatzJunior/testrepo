@@ -1,5 +1,6 @@
 ---
 area: restApi
+level: 0
 title: REST API
 permalink: /restapi/general/
 sections:
