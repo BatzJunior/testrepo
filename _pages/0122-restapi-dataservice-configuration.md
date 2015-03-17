@@ -8,3 +8,295 @@ subTitle: Data Service
 pageTitle: Configuration
 permalink: /restapi/dataservice/configuration/
 ---
+
+## {{ page.pageTitle }}
+
+### Endpoints
+
+The configuration can be fetched, created, updated and deleted using the following endpoints. These endpoints do not provide filter parameters.
+
+URL Endpoint | GET | PUT | POST | DELETE
+-------------|-----|-----|------|-------
+/configuration| Returns the attribute configuration (list of attributes for each entity). | *Not supported* | *Not supported* | Deletes all attribute definitions.
+/configuration/*entityType*| *Not supported* | Updates the attribute definitions transfered within the body of the request for the given *entityType* |  Creates the attribute definitions transfered within the body of the request for the given *entityType* | *Not supported*
+configuration/*entityType*/{*Comma seperated list of attribute definition ids*} | *Not supported* | *Not supported* | *Not supported* | Deletes the attribute definitions identified by the *List of attribute definition ids* for the given *entityType*. If the *List of attribute definition ids* is empty, all attributes for the given *entityType* are deleted.
+
+### Get Configuration
+
+{% assign linkId="configurationEndpointGet" %}
+{% assign method="GET" %}
+{% assign endpoint="/configuration" %}
+{% assign summary="Returns the attribute definitions for all entity types" %}
+{% assign description="" %}
+{% assign exampleCaption="Fetching the configuration including all attriutes" %}
+{% assign comment="" %}
+
+{% capture jsonrequest %}
+{% highlight http %}
+GET /dataServiceRest/configuration HTTP/1.1
+{% endhighlight %}
+{% endcapture %}
+
+{% capture jsonresponse %}
+{% highlight json %}
+{
+   ...
+   "data":
+   [
+       {
+          "partAttributes":
+          [
+           [
+               "key":1001,
+               "description":"partNumber",
+               "length":30,
+               "type":"AlphaNumeric",
+               "definitionType":"AttributeDefinition"
+           ],
+           ...
+          ],
+          "characteristicAttributes":
+          [
+           [
+               "key":2001,
+               "description":"characteristicNumber",
+               "length":20,
+               "type":"AlphaNumeric",
+               "definitionType":"AttributeDefinition"
+           ],
+           ...
+          ],
+          "measurementAttributes":
+          [
+                "key": 8,
+                "description": "inspector",
+                "catalogue": "8c376bee-ffe3-4ee4-abb9-a55b492e69ad",
+                "definitionType": "CatalogueAttributeDefinition"
+          ...
+          ],
+          "valueAttributes":
+          [
+          ...
+          ],
+          "catalogueAttributes":
+          [
+          ...
+          ]
+       }
+   ]
+}
+{% endhighlight %}
+{% endcapture %}
+
+{% include endpointTab.html %}
+
+### Add Attributes
+
+Each add request must contain the attribute definitions and the entity type which these definitions belong to. The entity type ist part of the uri and the attributes are transmitted in the body of the request.
+
+{% assign exampleCaption="Adding a part attribute with the key 1001 to the configuration" %}
+
+{% capture jsonrequest %}
+{% highlight http %}
+POST /dataServiceRest/configuration/parts HTTP/1.1
+{% endhighlight %}
+
+{% highlight json %}
+[
+  {
+    "key":1001,
+    "description":"partNumber",
+    "length":30,
+    "type":"AlphaNumeric",
+    "definitionType":"AttributeDefinition"
+  }
+]
+{% endhighlight %}
+{% endcapture %}
+
+{% capture jsonresponse %}
+{% highlight http %}
+HTTP/1.1 201 Created
+{% endhighlight %}
+
+{% highlight json %}
+{
+   "status":
+   {
+       "statusCode": 201,
+       "statusDescription": "Created"
+   },
+   "category": "Success"
+}
+{% endhighlight %}
+{% endcapture %}
+
+{% include exampleFieldset.html %}
+
+### Update Attributes
+
+Each update request must contain the attribute definitions and the entity type which these definitions belong to. The entity type ist part of the uri and the attributes are transmitted in the body of the request.
+
+{% assign exampleCaption="Updating the part attribute with key 1001 - change length from 30 to 50" %}
+
+{% capture jsonrequest %}
+{% highlight http %}
+PUT /dataServiceRest/configuration/parts HTTP/1.1
+{% endhighlight %}
+
+{% highlight json %}
+[
+  {
+    "key":1001,
+    "description":"partNumber",
+    "length":50,
+    "type":"AlphaNumeric",
+    "definitionType":"AttributeDefinition"
+  }
+]
+{% endhighlight %}
+{% endcapture %}
+
+{% capture jsonresponse %}
+{% highlight http %}
+HTTP/1.1 200 Ok
+{% endhighlight %}
+
+{% highlight json %}
+{
+   "status":
+   {
+       "statusCode": 200,
+       "statusDescription": "Ok"
+   },
+   "category": "Success"
+}
+{% endhighlight %}
+{% endcapture %}
+
+{% include exampleFieldset.html %}
+
+### Delete Attributes
+
+There are three different options for deleting attributes: 
+
+* Delete all attributes in the configuration, 
+* Delete all attributes of a certain entity or 
+* Delete specific attributes of a specific entity
+ 
+The following examples demonstrate these options.
+
+{% assign exampleCaption="Delete all attributes of the current configuration" %}
+
+{% capture jsonrequest %}
+{% highlight http %}
+DELETE /dataServiceRest/configuration HTTP/1.1
+{% endhighlight %}
+{% endcapture %}
+
+{% capture jsonresponse %}
+{% highlight http %}
+HTTP/1.1 200 Ok
+{% endhighlight %}
+
+{% highlight json %}
+{
+   "status":
+   {
+       "statusCode": 200,
+       "statusDescription": "Ok"
+   },
+   "category": "Success"
+}
+{% endhighlight %}
+{% endcapture %}
+
+{% include exampleFieldset.html %}
+
+{% assign exampleCaption="Delete all part attributes" %}
+
+{% capture jsonrequest %}
+{% highlight http %}
+DELETE /dataServiceRest/configuration/part HTTP/1.1
+{% endhighlight %}
+{% endcapture %}
+
+{% capture jsonresponse %}
+{% highlight http %}
+HTTP/1.1 200 Ok
+{% endhighlight %}
+
+{% highlight json %}
+{
+   "status":
+   {
+       "statusCode": 200,
+       "statusDescription": "Ok"
+   },
+   "category": "Success"
+}
+{% endhighlight %}
+{% endcapture %}
+
+{% include exampleFieldset.html %}
+
+{% assign exampleCaption="Delete the part attribute with the key 1001" %}
+
+{% capture jsonrequest %}
+{% highlight http %}
+DELETE /dataServiceRest/configuration/part/{1001} HTTP/1.1
+{% endhighlight %}
+{% endcapture %}
+
+{% capture jsonresponse %}
+{% highlight http %}
+HTTP/1.1 200 Ok
+{% endhighlight %}
+
+{% highlight json %}
+{
+   "status":
+   {
+       "statusCode": 200,
+       "statusDescription": "Ok"
+   },
+   "category": "Success"
+}
+{% endhighlight %}
+{% endcapture %}
+
+{% include exampleFieldset.html %}
+
+### General Information
+
+The PiWeb configuration consists of a list of attributes for all types of entities. 
+The different types of entites are: 
+
+* *parts*, 
+* *characteristics*, 
+* *measurements*, 
+* *values* and 
+* *catalogues*.
+
+The attributes are either ```AttributeDefinition``` or ```CatalogueAttributeDefinition```.
+{% capture table %}
+###AttributeDefinition
+
+Property      | Type                | Description
+--------------|---------------------|--------------------------------------------------------------
+key           | ```ushort```        | The attribute's key, by which the attribute can be uniquely identified
+description   | ```string```        | The attribute's name or a short description 
+type          | ```AttributeType``` | The attribute's type. *AlphaNumeric*, *Integer*, *Float* or *DateTime*
+length        | ```ushort```        | The attribute's maximum length. Only set if the type is *AlphaNumeric*
+definitionType| ```string```        | Always has the value 'AttributeDefinition' and is used to differentiate between  ```AttributeDefinition``` and ```CatalogueAttributeDefinition```
+
+###CatalogueAttributeDefinition
+
+Property      | Type         | Description
+--------------|--------------|------------------------------------------------------------
+key           | ```ushort``` | The attribute's key, by which the attribute can be uniquely identified
+description   | ```string``` | The attribute's name or a short description 
+catalogue     | ```Guid```   | The uuid of the catalogue that contains the attribute's values
+definitionType| ```string``` | Always has the value 'CatalogueAttributeDefinition' and is used to differentiate between  ```AttributeDefinition``` and ```CatalogueAttributeDefinition```
+{% endcapture %}
+{{ table | markdownify | replace: '<table>', '<table class="table table-hover">' }}
