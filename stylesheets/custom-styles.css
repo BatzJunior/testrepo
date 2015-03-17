@@ -73,6 +73,7 @@ span.label{
 
 .panel-heading{
 	cursor: pointer;
+	padding: 5px 15px;
 }
 
 code{
