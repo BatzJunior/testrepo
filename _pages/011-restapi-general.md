@@ -1,5 +1,6 @@
 ---
 area: restApi
+level: 1
 category: general
 title: REST API
 subTitle: General Information
