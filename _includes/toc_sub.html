@@ -12,11 +12,11 @@
 							<ul class="subNavList">
 							{% for subSec in pg.sections %}
 								{% assign subPage = nil %}
-								{% for spg in site.pages %}
-									{% if spg.level == 2 and spg.area == page.area and spg.category == sec[0] and spg.subCategory == subSec[0] %}
-										{% assign subPage = spg %}
+								
+									{% if pg.level == 2 and pg.area == page.area and pg.category == sec[0] and pg.subCategory == subSec[0] %}
+										{% assign subPage = pg %}
 									{% endif %}
-								{% endfor %}
+								
 								{% if subPage %}
 									{% capture url %}{{site.baseurl}}{{ subPage.url}}{% endcapture %}
 									<li><a {% if subPage.url == page.url %}class="bold" {% endif %}href="{{url}}">{{ subPage.pageTitle }}</a></li>	
