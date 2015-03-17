@@ -6,7 +6,7 @@ subCategory: serviceInformation
 title: REST API
 subTitle: Data Service
 pageTitle: Service Information
-permalink: /restapi/dataservice/serviceinformation/
+permalink: /restapi/dataservice/serviceInformation/
 ---
 
 ## {{ page.pageTitle }}
