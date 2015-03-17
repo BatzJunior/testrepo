@@ -92,7 +92,7 @@ GET /dataServiceRest/configuration HTTP/1.1
 ### Add Attributes
 
 {% assign linkId="configurationEndpointAdd" %}
-{% assign method="GET" %}
+{% assign method="POST" %}
 {% assign endpoint="/configuration/:entityType" %}
 {% assign summary="Creates the attribute(s) for :entityType" %}
 {% assign description="Creates the attribute definition(s) transfered within the body of the request for the given `:entityType` which must be part of the uri" %}
@@ -138,7 +138,7 @@ HTTP/1.1 201 Created
 ### Update Attributes
 
 {% assign linkId="configurationEndpointUpdate" %}
-{% assign method="GET" %}
+{% assign method="PUT" %}
 {% assign endpoint="/configuration/:entityType" %}
 {% assign summary="Updates the attribute(s) for :entityType" %}
 {% assign description="Updates the attribute definition(s) transfered within the body of the request for the given `:entityType` which must be part of the uri" %}
