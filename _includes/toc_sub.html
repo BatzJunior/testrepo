@@ -15,7 +15,7 @@
 								{% if spg.level == 2 and spg.area == page.area and spg.category == sec[0] and spg.subCategory == subSec[0] %}
 									{% assign subPage = pg %}
 								{% endif %}
-							{% endfor}
+							{% endfor %}
 							{% if subPage %}
 								{% capture url %}{{site.baseurl}}{{ subPage.url}}{% endcapture %}
 								<li><a {% if spg.url == page.url %}class="bold" {% endif %}href="{{url}}">{{ spg.pageTitle }}</a></li>	
