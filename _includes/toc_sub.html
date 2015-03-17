@@ -1,47 +1,35 @@
 
 {% for node in site.pages %}
-	{% if node.title != nil and node.url != '/' and node.isSubPage != true %}
-		{% if node.area == page.area %}
-			{% for sec in node.sections %}
-				
-				<ul class="subNavList">
-					{% assign subPage = nil %}
-					{% for pg in site.pages %}
-						{% if pg.isSubPage == true and pg.area == node.area and pg.category == sec[0] and !pg.pageTitle %}
-							{% assign subPage = pg %}
-							<li>{{'uu ' | append: pg.subCategory}}</li>
-						{% endif %}
-					{% endfor %}
-					
-					{% if subPage %}
-						{% capture url %}{{site.baseurl}}{{ subPage.url}}{% endcapture %}
-						<li><a {% if subPage.area == page.area and subPage.category == page.category %}class="bold" {% endif %}href="{{url}}">{{ sec[1] }}</a></li>
-						
-						{% if subPage.category == page.category %}
-							{% if subPage.sections.size > 0 %}
-								{% for subsec in subPage.sections %}
-									<ul class="subNavList">
-										{% capture anker %}{{ subsec[1] | slugify }}{% endcapture %}
-										<li><a href="{{url}}#{{ anker }}">{{ subsec[1] }}</a></li>
-									</ul>
-								{% endfor %}
-							{% else %}
-								<ul class="subNavList">
-								{% for pg in site.pages %}
-									{% if pg.isSubPage == true and pg.area == node.area and pg.category == subPage.category and pg.subCategory %}
-										
-										{% capture url %}{{site.baseurl}}{{ pg.url}}{% endcapture %}
-										<li><a {% if pg.url == page.url %}class="bold" {% endif %}href="{{url}}">{{ pg.pageTitle }}</a></li>
-									{% endif %}
-								{% endfor %}
-								</ul>
-							{% endif %}
-						{% endif %}
+	{% if node.level == 0 and node.area == page.area %}
+		{% for sec in node.sections %}
+			<ul class="subNavList">
+				{% for pg in site.pages %}
+					{% if pg.level == 1 and pg.area == page.area and pg.category == sec[0] %}
+						<li><a {% if pg.category == page.category %}class="bold" {% endif %}href="{{url}}">{{ sec[1] }}</a></li>
 					{% endif %}
-					
-				</ul>
-			{% endfor %}
-		{% endif %}
+					{% if pg.category == page.category %}
+						{% assign subPage = nil %}
+						<ul class="subNavList">
+						{% for subSec in pg.sections %}
+							{% for spg in site.pages %}
+								{% if spg.level == 2 and spg.area == page.area and spg.category == sec[0] and spg.subCategory == subSec[0] %}
+									{% assign subPage = pg %}
+								{% endif %}
+							{% endfor}
+							{% if subPage %}
+								{% capture url %}{{site.baseurl}}{{ subPage.url}}{% endcapture %}
+								<li><a {% if spg.url == page.url %}class="bold" {% endif %}href="{{url}}">{{ spg.pageTitle }}</a></li>	
+							{% else %}
+								{% capture url %}{{site.baseurl}}{{ pg.url}}{% endcapture %}
+								{% capture anker %}{{ subSec[1] | slugify }}{% endcapture %}
+								<li><a href="{{url}}#{{ anker }}">{{ subSec[1] }}</a></li>
+							{% endif %}
+						{% endfor %}
+						</ul>
+					{% endif %}
+				{% endfor %}
+			</ul>
+		{% endfor %}
 	{% endif %}
 {% endfor %}
 
