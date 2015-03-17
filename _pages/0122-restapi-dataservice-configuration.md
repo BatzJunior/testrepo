@@ -210,22 +210,16 @@ HTTP/1.1 200 Ok
 
 {% include endpointTab.html %}
 
-### Delete Attributes
-
-There are three different options for deleting attributes: 
-
-* Delete all attributes in the configuration, 
-* Delete all attributes of a certain entity or 
-* Delete specific attributes of a specific entity
- 
-The following examples demonstrate these options.
-
-
-{% assign exampleCaption="Delete all part attributes" %}
+{% assign linkId="configurationEndpointDelete2" %}
+{% assign method="DELETE" %}
+{% assign endpoint="/configuration/:entityType/:attributesIdList" %}
+{% assign summary="Deletes the attribute(s) in :attributedIdList for :entityType" %}
+{% assign description="Deletes the attribute definitions identified by the list of attribute definition ids for the given :entityType. If the List of attribute definition ids is empty, all attributes for the given :entityType are deleted." %}
+{% assign exampleCaption="Delete the part attribute with the key 1001 and 1002" %}
 
 {% capture jsonrequest %}
 {% highlight http %}
-DELETE /dataServiceRest/configuration/part HTTP/1.1
+DELETE /dataServiceRest/configuration/part/(1001, 1002) HTTP/1.1
 {% endhighlight %}
 {% endcapture %}
 
@@ -246,34 +240,7 @@ HTTP/1.1 200 Ok
 {% endhighlight %}
 {% endcapture %}
 
-{% include exampleFieldset.html %}
-
-{% assign exampleCaption="Delete the part attribute with the key 1001" %}
-
-{% capture jsonrequest %}
-{% highlight http %}
-DELETE /dataServiceRest/configuration/part/{1001} HTTP/1.1
-{% endhighlight %}
-{% endcapture %}
-
-{% capture jsonresponse %}
-{% highlight http %}
-HTTP/1.1 200 Ok
-{% endhighlight %}
-
-{% highlight json %}
-{
-   "status":
-   {
-       "statusCode": 200,
-       "statusDescription": "Ok"
-   },
-   "category": "Success"
-}
-{% endhighlight %}
-{% endcapture %}
-
-{% include exampleFieldset.html %}
+{% include endpointTab.html %}
 
 ### General Information
 
