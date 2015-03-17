@@ -21,8 +21,6 @@ URL Endpoint | GET | PUT | POST | DELETE
 /configuration/*entityType*| *Not supported* | Updates the attribute definitions transfered within the body of the request for the given *entityType* |  Creates the attribute definitions transfered within the body of the request for the given *entityType* | *Not supported*
 configuration/*entityType*/{*Comma seperated list of attribute definition ids*} | *Not supported* | *Not supported* | *Not supported* | Deletes the attribute definitions identified by the *List of attribute definition ids* for the given *entityType*. If the *List of attribute definition ids* is empty, all attributes for the given *entityType* are deleted.
 
-### Get Configuration
-
 {% assign linkId="configurationEndpointGet" %}
 {% assign method="GET" %}
 {% assign endpoint="/configuration" %}
@@ -89,7 +87,39 @@ GET /dataServiceRest/configuration HTTP/1.1
 
 {% include endpointTab.html %}
 
-### Add Attributes
+
+{% assign linkId="configurationEndpointDelete1" %}
+{% assign method="DELETE" %}
+{% assign endpoint="/configuration" %}
+{% assign summary="Deletes all attribute definitions" %}
+{% assign description="" %}
+{% assign exampleCaption="Delete all attributes of the current configuration" %}
+
+{% capture jsonrequest %}
+{% highlight http %}
+DELETE /dataServiceRest/configuration HTTP/1.1
+{% endhighlight %}
+{% endcapture %}
+
+{% capture jsonresponse %}
+{% highlight http %}
+HTTP/1.1 200 Ok
+{% endhighlight %}
+
+{% highlight json %}
+{
+   "status":
+   {
+       "statusCode": 200,
+       "statusDescription": "Ok"
+   },
+   "category": "Success"
+}
+{% endhighlight %}
+{% endcapture %}
+
+{% include endpointTab.html %}
+
 
 {% assign linkId="configurationEndpointAdd" %}
 {% assign method="POST" %}
@@ -135,7 +165,6 @@ HTTP/1.1 201 Created
 
 {% include endpointTab.html %}
 
-### Update Attributes
 
 {% assign linkId="configurationEndpointUpdate" %}
 {% assign method="PUT" %}
@@ -191,32 +220,6 @@ There are three different options for deleting attributes:
  
 The following examples demonstrate these options.
 
-{% assign exampleCaption="Delete all attributes of the current configuration" %}
-
-{% capture jsonrequest %}
-{% highlight http %}
-DELETE /dataServiceRest/configuration HTTP/1.1
-{% endhighlight %}
-{% endcapture %}
-
-{% capture jsonresponse %}
-{% highlight http %}
-HTTP/1.1 200 Ok
-{% endhighlight %}
-
-{% highlight json %}
-{
-   "status":
-   {
-       "statusCode": 200,
-       "statusDescription": "Ok"
-   },
-   "category": "Success"
-}
-{% endhighlight %}
-{% endcapture %}
-
-{% include exampleFieldset.html %}
 
 {% assign exampleCaption="Delete all part attributes" %}
 
