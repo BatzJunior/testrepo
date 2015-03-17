@@ -9,9 +9,9 @@
 						<li><a {% if pg.category == page.category %}class="bold" {% endif %}href="{{url}}">{{ sec[1] }}</a></li>
 					
 						{% if pg.category == page.category %}
-							{% assign subPage = nil %}
 							<ul class="subNavList">
 							{% for subSec in pg.sections %}
+								{% assign subPage = nil %}
 								{% for spg in site.pages %}
 									{% if spg.level == 2 and spg.area == page.area and spg.category == sec[0] and spg.subCategory == subSec[0] %}
 										{% assign subPage = spg %}
@@ -19,7 +19,7 @@
 								{% endfor %}
 								{% if subPage %}
 									{% capture url %}{{site.baseurl}}{{ subPage.url}}{% endcapture %}
-									<li><a {% if spg.url == page.url %}class="bold" {% endif %}href="{{url}}">{{ subPage.pageTitle }}</a></li>	
+									<li><a {% if subPage.url == page.url %}class="bold" {% endif %}href="{{url}}">{{ subPage.pageTitle }}</a></li>	
 								{% else %}
 									{% capture url %}{{site.baseurl}}{{ pg.url}}{% endcapture %}
 									{% capture anker %}{{ subSec[1] | slugify }}{% endcapture %}
