@@ -99,6 +99,18 @@ code{
 	}
 }
 
+.nav>li .left{
+	float: left;
+}
+
+.nav>li .fixedWidth{
+	width: 60px;
+}
+
+.nav>li .right{
+	float: right;
+}
+
 .navbar-header{
 	 text-shadow: rgba(0, 0, 0, 0.4) 2px 2px 4px;
 }
