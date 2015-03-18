@@ -7,6 +7,7 @@
         aria-expanded="false" 
         aria-controls={{ '"#collapse' | append: linkId | append: '"' }}>
     <ul class="nav">
+      <li><span class="caret"></span></li>
       <li class="left fixedWidth">
       {% case method %}
         {% when 'GET' %}
