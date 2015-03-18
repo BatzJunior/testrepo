@@ -108,6 +108,10 @@ code{
 	width: 60px;
 }
 
+.navbar-right:{
+	margin-right:0;
+}
+
 .navbar-header{
 	 text-shadow: rgba(0, 0, 0, 0.4) 2px 2px 4px;
 }
