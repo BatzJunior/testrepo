@@ -99,15 +99,15 @@ code{
 	}
 }
 
-.nav>li .left{
+.nav>li.left{
 	float: left;
 }
 
-.nav>li .fixedWidth{
+.nav>li.fixedWidth{
 	width: 60px;
 }
 
-.nav>li .right{
+.nav>li.right{
 	float: right;
 }
 
