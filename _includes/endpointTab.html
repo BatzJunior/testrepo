@@ -29,7 +29,7 @@
         role="tabpanel" 
         aria-labelledby={{ '"heading' | append: linkId | append: '"' }}>
     <div class="panel-body">
-      {{ description }}
+      {{ description | markdownify }}
       {% include exampleFieldset.html %}
     </div>
   </div>
