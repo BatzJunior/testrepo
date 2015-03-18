@@ -6,9 +6,8 @@
         href={{ '"#collapse' | append: linkId | append: '"' }} 
         aria-expanded="false" 
         aria-controls={{ '"#collapse' | append: linkId | append: '"' }}>
-    <ul class="nav">
-      <li id={{ '"collapse' | append: linkId | append: '"' }} class="navbar-left"><span class="glyphicon glyphicon-menu-right"></span></li>
-      <li id={{ '"collapse' | append: linkId | append: '"' }} class="navbar-left collapse"><span class="glyphicon glyphicon-menu-down"></span></li>
+    <ul class="nav" >
+      <li id={{ '"#' | append: linkId | append: '"' }}></li>
       <li class="navbar-left fixedWidth">
       {% case method %}
         {% when 'GET' %}
