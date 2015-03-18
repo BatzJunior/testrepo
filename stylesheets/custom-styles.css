@@ -90,12 +90,15 @@ code{
   background-color: #437AB4;
   color: #FDFDFD;
   font-weight: 400;
-  padding-left: 25px;
+  padding-left: 10px;
 }
 
-@media (max-width: 767px) {
+@media (min-width: 767px) {
 	.container-header {
-		padding-left:5px;	
+		padding-left:25px;
+		margin-top: 10px;
+		border-top-left-radius: 40px;
+		border-top-right-radius: 10px;
 	}
 }
 
