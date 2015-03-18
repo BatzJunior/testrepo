@@ -96,6 +96,8 @@ code{
 @media (min-width: 767px) {
 	.container-header {
 		padding-left:25px;
+	}
+	.container-header-top{
 		margin-top: 10px;
 		border-top-left-radius: 40px;
 		border-top-right-radius: 10px;
