@@ -24,7 +24,7 @@ URL Endpoint | GET | POST | PUT | DELETE
 catalogues/:catalogueUuid/entries | *--*| Creates the entries in the request body for the catalog specified by the *:catalogueUuid* | *--* | Deletes all entries from the catalogue specified by the *:catalogueUuid*
 catalogues/:catalogueUuid/entries/{key1, key2...} | *--* | *--* | *--* | Deletes the entries specified by their particular key from the catalog specified by the *:catalogueUuid* 
 
-{% assign linkId="configurationEndpointGet" %}
+{% assign linkId="catalogEndpointGetSingle" %}
 {% assign method="GET" %}
 {% assign endpoint="/catalogs/:catalogUuid" %}
 {% assign summary="Returns the catalog specified by the :catalogUuid" %}
