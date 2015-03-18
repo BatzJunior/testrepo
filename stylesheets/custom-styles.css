@@ -104,16 +104,8 @@ code{
 	}
 }
 
-.nav>li.left{
-	float: left;
-}
-
 .nav>li.fixedWidth{
 	width: 60px;
-}
-
-.nav>li.right{
-	float: right;
 }
 
 .navbar-header{
