@@ -95,10 +95,10 @@ GET /dataServiceRest/catalogs HTTP/1.1
 
 {% include endpointTab.html %}
 
-{% assign linkId="catalogEndpointGetAll" %}
-{% assign method="GET" %}
+{% assign linkId="catalogEndpointCreate" %}
+{% assign method="POST" %}
 {% assign endpoint="/catalogs" %}
-{% assign summary="Returns all catalogs" %}
+{% assign summary="Creates catalogs" %}
 {% capture description %}
 To create a new catalog the catalog object must be transmitted the request's body. A valid add request must contain a unique identifier, the catalog name and the valid attributes. Catalog entries are optional. All valid attributes must be added as catalog attributes beforehand (see {{ site.links['configuration'] }}).
 
@@ -149,10 +149,10 @@ HTTP/1.1 201 Created
 
 {% include endpointTab.html %}
 
-{% assign linkId="catalogEndpointGetAll" %}
-{% assign method="GET" %}
+{% assign linkId="catalogEndpointUpdate" %}
+{% assign method="PUT" %}
 {% assign endpoint="/catalogs" %}
-{% assign summary="Returns all catalogs" %}
+{% assign summary="Updates catalogs" %}
 {% capture description %}
 Update a catalog if you want to:
 
