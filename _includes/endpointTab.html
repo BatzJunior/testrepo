@@ -7,8 +7,8 @@
         aria-expanded="false" 
         aria-controls={{ '"#collapse' | append: linkId | append: '"' }}>
     <ul class="nav">
-      <li><span class="caret"></span></li>
-      <li class="left fixedWidth">
+      <li class="navbar-left"><span class="caret"></span></li>
+      <li class="navbar-left fixedWidth">
       {% case method %}
         {% when 'GET' %}
            <span class="label label-primary">{{ method }}</span>
@@ -20,8 +20,8 @@
            <span class="label label-danger">{{ method }}</span>
       {% endcase %}
       </li>
-      <li class="left">{{ endpoint }}</li>
-      <li class="right">{{ summary}}</li>
+      <li class="navbar-left">{{ endpoint }}</li>
+      <li class="navbar-right">{{ summary}}</li>
     </ul>
   </div>
   
