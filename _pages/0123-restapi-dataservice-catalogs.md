@@ -13,16 +13,15 @@ permalink: /restapi/dataservice/catalogs/
 
 ### Endpoints
 
-Catalogs and catalog entries can be fetched, created, updated and deleted using the following endpoints. These endpoints don't provide filter parameters.
-//catalogUuids
-URL Endpoint | GET | POST | PUT | DELETE
--------------|-----|------|-----|-------
-/catalogues | Returns all catalogs without their entries | Creates the committed catalog(s) which is/are transfered in the body of the request | Updates the committed catalogs and their entries | Deletes all catalogs and the catalog entries
-/catalogues/entries | Returns all catalogs *with entries* | *--* | *--* | *--*
-/catalogues/(:catUuid1, :catUuid2,...) | Returns all catalogs from the catUuid list *without entries* | *--* | *--* | Deletes the catalogs with the provided catUuids
-/catalogues/(:catUuid1, :catUuid2,...)/entries | Returns the catalogs of which the uuid is within the catUuid list including their entries | *--* | *--* | *--*
-catalogues/:catalogueUuid/entries | *--*| Creates the entries in the request body for the catalog specified by the *:catalogueUuid* | *--* | Deletes all entries from the catalogue specified by the *:catalogueUuid*
-catalogues/:catalogueUuid/entries/{key1, key2...} | *--* | *--* | *--* | Deletes the entries specified by their particular key from the catalog specified by the *:catalogueUuid* 
+Catalogs and catalog entries can be fetched, created, updated and deleted using the following endpoints. These endpoints  provide the following filter parameters:
+
+{% capture table %}
+Parameter name      | Description  <br> ```Example``` | Accepted by endpoint | Accepted by HTTP methods
+--------------------|------------------  -------------|----------------------|--------------------------
+```catalogUuids```  | List of catalogue uuids that restrict the request. <br> (d7291afb-0a67-4c1e-8bcc-6fc455bcc0e5, 8c376bee-ffe3-4ee4-abb9-a55b492e69ad) | /catalogs | GET, DELETE
+```entryIds```      | List of catalogue entry ids that restrict the request. <br> (1,4) | catalogs/:catalogUuid | DELETE
+{% endcapture %}
+{{ table | markdownify | replace: '<table>', '<table class="table table-hover">' }}
 
 {% assign linkId="catalogEndpointGetAll" %}
 {% assign method="GET" %}
