@@ -348,9 +348,9 @@ HTTP/1.1 200 Ok
 ### General Information
 
 Each catalog describes a list of entries. All entries have the same defined set of attributes, called *valid attributes*. 
-All valid attributes must be created as *catalog attributes* beforehand. ```Catalogue``` and ```CatalogueEntry```have the following structures:
+All valid attributes must be created as *catalog attributes* beforehand. ```Catalog``` and ```CatalogEntry```have the following structures:
 
-#### Catalogue
+#### Catalog
 
 {% capture table %}
 Property         | Datatype             | Description
@@ -358,11 +358,11 @@ Property         | Datatype             | Description
 uuid             | ```Guid```           | Identifies the catalog uniquely
 name             | ```string```         | Name of the catalog
 validAttributes  | ```ushort[]```       | A list of attribute keys that are valid for this catalog
-catalogueEntries | ```CatalogueEntry``` | A list of catalog entries
+catalogEntries   | ```CatalogEntry```   | A list of catalog entries
 {% endcapture %}
 {{ table | markdownify | replace: '<table>', '<table class="table table-hover">' }}
 
-#### CatalogueEntry
+#### CatalogEntry
 
 {% capture table %}
 Property         | Datatype             | Description
