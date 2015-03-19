@@ -345,12 +345,12 @@ HTTP/1.1 200 Ok
 
 {% include endpointTab.html %}
 
-###General Information
+### General Information
 
 Each catalog describes a list of entries. All entries have the same defined set of attributes, called *valid attributes*. 
 All valid attributes must be created as *catalog attributes* beforehand. ```Catalogue``` and ```CatalogueEntry```have the following structures:
 
-### Catalogue
+#### Catalogue
 
 {% capture table %}
 Property         | Datatype             | Description
@@ -362,7 +362,7 @@ catalogueEntries | ```CatalogueEntry``` | A list of catalog entries
 {% endcapture %}
 {{ table | markdownify | replace: '<table>', '<table class="table table-hover">' }}
 
-### CatalogueEntry
+#### CatalogueEntry
 
 {% capture table %}
 Property         | Datatype             | Description
