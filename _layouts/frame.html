@@ -50,12 +50,13 @@
 	<script type="text/javascript">
     	function toggleChevron(e) {
 	    $(e.target).css( "background", "#f99" );
-	    
-	    $(e.target)
-	        .parents( "div.panel-heading" )
-	        .find( "ul.nav" )
-	        .find( "span.glyphicon" )
-	        .toggleClass('glyphicon-chevron-down glyphicon-chevron-up');
+	    var headingDiv = $(e.target).parents( "div.panel-heading" );
+	    if( !headingDiv.length)
+	    	headingDiv = $(e.target);
+	    headingDivs
+    		.find( "ul.nav" )
+        	.find( "span.glyphicon" )
+        	.toggleClass('glyphicon-chevron-down glyphicon-chevron-up');
 	}
 	$( "div[id^='heading']" ).click(toggleChevron);
     </script>
