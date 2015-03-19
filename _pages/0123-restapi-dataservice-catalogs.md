@@ -211,6 +211,27 @@ HTTP/1.1 200 Ok
 
 {% include endpointTab.html %}
 
+{% assign linkId="catalogEndpointDeleteAll" %}
+{% assign method="DELETE" %}
+{% assign endpoint="/catalogs" %}
+{% assign summary="Deletes all catalogs" %}
+{% assign description="" %}
+{% assign exampleCaption="Delete all catalogs" %}
+
+{% capture jsonrequest %}
+{% highlight http %}
+DELETE /dataServiceRest/catalogues HTTP/1.1
+{% endhighlight %}
+{% endcapture %}
+
+{% capture jsonresponse %}
+{% highlight http %}
+HTTP/1.1 200 Ok
+{% endhighlight %}
+{% endcapture %}
+
+{% include endpointTab.html %}
+
 
 {% assign linkId="catalogEndpointGetSingle" %}
 {% assign method="GET" %}
