@@ -333,7 +333,7 @@ There are two different options for deleting catalog entries:
 
 {% capture jsonrequest %}
 {% highlight http %}
-DELETE /dataServiceRest/catalogues/8c376bee-ffe3-4ee4-abb9-a55b492e69ad/entries/(1,3) HTTP/1.1
+DELETE /dataServiceRest/catalogues/8c376bee-ffe3-4ee4-abb9-a55b492e69ad?entryIds=(1,3) HTTP/1.1
 {% endhighlight %}
 {% endcapture %}
 
