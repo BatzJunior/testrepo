@@ -262,11 +262,11 @@ GET /dataServiceRest/catalogs/8c376bee-ffe3-4ee4-abb9-a55b492e69ad HTTP/1.1
 
 {% include endpointTab.html %}
 
-### Add Catalog Entries (POST)
-
-To add new entries to an existing catalog you must specify all new entries in the request body. Each new entry must contain a unique key.
-Each entry attribute must be listed as a valid attributes in the catalog definition.
-
+{% assign linkId="catalogEndpointCreateEntries" %}
+{% assign method="POST" %}
+{% assign endpoint="/catalogs/:catalogUuid" %}
+{% assign summary=" Creates entries for the catalog specified by the :catalogueUuid" %}
+{% assign description="To add new entries to an existing catalog you must specify all new entries in the request body. Each new entry must contain a unique key. Each entry attribute must be listed as a valid attributes in the catalog definition." %}
 {% assign exampleCaption="Adding a catalog entry - add the inspector ‘Clarks’" %}
 
 {% capture jsonrequest %}
@@ -290,10 +290,10 @@ HTTP/1.1 201 Created
 {% endhighlight %}
 {% endcapture %}
 
-{% include exampleFieldset.html %}
+{% include endpointTab.html %}
 
 
-### Update Catalogs (PUT)
+
 
 
 
