@@ -52,17 +52,9 @@
 	    $(e.target).css( "background", "#f99" );
 	    
 	    $(e.target)
-	        .parents( "ul.nav" )
-	        .find( "span.glyphicon" )
-	        .toggleClass('glyphicon-chevron-down glyphicon-chevron-up');
-	    $(e.target)
+	        .parents( "div.panel-heading" )
 	        .find( "ul.nav" )
 	        .find( "span.glyphicon" )
-	        .toggleClass('glyphicon-chevron-down glyphicon-chevron-up');
-	    $(e.target)
-	        .find( "span.glyphicon" )
-	        .toggleClass('glyphicon-chevron-down glyphicon-chevron-up');
-	    $(e.target)
 	        .toggleClass('glyphicon-chevron-down glyphicon-chevron-up');
 	}
 	$( "div[id^='heading']" ).click(toggleChevron);
