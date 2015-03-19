@@ -213,6 +213,15 @@ ul.subNavList{
 	border:0;
 	background-color:#f5f5f5;
 }
+
+.glyphicon{
+	margin-right: 10px;
+}
+
+@media (max-width: 767px) {
+	.glyphicon{
+		visibility: hidden;
+	}
 }
 
 /* Tables */
