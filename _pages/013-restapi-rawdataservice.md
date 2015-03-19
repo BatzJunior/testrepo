@@ -1,7 +1,7 @@
 ---
 area: restApi
 level: 1
-category: rawdataService
+category: rawDataService
 title: REST API
 subTitle: Rawdata Service
 permalink: /restapi/rawdataservice/
