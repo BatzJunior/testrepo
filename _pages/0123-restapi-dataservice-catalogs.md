@@ -16,10 +16,10 @@ permalink: /restapi/dataservice/catalogs/
 Catalogs and catalog entries can be fetched, created, updated and deleted using the following endpoints. These endpoints  provide the following filter parameters:
 
 {% capture table %}
-Parameter name      | Description  <br> ```Example``` | Accepted by endpoint | Accepted by HTTP methods
---------------------|------------------  -------------|----------------------|--------------------------
-```catalogUuids```  | List of catalogue uuids that restrict the request. <br> (d7291afb-0a67-4c1e-8bcc-6fc455bcc0e5, 8c376bee-ffe3-4ee4-abb9-a55b492e69ad) | /catalogs | GET, DELETE
-```entryIds```      | List of catalogue entry ids that restrict the request. <br> (1,4) | catalogs/:catalogUuid | DELETE
+Parameter name      | Description  <br> *Example* | Accepted by endpoint | Accepted by HTTP methods
+--------------------|------------------  ---------|----------------------|--------------------------
+```catalogUuids```  | List of catalogue uuids that restrict the request. <br> *(d7291afb-0a67-4c1e-8bcc-6fc455bcc0e5, 8c376bee-ffe3-4ee4-abb9-a55b492e69ad)* | /catalogs | GET, DELETE
+```entryIds```      | List of catalogue entry ids that restrict the request. <br> *(1,4)* | catalogs/:catalogUuid | DELETE
 {% endcapture %}
 {{ table | markdownify | replace: '<table>', '<table class="table table-hover">' }}
 
@@ -321,7 +321,7 @@ HTTP/1.1 201 Created
 {% assign linkId="catalogEndpointDeleteEntries" %}
 {% assign method="DELETE" %}
 {% assign endpoint="/catalogs/:catalogUuid" %}
-{% assign summary="Deletes catalog entries for the catalog specified by the :catalogueUuid" %}
+{% assign summary="Deletes entries for the catalog specified by the :catalogueUuid" %}
 {% capture description %}
 There are two different options for deleting catalog entries:
 
@@ -346,3 +346,28 @@ HTTP/1.1 200 Ok
 {% include endpointTab.html %}
 
 ###General Information
+
+Each catalog describes a list of entries. All entries have the same defined set of attributes, called *valid attributes*. 
+All valid attributes must be created as *catalog attributes* beforehand. ```Catalogue``` and ```CatalogueEntry```have the following structures:
+
+### Catalogue
+
+{% capture table %}
+Property         | Datatype             | Description
+-----------------|----------------------|------------------------
+uuid             | ```Guid```           | Identifies the catalog uniquely
+name             | ```string```         | Name of the catalog
+validAttributes  | ```ushort[]```       | A list of attribute keys that are valid for this catalog
+catalogueEntries | ```CatalogueEntry``` | A list of catalog entries
+{% endcapture %}
+{{ table | markdownify | replace: '<table>', '<table class="table table-hover">' }}
+
+### CatalogueEntry
+
+{% capture table %}
+Property         | Datatype             | Description
+-----------------|----------------------|------------------------
+key              | ```short```          | Specifies the entry's order within the catalog
+attributes       | ```Attribute[]```    | A list of attributes which consists of key and value. The keys must be from the validAttributes.
+{% endcapture %}
+{{ table | markdownify | replace: '<table>', '<table class="table table-hover">' }}
