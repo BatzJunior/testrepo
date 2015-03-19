@@ -26,7 +26,7 @@ Parameter name      | Description  <br> ```Example``` | Accepted by endpoint | A
 {% assign linkId="catalogEndpointGetAll" %}
 {% assign method="GET" %}
 {% assign endpoint="/catalogs" %}
-{% assign summary="Returns all catalogs" %}
+{% assign summary="Fetches catalogs" %}
 {% assign description="" %}
 {% assign exampleCaption="Fetching all catalogs" %}
 
@@ -210,16 +210,21 @@ HTTP/1.1 200 Ok
 
 {% include endpointTab.html %}
 
-{% assign linkId="catalogEndpointDeleteAll" %}
+{% assign linkId="catalogEndpointDeleteCatalogs" %}
 {% assign method="DELETE" %}
 {% assign endpoint="/catalogs" %}
-{% assign summary="Deletes all catalogs" %}
-{% assign description="" %}
-{% assign exampleCaption="Delete all catalogs" %}
+{% assign summary="Deletes catalogs" %}
+{% capture description %}
+There are two different options for deleting catalogs:
+
+* delete all catalogs or
+* delete one or more certain catalogs identified by their uuid.
+{% endcapture %}
+{% assign exampleCaption="Delete the catalog with the uuid 8c376bee-ffe3-4ee4-abb9-a55b492e69ad" %}
 
 {% capture jsonrequest %}
 {% highlight http %}
-DELETE /dataServiceRest/catalogues HTTP/1.1
+DELETE /dataServiceRest/catalogues?catalogUuids=(8c376bee-ffe3-4ee4-abb9-a55b492e69ad) HTTP/1.1
 {% endhighlight %}
 {% endcapture %}
 
@@ -313,75 +318,16 @@ HTTP/1.1 201 Created
 {% include endpointTab.html %}
 
 
+{% assign linkId="catalogEndpointDeleteEntries" %}
+{% assign method="DELETE" %}
+{% assign endpoint="/catalogs/:catalogUuid" %}
+{% assign summary="Deletes catalog entries for the catalog specified by the :catalogueUuid" %}
+{% capture description %}
+There are two different options for deleting catalog entries:
 
-
-
-
-### Delete Catalogs (DELETE)
-
-There are two different options for deleting catalogs: 
-
-* delete all catalogs or
-* delete one or more certain catalogs identified by their uuid.
-
-The following examples demonstrates these options.
-
-{% assign exampleCaption="Delete all catalogs and their entries" %}
-
-{% capture jsonrequest %}
-{% highlight http %}
-DELETE /dataServiceRest/catalogues HTTP/1.1
-{% endhighlight %}
+* Delete all entries from a certain catalog identified by its uuid or
+* Delete one or more specific entries identified by their keys from a certain catalog identified by its uuid
 {% endcapture %}
-
-{% capture jsonresponse %}
-{% highlight http %}
-HTTP/1.1 200 Ok
-{% endhighlight %}
-{% endcapture %}
-
-{% include exampleFieldset.html %}
-
-{% assign exampleCaption="Delete the catalog with uuid 8c376bee-ffe3-4ee4-abb9-a55b492e69ad and its entries" %}
-
-{% capture jsonrequest %}
-{% highlight http %}
-DELETE /dataServiceRest/catalogues/(8c376bee-ffe3-4ee4-abb9-a55b492e69ad) HTTP/1.1
-{% endhighlight %}
-{% endcapture %}
-
-{% capture jsonresponse %}
-{% highlight http %}
-HTTP/1.1 200 Ok
-{% endhighlight %}
-{% endcapture %}
-
-{% include exampleFieldset.html %}
-
-### Delete Catalog Entries
-
-There are two different options for deleting catalog entries: 
-
-* delete all entries from a certain catalog identified by its uuid or
-* delete one or more specific entries identified by their keys from a certain catalog identified by its uuid
- 
-The following examples demonstrate these options.
-
-{% assign exampleCaption="Delete all entries from the catalog with the uuid 8c376bee-ffe3-4ee4-abb9-a55b492e69ad" %}
-
-{% capture jsonrequest %}
-{% highlight http %}
-DELETE /dataServiceRest/catalogues/8c376bee-ffe3-4ee4-abb9-a55b492e69ad/entries HTTP/1.1
-{% endhighlight %}
-{% endcapture %}
-
-{% capture jsonresponse %}
-{% highlight http %}
-HTTP/1.1 200 Ok
-{% endhighlight %}
-{% endcapture %}
-
-{% include exampleFieldset.html %}
 
 {% assign exampleCaption="Delete the entries with key 1 and 3 from the catalog with uuid 8c376bee-ffe3-4ee4-abb9-a55b492e69ad" %}
 
@@ -397,6 +343,6 @@ HTTP/1.1 200 Ok
 {% endhighlight %}
 {% endcapture %}
 
-{% include exampleFieldset.html %}
+{% include endpointTab.html %}
 
 ###General Information
