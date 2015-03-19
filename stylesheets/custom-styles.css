@@ -221,6 +221,7 @@ ul.subNavList{
 @media (max-width: 767px) {
 	.glyphicon{
 		visibility: hidden;
+		display: none;
 	}
 }
 
