@@ -49,14 +49,13 @@
 	
 	<script type="text/javascript">
     	function toggleChevron(e) {
-	    $(e.target).css( "background", "#f99" );
 	    var headingDiv = $(e.target).parents( "div.panel-heading" );
 	    if( !headingDiv.length)
 	    	headingDiv = $(e.target);
 	    headingDiv
     		.find( "ul.nav" )
         	.find( "span.glyphicon" )
-        	.toggleClass('glyphicon-chevron-down glyphicon-chevron-up');
+        	.toggleClass('glyphicon-menu-down glyphicon-menu-right');
 	}
 	$( "div[id^='heading']" ).click(toggleChevron);
     </script>
