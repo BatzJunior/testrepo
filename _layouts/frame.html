@@ -17,10 +17,11 @@
 	    alert("hi");
 	    $(e.target).css( "background", "#f99" );
 	    $(e.target)
+	        .find( "ul.nav" )
 	        .find("span.indicator")
 	        .toggleClass('glyphicon-chevron-down glyphicon-chevron-up');
 	}
-	$('#accordion').click(toggleChevron);
+	$( "div[id^='heading']" ).click(toggleChevron);
     </script>
   </head>
   <body>
