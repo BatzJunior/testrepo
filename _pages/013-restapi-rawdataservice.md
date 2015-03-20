@@ -179,7 +179,7 @@ HTTP/1.1 200 OK
 {% endcapture %}
 
 {% include endpointTab.html %}
-<br/>
+<p></p>
 
 
 {% assign linkId="rawDataEndpointGetThumbnail" %}
@@ -205,4 +205,4 @@ The requested thumbnail
 {% endcapture %}
 
 {% include endpointTab.html %}
-<br/>
+<p></p>
