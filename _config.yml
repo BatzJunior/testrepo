@@ -27,7 +27,7 @@ images:
   function-update: "![Update](/testrepo/images/function-update.png)"
   function-delete: "![Delete](/testrepo/images/function-delete.png)"
 headers:
-  example: "![Example](/testrepo/images/document-info.png) Example:"
+  example: "#### ![Example](/testrepo/images/document-info.png) Example:"
   request: "![Request](/testrepo/images/server-import.png) Request"
   response: "![Response](/testrepo/images/server-export.png) Response"
 sections:
