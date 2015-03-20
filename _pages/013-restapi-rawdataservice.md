@@ -203,3 +203,6 @@ HTTP/1.1 200 OK
 The requested thumbnail
 </pre>
 {% endcapture %}
+
+{% include endpointTab.html %}
+<br/>
