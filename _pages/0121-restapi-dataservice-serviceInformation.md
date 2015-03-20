@@ -18,7 +18,7 @@ The service information can be fetched via the following endpoint. This endpoint
 {% assign linkId="serviceInformationEndpointGet" %}
 {% assign method="GET" %}
 {% assign endpoint="/serviceInformation" %}
-{% assign summary="Returns general information about the data service" %}
+{% assign summary="Returns general information about PiWeb server and data service" %}
 {% assign description="" %}
 {% assign exampleCaption="Get Service Information for a given connection" %}
 
