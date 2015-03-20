@@ -92,7 +92,7 @@ When adding a file, you can pass the desired file key as part of the uri. If you
 {% assign exampleCaption="Add a raw data object to a part with the uuid b8f5d3fe-5bd5-406b-8053-67f647f09dc7" %}
 {% capture jsonrequest %}
 {% highlight http %}
-PUT /rawDataServiceRest/rawData/part/b8f5d3fe-5bd5-406b-8053-67f647f09dc7 HTTP/1.1
+POST /rawDataServiceRest/rawData/part/b8f5d3fe-5bd5-406b-8053-67f647f09dc7 HTTP/1.1
 Content-Disposition: "MetalPart.meshModel"
 Content-Length: 2090682
 Content-MD5: "bdf6b06ab301a80ae55021085b820393"
@@ -103,6 +103,51 @@ Content-Type: "application/x-zeiss-piweb-meshmodel"
 {% capture jsonresponse %}
 {% highlight http %}
 HTTP/1.1 201 Created
+{% endhighlight %}
+{% endcapture %}
+
+{% include endpointTab.html %}
+
+
+
+{% assign linkId="rawDataEndpointUpdateFile" %}
+{% assign method="PUT" %}
+{% assign endpoint="/rawData/:entity/:uuid/:key" %}
+{% assign summary="Replaces the file identified by :entity, :uuid and :key with the transmitted one" %}
+{% capture description %}
+
+An update request consists of 3 mandatory parts:
+
+1. The *URL* specifies the file to be replaced identified by :entity, :uuid and :key.
+2. The *request body* contains the file itself.
+3. The *HTTP headers* must provide meta information about the file, see below for details.
+
+{% capture table %}
+HTTP header variable | Description                  | Example Value
+---------------------|------------------------------|--------------------------------------
+Content-Disposition  | Includes the file name       | "MetalPart.meshModel"
+Content-Length       | Includes the length in bytes | 2090682
+Content-MD5          | Includes file's MD5 hash sum | "bdf6b06ab301a<wbr>80ae55021085b820393"
+Content-Type         | Includes file's MIME type    | "application/x-zeiss-piweb-meshmodel"
+{% endcapture %}
+{{ table | markdownify | replace: '<table>', '<table class="table table-hover">' }}
+
+{% endcapture %}
+
+{% assign exampleCaption="Replace the raw data object with key 1 of a part with the uuid b8f5d3fe-5bd5-406b-8053-67f647f09dc7" %}
+{% capture jsonrequest %}
+{% highlight http %}
+PUT /rawDataServiceRest/rawData/part/b8f5d3fe-5bd5-406b-8053-67f647f09dc7/1 HTTP/1.1
+Content-Disposition: "MetalPart.meshModel"
+Content-Length: 2090682
+Content-MD5: "bdf6b06ab301a80ae55021085b820393"
+Content-Type: "application/x-zeiss-piweb-meshmodel"
+{% endhighlight %}
+{% endcapture %}
+
+{% capture jsonresponse %}
+{% highlight http %}
+HTTP/1.1 200 Ok
 {% endhighlight %}
 {% endcapture %}
 
