@@ -57,3 +57,50 @@ HTTP/1.1 304 Not modified
 {% endcapture %}
 
 {% include endpointTab.html %}
+
+
+
+{% assign linkId="rawDataEndpointAddFile" %}
+{% assign method="POST" %}
+{% assign endpoint="/rawData/:entity/:uuid/:key" %}
+{% assign summary="Adds the transmitted file to the entity with type :entity and id :uuid" %}
+{% capture description %}
+
+You can attach files to all entity types: parts, characteristics, measurements and measured values.
+
+An add request consists of 3 mandatory parts:
+
+1. The *URL* specifies which entity the file will be added to.
+2. The *request body* contains the file itself.
+3. The *HTTP headers* must provide meta information about the file, see below for details.
+
+{% capture table %}
+HTTP header variable | Description                  | Example Value
+---------------------|------------------------------|--------------------------------------
+Content-Disposition  | Includes the file name       | "MetalPart.meshModel"
+Content-Length       | Includes the length in bytes | 2090682
+Content-MD5          | Includes file's MD5 hash sum | "bdf6b06ab301a80ae55021085b820393"
+Content-Type         | Includes file's MIME type    | "application/x-zeiss-piweb-meshmodel"
+{% endcapture %}
+{{ table | markdownify | replace: '<table>', '<table class="table table-hover">' }}
+
+When adding a file, you can pass the desired file key as part of the uri. If you pass -1 or no key, the next available key will automatically assigned by the server. (recommended)
+
+{{site.images['warning']}} If you pass a key which is already assigned to another file, this file will be replaced.
+
+{% assign exampleCaption="Add a raw data object to a part with the uuid b8f5d3fe-5bd5-406b-8053-67f647f09dc7" %}
+{% capture jsonrequest %}
+{% highlight http %}
+PUT /rawDataServiceRest/rawData/part/b8f5d3fe-5bd5-406b-8053-67f647f09dc7 HTTP/1.1
+Content-Disposition: "MetalPart.meshModel"
+Content-Length: 2090682
+Content-MD5: "bdf6b06ab301a80ae55021085b820393"
+Content-Type: "application/x-zeiss-piweb-meshmodel"
+{% endhighlight %}
+{% endcapture %}
+
+{% capture jsonresponse %}
+{% highlight http %}
+HTTP/1.1 201 Created
+{% endhighlight %}
+{% endcapture %}
