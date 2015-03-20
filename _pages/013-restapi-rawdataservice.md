@@ -179,3 +179,27 @@ HTTP/1.1 200 OK
 {% endcapture %}
 
 {% include endpointTab.html %}
+<br/>
+
+
+{% assign linkId="rawDataEndpointGetThumbnail" %}
+{% assign method="GET" %}
+{% assign endpoint="/rawData/:entity/:uuid/:key/thumbnail" %}
+{% assign summary="Returns a preview image for the file identified by :entity, :uuid and :key. " %}
+{% assign description="" %}
+{% assign exampleCaption="Fetch the thumbnail for the raw data object with key 1 which is attached to the part with the uuid b8f5d3fe-5bd5-406b-8053-67f647f09dc7" %}
+
+{% capture jsonrequest %}
+{% highlight http %}
+DELETE /rawDataServiceRest/rawData/part/b8f5d3fe-5bd5-406b-8053-67f647f09dc7/1/thumbnail HTTP/1.1
+{% endhighlight %}
+{% endcapture %}
+
+{% capture jsonresponse %}
+{% highlight http %}
+HTTP/1.1 200 OK
+{% endhighlight %}
+<pre>
+The requested thumbnail
+</pre>
+{% endcapture %}
