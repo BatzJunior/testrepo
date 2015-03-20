@@ -46,9 +46,9 @@ Etag: "6ab0f6bd01b30aa8e55021085b820393635437006830400000"
 Last-Modified: Fri, 15 Aug 2014 11:58:03 GMT
 ...
 {% endhighlight %}
-{% highlight %}
+<pre>
 The requested raw data file
-{% endhighlight %}
+</pre>
 ###### Not modified
 {% highlight http %}
 HTTP/1.1 304 Not modified
