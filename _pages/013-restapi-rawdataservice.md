@@ -79,7 +79,7 @@ HTTP header variable | Description                  | Example Value
 ---------------------|------------------------------|--------------------------------------
 Content-Disposition  | Includes the file name       | "MetalPart.meshModel"
 Content-Length       | Includes the length in bytes | 2090682
-Content-MD5          | Includes file's MD5 hash sum | "bdf6b06ab301a80ae55021085b820393"
+Content-MD5          | Includes file's MD5 hash sum | "bdf6b06ab301a<wbr>80ae55021085b820393"
 Content-Type         | Includes file's MIME type    | "application/x-zeiss-piweb-meshmodel"
 {% endcapture %}
 {{ table | markdownify | replace: '<table>', '<table class="table table-hover">' }}
