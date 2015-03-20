@@ -27,12 +27,19 @@ The server caches raw data fetch requests. When you request a raw data file for 
 {% assign exampleCaption="Fetch raw data with key 0 for a part with the uuid b8f5d3fe-5bd5-406b-8053-67f647f09dc7" %}
 
 {% capture jsonrequest %}
+##### Without Caching
 {% highlight http %}
 GET /rawDataServiceRest/rawData/part/b8f5d3fe-5bd5-406b-8053-67f647f09dc7/0 HTTP/1.1
+{% endhighlight %}
+##### With caching:
+{% highlight http %}
+GET /rawDataServiceRest/rawData/part/b8f5d3fe-5bd5-406b-8053-67f647f09dc7/0 HTTP/1.1
+If-None-Match: "6ab0f6bd01b30aa8e55021085b820393635437006830400000"
 {% endhighlight %}
 {% endcapture %}
 
 {% capture jsonresponse %}
+##### Without caching:
 The requested raw data file
 
 {% highlight http %}
@@ -41,19 +48,10 @@ Etag: "6ab0f6bd01b30aa8e55021085b820393635437006830400000"
 Last-Modified: Fri, 15 Aug 2014 11:58:03 GMT
 ...
 {% endhighlight %}
-{% endcapture %}
-
-Request with If-None-Match header
-
-{% highlight http %}
-GET /rawDataServiceRest/rawData/part/b8f5d3fe-5bd5-406b-8053-67f647f09dc7/0 HTTP/1.1
-If-None-Match: "6ab0f6bd01b30aa8e55021085b820393635437006830400000"
-{% endhighlight %}
-
-Response:
-
+##### With caching:
 {% highlight http %}
 HTTP/1.1 304 Not modified
 {% endhighlight %}
+{% endcapture %}
 
 {% include endpointTab.html %}
