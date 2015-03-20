@@ -11,13 +11,13 @@
       <li class="navbar-left fixedWidth">
       {% case method %}
         {% when 'GET' %}
-           <span class="label label-primary">{{ method }}</span>
+           <span class="label label-primary">GET</span>
         {% when 'POST' %}
-           <span class="label label-success">{{ method }}</span>
+           <span class="label label-success">POST</span>
         {% when 'PUT' %}
-           <span class="label label-warning">{{ method }}</span>
+           <span class="label label-warning">PUT</span>
         {% when 'DELETE' %}
-           <span class="label label-danger">{{ method }}</span>
+           <span class="label label-danger">DELETE</span>
       {% endcase %}
       </li>
       <li class="navbar-left">{{ endpoint }}</li>
