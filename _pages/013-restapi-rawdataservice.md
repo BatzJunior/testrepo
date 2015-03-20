@@ -87,6 +87,7 @@ Content-Type         | Includes file's MIME type    | "application/x-zeiss-piweb
 When adding a file, you can pass the desired file key as part of the uri. If you pass -1 or no key, the next available key will automatically assigned by the server. (recommended)
 
 {{site.images['warning']}} If you pass a key which is already assigned to another file, this file will be replaced.
+{% endcapture %}
 
 {% assign exampleCaption="Add a raw data object to a part with the uuid b8f5d3fe-5bd5-406b-8053-67f647f09dc7" %}
 {% capture jsonrequest %}
