@@ -27,9 +27,9 @@ images:
   function-update: "![Update](/testrepo/images/function-update.png)"
   function-delete: "![Delete](/testrepo/images/function-delete.png)"
 headers:
-  example: "##### ![Example](/testrepo/images/document-info.png) Example:"
-  request: "###### ![Request](/testrepo/images/server-import.png) Request"
-  response: "![Response](/testrepo/images/server-export.png) Response"
+  example: "##### ![Example](/testrepo/images/document-info.png) Example: "
+  request: "##### Request"
+  response:"##### Response"
 sections:
   beginExampleWebService: "<fieldset><legend><span><img src=\"/testrepo/images/document-info.png\"/></span> Example:</legend>"
   beginExampleAPI: "<fieldset><legend> Webservice call via API.dll </legend>"
