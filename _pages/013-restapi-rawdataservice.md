@@ -17,9 +17,43 @@ Catalogs and catalog entries can be fetched, created, updated and deleted using 
 {% capture table %}
 Parameter name | Description  <br> *Example* | Accepted by endpoint
 ---------------|------------------  ---------|----------------------
-`uuids`        | Restricts the query to the entities identified by the given uuids. <br> {{site.images['warning']}} Entites of type 'Value' are identified by a compound key, which consists of the uuid of the measurement, '&#124;' and the characteristics uuid <br><br> *uuids:(652ae7a0-d1e1-4ee2-b3a5-d4526f6ba822&#124; 78bd15c6-dc70-4ab4-bd3c-8ab2b5780b52)* | <span class="label label-primary">GET</span> /rawData/:entity
+`uuids`        | Restricts the query to the entities identified by the given uuids. <br> {{site.images['warning']}} Entites of type 'Value' are identified by a compound key, which consists of the uuid of the measurement, '&#124;' and the characteristics uuid <br><br> *uuids:(652ae7a0-d1e1-4ee2-b3a5-d4526f6ba822&#124; 78bd15c6-dc70-4ab4-bd3c-8ab2b5780b52)* | <nobr><span class="label label-primary">GET</span> /rawData/:entity</nobr>
 {% endcapture %}
 {{ table | markdownify | replace: '<table>', '<table class="table table-hover">' }}
+
+
+{% assign linkId="rawDataEndpointGetServiceInformation" %}
+{% assign method="GET" %}
+{% assign endpoint="/serviceInformation" %}
+{% assign summary="Returns general information about the raw data service" %}
+{% assign description="" %}
+{% assign exampleCaption="Get service information for a given connection" %}
+
+{% capture jsonrequest %}
+{% highlight http %}
+GET /rawdataServiceRest/serviceInformation HTTP/1.1
+{% endhighlight %}
+{% endcapture %}
+
+{% capture jsonresponse %}
+{% highlight json %}
+{
+   ...
+   "data":
+   [
+       {
+        "versionWsdlMajor": "2",
+        "versionWsdlMinor": "3",
+        "version": "5.8.0.0"
+       }
+   ]
+}
+{% endhighlight %}
+{% endcapture %}
+
+{% include endpointTab.html %}
+<p></p>
+
 
 
 {% assign linkId="rawDataEndpointGetListMulti" %}
