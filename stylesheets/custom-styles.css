@@ -99,7 +99,7 @@ code{
 	}
 	.container-header-top{
 		margin-top: 10px;
-		border-top-left-radius: 40px;
+		border-top-left-radius: 10px;
 		border-top-right-radius: 10px;
 	}
 }
