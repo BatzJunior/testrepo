@@ -134,7 +134,7 @@ Content-Type         | Includes file's MIME type    | "application/x-zeiss-piweb
 
 {% endcapture %}
 
-{% assign exampleCaption="Replace the raw data object with key 1 of a part with the uuid b8f5d3fe-5bd5-406b-8053-67f647f09dc7" %}
+{% assign exampleCaption="Replace the raw data object with key 1 of the part with the uuid b8f5d3fe-5bd5-406b-8053-67f647f09dc7" %}
 {% capture jsonrequest %}
 {% highlight http %}
 PUT /rawDataServiceRest/rawData/part/b8f5d3fe-5bd5-406b-8053-67f647f09dc7/1 HTTP/1.1
@@ -148,6 +148,33 @@ Content-Type: "application/x-zeiss-piweb-meshmodel"
 {% capture jsonresponse %}
 {% highlight http %}
 HTTP/1.1 200 Ok
+{% endhighlight %}
+{% endcapture %}
+
+{% include endpointTab.html %}
+
+
+
+{% assign linkId="rawDataEndpointDeleteFile" %}
+{% assign method="DELETE" %}
+{% assign endpoint="/rawData/:entity/:uuid/:key" %}
+{% assign summary="Deletes the file identified by :entity, :uuid and :key. " %}
+
+{% capture description %}
+If you provide a key in the URI, the server will only delete the file identified by the key. Otherwise the server will delete all files attached to the entity.
+{% endcapture %}
+
+{% assign exampleCaption="Delete the raw data object with key 1 from the part with the uuid b8f5d3fe-5bd5-406b-8053-67f647f09dc7" %}
+
+{% capture jsonrequest %}
+{% highlight http %}
+DELETE /rawDataServiceRest/rawData/part/b8f5d3fe-5bd5-406b-8053-67f647f09dc7/0 HTTP/1.1
+{% endhighlight %}
+{% endcapture %}
+
+{% capture jsonresponse %}
+{% highlight http %}
+HTTP/1.1 200 OK
 {% endhighlight %}
 {% endcapture %}
 
