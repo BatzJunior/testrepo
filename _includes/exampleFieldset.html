@@ -1,4 +1,4 @@
-{{  '##### ' | append: site.images['document-info'] | append: ' Example: ' | append: exampleCaption | markdownify }}
+{{  site.headers['example'] | append: exampleCaption | markdownify }}
 {% if comment.size > 0 %}
   {{ site.images['info'] | append: ' ' | append: comment | markdownify }}
 {% endif %}
