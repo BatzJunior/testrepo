@@ -12,7 +12,7 @@ sections:
 
 ## {{page.sections['endpoint'] }}
 
-Catalogs and catalog entries can be fetched, created, updated and deleted using the following endpoints. These endpoints provide the following filter parameters:
+You can can fetch, creat, update and delete raw data objects and information about these objects by using the following endpoints. These endpoints provide the following filter parameters:
 
 {% capture table %}
 Parameter name | Description  <br> *Example* | Accepted by endpoint
@@ -139,6 +139,30 @@ GET /rawDataServiceRest/rawData/part/05040c4c-f0af-46b8-810e-30c0c00a379e HTTP/1
          "md5": "02f9c86143ea176c06e24524385b5907"
      }
     ]
+{% endcapture %}
+
+{% include endpointTab.html %}
+
+
+{% assign linkId="rawDataEndpointDeleteFiles" %}
+{% assign method="DELETE" %}
+{% assign endpoint="/rawData/:entity/:uuid" %}
+{% assign summary="Deletes all files for the entity identified by :entity and :uuid. " %}
+
+{% assign description="" %}
+
+{% assign exampleCaption="Delete all raw data objects from the part with the uuid b8f5d3fe-5bd5-406b-8053-67f647f09dc7" %}
+
+{% capture jsonrequest %}
+{% highlight http %}
+DELETE /rawDataServiceRest/rawData/part/b8f5d3fe-5bd5-406b-8053-67f647f09dc7 HTTP/1.1
+{% endhighlight %}
+{% endcapture %}
+
+{% capture jsonresponse %}
+{% highlight http %}
+HTTP/1.1 200 OK
+{% endhighlight %}
 {% endcapture %}
 
 {% include endpointTab.html %}
@@ -292,10 +316,7 @@ HTTP/1.1 200 Ok
 {% assign method="DELETE" %}
 {% assign endpoint="/rawData/:entity/:uuid/:key" %}
 {% assign summary="Deletes the file identified by :entity, :uuid and :key. " %}
-
-{% capture description %}
-If you provide a key in the URI, the server will only delete the file identified by the key. Otherwise the server will delete all files attached to the entity.
-{% endcapture %}
+{% assign description="" %}
 
 {% assign exampleCaption="Delete the raw data object with key 1 from the part with the uuid b8f5d3fe-5bd5-406b-8053-67f647f09dc7" %}
 
