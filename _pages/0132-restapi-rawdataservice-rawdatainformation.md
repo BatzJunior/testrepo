@@ -20,7 +20,7 @@ You can can fetch information about raw data objects by using the following endp
 {% assign endpoint="/rawData/:entity" %}
 {% assign summary="Returns a list of information entries for entities with type :entity" %}
 {% capture description %}
-Returns a list of raw data file information entries for all entities with type :entity. You further have to and restrict the request to the entities' uuids:
+Returns a list of raw data file information entries for all entities with type :entity. You further have to and restrict the request to the entities' uuids by adding the following uri parameter:
 
 {% capture table %}
 Parameter name | Description  <br> *Example* 
