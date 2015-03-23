@@ -28,3 +28,33 @@ Parameter name      | Possible values [**default value**] | Description  <br> ``
 `characteristicAttributes` | IDs of the attributes | Restricts the query to the attributes that should be returned for characteristics. <br><br>Example:<br>```characteristicAttributes=(2001,2101)``` | <nobr>{{site.sections['getLabel']}} /characteristics</nobr>
 {% endcapture %}
 {{ table | markdownify | replace: '<table>', '<table class="table table-hover">' }}
+
+{% assign linkId="inspectionPlanEndpointGetAll" %}
+{% assign method="GET" %}
+{% assign endpoint="/parts" %}
+{% assign summary="Fetches parts" %}
+{% assign description="Fetches all parts or the parts restricted by the uri parameters." %}
+{% assign exampleCaption="Fetch the part with the path '/metal part'" %}
+
+{% capture jsonrequest %}
+{% highlight http %}
+GET /dataServiceRest/parts?partPath=/metal%20part HTTP/1.1
+{% endhighlight %}
+{% endcapture %}
+
+{% capture jsonresponse %}
+{% highlight json %}
+{
+   ...
+   "data":
+   [
+      {
+         
+      },
+      ...
+   ]
+}
+{% endhighlight %}
+{% endcapture %}
+
+{% include endpointTab.html %}
