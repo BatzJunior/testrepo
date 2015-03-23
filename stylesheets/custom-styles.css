@@ -213,6 +213,7 @@ ul.subNavList{
 	color: #FFF;
 	font-weight: inherit;
 	border:0;
+	vertical-align: initial;
 }
 
 .table>tbody>tr>td{
