@@ -18,7 +18,7 @@ Catalogs and catalog entries can be fetched, created, updated and deleted using 
 {% capture table %}
 Parameter name      | Description  <br> *Example* | Accepted by endpoint | Accepted by HTTP methods
 --------------------|------------------  ---------|----------------------|--------------------------
-```catalogUuids```  | List of catalogue uuids that restrict the request. <br> *(d7291afb-0a67-4c1e-8bcc-6fc455bcc0e5, 8c376bee-ffe3-4ee4-abb9-a55b492e69ad)* | <nobr>{{site.sections['deleteLabel']}} /catalogs</nobr> <nobr>{{site.sections['getLabel']}} /catalogs</nobr>
+```catalogUuids```  | List of catalogue uuids that restrict the request. <br> *(d7291afb-0a67-4c1e-8bcc-6fc455bcc0e5, 8c376bee-ffe3-4ee4-abb9-a55b492e69ad)* | <ul class="nav><li class=fixedWidth>{{site.sections['deleteLabel']}} /catalogs</li> <li class="fixedWidth">{{site.sections['getLabel']}} /catalogs</li></ul>
 ```entryIds```      | List of catalogue entry ids that restrict the request. <br> *(1,4)* | <nobr>{{site.sections['deleteLabel'] }} catalogs/:catalogUuid</nobr>
 {% endcapture %}
 {{ table | markdownify | replace: '<table>', '<table class="table table-hover">' }}
