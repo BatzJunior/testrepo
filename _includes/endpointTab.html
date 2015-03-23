@@ -6,23 +6,7 @@
         href={{ '"#collapse' | append: linkId | append: '"' }} 
         aria-expanded="false" 
         aria-controls={{ '"#collapse' | append: linkId | append: '"' }}>
-    <ul class="nav">
-      <li class="navbar-left"><span class="glyphicon glyphicon-menu-right"></span></li>
-      <li class="navbar-left fixedWidth">
-      {% case method %}
-        {% when 'GET' %}
-           {{ site.sections['getLabel'] }}
-        {% when 'POST' %}
-           {{ site.sections['postLabel'] }}
-        {% when 'PUT' %}
-           {{ site.sections['putLabel'] }}
-        {% when 'DELETE' %}
-           {{ site.sections['deleteLabel'] }}
-      {% endcase %}
-      </li>
-      <li class="navbar-left">{{ endpoint }}</li>
-      <li class="navbar-right">{{ summary}}</li>
-    </ul>
+    {% include endpointMethod.html showArrow="true" %}
   </div>
   
   <div  id={{ '"collapse' | append: linkId | append: '"' }}
