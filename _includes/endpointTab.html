@@ -11,13 +11,13 @@
       <li class="navbar-left fixedWidth">
       {% case method %}
         {% when 'GET' %}
-           <span class="label label-primary">GET</span>
+           {{ site.sections['getLabel'] }}
         {% when 'POST' %}
-           <span class="label label-success">POST</span>
+           {{ site.sections['postLabel'] }}
         {% when 'PUT' %}
-           <span class="label label-warning">PUT</span>
+           {{ site.sections['putLabel'] }}
         {% when 'DELETE' %}
-           <span class="label label-danger">DELETE</span>
+           {{ site.sections['deleteLabel'] }}
       {% endcase %}
       </li>
       <li class="navbar-left">{{ endpoint }}</li>
