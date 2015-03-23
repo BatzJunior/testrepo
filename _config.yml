@@ -26,16 +26,14 @@ images:
   function-create: "![Create](/testrepo/images/function-create.png)"
   function-update: "![Update](/testrepo/images/function-update.png)"
   function-delete: "![Delete](/testrepo/images/function-delete.png)"
+sections:
+  getLabel: <span class="label label-primary">GET</span>
+  postLabel: <span class="label label-success">POST</span>
+  putLabel: <span class="label label-warning">PUT</span>
+  deleteLabel: <span class="label label-danger">DELETE</span>
 headers:
   example: "##### ![Example](/testrepo/images/document-info.png) Example: "
   request: "##### Request"
   response: "##### Response"
-sections:
-  beginExampleWebService: "<fieldset><legend><span><img src=\"/testrepo/images/document-info.png\"/></span> Example:</legend>"
-  beginExampleAPI: "<fieldset><legend> Webservice call via API.dll </legend>"
-  endExample: "</fieldset>"
-  endCode: "</div>"
-settings:
-  defaultCodeFormat: "json"
 gems:
   - jekyll-redirect-from
