@@ -29,6 +29,8 @@ Parameter name | Description  <br> *Example*
 {% endcapture %}
 {{ table | markdownify | replace: '<table>', '<table class="table table-hover">' }}
 
+{% endcapture %}
+
 {% assign exampleCaption="Get the information entries for several parts" %}
 
 {% capture jsonrequest %}
