@@ -13,7 +13,7 @@ permalink: /restapi/rawdataservice/rawdataobjects/
 
 ### Endpoints
 
-You can can fetch raw data objects by using the following endpoints.
+You can can fetch, create, update and delete raw data objects by using the following endpoints.
 
 {% assign linkId="rawDataEndpointDeleteFiles" %}
 {% assign method="DELETE" %}
