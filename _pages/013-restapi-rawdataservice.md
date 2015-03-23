@@ -6,8 +6,9 @@ title: REST API
 subTitle: Rawdata Service
 permalink: /restapi/rawdataservice/
 sections:
-  endpoint: Endpoint Information
-  general: General Information
+  serviceInformation: Service Information       /////////////////UNTERSEITEN ERSTELLEN!!!!
+  rawDataInformation: Raw Data Information
+  rawDataObjects: Raw Data Objects
 ---
 
 ## {{page.sections['endpoint'] }}
@@ -70,6 +71,7 @@ GET /rawDataServiceRest/rawData/part?uuids=(05040c4c-f0af-46b8-810e-30c0c00a379e
 {% endcapture %}
 
 {% capture jsonresponse %}
+{% highlight json %}
  ...
    "data":
    [
@@ -102,6 +104,7 @@ GET /rawDataServiceRest/rawData/part?uuids=(05040c4c-f0af-46b8-810e-30c0c00a379e
          "md5": "cbde88e2ed754c70860b3e6d4313551a"
      }
     ]
+{% endhighlight %}
 {% endcapture %}
 
 {% include endpointTab.html %}
@@ -121,6 +124,7 @@ GET /rawDataServiceRest/rawData/part/05040c4c-f0af-46b8-810e-30c0c00a379e HTTP/1
 {% endcapture %}
 
 {% capture jsonresponse %}
+ {% highlight json %}
  ...
    "data":
    [
@@ -139,6 +143,7 @@ GET /rawDataServiceRest/rawData/part/05040c4c-f0af-46b8-810e-30c0c00a379e HTTP/1
          "md5": "02f9c86143ea176c06e24524385b5907"
      }
     ]
+{% endhighlight %}    
 {% endcapture %}
 
 {% include endpointTab.html %}
