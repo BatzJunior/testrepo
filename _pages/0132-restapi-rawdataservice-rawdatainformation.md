@@ -13,21 +13,22 @@ permalink: /restapi/rawdataservice/rawdatainformation/
 
 ### Endpoints
 
-You can can fetch, creat, update and delete raw data objects and information about these objects by using the following endpoints. These endpoints provide the following filter parameters:
-
-{% capture table %}
-Parameter name | Description  <br> *Example* | Accepted by endpoint
----------------|------------------  ---------|----------------------
-`uuids`        | Restricts the query to the entities identified by the given uuids. <br> {{site.images['warning']}} Entites of type 'Value' are identified by a compound key, which consists of the uuid of the measurement, '&#124;' and the characteristics uuid <br><br> *uuids:(652ae7a0-d1e1-4ee2-b3a5-d4526f6ba822&#124; 78bd15c6-dc70-4ab4-bd3c-8ab2b5780b52)* | <nobr><span class="label label-primary">GET</span> /rawData/:entity</nobr>
-{% endcapture %}
-{{ table | markdownify | replace: '<table>', '<table class="table table-hover">' }}
-
+You can can fetch information about raw data objects by using the following endpoints.
 
 {% assign linkId="rawDataEndpointGetListMulti" %}
 {% assign method="GET" %}
 {% assign endpoint="/rawData/:entity" %}
 {% assign summary="Returns a list of information entries for entities with type :entity" %}
-{% assign description="Returns a list of raw data file information entries for all entities with type entity and a matching id in the uuids parameter which has to be set." %}
+{% capture description %}
+Returns a list of raw data file information entries for all entities with type :entity. You further have to and restrict the request to the entities' uuids:
+
+{% capture table %}
+Parameter name | Description  <br> *Example* 
+---------------|---------------------------
+`uuids`        | Restricts the query to the entities identified by the given uuids. <br> {{site.images['warning']}} Entites of type 'Value' are identified by a compound key, which consists of the uuid of the measurement, '&#124;' and the characteristics uuid <br><br> *uuids:(652ae7a0-d1e1-4ee2-b3a5-d4526f6ba822&#124; 78bd15c6-dc70-4ab4-bd3c-8ab2b5780b52)*
+{% endcapture %}
+{{ table | markdownify | replace: '<table>', '<table class="table table-hover">' }}
+
 {% assign exampleCaption="Get the information entries for several parts" %}
 
 {% capture jsonrequest %}
