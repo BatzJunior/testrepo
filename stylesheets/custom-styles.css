@@ -220,6 +220,10 @@ ul.subNavList{
 	background-color:#f5f5f5;
 }
 
+.table > th > code{
+	color: #000;
+}
+
 .glyphicon{
 	margin-right: 10px;
 	padding-top: 7px
