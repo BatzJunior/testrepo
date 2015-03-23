@@ -77,7 +77,6 @@ GET /rawDataServiceRest/rawData/part?uuids=(05040c4c-f0af-46b8-810e-30c0c00a379e
 {% endcapture %}
 
 {% include endpointTab.html %}
-<p></p>
 
 {% assign linkId="rawDataEndpointGetListSingle" %}
 {% assign method="GET" %}
@@ -124,7 +123,7 @@ The returned objects contains the following properties:
 {% capture table %}
 Property         | Datatype         | Description
 -----------------|------------------|------------------------
-target           | TargetEntity     |  Specifies a concrete entity for a raw data object and consits of the entity's type (Part, Characteristic, Measurement, Value) and guid. If raw data is attached to an entity of type `Value`, the `uuid` contains a compound key in the following format: `{MeasurementUuid}|{CharacteristicUuid}`
+target           | `TargetEntity`   |  Specifies a concrete entity for a raw data object and consits of the entity's type (Part, Characteristic, Measurement, Value) and guid. If raw data is attached to an entity of type `Value`, the `uuid` contains a compound key in the following format: `{MeasurementUuid}|{CharacteristicUuid}`
 key              | `int`            | This is a unique key that identifies this specific raw data object for a corresponding entity. An entity can have multiple raw data object that are distinct by this key.
 fileName         | `string`         | The filename of the raw data object. Please note that this filename is not unique (unlike filenames in traditional file systems).
 mimeType         | `string`         | The file's mime type. 
