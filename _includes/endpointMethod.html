@@ -1,0 +1,21 @@
+<ul class="nav">
+      {% if showArrow %}
+        <li class="navbar-left"><span class="glyphicon glyphicon-menu-right"></span></li>
+      {% endif %}
+      <li class="navbar-left fixedWidth">
+      {% case method %}
+        {% when 'GET' %}
+           {{ site.sections['getLabel'] }}
+        {% when 'POST' %}
+           {{ site.sections['postLabel'] }}
+        {% when 'PUT' %}
+           {{ site.sections['putLabel'] }}
+        {% when 'DELETE' %}
+           {{ site.sections['deleteLabel'] }}
+      {% endcase %}
+      </li>
+      <li class="navbar-left">{{ endpoint }}</li>
+      {% if summary %}
+        <li class="navbar-right">{{ summary}}</li>
+      {% endif %}
+    </ul>
