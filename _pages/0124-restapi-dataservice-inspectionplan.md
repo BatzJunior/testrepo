@@ -13,7 +13,7 @@ permalink: /restapi/dataservice/inspectionplan/
 
 ### Endpoints
 
-You can fetch, create, update and delete parts and characteristics via the following endpoints which provide the followingg filters:
+You can fetch, create, update and delete parts and characteristics via the following endpoints which provide the following filters:
 
 {% capture table %}
 Parameter name      | Possible values [**default value**] | Description  <br> ```Example``` | Accepted by endpoint
