@@ -164,7 +164,7 @@ HTTP/1.1 200 Ok
 
 {% include endpointTab.html %}
 
-{% assign linkId="inspectionPlanEndpointUpdateParts" %}
+{% assign linkId="inspectionPlanEndpointDeleteParts" %}
 {% assign method="DELETE" %}
 {% assign endpoint="/parts" %}
 {% assign summary="Deletes parts" %}
