@@ -553,3 +553,21 @@ Parameter name      | Possible values [**default value**] | Description  <br> ``
 `characteristicAttributes` | IDs of the attributes | Restricts the query to the attributes that should be returned for characteristics. <br><br>`characteristicAttributes=(2001,2101)` | <nobr>{{site.sections['getLabel']}} /characteristics</nobr>
 {% endcapture %}
 {{ table | markdownify | replace: '<table>', '<table class="table table-hover">' }}
+
+### General Information
+
+Both parts and characteristics are PiWeb inspection plan entities. They consists of the following properties:
+
+{% capture table %}
+Name | Type | Description
+-----|------|--------------
+uuid | ```Guid``` | Identifies this inspection plan entity uniquely.
+path | ```PathInformation``` | The path of this entity.
+attributes | ```Attribute``` | A set of attributes which specifies this entity.
+comment | ```string``` | A comment which describes the last inspection plan change.
+version | ```int``` | Contains the revision number of the entity. The revision number starts with zero and is incremented by one each time when changes are applied to the inspection plan. The version is only returned in case versioning is enabled in the server settings.
+current | ```bool``` | Indicates whether the entity is the current version.
+timeStamp | ```dateTime``` | Contains the date and time of the last update applied to this entity.
+charChangeDate *(Part only)* |  ```dateTime``` | The timestamp for the most recent characteristic change on any characteristic that belongs to this part
+{% endcapture %}
+{{ table | markdownify | replace: '<table>', '<table class="table table-hover">' }}
