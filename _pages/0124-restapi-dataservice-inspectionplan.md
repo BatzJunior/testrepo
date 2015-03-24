@@ -87,12 +87,8 @@ POST /dataServiceRest/parts HTTP/1.1
 [
   {
     "uuid": "05040c4c-f0af-46b8-810e-30c0c00a379e",
-    "path": "P:/metal part",
-    "attributes": 
-    {
-      "1001": "4466",
-      "1003": "mp"
-    }       
+    "path": "/metal part",
+    "attributes": { "1001": "4466", "1003": "mp" }       
   }
 ]
 {% endhighlight %}
@@ -109,6 +105,91 @@ HTTP/1.1 201 Created
    {
        "statusCode": 201,
        "statusDescription": "Created"
+   },
+   "category": "Success"
+}
+{% endhighlight %}
+{% endcapture %}
+
+{% include endpointTab.html %}
+
+
+{% assign linkId="inspectionPlanEndpointUpdateParts" %}
+{% assign method="PUT" %}
+{% assign endpoint="/parts" %}
+{% assign summary="Updates parts" %}
+{% capture description %}
+
+Updating inspection plan entities might regard the following aspects: 
+
+* Rename/move parts
+* Change part's attributes
+
+{{site.images['info']}} If versioning is activated on server side, every update of one or more parts creates a new version entry.
+{% endcapture %}
+
+{% assign exampleCaption="Change the "metal part"*s attributes" %}
+{% capture jsonrequest %}
+{% highlight http %}
+PUT /dataServiceRest/parts HTTP/1.1
+{% endhighlight %}
+
+{% highlight json %}
+[
+  {
+     "path": "/metal part",
+     "attributes": { "1001": "4469", "1003": "metalpart" }       
+     "uuid": "05040c4c-f0af-46b8-810e-30c0c00a379e",
+  }
+]
+{% endhighlight %}
+{% endcapture %}
+
+{% capture jsonresponse %}
+{% highlight http %}
+HTTP/1.1 200 Ok
+{% endhighlight %}
+
+{% highlight json %}
+{
+   "status":
+   {
+       "statusCode": 200,
+       "statusDescription": "Ok"
+   },
+   "category": "Success"
+}
+{% endhighlight %}
+{% endcapture %}
+
+{% include endpointTab.html %}
+
+{% assign linkId="inspectionPlanEndpointUpdateParts" %}
+{% assign method="DELETE" %}
+{% assign endpoint="/parts" %}
+{% assign summary="Deletes parts" %}
+{% capture description %}
+There are two possibilities you can delete parts, either by their path or by their uuid. This means that one of the filter parameters `partPath` or `partUuids` has to be set. In both cases the entity itself as well as all children are deleted.
+{% endcapture %}
+
+{% assign exampleCaption="Delete the part 'metal part'  and all entities beneath it" %}
+{% capture jsonrequest %}
+{% highlight http %}
+DELETE /dataServiceRest/parts?partPathmetal%20part HTTP/1.1
+{% endhighlight %}
+{% endcapture %}
+
+{% capture jsonresponse %}
+{% highlight http %}
+HTTP/1.1 200 Ok
+{% endhighlight %}
+
+{% highlight json %}
+{
+   "status":
+   {
+       "statusCode": 200,
+       "statusDescription": "Ok"
    },
    "category": "Success"
 }
