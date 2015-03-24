@@ -270,3 +270,278 @@ HTTP/1.1 200 Ok
 {% endcapture %}
 
 {% include endpointTab.html %}
+
+
+<p/><p/>
+
+
+
+{% assign linkId="inspectionPlanEndpointGetAllChars" %}
+{% assign method="GET" %}
+{% assign endpoint="/characteristics" %}
+{% assign summary="Fetches characteristics" %}
+{% assign description="Fetches all characteristics or the characteristics restricted by the uri parameters. Only direct characteristics are fetched, characteristics beneath sub parts are not considered." %}
+{% assign exampleCaption="Fetch all characteristics beneath the part '/metal part' until depth=2" %}
+
+{% capture jsonrequest %}
+{% highlight http %}
+GET /dataServiceRest/characteristics?partPath=/metal%20part&depth=2 HTTP/1.1
+{% endhighlight %}
+{% endcapture %}
+
+{% capture jsonresponse %}
+{% highlight json %}
+{
+   ...
+   "data":
+   [
+      {
+           "path": "PC:/metal part/deviation_3/",
+           "attributes": { ... },
+           "uuid": "27e23a7c-dbe7-4863-8461-6abf7b03ddd7",
+           "version": 0,
+           "timestamp": "2012-11-19T10:48:32.887Z",
+           "current": true
+       },
+      {
+           "path": "PCC:/metal part/deviation_3/.X/",
+           "attributes": { ... },
+           "uuid": "51c8568a-9410-465a-a8ed-33063db41dac",
+           "version": 0,
+           "timestamp": "2015-03-24T08:17:28.03Z",
+           "current": true
+       },
+       {
+           "path": "PCC:/metal part/deviation_3/.Y/",
+           "attributes": { ... },
+           "uuid": "b7a30736-6e89-4dd5-9bc0-e6cb9eb5e2da",
+           "version": 0,
+           "timestamp": "2015-03-24T08:17:34.61Z",
+           "current": true
+       },
+       {
+           "path": "PCC:/metal part/deviation_3/.Z/",
+           "attributes": { ... },
+           "uuid": "1175919c-5c59-487e-a0fb-deac04510046",
+           "version": 0,
+           "timestamp": "2015-03-24T08:17:38.423Z",
+           "current": true
+       }
+   ]
+}
+{% endhighlight %}
+{% endcapture %}
+
+{% include endpointTab.html %}
+
+
+{% assign linkId="inspectionPlanEndpointAddChars" %}
+{% assign method="POST" %}
+{% assign endpoint="/parts" %}
+{% assign summary="Creates characteristics" %}
+{% capture description %}
+
+To create characteristics it is necessary to transfer the characteristics within the request's body. A unique identifier and the path are mandatory, attributes and a comment are optional. The attribute keys which are used for the attributes must come from the parts/characteristics attribute range (specified in the {{ site.links['configuration'] }})
+
+{{ site.images['info'] }} The comment is only added if versioning is enabled in the server settings.
+{% endcapture %}
+
+{% assign exampleCaption="Adding the characteristic 'metal part/deviation_3'" %}
+
+{% capture jsonrequest %}
+{% highlight http %}
+POST /dataServiceRest/characteristics HTTP/1.1
+{% endhighlight %}
+
+{% highlight json %}
+[
+  {
+     "path": "PC:/metal part/deviation_3/",
+     "attributes": 
+      { 
+         "2004": "3",
+         "2101": "0",
+         "2110": "-0.5",
+         "2111": "0.5" 
+      },
+     "uuid": "27e23a7c-dbe7-4863-8461-6abf7b03ddd7"
+  }
+]
+{% endhighlight %}
+{% endcapture %}
+
+{% capture jsonresponse %}
+{% highlight http %}
+HTTP/1.1 201 Created
+{% endhighlight %}
+
+{% highlight json %}
+{
+   "status":
+   {
+       "statusCode": 201,
+       "statusDescription": "Created"
+   },
+   "category": "Success"
+}
+{% endhighlight %}
+{% endcapture %}
+
+{% include endpointTab.html %}
+
+
+{% assign linkId="inspectionPlanEndpointUpdateChars" %}
+{% assign method="PUT" %}
+{% assign endpoint="/characteristics" %}
+{% assign summary="Updates characteristics" %}
+{% capture description %}
+
+Updating inspection plan entities might regard the following aspects: 
+
+* Rename/move characteristics
+* Change characteristic's attributes
+
+{{site.images['info']}} If versioning is activated on server side, every update of one or more parts creates a new version entry.
+{% endcapture %}
+
+{% assign exampleCaption="Change the "metal part/deviation_3"*s attributes" %}
+{% capture jsonrequest %}
+{% highlight http %}
+PUT /dataServiceRest/characteristics HTTP/1.1
+{% endhighlight %}
+
+{% highlight json %}
+[
+  {
+     "path": "/metal part/deviation_3",
+     "attributes": { "2110": "-1.0", "2111": "1.0"  }       
+     "uuid": "05040c4c-f0af-46b8-810e-30c0c00a379e",
+  }
+]
+{% endhighlight %}
+{% endcapture %}
+
+{% capture jsonresponse %}
+{% highlight http %}
+HTTP/1.1 200 Ok
+{% endhighlight %}
+
+{% highlight json %}
+{
+   "status":
+   {
+       "statusCode": 200,
+       "statusDescription": "Ok"
+   },
+   "category": "Success"
+}
+{% endhighlight %}
+{% endcapture %}
+
+{% include endpointTab.html %}
+
+{% assign linkId="inspectionPlanEndpointDeleteCharacteristics" %}
+{% assign method="DELETE" %}
+{% assign endpoint="/characteristics" %}
+{% assign summary="Deletes characteristics" %}
+{% capture description %}
+There are two possibilities you can delete characteristics, either by their path or by their uuids. This means that one of the filter parameters `charPath` or `charUuids` has to be set. In both cases the entity itself as well as all children are deleted.
+{% endcapture %}
+
+{% assign exampleCaption="Delete the characteristic 'metal part/deviation_3'  and all entities beneath it" %}
+{% capture jsonrequest %}
+{% highlight http %}
+DELETE /dataServiceRest/parts?charPath=/metal%20part/deviation_3 HTTP/1.1
+{% endhighlight %}
+{% endcapture %}
+
+{% capture jsonresponse %}
+{% highlight http %}
+HTTP/1.1 200 Ok
+{% endhighlight %}
+
+{% highlight json %}
+{
+   "status":
+   {
+       "statusCode": 200,
+       "statusDescription": "Ok"
+   },
+   "category": "Success"
+}
+{% endhighlight %}
+{% endcapture %}
+
+{% include endpointTab.html %}
+
+
+
+{% assign linkId="inspectionPlanEndpointGetChar" %}
+{% assign method="GET" %}
+{% assign endpoint="/characteristics/:charUuid" %}
+{% assign summary="Fetches a certain characteristics by its :charUuid" %}
+{% assign description="" %}
+{% assign exampleCaption="Fetch the characteristics '/metal part/deviation_3' by its guid" %}
+
+{% capture jsonrequest %}
+{% highlight http %}
+GET /dataServiceRest/characteristics/27e23a7c-dbe7-4863-8461-6abf7b03ddd7 HTTP/1.1
+{% endhighlight %}
+{% endcapture %}
+
+{% capture jsonresponse %}
+{% highlight json %}
+{
+   ...
+   "data":
+   [
+      {
+           "path": "PC:/metal part/deviation_3/",
+           "attributes": { ... },
+           "uuid": "27e23a7c-dbe7-4863-8461-6abf7b03ddd7",
+           "version": 0,
+           "timestamp": "2012-11-19T10:48:32.887Z",
+           "current": true
+       }
+   ]
+}
+{% endhighlight %}
+{% endcapture %}
+
+{% include endpointTab.html %}
+
+
+
+{% assign linkId="inspectionPlanEndpointDeleteChar" %}
+{% assign method="DELETE" %}
+{% assign endpoint="/characteristics/:charUuid" %}
+{% assign summary="Delete a characteristic by its :charUuid" %}
+{% capture description %}
+If you delete a characteristic, the entity itself as well as all children are deleted.
+{% endcapture %}
+
+{% assign exampleCaption="Delete the characteristic 'metal part/deviation_3' and all entities beneath it by its guid" %}
+{% capture jsonrequest %}
+{% highlight http %}
+DELETE /dataServiceRest/characteristics/27e23a7c-dbe7-4863-8461-6abf7b03ddd7 HTTP/1.1
+{% endhighlight %}
+{% endcapture %}
+
+{% capture jsonresponse %}
+{% highlight http %}
+HTTP/1.1 200 Ok
+{% endhighlight %}
+
+{% highlight json %}
+{
+   "status":
+   {
+       "statusCode": 200,
+       "statusDescription": "Ok"
+   },
+   "category": "Success"
+}
+{% endhighlight %}
+{% endcapture %}
+
+{% include endpointTab.html %}
