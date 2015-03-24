@@ -13,21 +13,7 @@ permalink: /restapi/dataservice/inspectionplan/
 
 ### Endpoints
 
-You can fetch, create, update and delete parts and characteristics via the following endpoints which provide the following filters:
-
-{% capture table %}
-Parameter name      | Possible values [**default value**] | Description  <br> ```Example``` | Accepted by endpoint
---------------------|------------------------------       |---------------------------------|--------------------------
-`partUuids`           | Guids of the parts | Restricts the query to these parts guids | <nobr>{{site.sections['getLabel']}} {{site.sections['deleteLabel']}} /parts</nobr><br> {{site.sections['getLabel']}} /characteristics
-`partPath`            | Path of the part | Restricts the query to this part path  | <nobr>{{site.sections['getLabel']}} {{site.sections['deleteLabel']}} /parts</nobr><br> {{site.sections['getLabel']}} /characteristics
-`charUuids`           | Guids of the characteristics | Restricts the query to these characteristics guids | <nobr>{{site.sections['getLabel']}} /characteristics</nobr>
-`charPath`            | Path of the characteristic | Restricts the query to this characteristic path  | <nobr>{{site.sections['getLabel']}} /characteristics</nobr>
-`depth`               | i, i ≥ 0  <br>**1**  | It controls down to which level of the inspection plan the entities should be fetched. Setting *depth:0* means that only the entity itself should be fetched, *depth:1* means the entity and its direct children should be fetched and so on. <br><br>Example:<br>`depth=5` | <nobr>{{site.sections['getLabel']}} /parts</nobr><br> {{site.sections['getLabel']}} /characteristics
-`withHistory`         | true, **false**      | Determines whether the version history should be fetched or not. Does only effect the query if versioning is activated on the server side. <br><br>Example:<br>`withHistory=true` | <nobr>{{site.sections['getLabel']}} /parts</nobr><br> {{site.sections['getLabel']}} /characteristics
-`partAttributes`      | IDs of the attributes | Restricts the query to the attributes that should be returned for parts. <br><br>Example:<br>`partAttributes=(1001,1008)` | <nobr>{{site.sections['getLabel']}} /parts</nobr>
-`characteristicAttributes` | IDs of the attributes | Restricts the query to the attributes that should be returned for characteristics. <br><br>Example:<br>`characteristicAttributes=(2001,2101)` | <nobr>{{site.sections['getLabel']}} /characteristics</nobr>
-{% endcapture %}
-{{ table | markdownify | replace: '<table>', '<table class="table table-hover">' }}
+You can fetch, create, update and delete parts and characteristics via the following endpoints: 
 
 {% assign linkId="inspectionPlanEndpointGetAllParts" %}
 {% assign method="GET" %}
@@ -547,3 +533,20 @@ HTTP/1.1 200 Ok
 {% endcapture %}
 
 {% include endpointTab.html %}
+
+
+The described endpoints provide the following filters:
+
+{% capture table %}
+Parameter name      | Possible values [**default value**] | Description  <br> ```Example``` | Accepted by endpoint
+--------------------|------------------------------       |---------------------------------|--------------------------
+`partUuids`           | Guids of the parts | Restricts the query to these parts guids | <nobr>{{site.sections['getLabel']}} {{site.sections['deleteLabel']}} /parts</nobr><br> {{site.sections['getLabel']}} /characteristics
+`partPath`            | Path of the part | Restricts the query to this part path  | <nobr>{{site.sections['getLabel']}} {{site.sections['deleteLabel']}} /parts</nobr><br> {{site.sections['getLabel']}} /characteristics
+`charUuids`           | Guids of the characteristics | Restricts the query to these characteristics guids | <nobr>{{site.sections['getLabel']}} /characteristics</nobr>
+`charPath`            | Path of the characteristic | Restricts the query to this characteristic path  | <nobr>{{site.sections['getLabel']}} /characteristics</nobr>
+`depth`               | i, i ≥ 0  <br>**1**  | It controls down to which level of the inspection plan the entities should be fetched. Setting *depth:0* means that only the entity itself should be fetched, *depth:1* means the entity and its direct children should be fetched and so on. <br><br>`depth=5` | <nobr>{{site.sections['getLabel']}} /parts</nobr><br> {{site.sections['getLabel']}} /characteristics
+`withHistory`         | true, **false**      | Determines whether the version history should be fetched or not. Does only effect the query if versioning is activated on the server side. <br><br>`withHistory=true` | <nobr>{{site.sections['getLabel']}} /parts</nobr><br> {{site.sections['getLabel']}} /characteristics
+`partAttributes`      | IDs of the attributes | Restricts the query to the attributes that should be returned for parts. <br><br>`partAttributes=(1001,1008)` | <nobr>{{site.sections['getLabel']}} /parts</nobr>
+`characteristicAttributes` | IDs of the attributes | Restricts the query to the attributes that should be returned for characteristics. <br><br>`characteristicAttributes=(2001,2101)` | <nobr>{{site.sections['getLabel']}} /characteristics</nobr>
+{% endcapture %}
+{{ table | markdownify | replace: '<table>', '<table class="table table-hover">' }}
