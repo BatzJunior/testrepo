@@ -169,13 +169,86 @@ HTTP/1.1 200 Ok
 {% assign endpoint="/parts" %}
 {% assign summary="Deletes parts" %}
 {% capture description %}
-There are two possibilities you can delete parts, either by their path or by their uuid. This means that one of the filter parameters `partPath` or `partUuids` has to be set. In both cases the entity itself as well as all children are deleted.
+There are two possibilities you can delete parts, either by their path or by their uuids. This means that one of the filter parameters `partPath` or `partUuids` has to be set. In both cases the entity itself as well as all children are deleted.
 {% endcapture %}
 
 {% assign exampleCaption="Delete the part 'metal part'  and all entities beneath it" %}
 {% capture jsonrequest %}
 {% highlight http %}
-DELETE /dataServiceRest/parts?partPathmetal%20part HTTP/1.1
+DELETE /dataServiceRest/parts?partPath=/metal%20part HTTP/1.1
+{% endhighlight %}
+{% endcapture %}
+
+{% capture jsonresponse %}
+{% highlight http %}
+HTTP/1.1 200 Ok
+{% endhighlight %}
+
+{% highlight json %}
+{
+   "status":
+   {
+       "statusCode": 200,
+       "statusDescription": "Ok"
+   },
+   "category": "Success"
+}
+{% endhighlight %}
+{% endcapture %}
+
+{% include endpointTab.html %}
+
+
+
+{% assign linkId="inspectionPlanEndpointGetPart" %}
+{% assign method="GET" %}
+{% assign endpoint="/parts/:partUuid" %}
+{% assign summary="Fetches a certain part by its :partUuid" %}
+{% assign description="" %}
+{% assign exampleCaption="Fetch the part '/metal part' by its guid" %}
+
+{% capture jsonrequest %}
+{% highlight http %}
+GET /dataServiceRest/parts/05040c4c-f0af-46b8-810e-30c0c00a379e HTTP/1.1
+{% endhighlight %}
+{% endcapture %}
+
+{% capture jsonresponse %}
+{% highlight json %}
+{
+   ...
+   "data":
+   [
+      {
+           "path": "P:/metal part/",
+           "charChangeDate": "2014-11-19T10:48:32.917Z",
+           "attributes": {},
+           "uuid": "05040c4c-f0af-46b8-810e-30c0c00a379e",
+           "version": 0,
+           "timestamp": "2012-11-19T10:48:32.887Z",
+           "current": true
+       }
+   ]
+}
+{% endhighlight %}
+{% endcapture %}
+
+{% include endpointTab.html %}
+
+
+
+{% assign linkId="inspectionPlanEndpointDeletePart" %}
+{% assign method="DELETE" %}
+{% assign endpoint="/parts/:partUuid" %}
+{% assign summary="Delete a part by its :partUuid" %}
+{% capture description %}
+If you delete a part the entity itself as well as all children are deleted.
+{% endcapture %}
+
+{% assign exampleCaption="Delete the part 'metal part' and all entities beneath it by its guid" %}
+{% capture jsonrequest %}
+{% highlight http %}
+DELETE /dataServiceRest/parts/05040c4c-f0af-46b8-810e-30c0c00a379e HTTP/1.1
 {% endhighlight %}
 {% endcapture %}
 
