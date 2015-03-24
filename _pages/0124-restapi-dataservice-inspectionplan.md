@@ -19,7 +19,7 @@ You can fetch, create, update and delete parts and characteristics via the follo
 {% assign method="GET" %}
 {% assign endpoint="/parts" %}
 {% assign summary="Fetches parts" %}
-{% assign description="Fetches all parts or the parts restricted by the uri parameters." %}
+{% assign description="You can fetch all parts or certain parts if you restrict the query by [uri parameters]({{page.uri}}#filters)." %}
 {% assign exampleCaption="Fetch the part with the path '/metal part'" %}
 
 {% capture jsonrequest %}
@@ -534,7 +534,8 @@ HTTP/1.1 200 Ok
 
 {% include endpointTab.html %}
 
-
+<br/>
+#####Filters
 The described endpoints provide the following filters:
 
 {% capture table %}
