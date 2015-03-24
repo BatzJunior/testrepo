@@ -272,7 +272,9 @@ HTTP/1.1 200 Ok
 {% include endpointTab.html %}
 
 
-<p/><p/>
+<p>
+
+</p>
 
 
 
@@ -337,7 +339,7 @@ GET /dataServiceRest/characteristics?partPath=/metal%20part&depth=2 HTTP/1.1
 
 {% assign linkId="inspectionPlanEndpointAddChars" %}
 {% assign method="POST" %}
-{% assign endpoint="/parts" %}
+{% assign endpoint="/characteristics" %}
 {% assign summary="Creates characteristics" %}
 {% capture description %}
 
