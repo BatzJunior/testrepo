@@ -20,13 +20,13 @@ You can fetch, create, update and delete parts and characteristics via the follo
 {% assign endpoint="/parts" %}
 {% assign summary="Fetches parts" %}
 {% capture description %}
-You can fetch all parts or certain parts if you restrict the query by [uri parameters](#filters)." 
+You can fetch all parts or certain parts if you restrict the query by [filter uri parameters](#filters).
 {% endcapture %}
-{% assign exampleCaption="Fetch the part with the path '/metal part'" %}
+{% assign exampleCaption="Fetch the part with the path '/metal part' without possible child parts" %}
 
 {% capture jsonrequest %}
 {% highlight http %}
-GET /dataServiceRest/parts?partPath=/metal%20part HTTP/1.1
+GET /dataServiceRest/parts?partPath=/metal%20part&depth=0 HTTP/1.1
 {% endhighlight %}
 {% endcapture %}
 
@@ -59,7 +59,7 @@ GET /dataServiceRest/parts?partPath=/metal%20part HTTP/1.1
 {% assign summary="Creates parts" %}
 {% capture description %}
 
-To create an inspection plan entity it is necessary to transfer the entity object within the request's body. A unique identifier and the path are mandatory, attributes and a comment are optional. The attribute keys which are used for the attributes must come from the parts/characteristics attribute range (specified in the {{ site.links['configuration'] }})
+If you want to create an inspection plan entity it is necessary that you transfer the entity object within the request's body. A unique identifier and the path are mandatory, attributes and a comment are optional. The attribute keys which you use for the attributes must come from the parts attribute range (specified in the {{ site.links['configuration'] }})
 
 {{ site.images['info'] }} The comment is only added if versioning is enabled in the server settings.
 {% endcapture %}
@@ -108,7 +108,7 @@ HTTP/1.1 201 Created
 {% assign summary="Updates parts" %}
 {% capture description %}
 
-Updating inspection plan entities might regard the following aspects: 
+If you update a part you might want to:
 
 * Rename/move parts
 * Change part's attributes
@@ -260,9 +260,7 @@ HTTP/1.1 200 Ok
 {% include endpointTab.html %}
 
 
-<p>
-
-</p>
+<p></p>
 
 
 
@@ -270,7 +268,7 @@ HTTP/1.1 200 Ok
 {% assign method="GET" %}
 {% assign endpoint="/characteristics" %}
 {% assign summary="Fetches characteristics" %}
-{% assign description="Fetches all characteristics or the characteristics restricted by the uri parameters. Only direct characteristics are fetched, characteristics beneath sub parts are not considered." %}
+{% assign description="You can fetch all characteristics or the characteristics described by the uri parameters. Only direct characteristics are fetched, characteristics beneath child parts are not considered." %}
 {% assign exampleCaption="Fetch all characteristics beneath the part '/metal part' until depth=2" %}
 
 {% capture jsonrequest %}
@@ -331,7 +329,7 @@ GET /dataServiceRest/characteristics?partPath=/metal%20part&depth=2 HTTP/1.1
 {% assign summary="Creates characteristics" %}
 {% capture description %}
 
-To create characteristics it is necessary to transfer the characteristics within the request's body. A unique identifier and the path are mandatory, attributes and a comment are optional. The attribute keys which are used for the attributes must come from the parts/characteristics attribute range (specified in the {{ site.links['configuration'] }})
+If you create characteristics it is necessary that you transfer the characteristics within the request's body. A unique identifier and the path are mandatory, attributes and a comment are optional. The attribute keys which are used for the attributes must come from the characteristics attribute range (specified in the {{ site.links['configuration'] }})
 
 {{ site.images['info'] }} The comment is only added if versioning is enabled in the server settings.
 {% endcapture %}
@@ -386,9 +384,9 @@ HTTP/1.1 201 Created
 {% assign summary="Updates characteristics" %}
 {% capture description %}
 
-Updating inspection plan entities might regard the following aspects: 
+If you update characteristics you want to:
 
-* Rename/move characteristics
+* Rename/move characteristics or
 * Change characteristic's attributes
 
 {{site.images['info']}} If versioning is activated on server side, every update of one or more parts creates a new version entry.
@@ -538,7 +536,7 @@ HTTP/1.1 200 Ok
 
 <br/>
 
-##### Filters
+### Filters
 
 The described endpoints provide the following filters:
 
