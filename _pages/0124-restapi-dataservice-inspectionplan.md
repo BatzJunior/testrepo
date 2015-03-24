@@ -537,7 +537,7 @@ HTTP/1.1 200 Ok
 {% include endpointTab.html %}
 
 <br/>
-#####Filters
+##### Filters
 
 The described endpoints provide the following filters:
 
