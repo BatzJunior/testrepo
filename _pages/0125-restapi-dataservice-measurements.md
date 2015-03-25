@@ -106,3 +106,56 @@ HTTP/1.1 201 Created
 {% endcapture %}
 
 {% include endpointTab.html %}
+
+
+{% assign linkId="measurementsUpdate" %}
+{% assign method="PUT" %}
+{% assign endpoint="/measurements" %}
+{% assign summary="Updates measurements" %}
+{% capture description %}
+Updating a measurement does always affect the whole measurement. This means that the whole measurement, including attributes and values, needs to be transfered within the body of the request and is deleted and recreated again on server side.
+{% endcapture %}
+
+{% assign exampleCaption="Update a measurement - add and change an attribute" %}
+{% assign comment="" %}
+
+{% capture jsonrequest %}
+{% highlight http %}
+POST /dataServiceRest/measurements HTTP/1.1
+{% endhighlight %}
+
+{% highlight json %}
+[
+  {
+    "uuid": "4b59cac7-9ecd-403c-aa26-56dd25892421",
+      "partUuid": "e42c5327-6258-4c4c-b3e9-6d22c30938b2",
+      "attributes": {
+        "4": "2015-03-09T19:12:00Z",
+        "6": "2",
+        "7": "0",
+        "8": "1"
+      }
+  }
+]
+{% endhighlight %}
+{% endcapture %}
+
+{% capture jsonresponse %}
+{% highlight http %}
+HTTP/1.1 200 OK
+{% endhighlight %}
+
+{% highlight json %}
+{
+   "status":
+   {
+       "statusCode": 200,
+       "statusDescription": "OK"
+   },
+   "category": "Success"
+}
+{% endhighlight %}
+{% endcapture %}
+
+{% include endpointTab.html %}
+
