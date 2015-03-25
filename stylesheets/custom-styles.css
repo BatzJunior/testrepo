@@ -31,6 +31,12 @@ h2[id]:before {
   visibility: hidden; 
 }
 
+h5{
+	margin: 1px 0px 10px;
+	text-indent: -25px;
+	padding-left: 25px;
+}
+
 h6{
 	margin-top: 10px;
 }
