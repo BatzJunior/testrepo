@@ -26,7 +26,7 @@ You can fetch all measurements or certain measurements if you restrict the query
 
 {% capture jsonrequest %}
 {% highlight http %}
-GET /dataServiceRest/measurements?partUuids=(e42c5327-6258-4c4c-b3e9-6d22c30938b2)&filter=searchCondition:4>[2015-01-01T00:00:00Z] HTTP/1.1
+GET /dataServiceRest/measurements?partUuids=(e42c5327-6258-4c4c-b3e9-6d22c30938b2)&searchCondition=4>[2015-01-01T00:00:00Z] HTTP/1.1
 {% endhighlight %}
 {% endcapture %}
 
@@ -49,6 +49,58 @@ GET /dataServiceRest/measurements?partUuids=(e42c5327-6258-4c4c-b3e9-6d22c30938b
        }
       },
       ...
+}
+{% endhighlight %}
+{% endcapture %}
+
+{% include endpointTab.html %}
+
+
+{% assign linkId="measurementsCreate" %}
+{% assign method="POST" %}
+{% assign endpoint="/measurements" %}
+{% assign summary="Creates measurements" %}
+{% capture description %}
+To create a measurement, it is necessary to transfer the measurement object within the request's body. A unique identifier and the path are mandatory, attributes and a comment are optional. The attribute keys which are used for the attributes must come from the parts/characteristics attribute range (specified in the {{ site.links['configuration'] }})
+
+{{ site.images['info'] }} The comment is only added if versioning is enabled in server settings. 
+{% endcapture %}
+{% assign exampleCaption="Create a measurement" %}
+{% assign comment="" %}
+
+{% capture jsonrequest %}
+{% highlight http %}
+POST /dataServiceRest/parts/measurements HTTP/1.1
+{% endhighlight %}
+
+{% highlight json %}
+[
+  {
+    "uuid": "4b59cac7-9ecd-403c-aa26-56dd25892421",
+      "partUuid": "e42c5327-6258-4c4c-b3e9-6d22c30938b2",
+      "attributes": {
+        "4": "2015-03-09T19:12:00Z",
+        "6": "3",
+        "7": "0"
+      }     
+  }
+]
+{% endhighlight %}
+{% endcapture %}
+
+{% capture jsonresponse %}
+{% highlight http %}
+HTTP/1.1 201 Created
+{% endhighlight %}
+
+{% highlight json %}
+{
+   "status":
+   {
+       "statusCode": 201,
+       "statusDescription": "Created"
+   },
+   "category": "Success"
 }
 {% endhighlight %}
 {% endcapture %}
