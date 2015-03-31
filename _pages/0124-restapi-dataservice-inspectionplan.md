@@ -561,7 +561,7 @@ Both parts and characteristics are PiWeb inspection plan entities. They consists
 {% capture table %}
 Name | Type | Description
 -----|------|--------------
-uuid | ```Guid``` | Identifies this inspection plan entity uniquely.
+<nobr><code>Guid</code> uuid</nobr> | `Guid` | Identifies this inspection plan entity uniquely.
 path | ```PathInformation``` | The path of this entity.
 attributes | ```Attribute``` | A set of attributes which specifies this entity.
 comment | ```string``` | A comment which describes the last inspection plan change.
