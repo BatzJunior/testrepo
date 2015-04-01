@@ -251,6 +251,7 @@ ul.subNavList{
 
 .about-links>li>a{
 	line-height: 1px;
+	width: 60px;
 }
 
 .about-links>li>a>svg{
