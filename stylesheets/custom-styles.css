@@ -247,6 +247,7 @@ ul.subNavList{
 	list-style: none;
 	text-align: center;
 	float: left;
+	width:60px;
 }
 
 .about-links>li>a{
