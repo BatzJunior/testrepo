@@ -255,7 +255,6 @@ ul.subNavList{
 .about-links>li{
 	list-style: none;
 	text-align: center;
-	float: left;
 	width:60px;
 	display: inline-block;
 }
