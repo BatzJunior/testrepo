@@ -243,6 +243,12 @@ ul.subNavList{
 	}
 }
 
+.about-links{
+	display: table;
+	margin: 0 auto;
+	padding: 0;
+}
+
 .about-links>li{
 	list-style: none;
 	text-align: center;
