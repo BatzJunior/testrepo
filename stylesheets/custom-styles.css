@@ -243,6 +243,24 @@ ul.subNavList{
 	}
 }
 
+.about-links>li{
+	list-style: none;
+	text-align: center;
+	float: left;
+}
+
+.about-links>li>a{
+	line-height: 1px;
+}
+
+.about-links>li>a>svg{
+	fill: currentColor;
+}
+
+.about-links>li>a>span{
+	display: list-item;
+}
+
 /* Tables */
 /*
 table {
