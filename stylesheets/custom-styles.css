@@ -245,11 +245,12 @@ ul.subNavList{
 
 .about-links{
 	display: table;
-	margin: 20px auto;
+	margin: 0px auto 30px auto;
 	padding: 0;
 	border-top: 1px solid #ddd;
-  	width: 75%;
-  	text-align: center;
+	border-bottom: 1px solid #ddd;
+	width: 75%;
+	text-align: center;
 }
 
 .about-links>li{
