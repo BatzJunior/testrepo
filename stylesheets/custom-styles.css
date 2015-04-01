@@ -245,8 +245,11 @@ ul.subNavList{
 
 .about-links{
 	display: table;
-	margin: 0 auto;
+	margin: 20px auto;
 	padding: 0;
+	border-top: 1px solid #ddd;
+  	width: 75%;
+  	text-align: center;
 }
 
 .about-links>li{
@@ -254,6 +257,7 @@ ul.subNavList{
 	text-align: center;
 	float: left;
 	width:60px;
+	display: inline-block;
 }
 
 .about-links>li>a{
