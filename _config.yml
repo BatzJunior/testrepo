@@ -7,32 +7,32 @@ defaults:
 
 include: ['_pages']
 relative_permalinks: false
-baseurl: "http://pegasus.windowsphonewelt.de/"
+baseurl: "http://pegasus.windowsphonewelt.de"
 links:
-  configuration: "[Configuration](/testrepo/dataservice/configuration/)"
+  configuration: "[Configuration](/dataservice/configuration/)"
 images:
-  warning: "![Warning](/testrepo/images/warning.png)"
-  info: "![Info](/testrepo/images/info.png)"
-  parameter: "![Info](/testrepo/images/parameter.png)"
-  parameter16: "![Info](/testrepo/images/parameter_16.png)"
-  returnParameter: "![Info](/testrepo/images/returnParameter.png)"
-  returnParameter16: "![Info](/testrepo/images/returnParameter_16.png)"
-  summary: "![Info](/testrepo/images/summary.png)"
-  summary16: "![Info](/testrepo/images/summary_16.png)"
-  list-info: "![List Info](/testrepo/images/list-info.png)"
-  document-info: "![Document Info](/testrepo/images/document-info.png)"
-  example16: "![Example](/testrepo/images/example_16.png)"
-  function-get: "![Get](/testrepo/images/function-get.png)"
-  function-create: "![Create](/testrepo/images/function-create.png)"
-  function-update: "![Update](/testrepo/images/function-update.png)"
-  function-delete: "![Delete](/testrepo/images/function-delete.png)"
+  warning: "![Warning](/images/warning.png)"
+  info: "![Info](/images/info.png)"
+  parameter: "![Info](/images/parameter.png)"
+  parameter16: "![Info](/images/parameter_16.png)"
+  returnParameter: "![Info](/images/returnParameter.png)"
+  returnParameter16: "![Info](/images/returnParameter_16.png)"
+  summary: "![Info](/images/summary.png)"
+  summary16: "![Info](/images/summary_16.png)"
+  list-info: "![List Info](/images/list-info.png)"
+  document-info: "![Document Info](/images/document-info.png)"
+  example16: "![Example](/images/example_16.png)"
+  function-get: "![Get](/images/function-get.png)"
+  function-create: "![Create](/images/function-create.png)"
+  function-update: "![Update](/images/function-update.png)"
+  function-delete: "![Delete](/images/function-delete.png)"
 sections:
   getLabel: <span class="label label-primary">GET</span>
   postLabel: <span class="label label-success">POST</span>
   putLabel: <span class="label label-warning">PUT</span>
   deleteLabel: <span class="label label-danger">DELETE</span>
 headers:
-  example: "##### ![Example](/testrepo/images/document-info.png) Example: "
+  example: "##### ![Example](/images/document-info.png) Example: "
   request: "##### Request"
   response: "##### Response"
 gems:
