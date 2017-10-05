@@ -7,7 +7,7 @@ defaults:
 
 include: ['_pages']
 relative_permalinks: false
-baseurl: "/testrepo"
+baseurl: "http://pegasus.windowsphonewelt.de/"
 links:
   configuration: "[Configuration](/testrepo/dataservice/configuration/)"
 images:
